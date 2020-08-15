@@ -33,3 +33,9 @@ org/usfirst/frc/team5740/trajectory/io/TextFileDeserializer.java
  org.usfirst.frc.team5740.trajectory.io.TextFileDeserializer
 org/usfirst/frc/team5740/trajectory/io/TextFileSerializer.java
  org.usfirst.frc.team5740.trajectory.io.TextFileSerializer
+org/usfirst/frc/team5740/gui/SettingsPanelController.java
+ org.usfirst.frc.team5740.gui.SettingsPanelController
+org/usfirst/frc/team5740/gui/Controller.java
+ org.usfirst.frc.team5740.gui.Controller
+org/usfirst/frc/team5740/Main.java
+ org.usfirst.frc.team5740.Main
