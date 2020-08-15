@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+  <children>
+    <AnchorPane fx:id="save_entrys" maxHeight="-1.0" maxWidth="-1.0" prefHeight="409.0" prefWidth="578.0" style="-fx-background-color: rgb(0,0,0);" VBox.vgrow="ALWAYS">
+      <children>
+        <Label alignment="CENTER" layoutX="213.0" layoutY="14.0" style="&#10;" text="Path Entry Data" textAlignment="CENTER" textFill="WHITE" wrapText="false">
+          <font>
+            <Font name="Comic Sans MS Bold Italic" size="28.0" />
+          </font>
+        </Label>
+            <Button fx:id="new_paths" layoutX="222.0" layoutY="322.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="142.0" style="-fx-background-color: rgb(30,30,30);" text="add New Postition" textFill="WHITE" />
+            <Label layoutX="241.0" layoutY="299.0" text=" Edit entrys" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="213.0" layoutY="53.0" prefHeight="27.0" prefWidth="188.0" text="        Entry Editor" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Button fx:id="remove_path" layoutX="222.0" layoutY="353.0" mnemonicParsing="false" prefHeight="21.0" prefWidth="142.0" style="-fx-background-color: rgb(30,30,30);" text="remove Postition" textFill="WHITE" />
+            <Button fx:id="preview_graph" layoutX="480.0" layoutY="322.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="118.0" style="-fx-background-color: rgb(30,30,30);" text="Preview Graph" textFill="WHITE" />
+            <Label layoutX="480.0" layoutY="299.0" text="Preview path" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Button fx:id="save_path" layoutX="480.0" layoutY="353.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="118.0" style="-fx-background-color: rgb(30,30,30);" text="Save Data" textFill="WHITE" />
+            <ListView fx:id="display_path_entrys" editable="true" layoutX="70.0" layoutY="80.0" prefHeight="198.0" prefWidth="511.0" style="-fx-background-color: rgb(30,30,30);" />
+            <ImageView fitHeight="99.0" fitWidth="104.0" layoutY="310.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@44243093.png" />
+               </image>
+            </ImageView>
+      </children>
+    </AnchorPane>
+  </children>
+</VBox>

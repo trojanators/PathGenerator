@@ -10,7 +10,6 @@ plugins {
     // Apply the java plugin to add support for Java
     id 'java'
     id 'application'
-    id 'com.gluonhq.client-gradle-plugin' version '0.1.30'
     id 'org.openjfx.javafxplugin' version '0.0.9'
 }
 
@@ -23,7 +22,6 @@ repositories {
 dependencies {
  compile 'com.opencsv:opencsv:5.2'
 }
-apply plugin: 'com.gluonhq.client-gradle-plugin'
 
 javafx {
     version = '11'
