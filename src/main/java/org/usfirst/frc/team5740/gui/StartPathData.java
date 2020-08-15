@@ -18,10 +18,10 @@ public class StartPathData extends Application {
         Main.logger.info("loading Fxml file");
         loader.setLocation(getClass().getResource("/PathData.fxml"));
         Main.logger.info("Done Loading PathData.fxml file");
-        Parent root = loader.load(); 
+        Parent root_path = loader.load(); 
        
 
-        Scene scene = new Scene(root, 640, 400);
+        Scene scene = new Scene(root_path , 640, 400);
     
         stage.setTitle("PathGenerator By Nicholas Blackburn");
         stage.setScene(scene);

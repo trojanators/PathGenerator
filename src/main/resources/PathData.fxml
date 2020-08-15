@@ -18,7 +18,7 @@
             <Font name="Comic Sans MS Bold Italic" size="28.0" />
           </font>
         </Label>
-            <Button fx:id="new_paths" layoutX="222.0" layoutY="322.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="142.0" style="-fx-background-color: rgb(30,30,30);" text="add New Postition" textFill="WHITE" />
+            <Button fx:id="new_waypoint" layoutX="222.0" layoutY="322.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="142.0" style="-fx-background-color: rgb(30,30,30);" text="add New Postition" textFill="WHITE" />
             <Label layoutX="241.0" layoutY="299.0" text=" Edit entrys" textFill="WHITE">
                <font>
                   <Font size="18.0" />

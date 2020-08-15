@@ -19,6 +19,7 @@ import javafx.stage.Stage;
 
 public class MainController {
     private StartPathData path = new StartPathData();
+    private StartSettings settings = new StartSettings();
     private Stage stage = new Stage();
 
     @FXML // ResourceBundle that was given to the FXMLLoader
@@ -48,7 +49,7 @@ public class MainController {
                     try{
                     path.start(stage);
                     } catch(Exception e){
-                        Main.logger.severe(e.toString());
+                        e.printStackTrace();
                     }
                 }
 				
