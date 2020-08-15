@@ -18,7 +18,9 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class MainController {
-    private DropShadow shadow = new DropShadow();
+    private StartPathData path = new StartPathData();
+    private Stage stage = new Stage();
+
     @FXML // ResourceBundle that was given to the FXMLLoader
     private ResourceBundle resources;
 
@@ -42,6 +44,12 @@ public class MainController {
 			public void handle(ActionEvent event) {
 				if(!start.isPressed()){
                     Main.logger.info("Starting Path Generator");
+                    // start
+                    try{
+                    path.start(stage);
+                    } catch(Exception e){
+                        Main.logger.severe(e.toString());
+                    }
                 }
 				
 			}
@@ -62,4 +70,5 @@ public class MainController {
             
         }); 
     }   
+    
 }

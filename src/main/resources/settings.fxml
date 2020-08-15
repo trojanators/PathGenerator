@@ -4,48 +4,36 @@
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
-  <children>
-    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" style="-fx-background-color: rgb(0,0,0);" VBox.vgrow="ALWAYS">
-      <children>
-        <Label alignment="CENTER" layoutX="406.0" layoutY="261.0" prefHeight="12.0" prefWidth="171.0" style="&#10;" text="Graph Settings" textAlignment="CENTER" textFill="WHITE" wrapText="false">
-          <font>
+<AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" style="-fx-background-color: rgb(0,0,0);" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.usfirst.frc.team5740.gui.ExportPageController">
+<children>
+      <CheckBox fx:id="display_color_graph" layoutX="481.0" layoutY="344.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="146.0" text="Display graph" textFill="WHITE" />
+      <Label layoutX="193.0" layoutY="14.0" prefHeight="39.0" prefWidth="243.0" text="Export Settings" textFill="WHITE">
+         <font>
+            <Font name="Comic Sans MS Bold Italic" size="28.0" />
+         </font>
+      </Label>
+      <CheckBox fx:id="gen_csv" layoutX="481.0" layoutY="369.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="146.0" text="Generate csv file" textFill="WHITE" />
+      <Label alignment="CENTER" layoutX="456.0" layoutY="317.0" prefHeight="12.0" prefWidth="171.0" style="&#10;" text="Code Settings" textAlignment="CENTER" textFill="WHITE" wrapText="false">
+         <font>
             <Font size="18.0" />
-          </font>
-        </Label>
-            <CheckBox fx:id="displaygraph" layoutX="406.0" layoutY="317.0" mnemonicParsing="false" text="Display graph in separate window" textFill="WHITE" />
-            <CheckBox fx:id="display_color_graph" layoutX="406.0" layoutY="290.0" mnemonicParsing="false" text="Display graph in color" textFill="WHITE" />
-            <Label layoutX="197.0" layoutY="14.0" prefHeight="39.0" prefWidth="243.0" text="Export Settings" textFill="WHITE">
-               <font>
-                  <Font name="Comic Sans MS Bold Italic" size="28.0" />
-               </font>
-            </Label>
-            <CheckBox fx:id="gen_code" layoutX="10.0" layoutY="317.0" mnemonicParsing="false" text="Generate code" textFill="WHITE" />
-            <CheckBox fx:id="gen_comments" layoutX="10.0" layoutY="342.0" mnemonicParsing="false" text="Generate comments" textFill="WHITE" />
-            <Label alignment="CENTER" layoutX="-12.0" layoutY="261.0" prefHeight="12.0" prefWidth="171.0" style="&#10;" text="Code Settings" textAlignment="CENTER" textFill="WHITE" wrapText="false">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-            <Label alignment="CENTER" layoutX="4.0" layoutY="88.0" prefHeight="27.0" prefWidth="311.0" style="&#10;" text="Java Class Package Namespace" textAlignment="CENTER" textFill="WHITE" wrapText="false">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-            <TextArea id="namespace" fx:id="namespace" layoutX="21.0" layoutY="122.0" prefHeight="44.0" prefWidth="278.0" promptText="please enter java package namespace" style="-fx-background-color: rgb(30,30,30);" />
-            <CheckBox fx:id="use_namespace" layoutX="10.0" layoutY="290.0" mnemonicParsing="false" text="Use Custom Java Package Namespace" textFill="WHITE" />
-            <Label alignment="CENTER" layoutX="334.0" layoutY="88.0" prefHeight="27.0" prefWidth="311.0" style="&#10;" text="Export Graph to Location" textAlignment="CENTER" textFill="WHITE" wrapText="false">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-            <TextArea id="graph_location" fx:id="graph_name" layoutX="353.0" layoutY="122.0" prefHeight="44.0" prefWidth="278.0" promptText="please enter graph save locaton(fullpath)" />
-            <Button layoutX="240.0" layoutY="351.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="158.0" style="-fx-background-color: rgb(30,30,30);;" text="Save Settings" textFill="WHITE" />
-      </children>
-    </AnchorPane>
-  </children>
-</VBox>
+         </font>
+      </Label>
+      <Label alignment="CENTER" layoutX="159.0" layoutY="79.0" prefHeight="27.0" prefWidth="311.0" style="&#10;" text="Csv File Location" textAlignment="CENTER" textFill="WHITE" wrapText="false">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <TextArea id="graph_location" fx:id="csv_location" layoutX="175.0" layoutY="106.0" prefHeight="44.0" prefWidth="278.0" promptText="please enter the path to save csv file at" />
+      <Button fx:id="save" layoutX="235.0" layoutY="353.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="158.0" style="-fx-background-color: rgb(30,30,30);;" text="Save Settings" textFill="WHITE" />
+      <ImageView fitHeight="89.0" fitWidth="122.0" layoutY="307.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@44243093.png" />
+         </image>
+      </ImageView>
+</children>
+</AnchorPane>

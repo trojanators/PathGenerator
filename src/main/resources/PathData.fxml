@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.usfirst.frc.team5740.gui.PathDataPaneController">
   <children>
     <AnchorPane fx:id="save_entrys" maxHeight="-1.0" maxWidth="-1.0" prefHeight="409.0" prefWidth="578.0" style="-fx-background-color: rgb(0,0,0);" VBox.vgrow="ALWAYS">
       <children>
@@ -38,7 +38,7 @@
             </Label>
             <Button fx:id="save_path" layoutX="480.0" layoutY="353.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="118.0" style="-fx-background-color: rgb(30,30,30);" text="Save Data" textFill="WHITE" />
             <ListView fx:id="display_path_entrys" editable="true" layoutX="70.0" layoutY="80.0" prefHeight="198.0" prefWidth="511.0" style="-fx-background-color: rgb(30,30,30);" />
-            <ImageView fitHeight="99.0" fitWidth="104.0" layoutY="310.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="89.0" fitWidth="122.0" layoutY="310.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@44243093.png" />
                </image>
