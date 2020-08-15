@@ -41,11 +41,25 @@ public class MainController {
 			@Override
 			public void handle(ActionEvent event) {
 				if(!start.isPressed()){
-                    Main.logger.info("PRESSED");
+                    Main.logger.info("Starting Path Generator");
                 }
 				
 			}
             
         }); 
-    }
+        
+        // Closes PathGenerator
+        exit.setOnAction(new EventHandler<ActionEvent>(){
+
+			@Override
+			public void handle(ActionEvent event) {
+				if(!exit.isPressed()){
+                    Main.logger.info("Exiting Bye!");
+                    System.exit(0);
+                }
+				
+			}
+            
+        }); 
+    }   
 }
