@@ -54,7 +54,7 @@ public class PathDataPaneController {
                 if (!new_waypoint.isPressed()) {
                     // TODO: add enty to display_path_entrys
                     Main.logger.info("new Waypoint");
-                    setListView();
+                //etListView();
                 }
 
             }
