@@ -20,7 +20,7 @@ import javafx.stage.Stage;
 
 public class MainController {
     private StartPathData path = new StartPathData();
-    private StartSettings settings = new StartSettings();
+    private StartSettings set = new StartSettings();
     private Stage stage = new Stage();
 
     @FXML // ResourceBundle that was given to the FXMLLoader
@@ -35,6 +35,10 @@ public class MainController {
     @FXML // fx:id="start"
     private Button start; // Value injected by FXMLLoader
 
+    @FXML
+    private Button settings;
+
+
     public void initialize() {
 
         // Start Button Action
@@ -47,11 +51,11 @@ public class MainController {
                     // Cheks to see if pathData is hidden
                     try {
                         if (!stage.isShowing()) {
-                            stage.show();
-                        }
+                           
                         path.start(stage);
+                        }
                     } catch (Exception e) {
-                        e.printStackTrace();
+                        Main.logger.warning(e.getMessage().toString());
                     }
                 }
 
@@ -72,6 +76,33 @@ public class MainController {
             }
 
         });
+        // opens settings menu for app
+        settings.setOnAction(new EventHandler<ActionEvent>() {
+
+            @Override
+            public void handle(ActionEvent event) {
+                if (!settings.isPressed()) {
+                    Main.logger.info("Starting Settings");
+                    // Cheks to see if pathData is hidden
+                    try {
+                        
+                        if (!stage.isShowing()) {
+                            set.start(stage);
+                            stage.show();
+                        }
+                      
+                        
+                        
+                    } catch (Exception e) {
+                      e.printStackTrace();
+                    }
+                }
+
+            }
+
+        });
+
     }
+    
 
 }

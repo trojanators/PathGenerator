@@ -30,5 +30,8 @@ public class StartSettings extends Application {
         
         Main.logger.warning("Starting Settings Function's");
     }
+    public void open(Stage stage) {
+        stage.show();
+    }
     
 }

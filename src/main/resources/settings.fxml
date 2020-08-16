@@ -11,7 +11,7 @@
 
 <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" style="-fx-background-color: rgb(0,0,0);" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.usfirst.frc.team5740.gui.ExportPageController">
 <children>
-      <CheckBox fx:id="display_color_graph" layoutX="481.0" layoutY="344.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="146.0" text="Display graph" textFill="WHITE" />
+      <CheckBox fx:id="display_waypoint_graph" layoutX="481.0" layoutY="344.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="146.0" text="Display graph" textFill="WHITE" />
       <Label layoutX="193.0" layoutY="14.0" prefHeight="39.0" prefWidth="243.0" text="Export Settings" textFill="WHITE">
          <font>
             <Font name="Comic Sans MS Bold Italic" size="28.0" />
@@ -35,8 +35,6 @@
             <Image url="@44243093.png" />
          </image>
       </ImageView>
-         <TextField fx:id="waypoint_x_input" layoutX="455.0" layoutY="313.0" promptText="enter waypoint x" />
-         <TextField fx:id="waypoint_y_input" layoutX="455.0" layoutY="342.0" promptText="enter waypoint y" />
-         <TextField fx:id="waypoint_theta_input" layoutX="455.0" layoutY="369.0" promptText="enter waypoint theta" />
+      <Button fx:id="exit" layoutX="56.0" layoutY="37.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="66.0" style="-fx-background-color: rgb(30,30,30);;" text="exit" textFill="WHITE" />
 </children>
 </AnchorPane>
