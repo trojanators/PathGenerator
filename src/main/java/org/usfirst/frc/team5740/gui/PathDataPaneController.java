@@ -39,6 +39,7 @@ public class PathDataPaneController {
     public double theta;
     public  WaypointTableData data;
 
+    //Counters for  Inc
     private int i = 0;
     private int countor = 0;
 
