@@ -16,11 +16,11 @@
       <children>
         <Label alignment="CENTER" layoutX="210.0" layoutY="15.0" style="&#10;" text="Path Entry Data" textAlignment="CENTER" textFill="WHITE" wrapText="false">
           <font>
-            <Font name="Comic Sans MS Bold Italic" size="28.0" />
+            <Font name="System Italic" size="28.0" />
           </font>
         </Label>
-            <Button fx:id="new_waypoint" layoutX="148.0" layoutY="331.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="142.0" style="-fx-background-color: rgb(30,30,30);" text="add Waypoint" textFill="WHITE" />
-            <Label layoutX="167.0" layoutY="308.0" text=" Edit entrys" textFill="WHITE">
+            <Button fx:id="new_waypoint" layoutX="148.0" layoutY="332.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="142.0" style="-fx-background-color: rgb(30,30,30);" text="add Waypoint" textFill="WHITE" />
+            <Label layoutX="167.0" layoutY="304.0" text=" Edit entrys" textFill="WHITE">
                <font>
                   <Font size="18.0" />
                </font>
@@ -30,7 +30,7 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <Button fx:id="remove_path" layoutX="148.0" layoutY="362.0" mnemonicParsing="false" prefHeight="21.0" prefWidth="142.0" style="-fx-background-color: rgb(30,30,30);" text="remove WayPoint" textFill="WHITE" />
+            <Button fx:id="remove_path" layoutX="148.0" layoutY="366.0" mnemonicParsing="false" prefHeight="21.0" prefWidth="142.0" style="-fx-background-color: rgb(30,30,30);" text="remove WayPoint" textFill="WHITE" />
             <Button fx:id="preview_graph" layoutX="321.0" layoutY="327.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="118.0" style="-fx-background-color: rgb(30,30,30);" text="Preview Graph" textFill="WHITE" />
             <Label layoutX="321.0" layoutY="304.0" text="Preview path" textFill="WHITE">
                <font>

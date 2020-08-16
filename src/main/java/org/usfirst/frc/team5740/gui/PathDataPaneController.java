@@ -5,6 +5,8 @@ package org.usfirst.frc.team5740.gui;
  * @author Nicholas Blackburn
  */
 import java.util.Set;
+import java.util.function.UnaryOperator;
+import java.util.regex.Pattern;
 
 import com.jfoenix.controls.JFXListView;
 import com.jfoenix.controls.JFXTreeTableView;
@@ -24,12 +26,18 @@ import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
+import javafx.scene.control.TextFormatter;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 
 public class PathDataPaneController {
+    public double x;
+    public double y;
+    public double theta;
+
     private int i = 0;
 
     @FXML
@@ -51,11 +59,21 @@ public class PathDataPaneController {
     private Button exit;
 
     @FXML
-    private TableView<WaypointTableData> waypoint_table;
+    private TextField waypoint_x_input;
 
     @FXML
-    public void initialize() {
-         waypoint_table.setEditable(true);
+    private TextField waypoint_y_input;
+
+    @FXML
+    private TextField waypoint_theta_input;
+
+    @FXML
+    private TableView<WaypointTableData> waypoint_table;
+
+   /**
+    *  this function sets up cells names and vars to be called and sets up text formater
+    */
+    public void cellSetup() {
 
         // creates columns based on waypoint id , x and y
         TableColumn waypoint_id = new TableColumn("id");
@@ -67,9 +85,32 @@ public class PathDataPaneController {
         TableColumn waypoint_y = new TableColumn("y");
         waypoint_y.setCellValueFactory(new PropertyValueFactory<>("y"));
 
-        waypoint_table.getColumns().addAll(waypoint_id, waypoint_x,waypoint_y);
-    
-       
+        TableColumn waypoint_theta = new TableColumn("theta");
+        waypoint_theta.setCellValueFactory(new PropertyValueFactory<>("theta"));
+
+        waypoint_table.getColumns().addAll(waypoint_id, waypoint_x, waypoint_y, waypoint_theta);
+
+        Pattern pattern = Pattern.compile("\\d*(\\.\\d*)?");
+        TextFormatter formatter = new TextFormatter((UnaryOperator<TextFormatter.Change>) change -> {
+            return pattern.matcher(change.getControlNewText()).matches() ? change : null;
+        });
+        TextFormatter formatter1 = new TextFormatter((UnaryOperator<TextFormatter.Change>) change -> {
+            return pattern.matcher(change.getControlNewText()).matches() ? change : null;
+        });
+        TextFormatter formatter2 = new TextFormatter((UnaryOperator<TextFormatter.Change>) change -> {
+            return pattern.matcher(change.getControlNewText()).matches() ? change : null;
+        });
+
+        waypoint_x_input.setTextFormatter(formatter);
+        waypoint_y_input.setTextFormatter(formatter1);
+        waypoint_theta_input.setTextFormatter(formatter2);
+    }
+
+    @FXML
+    public void initialize() {
+         waypoint_table.setEditable(true);
+         cellSetup();
+
         // Runs when new waypoint button pressed
         new_waypoint.setOnAction((EventHandler<ActionEvent>) new EventHandler<ActionEvent>() {
 
@@ -78,7 +119,13 @@ public class PathDataPaneController {
                 if (!new_waypoint.isPressed()) {
                     // TODO: add Handler / creator to add Data to Listview 
                     Main.logger.info("new Waypoint");
-                    WaypointTableData data = new WaypointTableData(i ++,0,0);
+                    /** allows only doubles */
+                    x = Double.parseDouble(waypoint_x_input.getText());
+                    y = Double.parseDouble(waypoint_y_input.getText());
+                    theta = Double.parseDouble(waypoint_theta_input.getText());
+                    
+                    
+                    WaypointTableData data = new WaypointTableData(i ++,x,y,theta);
                     waypoint_table.getItems().add(data);
                     
                 }

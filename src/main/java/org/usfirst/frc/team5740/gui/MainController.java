@@ -51,7 +51,7 @@ public class MainController {
                         }
                         path.start(stage);
                     } catch (Exception e) {
-                        Main.logger.warning(e.getLocalizedMessage());
+                        e.printStackTrace();
                     }
                 }
 

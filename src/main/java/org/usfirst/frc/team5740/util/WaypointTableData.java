@@ -7,12 +7,14 @@ public class WaypointTableData {
     private int waypoint_id;
     private double waypoint_x;
     private double waypoint_y;
+    private double waypoint_theta;
 
     // Waypoint data constructor
-    public WaypointTableData(int waypoint_id,double waypoint_x, double waypoint_y){
+    public WaypointTableData(int waypoint_id,double waypoint_x, double waypoint_y, double theta){
         this.waypoint_id = waypoint_id;
         this.waypoint_x = waypoint_x;
         this.waypoint_y = waypoint_y;
+        this.waypoint_theta = theta;
     }
 
     public int getId(){
@@ -25,6 +27,10 @@ public class WaypointTableData {
 
     public double getY(){
         return waypoint_y;
+    }
+
+    public double getTheta(){
+        return waypoint_theta;
     }
 
 }
