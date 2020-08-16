@@ -35,5 +35,8 @@
             <Image url="@44243093.png" />
          </image>
       </ImageView>
+         <TextField fx:id="waypoint_x_input" layoutX="455.0" layoutY="313.0" promptText="enter waypoint x" />
+         <TextField fx:id="waypoint_y_input" layoutX="455.0" layoutY="342.0" promptText="enter waypoint y" />
+         <TextField fx:id="waypoint_theta_input" layoutX="455.0" layoutY="369.0" promptText="enter waypoint theta" />
 </children>
 </AnchorPane>
