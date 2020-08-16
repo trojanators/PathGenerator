@@ -11,10 +11,10 @@ import javafx.stage.Stage;
 public class StartPathData extends Application {
 
     private FXMLLoader loader = new FXMLLoader();
-    
     // Starts JavaFX Gui
     @Override
-    public void start(final Stage stage) throws Exception {
+    public void start(Stage stage) throws Exception {
+        
         Main.logger.info("loading Fxml file");
         loader.setLocation(getClass().getResource("/PathData.fxml"));
         Main.logger.info("Done Loading PathData.fxml file");
@@ -29,6 +29,16 @@ public class StartPathData extends Application {
         Main.logger.warning("Successfully displaying Pathdata page");
         
         Main.logger.warning("Starting PathData Function");
-    }
-    
+        
+    }   
+
+    //closes fx stage for PAthData
+    public void onClose(Stage stage){
+       stage.hide();
+   }
+
+   // Checks to see if PAthData is created all ready
+   private void checkSceneState(){
+       
+   }
 }

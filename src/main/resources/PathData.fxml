@@ -43,6 +43,7 @@
                   <Image url="@44243093.png" />
                </image>
             </ImageView>
+            <Button fx:id="exit" layoutX="27.0" layoutY="19.0" mnemonicParsing="false" style="-fx-background-color: rgb(30,30,30);" text="exit" textFill="WHITE" />
       </children>
     </AnchorPane>
   </children>

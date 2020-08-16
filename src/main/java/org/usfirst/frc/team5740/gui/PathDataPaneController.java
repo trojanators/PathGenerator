@@ -14,13 +14,16 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 import javafx.util.Callback;
 
 public class PathDataPaneController {
+   
 
     @FXML
     private AnchorPane save_entrys;
@@ -38,48 +41,73 @@ public class PathDataPaneController {
     private Button save_path;
 
     @FXML
-    private ListView<String> display_path_entrys;
-    
-    @FXML
-    private Set<String> stringSet;
-    ObservableList observableList = FXCollections.observableArrayList();
+    private Button exit;
 
     @FXML
-    public void initialize(){
+    private ListView<String> display_path_entrys;
+    
+
+    @FXML
+    public void initialize() {
         // Runs when new waypoint button pressed
         new_waypoint.setOnAction((EventHandler<ActionEvent>) new EventHandler<ActionEvent>() {
 
-			@Override
-			public void handle(final ActionEvent event) {
+            @Override
+            public void handle(final ActionEvent event) {
                 if (!new_waypoint.isPressed()) {
                     // TODO: add enty to display_path_entrys
                     Main.logger.info("new Waypoint");
-                //etListView();
+                    
                 }
 
             }
 
         });
-    }
 
-    public void setListView()
-    {   
-       int i = 0;
-      
-        stringSet.add("waypoint"+ Integer.toString(i+1));
-        stringSet.add("x pos");
-        stringSet.add("y pos");
-        stringSet.add("theta");
+        remove_path.setOnAction((EventHandler<ActionEvent>) new EventHandler<ActionEvent>() {
 
-        observableList.setAll(stringSet);
-        display_path_entrys.setItems(observableList);
-        display_path_entrys.setCellFactory(new Callback<ListView<String>, javafx.scene.control.ListCell<String>>()
-        {
             @Override
-            public ListCell<String> call(ListView<String> listView)
-            {
-                return new PathListCell();
+            public void handle(final ActionEvent event) {
+                if (!remove_path.isPressed()) {
+                    // TODO: add enty to display_path_entrys
+                    Main.logger.info("removed PAth");
+                    
+                    
+                }
+                
+
             }
+            
+
         });
+        save_path.setOnAction((EventHandler<ActionEvent>) new EventHandler<ActionEvent>() {
+
+            @Override
+            public void handle(final ActionEvent event) {
+                if (!save_path.isPressed()) {
+                    // TODO: add enty to display_path_entrys
+                    Main.logger.info("saved path");
+                    
+                }
+
+            }
+
+        });
+        exit.setOnAction((EventHandler<ActionEvent>) new EventHandler<ActionEvent>() {
+
+            @Override
+            public void handle(final ActionEvent event) {
+                Stage stage = (Stage) exit.getScene().getWindow();
+                
+                if (!exit.isPressed()) {
+                    // TODO: add enty to display_path_entrys
+                    Main.logger.info("exited path menu");
+                    stage.hide();
+                }
+
+            }
+
+        });
+
     }
 }

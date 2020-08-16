@@ -29,10 +29,8 @@ org/usfirst/frc/team5740/trajectory/TrajectoryGenerator.java
  org.usfirst.frc.team5740.trajectory.TrajectoryGenerator$Strategy
 org/usfirst/frc/team5740/trajectory/io/IPathSerializer.java
  org.usfirst.frc.team5740.trajectory.io.IPathSerializer
-org/usfirst/frc/team5740/gui/PathDataPaneController.java
- org.usfirst.frc.team5740.gui.PathDataPaneController
- org.usfirst.frc.team5740.gui.PathDataPaneController$1
- org.usfirst.frc.team5740.gui.PathDataPaneController$2
+org/usfirst/frc/team5740/trajectory/io/TextFileSerializer.java
+ org.usfirst.frc.team5740.trajectory.io.TextFileSerializer
 org/usfirst/frc/team5740/trajectory/io/IPathDeserializer.java
  org.usfirst.frc.team5740.trajectory.io.IPathDeserializer
 org/usfirst/frc/team5740/trajectory/io/JavaStringSerializer.java
@@ -53,5 +51,9 @@ org/usfirst/frc/team5740/gui/StartSettings.java
  org.usfirst.frc.team5740.gui.StartSettings
 org/usfirst/frc/team5740/trajectory/io/TextFileDeserializer.java
  org.usfirst.frc.team5740.trajectory.io.TextFileDeserializer
-org/usfirst/frc/team5740/trajectory/io/TextFileSerializer.java
- org.usfirst.frc.team5740.trajectory.io.TextFileSerializer
+org/usfirst/frc/team5740/gui/PathDataPaneController.java
+ org.usfirst.frc.team5740.gui.PathDataPaneController
+ org.usfirst.frc.team5740.gui.PathDataPaneController$1
+ org.usfirst.frc.team5740.gui.PathDataPaneController$2
+ org.usfirst.frc.team5740.gui.PathDataPaneController$3
+ org.usfirst.frc.team5740.gui.PathDataPaneController$4
