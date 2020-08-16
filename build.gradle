@@ -17,10 +17,12 @@ repositories {
     // Use jcenter for resolving dependencies.
     // You can declare any Maven/Ivy/file repository here.
     jcenter()
+    
 }
 
 dependencies {
  compile 'com.opencsv:opencsv:5.2'
+ compile 'com.jfoenix:jfoenix:9.0.10'
 }
 
 javafx {

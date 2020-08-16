@@ -67,7 +67,7 @@ goto fail
 :execute
 @rem Setup the command line
 
-set CLASSPATH=%APP_HOME%\lib\PathGenerator.jar;%APP_HOME%\lib\opencsv-5.2.jar;%APP_HOME%\lib\javafx-fxml-11-linux.jar;%APP_HOME%\lib\javafx-controls-11-linux.jar;%APP_HOME%\lib\javafx-controls-11.jar;%APP_HOME%\lib\javafx-graphics-11-linux.jar;%APP_HOME%\lib\javafx-graphics-11.jar;%APP_HOME%\lib\javafx-base-11-linux.jar;%APP_HOME%\lib\javafx-base-11.jar;%APP_HOME%\lib\commons-text-1.8.jar;%APP_HOME%\lib\commons-lang3-3.10.jar;%APP_HOME%\lib\commons-beanutils-1.9.4.jar;%APP_HOME%\lib\commons-collections4-4.4.jar;%APP_HOME%\lib\commons-logging-1.2.jar;%APP_HOME%\lib\commons-collections-3.2.2.jar
+set CLASSPATH=%APP_HOME%\lib\PathGenerator.jar;%APP_HOME%\lib\opencsv-5.2.jar;%APP_HOME%\lib\jfoenix-9.0.10.jar;%APP_HOME%\lib\javafx-fxml-11-linux.jar;%APP_HOME%\lib\javafx-controls-11-linux.jar;%APP_HOME%\lib\javafx-controls-11.jar;%APP_HOME%\lib\javafx-graphics-11-linux.jar;%APP_HOME%\lib\javafx-graphics-11.jar;%APP_HOME%\lib\javafx-base-11-linux.jar;%APP_HOME%\lib\javafx-base-11.jar;%APP_HOME%\lib\commons-text-1.8.jar;%APP_HOME%\lib\commons-lang3-3.10.jar;%APP_HOME%\lib\commons-beanutils-1.9.4.jar;%APP_HOME%\lib\commons-collections4-4.4.jar;%APP_HOME%\lib\commons-logging-1.2.jar;%APP_HOME%\lib\commons-collections-3.2.2.jar
 
 
 @rem Execute PathGenerator
