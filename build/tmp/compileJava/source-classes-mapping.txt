@@ -3,10 +3,8 @@ org/usfirst/frc/team5740/trajectory/WaypointSequence.java
  org.usfirst.frc.team5740.trajectory.WaypointSequence$Waypoint
 org/usfirst/frc/team5740/trajectory/PathGenerator.java
  org.usfirst.frc.team5740.trajectory.PathGenerator
-org/usfirst/frc/team5740/gui/MainController.java
- org.usfirst.frc.team5740.gui.MainController
- org.usfirst.frc.team5740.gui.MainController$1
- org.usfirst.frc.team5740.gui.MainController$2
+org/usfirst/frc/team5740/gui/StartSettings.java
+ org.usfirst.frc.team5740.gui.StartSettings
 org/usfirst/frc/team5740/gui/ExportPageController.java
  org.usfirst.frc.team5740.gui.ExportPageController
  org.usfirst.frc.team5740.gui.ExportPageController$1
@@ -35,8 +33,8 @@ org/usfirst/frc/team5740/trajectory/io/IPathDeserializer.java
  org.usfirst.frc.team5740.trajectory.io.IPathDeserializer
 org/usfirst/frc/team5740/trajectory/io/JavaStringSerializer.java
  org.usfirst.frc.team5740.trajectory.io.JavaStringSerializer
-org/usfirst/frc/team5740/gui/StartPathData.java
- org.usfirst.frc.team5740.gui.StartPathData
+org/usfirst/frc/team5740/trajectory/io/TextFileDeserializer.java
+ org.usfirst.frc.team5740.trajectory.io.TextFileDeserializer
 org/usfirst/frc/team5740/util/Data.java
  org.usfirst.frc.team5740.util.Data
 org/usfirst/frc/team5740/trajectory/io/JavaSerializer.java
@@ -47,13 +45,15 @@ org/usfirst/frc/team5740/Main.java
  org.usfirst.frc.team5740.Main
 org/usfirst/frc/team5740/trajectory/TrajectoryFollower.java
  org.usfirst.frc.team5740.trajectory.TrajectoryFollower
-org/usfirst/frc/team5740/gui/StartSettings.java
- org.usfirst.frc.team5740.gui.StartSettings
-org/usfirst/frc/team5740/trajectory/io/TextFileDeserializer.java
- org.usfirst.frc.team5740.trajectory.io.TextFileDeserializer
 org/usfirst/frc/team5740/gui/PathDataPaneController.java
  org.usfirst.frc.team5740.gui.PathDataPaneController
  org.usfirst.frc.team5740.gui.PathDataPaneController$1
  org.usfirst.frc.team5740.gui.PathDataPaneController$2
  org.usfirst.frc.team5740.gui.PathDataPaneController$3
  org.usfirst.frc.team5740.gui.PathDataPaneController$4
+org/usfirst/frc/team5740/gui/StartPathData.java
+ org.usfirst.frc.team5740.gui.StartPathData
+org/usfirst/frc/team5740/gui/MainController.java
+ org.usfirst.frc.team5740.gui.MainController
+ org.usfirst.frc.team5740.gui.MainController$1
+ org.usfirst.frc.team5740.gui.MainController$2

@@ -9,13 +9,14 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextArea;
-import javafx.scene.effect.DropShadow;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.VBox;
+
 import javafx.stage.Stage;
+
+/**
+ * This class is the Main controller class for the Javafx Windows
+ * 
+ * @author Nicholas Blackburn
+ */
 
 public class MainController {
     private StartPathData path = new StartPathData();
@@ -34,42 +35,43 @@ public class MainController {
     @FXML // fx:id="start"
     private Button start; // Value injected by FXMLLoader
 
-   
-    
     public void initialize() {
 
         // Start Button Action
-        start.setOnAction(new EventHandler<ActionEvent>(){
+        start.setOnAction(new EventHandler<ActionEvent>() {
 
-			@Override
-			public void handle(ActionEvent event) {
-				if(!start.isPressed()){
+            @Override
+            public void handle(ActionEvent event) {
+                if (!start.isPressed()) {
                     Main.logger.info("Starting Path Generator");
-                    // start
-                    try{
-                    path.start(stage);
-                    } catch(Exception e){
-                        e.printStackTrace();
+                    // Cheks to see if pathData is hidden
+                    try {
+                        if (!stage.isShowing()) {
+                            stage.show();
+                        }
+                        path.start(stage);
+                    } catch (Exception e) {
+                        Main.logger.warning(e.getLocalizedMessage());
                     }
                 }
-				
-			}
-            
-        }); 
-        
-        // Closes PathGenerator
-        exit.setOnAction(new EventHandler<ActionEvent>(){
 
-			@Override
-			public void handle(ActionEvent event) {
-				if(!exit.isPressed()){
+            }
+
+        });
+
+        // Closes PathGenerator
+        exit.setOnAction(new EventHandler<ActionEvent>() {
+
+            @Override
+            public void handle(ActionEvent event) {
+                if (!exit.isPressed()) {
                     Main.logger.info("Exiting Bye!");
                     System.exit(0);
                 }
-				
-			}
-            
-        }); 
-    }   
-    
+
+            }
+
+        });
+    }
+
 }
