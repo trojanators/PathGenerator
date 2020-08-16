@@ -37,9 +37,9 @@ public class PathDataPaneController {
     public double x;
     public double y;
     public double theta;
-    public  WaypointTableData data;
+    public WaypointTableData data;
 
-    //Counters for  Inc
+    // Counters for Inc
     private int i = 0;
     private int countor = 0;
 
@@ -73,9 +73,10 @@ public class PathDataPaneController {
     @FXML
     private TableView<WaypointTableData> waypoint_table;
 
-   /**
-    *  this function sets up cells names and vars to be called and sets up text formater
-    */
+    /**
+     * this function sets up cells names and vars to be called and sets up text
+     * formater
+     */
     public void cellSetup() {
 
         // creates columns based on waypoint id , x and y
@@ -111,8 +112,8 @@ public class PathDataPaneController {
 
     @FXML
     public void initialize() {
-         waypoint_table.setEditable(true);
-         cellSetup();
+        waypoint_table.setEditable(true);
+        cellSetup();
 
         // Runs when new waypoint button pressed
         new_waypoint.setOnAction((EventHandler<ActionEvent>) new EventHandler<ActionEvent>() {
@@ -121,17 +122,17 @@ public class PathDataPaneController {
             public void handle(final ActionEvent event) {
                 if (!new_waypoint.isPressed()) {
                     i++;
-                    // TODO: add Handler / creator to add Data to Listview 
+                    // TODO: add Handler / creator to add Data to Listview
                     Main.logger.info("new Waypoint");
                     /** allows only doubles */
                     x = Double.parseDouble(waypoint_x_input.getText());
                     y = Double.parseDouble(waypoint_y_input.getText());
                     theta = Double.parseDouble(waypoint_theta_input.getText());
-                
-                   data = new WaypointTableData(i - countor,x,y,theta);
+
+                    data = new WaypointTableData(i - countor, x, y, theta);
                     waypoint_table.getItems().add(data);
                     Main.logger.info("added new Waypoint Successfully");
-                    
+
                 }
 
             }
@@ -147,13 +148,12 @@ public class PathDataPaneController {
                     // TODO: remove data from Waypoint listview
                     Main.logger.info("removed waypoint");
                     waypoint_table.getItems().remove(data);
-                     
+
                     Main.logger.info("waypoint removed successfull!y");
-                    
+
                 }
 
             }
-            
 
         });
         save_path.setOnAction((EventHandler<ActionEvent>) new EventHandler<ActionEvent>() {
@@ -164,7 +164,7 @@ public class PathDataPaneController {
                     // TODO: actually Save path and export to csv
                     Main.logger.info("saved path");
                     --i;
-                     
+
                 }
 
             }
@@ -175,12 +175,12 @@ public class PathDataPaneController {
             @Override
             public void handle(final ActionEvent event) {
                 Stage stage = (Stage) exit.getScene().getWindow();
-                
+
                 if (!exit.isPressed()) {
                     // TODO: add enty to display_path_entrys
                     Main.logger.info("exited path menu");
                     stage.hide();
-                     
+
                 }
 
             }

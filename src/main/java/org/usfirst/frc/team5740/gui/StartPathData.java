@@ -19,7 +19,7 @@ public class StartPathData extends Application {
         Main.logger.info("loading Fxml file");
         loader.setLocation(getClass().getResource("/PathData.fxml"));
         Main.logger.info("Done Loading PathData.fxml file");
-        
+
         Parent root_path = loader.load();
         Scene scene = new Scene(root_path, 640, 400);
 
@@ -35,7 +35,5 @@ public class StartPathData extends Application {
     public void onClose(Stage stage) {
         stage.hide();
     }
-    
-   
 
 }

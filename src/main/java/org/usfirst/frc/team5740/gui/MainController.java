@@ -38,7 +38,6 @@ public class MainController {
     @FXML
     private Button settings;
 
-
     public void initialize() {
 
         // Start Button Action
@@ -51,8 +50,7 @@ public class MainController {
                     // Cheks to see if pathData is hidden
                     try {
                         if (!stage.isShowing()) {
-                           
-                        path.start(stage);
+                            path.start(stage);
                         }
                     } catch (Exception e) {
                         Main.logger.warning(e.getMessage().toString());
@@ -85,16 +83,14 @@ public class MainController {
                     Main.logger.info("Starting Settings");
                     // Cheks to see if pathData is hidden
                     try {
-                        
+
                         if (!stage.isShowing()) {
                             set.start(stage);
                             stage.show();
                         }
-                      
-                        
-                        
+
                     } catch (Exception e) {
-                      e.printStackTrace();
+                        e.printStackTrace();
                     }
                 }
 
@@ -103,6 +99,5 @@ public class MainController {
         });
 
     }
-    
 
 }

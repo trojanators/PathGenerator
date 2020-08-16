@@ -36,10 +36,10 @@ public class ExportPageController {
 
             @Override
             public void handle(final ActionEvent event) {
-                if (!gen_csv.isSelected()) {
+                if (gen_csv.isSelected()) {
                     // TODO: add csv Generation Function with waypoints and alll maths
                     Main.logger.info("Setting -> Generating Csv to true");
-
+                        csv_location.getText();
                 }
 
             }
@@ -64,7 +64,7 @@ public class ExportPageController {
 
             @Override
             public void handle(final ActionEvent event) {
-                if (!gen_csv.isSelected()) {
+                if (display_waypoint_graph.isSelected()) {
                     // TODO: add csv Generation Function with waypoints and alll maths
                     Main.logger.info("Setting -> Enableing Display of graph");
 
