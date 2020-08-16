@@ -37,8 +37,10 @@ public class PathDataPaneController {
     public double x;
     public double y;
     public double theta;
+    public  WaypointTableData data;
 
     private int i = 0;
+    private int countor = 0;
 
     @FXML
     private AnchorPane save_entrys;
@@ -117,16 +119,17 @@ public class PathDataPaneController {
             @Override
             public void handle(final ActionEvent event) {
                 if (!new_waypoint.isPressed()) {
+                    i++;
                     // TODO: add Handler / creator to add Data to Listview 
                     Main.logger.info("new Waypoint");
                     /** allows only doubles */
                     x = Double.parseDouble(waypoint_x_input.getText());
                     y = Double.parseDouble(waypoint_y_input.getText());
                     theta = Double.parseDouble(waypoint_theta_input.getText());
-                    
-                    
-                    WaypointTableData data = new WaypointTableData(i ++,x,y,theta);
+                
+                   data = new WaypointTableData(i - countor,x,y,theta);
                     waypoint_table.getItems().add(data);
+                    Main.logger.info("added new Waypoint Successfully");
                     
                 }
 
@@ -139,8 +142,13 @@ public class PathDataPaneController {
             @Override
             public void handle(final ActionEvent event) {
                 if (!remove_path.isPressed()) {
+                    countor++;
                     // TODO: remove data from Waypoint listview
-                    Main.logger.info("removed PAth");
+                    Main.logger.info("removed waypoint");
+                    waypoint_table.getItems().remove(data);
+                     
+                    Main.logger.info("waypoint removed successfull!y");
+                    
                 }
 
             }
@@ -154,7 +162,8 @@ public class PathDataPaneController {
                 if (!save_path.isPressed()) {
                     // TODO: actually Save path and export to csv
                     Main.logger.info("saved path");
-                    
+                    --i;
+                     
                 }
 
             }
@@ -170,6 +179,7 @@ public class PathDataPaneController {
                     // TODO: add enty to display_path_entrys
                     Main.logger.info("exited path menu");
                     stage.hide();
+                     
                 }
 
             }
