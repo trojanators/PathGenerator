@@ -56,7 +56,7 @@ public class PathDataPaneController {
     @FXML
     public void initialize() {
          waypoint_table.setEditable(true);
-         
+
         // creates columns based on waypoint id , x and y
         TableColumn waypoint_id = new TableColumn("id");
         waypoint_id.setCellValueFactory(new PropertyValueFactory<>("id"));
@@ -65,7 +65,7 @@ public class PathDataPaneController {
         waypoint_x.setCellValueFactory(new PropertyValueFactory<>("x"));
 
         TableColumn waypoint_y = new TableColumn("y");
-        waypoint_x.setCellValueFactory(new PropertyValueFactory<>("y"));
+        waypoint_y.setCellValueFactory(new PropertyValueFactory<>("y"));
 
         waypoint_table.getColumns().addAll(waypoint_id, waypoint_x,waypoint_y);
     
@@ -94,10 +94,7 @@ public class PathDataPaneController {
                 if (!remove_path.isPressed()) {
                     // TODO: remove data from Waypoint listview
                     Main.logger.info("removed PAth");
-                    
-                    
                 }
-                
 
             }
             
