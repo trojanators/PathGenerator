@@ -29,7 +29,11 @@ public class ExportPageController {
     @FXML // fx:id="graph_name"
     private TextArea csv_location; // Value injected by FXMLLoader
 
+
+    public String output = csv_location.getText();
+    
     public void initialize() {
+        
 
         // generates csv file Action
         gen_csv.setOnAction(new EventHandler<ActionEvent>() {
@@ -39,7 +43,7 @@ public class ExportPageController {
                 if (gen_csv.isSelected()) {
                     // TODO: add csv Generation Function with waypoints and alll maths
                     Main.logger.info("Setting -> Generating Csv to true");
-                        csv_location.getText();
+                        
                 }
 
             }
