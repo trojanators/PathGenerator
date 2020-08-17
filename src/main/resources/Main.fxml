@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<VBox fx:id="rootv" prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.usfirst.frc.team5740.gui.MainController">
   <children>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" style="-fx-background-color: rgb(0,0,0);" stylesheets="@modern_dark.css" VBox.vgrow="ALWAYS">
       <children>
@@ -19,7 +19,7 @@
         </Label>
             <Button fx:id="exit" layoutX="85.0" layoutY="204.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="174.0" style="-fx-background-color: rgb(33,33,33);" text="Exit Path Generator" textFill="WHITE" />
             <Button fx:id="start" layoutX="397.0" layoutY="204.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="162.0" style="-fx-background-color: rgb(33,33,33);" styleClass="increment-button" stylesheets="@modern_dark.css" text="Start Creating Paths" textFill="WHITE" />
-            <Label alignment="CENTER" layoutX="365.0" layoutY="359.0" prefHeight="30.0" prefWidth="268.0" style="&#10;" text="By Programmers on Frc 5740" textAlignment="CENTER" textFill="WHITE" wrapText="false">
+            <Label alignment="CENTER" layoutX="432.0" layoutY="368.0" style="&#10;" text="By Nicholas Blackburn" textAlignment="CENTER" textFill="WHITE" wrapText="false">
                <font>
                   <Font name="Comic Sans MS" size="18.0" />
                </font>
@@ -29,6 +29,7 @@
                   <Image url="@44243093.png" />
                </image>
             </ImageView>
+            <Button fx:id="settings" layoutX="242.0" layoutY="271.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="162.0" style="-fx-background-color: rgb(33,33,33);" styleClass="increment-button" stylesheets="@modern_dark.css" text="Setings" textFill="WHITE" />
       </children>
     </AnchorPane>
   </children>
