@@ -2,6 +2,7 @@
 package org.usfirst.frc.team5740.gui;
 
 import org.usfirst.frc.team5740.Main;
+import org.usfirst.frc.team5740.util.GenerateCsv;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -9,11 +10,14 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 public class ExportPageController {
     private Stage stage = new Stage();
     private StartMain mainpage = new StartMain();
+    private GenerateCsv createcsv = new GenerateCsv();
+
     @FXML
     private Button save;
 
@@ -27,10 +31,23 @@ public class ExportPageController {
     private Button exit;
 
     @FXML // fx:id="graph_name"
-    private TextArea csv_location; // Value injected by FXMLLoader
+    private TextField csv_location; // Value injected by FXMLLoader
 
+    @FXML
+    private TextField robot_wheelbase_input;
 
-    public String output = csv_location.getText();
+    @FXML
+    private TextField max_robot_jerk_input;
+
+    @FXML
+    private TextField max_robot_acceleration_input;
+
+    @FXML
+    private TextField max_vel_input;
+
+    @FXML
+    private TextField max_robot_dt_input;
+
     
     public void initialize() {
         
@@ -43,7 +60,12 @@ public class ExportPageController {
                 if (gen_csv.isSelected()) {
                     // TODO: add csv Generation Function with waypoints and alll maths
                     Main.logger.info("Setting -> Generating Csv to true");
-                        
+                    try{
+                    createcsv.createCsv(csv_location.getText());
+                    }
+                    catch(Exception e){
+                        e.printStackTrace();
+                    }
                 }
 
             }
@@ -97,5 +119,7 @@ public class ExportPageController {
 
           // Generates Java code to Read the sv
     }   
+
+    
     
 }

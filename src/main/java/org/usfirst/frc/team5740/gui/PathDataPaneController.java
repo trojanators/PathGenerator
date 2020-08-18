@@ -128,7 +128,7 @@ public class PathDataPaneController {
                     x = Double.parseDouble(waypoint_x_input.getText());
                     y = Double.parseDouble(waypoint_y_input.getText());
                     theta = Double.parseDouble(waypoint_theta_input.getText());
-
+                    
                     data = new WaypointTableData(i - countor, x, y, theta);
                     waypoint_table.getItems().add(data);
                     Main.logger.info("added new Waypoint Successfully");
