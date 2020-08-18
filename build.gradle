@@ -21,7 +21,7 @@ repositories {
 }
 
 dependencies {
- compile 'com.opencsv:opencsv:5.2'
+compile group: 'net.sf.supercsv', name: 'super-csv', version: '2.3.1'
  compile 'com.jfoenix:jfoenix:9.0.10'
 }
 

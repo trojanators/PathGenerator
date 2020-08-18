@@ -1,5 +1,7 @@
 package org.usfirst.frc.team5740.gui;
 
+import java.util.ArrayList;
+import java.util.List;
 /**
  * This Class is the javafx controller for Path Entry Window in java fx 
  * @author Nicholas Blackburn
@@ -34,13 +36,18 @@ import javafx.stage.Stage;
 import javafx.util.Callback;
 
 public class PathDataPaneController {
-    public double x;
-    public double y;
-    public double theta;
-    public WaypointTableData data;
+
+    private double x;
+    private double y;
+    private double theta;
+    private double acc;
+    private double velocity;
+    private double jerk;
+    private double dt;
 
     // Counters for Inc
     private int i = 0;
+    private int output;
     private int countor = 0;
 
     @FXML
@@ -56,7 +63,7 @@ public class PathDataPaneController {
     private Button preview_graph;
 
     @FXML
-    private Button save_path;
+    private Button generate_path;
 
     @FXML
     private Button exit;
@@ -71,7 +78,21 @@ public class PathDataPaneController {
     private TextField waypoint_theta_input;
 
     @FXML
+    private TextField waypoint_acc_input;
+
+    @FXML
+    private TextField waypoint_jerk_input;
+
+    @FXML
+    private TextField waypoint_velocity_imput;
+
+    @FXML
+    private TextField waypoint_dt_input;
+
+    @FXML
     private TableView<WaypointTableData> waypoint_table;
+
+    private WaypointTableData data;
 
     /**
      * this function sets up cells names and vars to be called and sets up text
@@ -92,7 +113,20 @@ public class PathDataPaneController {
         TableColumn waypoint_theta = new TableColumn("theta");
         waypoint_theta.setCellValueFactory(new PropertyValueFactory<>("theta"));
 
-        waypoint_table.getColumns().addAll(waypoint_id, waypoint_x, waypoint_y, waypoint_theta);
+        TableColumn waypoint_acc = new TableColumn("maxAcc");
+        waypoint_acc.setCellValueFactory(new PropertyValueFactory<>("maxAcc"));
+
+        TableColumn waypoint_jerk = new TableColumn("maxJerk");
+        waypoint_jerk.setCellValueFactory(new PropertyValueFactory<>("maxJerk"));
+
+        TableColumn waypoint_vel = new TableColumn("maxVelocity");
+        waypoint_vel.setCellValueFactory(new PropertyValueFactory<>("maxVelocity"));
+
+        TableColumn waypoint_dt = new TableColumn("Dt");
+        waypoint_dt.setCellValueFactory(new PropertyValueFactory<>("Dt"));
+
+        waypoint_table.getColumns().addAll(waypoint_id, waypoint_x, waypoint_y, waypoint_theta, waypoint_acc,
+                waypoint_vel, waypoint_jerk, waypoint_dt);
 
         Pattern pattern = Pattern.compile("\\d*(\\.\\d*)?");
         TextFormatter formatter = new TextFormatter((UnaryOperator<TextFormatter.Change>) change -> {
@@ -105,9 +139,27 @@ public class PathDataPaneController {
             return pattern.matcher(change.getControlNewText()).matches() ? change : null;
         });
 
+        TextFormatter formatter3 = new TextFormatter((UnaryOperator<TextFormatter.Change>) change -> {
+            return pattern.matcher(change.getControlNewText()).matches() ? change : null;
+        });
+        TextFormatter formatter4 = new TextFormatter((UnaryOperator<TextFormatter.Change>) change -> {
+            return pattern.matcher(change.getControlNewText()).matches() ? change : null;
+        });
+
+        TextFormatter formatter5 = new TextFormatter((UnaryOperator<TextFormatter.Change>) change -> {
+            return pattern.matcher(change.getControlNewText()).matches() ? change : null;
+        });
+        TextFormatter formatter6 = new TextFormatter((UnaryOperator<TextFormatter.Change>) change -> {
+            return pattern.matcher(change.getControlNewText()).matches() ? change : null;
+        });
+
         waypoint_x_input.setTextFormatter(formatter);
         waypoint_y_input.setTextFormatter(formatter1);
         waypoint_theta_input.setTextFormatter(formatter2);
+        waypoint_acc_input.setTextFormatter(formatter3);
+        waypoint_jerk_input.setTextFormatter(formatter4);
+        waypoint_velocity_imput.setTextFormatter(formatter5);
+        waypoint_dt_input.setTextFormatter(formatter6);
     }
 
     @FXML
@@ -122,14 +174,20 @@ public class PathDataPaneController {
             public void handle(final ActionEvent event) {
                 if (!new_waypoint.isPressed()) {
                     i++;
-                    // TODO: add Handler / creator to add Data to Listview
+
                     Main.logger.info("new Waypoint");
                     /** allows only doubles */
                     x = Double.parseDouble(waypoint_x_input.getText());
                     y = Double.parseDouble(waypoint_y_input.getText());
                     theta = Double.parseDouble(waypoint_theta_input.getText());
-                    
-                    data = new WaypointTableData(i - countor, x, y, theta);
+
+                    // Additonal math for data
+                    acc = Double.parseDouble(waypoint_acc_input.getText());
+                    jerk = Double.parseDouble(waypoint_jerk_input.getText());
+                    velocity = Double.parseDouble(waypoint_velocity_imput.getText());
+                    dt = Double.parseDouble(waypoint_dt_input.getText());
+
+                    data = new WaypointTableData(i - countor, x, y, theta, acc, jerk, velocity, dt);
                     waypoint_table.getItems().add(data);
                     Main.logger.info("added new Waypoint Successfully");
 
@@ -156,20 +214,24 @@ public class PathDataPaneController {
             }
 
         });
-        save_path.setOnAction((EventHandler<ActionEvent>) new EventHandler<ActionEvent>() {
+
+        generate_path.setOnAction((EventHandler<ActionEvent>) new EventHandler<ActionEvent>() {
 
             @Override
             public void handle(final ActionEvent event) {
-                if (!save_path.isPressed()) {
-                    // TODO: actually Save path and export to csv
-                    Main.logger.info("saved path");
-                    --i;
+                if (!generate_path.isPressed()) {
+                    // TODO: remove data from Waypoint listview
+                    Main.logger.info("starting to generate path");
+                    
+
+                    Main.logger.info("waypoint removed successfull!y");
 
                 }
 
             }
 
         });
+
         exit.setOnAction((EventHandler<ActionEvent>) new EventHandler<ActionEvent>() {
 
             @Override

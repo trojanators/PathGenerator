@@ -23,7 +23,7 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" layoutX="17.0" layoutY="185.0" prefHeight="27.0" prefWidth="210.0" style="&#10;" text="Csv File Location" textAlignment="CENTER" textFill="WHITE" wrapText="false">
+      <Label alignment="CENTER" layoutX="19.0" layoutY="116.0" prefHeight="27.0" prefWidth="210.0" style="&#10;" text="Csv File Location" textAlignment="CENTER" textFill="WHITE" wrapText="false">
          <font>
             <Font size="18.0" />
          </font>
@@ -35,21 +35,12 @@
          </image>
       </ImageView>
       <Button fx:id="exit" layoutX="56.0" layoutY="37.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="66.0" style="-fx-background-color: rgb(30,30,30);;" text="exit" textFill="WHITE" />
-      <Label alignment="CENTER" layoutX="17.0" layoutY="105.0" prefHeight="27.0" prefWidth="210.0" style="&#10;" text="Robot Wheel Base" textAlignment="CENTER" textFill="WHITE" wrapText="false">
+      <Label alignment="CENTER" layoutX="393.0" layoutY="115.0" prefHeight="27.0" prefWidth="210.0" style="&#10;" text="Robot Wheel Base" textAlignment="CENTER" textFill="WHITE" wrapText="false">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <TextField fx:id="csv_location" layoutX="14.0" layoutY="211.0" prefHeight="26.0" prefWidth="210.0" promptText="enter csv storge path" />
-      <TextField fx:id="robot_wheelbase_input" layoutX="17.0" layoutY="132.0" prefHeight="26.0" prefWidth="210.0" promptText="enter width in Inches" />
-      <TextField fx:id="max_robot_jerk_input" layoutX="393.0" layoutY="132.0" prefHeight="26.0" prefWidth="210.0" promptText="max jerk" />
-      <Label alignment="CENTER" layoutX="393.0" layoutY="105.0" prefHeight="27.0" prefWidth="210.0" style="&#10;" text="Robot Velocity" textAlignment="CENTER" textFill="WHITE" wrapText="false">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Label>
-      <TextField fx:id="max_robot_acceleration_input" layoutX="393.0" layoutY="172.0" prefHeight="26.0" prefWidth="210.0" promptText="max acceleration" />
-      <TextField fx:id="max_vel_input" layoutX="393.0" layoutY="211.0" prefHeight="26.0" prefWidth="210.0" promptText="max velocity" />
-      <TextField fx:id="max_robot_dt_input" layoutX="393.0" layoutY="250.0" prefHeight="26.0" prefWidth="210.0" promptText="dispersion of trajectory" />
+      <TextField fx:id="csv_location" layoutX="16.0" layoutY="142.0" prefHeight="26.0" prefWidth="210.0" promptText="enter csv storge path" />
+      <TextField fx:id="robot_wheelbase_input" layoutX="393.0" layoutY="142.0" prefHeight="26.0" prefWidth="210.0" promptText="enter width in Inches" />
 </children>
 </AnchorPane>

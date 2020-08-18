@@ -2,7 +2,7 @@
 package org.usfirst.frc.team5740.gui;
 
 import org.usfirst.frc.team5740.Main;
-import org.usfirst.frc.team5740.util.GenerateCsv;
+import org.usfirst.frc.team5740.util.WaypointTableData;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -16,8 +16,7 @@ import javafx.stage.Stage;
 public class ExportPageController {
     private Stage stage = new Stage();
     private StartMain mainpage = new StartMain();
-    private GenerateCsv createcsv = new GenerateCsv();
-
+   
     @FXML
     private Button save;
 
@@ -61,7 +60,6 @@ public class ExportPageController {
                     // TODO: add csv Generation Function with waypoints and alll maths
                     Main.logger.info("Setting -> Generating Csv to true");
                     try{
-                    createcsv.createCsv(csv_location.getText());
                     }
                     catch(Exception e){
                         e.printStackTrace();
@@ -79,7 +77,7 @@ public class ExportPageController {
             public void handle(final ActionEvent event) {
                 if (!save.isPressed()) {
                     Main.logger.info("Settings -> Save Settings to true");
-
+                
                 }
 
             }
