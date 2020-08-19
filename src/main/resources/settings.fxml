@@ -42,5 +42,11 @@
       </Label>
       <TextField fx:id="csv_location" layoutX="16.0" layoutY="142.0" prefHeight="26.0" prefWidth="210.0" promptText="enter csv storge path" />
       <TextField fx:id="robot_wheelbase_input" layoutX="393.0" layoutY="142.0" prefHeight="26.0" prefWidth="210.0" promptText="enter width in Inches" />
+      <Label alignment="CENTER" layoutX="210.0" layoutY="198.0" prefHeight="27.0" prefWidth="210.0" style="&#10;" text="Path Name" textAlignment="CENTER" textFill="WHITE" wrapText="false">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="path_name_input" layoutX="207.0" layoutY="224.0" prefHeight="26.0" prefWidth="210.0" promptText="enter path name" />
 </children>
 </AnchorPane>

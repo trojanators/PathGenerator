@@ -14,7 +14,7 @@
   <children>
     <AnchorPane fx:id="save_entrys" maxHeight="-1.0" maxWidth="-1.0" prefHeight="400.0" prefWidth="1024.0" style="-fx-background-color: rgb(0,0,0);" VBox.vgrow="ALWAYS">
       <children>
-        <Label alignment="CENTER" layoutX="298.0" layoutY="15.0" style="&#10;" text="Path Entry Data" textAlignment="CENTER" textFill="WHITE" wrapText="false">
+        <Label alignment="CENTER" layoutX="281.0" layoutY="15.0" style="&#10;" text="Path Entry Data" textAlignment="CENTER" textFill="WHITE" wrapText="false">
           <font>
             <Font name="System Italic" size="28.0" />
           </font>
@@ -25,7 +25,7 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <Label layoutX="298.0" layoutY="50.0" prefHeight="27.0" prefWidth="188.0" text="        Entry Editor" textFill="WHITE">
+            <Label layoutX="287.0" layoutY="50.0" prefHeight="27.0" prefWidth="188.0" text="        Entry Editor" textFill="WHITE">
                <font>
                   <Font size="18.0" />
                </font>
@@ -55,7 +55,7 @@
             <TextField fx:id="waypoint_acc_input" layoutX="417.0" layoutY="310.0" prefHeight="26.0" prefWidth="179.0" promptText="enter max acceleration" />
             <TextField fx:id="waypoint_jerk_input" layoutX="417.0" layoutY="344.0" prefHeight="26.0" prefWidth="179.0" promptText="enter max Jerk" />
             <TextField fx:id="waypoint_velocity_imput" layoutX="417.0" layoutY="377.0" prefHeight="26.0" prefWidth="179.0" promptText="enter Velocity" />
-            <TextField fx:id="waypoint_dt_input" layoutX="379.0" layoutY="278.0" prefHeight="26.0" prefWidth="71.0" promptText="enter dt" />
+            <TextField fx:id="waypoint_dt_input" layoutX="374.0" layoutY="272.0" prefHeight="26.0" prefWidth="71.0" promptText="enter dt" />
       </children>
     </AnchorPane>
   </children>

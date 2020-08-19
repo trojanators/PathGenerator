@@ -10,10 +10,9 @@ import org.usfirst.frc.team5740.trajectory.WaypointSequence;
  * @author Nicholas Blackburn @
  */
 public class WaypointTableData {
-
-    private TrajectoryGenerator.Config config = new TrajectoryGenerator.Config();
-   
     
+    private TrajectoryGenerator.Config config = new TrajectoryGenerator.Config();
+
     private int waypointId = 0;
     private double waypointX = 0;
     private double waypointY = 0;
@@ -68,6 +67,5 @@ public class WaypointTableData {
     public double getDt(){
         return waypointDt;
     }
-
 
 }

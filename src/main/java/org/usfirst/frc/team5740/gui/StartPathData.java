@@ -21,7 +21,7 @@ public class StartPathData extends Application {
         Main.logger.info("Done Loading PathData.fxml file");
 
         Parent root_path = loader.load();
-        Scene scene = new Scene(root_path, 640, 400);
+        Scene scene = new Scene(root_path, 758.0, 403.0);
 
         stage.setTitle("PathGenerator By Nicholas Blackburn");
         stage.setScene(scene);

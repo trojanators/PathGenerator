@@ -36,17 +36,7 @@ public class ExportPageController {
     private TextField robot_wheelbase_input;
 
     @FXML
-    private TextField max_robot_jerk_input;
-
-    @FXML
-    private TextField max_robot_acceleration_input;
-
-    @FXML
-    private TextField max_vel_input;
-
-    @FXML
-    private TextField max_robot_dt_input;
-
+    private TextField path_name_input;
     
     public void initialize() {
         
@@ -118,6 +108,12 @@ public class ExportPageController {
           // Generates Java code to Read the sv
     }   
 
-    
+    public String getPathName(){
+        return path_name_input.getText();
+    }
+
+    public double getRobotWheelBase(){
+        return Double.parseDouble(robot_wheelbase_input.getText());
+    }
     
 }
