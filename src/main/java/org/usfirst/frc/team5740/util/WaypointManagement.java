@@ -47,10 +47,7 @@ public class WaypointManagement {
             Main.logger.warning("Waypoint"+data.getX() /12.0+""+data.getY() / 12.0 +" THeta" + -Math.PI/data.getTheta());
         }
 
-        if(generatePath){
-            createPath(sequence,config);
-        }
-        
+    
     }
 
     /**
