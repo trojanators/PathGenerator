@@ -16,6 +16,9 @@ import javafx.stage.Stage;
 public class ExportPageController {
     private Stage stage = new Stage();
     private StartMain mainpage = new StartMain();
+    
+    private Boolean enableMathPi;
+    private Boolean enableNegMathPi;
    
     @FXML
     private Button save;
@@ -37,6 +40,13 @@ public class ExportPageController {
 
     @FXML
     private TextField path_name_input;
+
+    @FXML
+    private CheckBox enable_mathpi;
+
+    @FXML
+    private CheckBox enable_neg_mathpi;
+
     
     public void initialize() {
         
@@ -105,7 +115,34 @@ public class ExportPageController {
 
           });
 
-          // Generates Java code to Read the sv
+          enable_mathpi.setOnAction(new EventHandler<ActionEvent>() {
+
+            @Override
+            public void handle(final ActionEvent event) {
+                if (enable_mathpi.isSelected()) {
+                    Main.logger.info("setEnableAMthPi True");
+                    enableMathPi = true;
+                }else{
+                    enableMathPi = false;
+                    Main.logger.info("setEnableAMthPi False");
+                }
+            }
+          });
+          enable_neg_mathpi.setOnAction(new EventHandler<ActionEvent>() {
+
+            @Override
+            public void handle(final ActionEvent event) {
+                if (enable_neg_mathpi.isSelected()) {
+                    Main.logger.info("setEnable Neg MthPi True");
+                    enableNegMathPi = true;
+                }else{
+                    Main.logger.info("setEnable Neg MthPi False");
+                    enableNegMathPi = false;
+                }
+            }
+          });
+
+         
     }   
 
     public String getPathName(){
@@ -116,4 +153,13 @@ public class ExportPageController {
         return Double.parseDouble(robot_wheelbase_input.getText());
     }
     
+    public Boolean getEnableMathPi(){
+        return enableMathPi;
+        
+    }
+    
+    public Boolean getEnableNegMathPi(){
+        return enableNegMathPi;
+        
+    }
 }

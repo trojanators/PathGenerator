@@ -1,10 +1,14 @@
 package org.usfirst.frc.team5740.util;
 
+import java.io.File;
+
+import org.usfirst.frc.team5740.Main;
 import org.usfirst.frc.team5740.gui.ExportPageController;
 import org.usfirst.frc.team5740.trajectory.Path;
 import org.usfirst.frc.team5740.trajectory.PathGenerator;
 import org.usfirst.frc.team5740.trajectory.TrajectoryGenerator;
 import org.usfirst.frc.team5740.trajectory.WaypointSequence;
+import org.usfirst.frc.team5740.trajectory.TrajectoryGenerator.Config;
 import org.usfirst.frc.team5740.trajectory.WaypointSequence.Waypoint;
 
 public class WaypointManagement {
@@ -19,7 +23,7 @@ public class WaypointManagement {
      * @param Boolan enablePICalcPositive
      * @param Boolean enablePiCalcNegative
      */
-    public void createWaypoint(WaypointTableData data, Boolean enablePiCalcPositive, boolean enablePiCalcNegative){
+    public void createWaypoint(WaypointTableData data, Boolean generatePath){
         int waypointId = data.getId();
         // Mapping Data from Waypoint Table
         config.max_acc = data.getAcc();
@@ -30,16 +34,32 @@ public class WaypointManagement {
         // Creates a waypoint without MathPi cal
         if(waypointId >= 0){
         sequence.addWaypoint(new Waypoint(data.getX() / 12.0 , data.getY() / 12.0, data.getTheta()));
+        Main.logger.warning("Waypoint"+data.getX() /12.0+""+data.getY() / 12.0 +" THeta" + data.getTheta());
         }
 
-        if(waypointId >= 0 && enablePiCalcPositive){
+        if(waypointId >= 0 && exportPageController.getEnableMathPi()){
             sequence.addWaypoint(new Waypoint(data.getX() / 12.0 , data.getY() / 12.0, Math.PI/ data.getTheta()));
+            Main.logger.warning("Waypoint"+data.getX() /12.0+""+data.getY() / 12.0 +" THeta" + Math.PI/data.getTheta());
         }
 
-        if(waypointId >= 0 && enablePiCalcNegative){
+        if(waypointId >= 0 && exportPageController.getEnableNegMathPi()){
             sequence.addWaypoint(new Waypoint(data.getX() / 12.0 , data.getY() / 12.0, -Math.PI/ data.getTheta()));
+            Main.logger.warning("Waypoint"+data.getX() /12.0+""+data.getY() / 12.0 +" THeta" + -Math.PI/data.getTheta());
         }
 
+        if(generatePath){
+            createPath(sequence,config);
+        }
+        
+    }
+
+    /**
+     * Creates Path Via data from createWaypoint Functions
+     */
+    private void createPath(WaypointSequence sequence, Config config){
+        Main.logger.info("Generatring Path to File");
         path = PathGenerator.makePath(sequence, config, exportPageController.getRobotWheelBase(), exportPageController.getPathName());
+        Main.logger.info("path is Generateing");
+       
     }
 }

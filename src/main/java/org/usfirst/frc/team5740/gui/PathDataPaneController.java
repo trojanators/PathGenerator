@@ -14,6 +14,7 @@ import com.jfoenix.controls.JFXListView;
 import com.jfoenix.controls.JFXTreeTableView;
 
 import org.usfirst.frc.team5740.Main;
+import org.usfirst.frc.team5740.util.WaypointManagement;
 import org.usfirst.frc.team5740.util.WaypointTableData;
 
 import javafx.collections.FXCollections;
@@ -37,6 +38,8 @@ import javafx.util.Callback;
 
 public class PathDataPaneController {
 
+    private WaypointManagement wayManage = new WaypointManagement();
+
     private double x;
     private double y;
     private double theta;
@@ -49,6 +52,8 @@ public class PathDataPaneController {
     private int i = 0;
     private int output;
     private int countor = 0;
+
+    private Boolean enable; 
 
     @FXML
     private AnchorPane save_entrys;
@@ -114,13 +119,13 @@ public class PathDataPaneController {
         waypoint_theta.setCellValueFactory(new PropertyValueFactory<>("theta"));
 
         TableColumn waypoint_acc = new TableColumn("maxAcc");
-        waypoint_acc.setCellValueFactory(new PropertyValueFactory<>("maxAcc"));
+        waypoint_acc.setCellValueFactory(new PropertyValueFactory<>("acc"));
 
         TableColumn waypoint_jerk = new TableColumn("maxJerk");
-        waypoint_jerk.setCellValueFactory(new PropertyValueFactory<>("maxJerk"));
+        waypoint_jerk.setCellValueFactory(new PropertyValueFactory<>("jerk"));
 
         TableColumn waypoint_vel = new TableColumn("maxVelocity");
-        waypoint_vel.setCellValueFactory(new PropertyValueFactory<>("maxVelocity"));
+        waypoint_vel.setCellValueFactory(new PropertyValueFactory<>("Velocity"));
 
         TableColumn waypoint_dt = new TableColumn("Dt");
         waypoint_dt.setCellValueFactory(new PropertyValueFactory<>("Dt"));
@@ -189,7 +194,13 @@ public class PathDataPaneController {
 
                     data = new WaypointTableData(i - countor, x, y, theta, acc, jerk, velocity, dt);
                     waypoint_table.getItems().add(data);
-                    Main.logger.info("added new Waypoint Successfully");
+
+                    try{
+                        wayManage.createWaypoint(data,enable);
+                    }catch(Exception e){
+                        Main.logger.severe(e.getMessage());
+                    }
+
 
                 }
 
@@ -223,9 +234,7 @@ public class PathDataPaneController {
                     // TODO: remove data from Waypoint listview
                     Main.logger.info("starting to generate path");
                     
-
-                    Main.logger.info("waypoint removed successfull!y");
-
+                    enable = true;
                 }
 
             }

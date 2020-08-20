@@ -18,7 +18,7 @@
          </font>
       </Label>
       <CheckBox fx:id="gen_csv" layoutX="481.0" layoutY="369.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="146.0" text="Generate csv file" textFill="WHITE" />
-      <Label alignment="CENTER" layoutX="456.0" layoutY="317.0" prefHeight="12.0" prefWidth="171.0" style="&#10;" text="Code Settings" textAlignment="CENTER" textFill="WHITE" wrapText="false">
+      <Label alignment="CENTER" layoutX="459.0" layoutY="250.0" prefHeight="12.0" prefWidth="171.0" style="&#10;" text="Code Settings" textAlignment="CENTER" textFill="WHITE" wrapText="false">
          <font>
             <Font size="18.0" />
          </font>
@@ -48,5 +48,7 @@
          </font>
       </Label>
       <TextField fx:id="path_name_input" layoutX="207.0" layoutY="224.0" prefHeight="26.0" prefWidth="210.0" promptText="enter path name" />
+      <CheckBox fx:id="enable_mathpi" layoutX="462.0" layoutY="315.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="165.0" text="enable mathpi theta" textFill="WHITE" />
+      <CheckBox fx:id="enable_neg_mathpi" layoutX="462.0" layoutY="289.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="165.0" text="enable Neg mathpi theta" textFill="WHITE" />
 </children>
 </AnchorPane>
