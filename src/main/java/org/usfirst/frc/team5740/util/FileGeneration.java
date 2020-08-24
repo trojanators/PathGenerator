@@ -17,7 +17,7 @@ public class FileGeneration {
 
     private static String javaDirectory = "";
 
-    private static void writeFiles(final String path_name, final Path path) {
+    public static void writeFiles(final String path_name, final Path path) {
 
         // Outputs to the directory supplied as the first argument.
         final JavaSerializer js = new JavaSerializer();

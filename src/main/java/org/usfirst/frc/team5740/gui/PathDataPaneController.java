@@ -24,6 +24,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
@@ -68,7 +69,7 @@ public class PathDataPaneController {
     private Button preview_graph;
 
     @FXML
-    private Button generate_path;
+    private CheckBox generate_path;
 
     @FXML
     private Button exit;
@@ -196,9 +197,9 @@ public class PathDataPaneController {
                     waypoint_table.getItems().add(data);
 
                     try{
-                        wayManage.createWaypoint(data,enable);
+                        wayManage.createWaypoint(data);
                     }catch(Exception e){
-                        Main.logger.severe(e.getMessage());
+                        e.printStackTrace();
                     }
 
 
@@ -230,11 +231,10 @@ public class PathDataPaneController {
 
             @Override
             public void handle(final ActionEvent event) {
-                if (!generate_path.isPressed()) {
+                if (generate_path.isSelected()) {
                     // TODO: remove data from Waypoint listview
                     Main.logger.info("starting to generate path");
-                    
-                    enable = true;
+                    wayManage.generatePAth = true;
                 }
 
             }

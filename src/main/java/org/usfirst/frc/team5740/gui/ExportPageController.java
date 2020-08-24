@@ -1,6 +1,9 @@
 
 package org.usfirst.frc.team5740.gui;
 
+import java.util.function.UnaryOperator;
+import java.util.regex.Pattern;
+
 import org.usfirst.frc.team5740.Main;
 import org.usfirst.frc.team5740.util.WaypointTableData;
 
@@ -11,6 +14,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TextFormatter;
 import javafx.stage.Stage;
 
 public class ExportPageController {
@@ -19,7 +23,9 @@ public class ExportPageController {
     
     private Boolean enableMathPi;
     private Boolean enableNegMathPi;
-   
+
+    private double wheelbase;
+    private String pathName;
     @FXML
     private Button save;
 
@@ -49,7 +55,14 @@ public class ExportPageController {
 
     
     public void initialize() {
-        
+
+        // to format robot width
+        Pattern pattern = Pattern.compile("\\d*(\\.\\d*)?");
+        TextFormatter formatter = new TextFormatter((UnaryOperator<TextFormatter.Change>) change -> {
+            return pattern.matcher(change.getControlNewText()).matches() ? change : null;
+        });
+        robot_wheelbase_input.setTextFormatter(formatter);
+
 
         // generates csv file Action
         gen_csv.setOnAction(new EventHandler<ActionEvent>() {
@@ -77,7 +90,7 @@ public class ExportPageController {
             public void handle(final ActionEvent event) {
                 if (!save.isPressed()) {
                     Main.logger.info("Settings -> Save Settings to true");
-                
+                    wheelbase = Double.parseDouble(robot_wheelbase_input.getText());
                 }
 
             }
@@ -97,14 +110,15 @@ public class ExportPageController {
             }
 
         });
-        exit.setOnAction(new EventHandler<ActionEvent>() {
+        save.setOnAction(new EventHandler<ActionEvent>() {
 
             @Override
             public void handle(final ActionEvent event) {
                 if (!exit.isPressed()) {
                     Main.logger.info("Going back to main");
                     try {
-                        mainpage.start(stage);
+                        wheelbase = Double.parseDouble(robot_wheelbase_input.getText());
+                        pathName = path_name_input.getText();
                     } catch (Exception e) {
                         // TODO Auto-generated catch block
                         e.printStackTrace();
@@ -146,11 +160,11 @@ public class ExportPageController {
     }   
 
     public String getPathName(){
-        return path_name_input.getText();
+        return pathName;
     }
 
     public double getRobotWheelBase(){
-        return Double.parseDouble(robot_wheelbase_input.getText());
+        return wheelbase;
     }
     
     public Boolean getEnableMathPi(){

@@ -83,10 +83,10 @@ public class MainController {
                     Main.logger.info("Starting Settings");
                     // Cheks to see if pathData is hidden
                     try {
-
-                        if (!stage.isShowing()) {
-                            set.start(stage);
-                            stage.show();
+                        Stage stage2 = new Stage();
+                        if (!stage2.isShowing()) {
+                            set.start(stage2);
+                            stage2.show();
                         }
 
                     } catch (Exception e) {

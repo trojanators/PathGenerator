@@ -1,7 +1,4 @@
 package org.usfirst.frc.team5740.trajectory;
-
-
-
 /**
  * Generate a smooth Trajectory from a Path.
  *
