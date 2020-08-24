@@ -8,6 +8,7 @@ import java.util.List;
  */
 import java.util.Set;
 import java.util.function.UnaryOperator;
+import java.util.logging.Level;
 import java.util.regex.Pattern;
 
 import com.jfoenix.controls.JFXListView;
@@ -37,9 +38,10 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 
+
 public class PathDataPaneController {
 
-    private WaypointManagement wayManage = new WaypointManagement();
+    private final WaypointManagement wayManage = new WaypointManagement();
 
     private double x;
     private double y;
@@ -107,55 +109,55 @@ public class PathDataPaneController {
     public void cellSetup() {
 
         // creates columns based on waypoint id , x and y
-        TableColumn waypoint_id = new TableColumn("id");
+        final TableColumn waypoint_id = new TableColumn("id");
         waypoint_id.setCellValueFactory(new PropertyValueFactory<>("id"));
 
-        TableColumn waypoint_x = new TableColumn("x");
+        final TableColumn waypoint_x = new TableColumn("x");
         waypoint_x.setCellValueFactory(new PropertyValueFactory<>("x"));
 
-        TableColumn waypoint_y = new TableColumn("y");
+        final TableColumn waypoint_y = new TableColumn("y");
         waypoint_y.setCellValueFactory(new PropertyValueFactory<>("y"));
 
-        TableColumn waypoint_theta = new TableColumn("theta");
+        final TableColumn waypoint_theta = new TableColumn("theta");
         waypoint_theta.setCellValueFactory(new PropertyValueFactory<>("theta"));
 
-        TableColumn waypoint_acc = new TableColumn("maxAcc");
+        final TableColumn waypoint_acc = new TableColumn("maxAcc");
         waypoint_acc.setCellValueFactory(new PropertyValueFactory<>("acc"));
 
-        TableColumn waypoint_jerk = new TableColumn("maxJerk");
+        final TableColumn waypoint_jerk = new TableColumn("maxJerk");
         waypoint_jerk.setCellValueFactory(new PropertyValueFactory<>("jerk"));
 
-        TableColumn waypoint_vel = new TableColumn("maxVelocity");
+        final TableColumn waypoint_vel = new TableColumn("maxVelocity");
         waypoint_vel.setCellValueFactory(new PropertyValueFactory<>("Velocity"));
 
-        TableColumn waypoint_dt = new TableColumn("Dt");
+        final TableColumn waypoint_dt = new TableColumn("Dt");
         waypoint_dt.setCellValueFactory(new PropertyValueFactory<>("Dt"));
 
         waypoint_table.getColumns().addAll(waypoint_id, waypoint_x, waypoint_y, waypoint_theta, waypoint_acc,
                 waypoint_vel, waypoint_jerk, waypoint_dt);
 
-        Pattern pattern = Pattern.compile("\\d*(\\.\\d*)?");
-        TextFormatter formatter = new TextFormatter((UnaryOperator<TextFormatter.Change>) change -> {
+        final Pattern pattern = Pattern.compile("\\d*(\\.\\d*)?");
+        final TextFormatter formatter = new TextFormatter((UnaryOperator<TextFormatter.Change>) change -> {
             return pattern.matcher(change.getControlNewText()).matches() ? change : null;
         });
-        TextFormatter formatter1 = new TextFormatter((UnaryOperator<TextFormatter.Change>) change -> {
+        final TextFormatter formatter1 = new TextFormatter((UnaryOperator<TextFormatter.Change>) change -> {
             return pattern.matcher(change.getControlNewText()).matches() ? change : null;
         });
-        TextFormatter formatter2 = new TextFormatter((UnaryOperator<TextFormatter.Change>) change -> {
-            return pattern.matcher(change.getControlNewText()).matches() ? change : null;
-        });
-
-        TextFormatter formatter3 = new TextFormatter((UnaryOperator<TextFormatter.Change>) change -> {
-            return pattern.matcher(change.getControlNewText()).matches() ? change : null;
-        });
-        TextFormatter formatter4 = new TextFormatter((UnaryOperator<TextFormatter.Change>) change -> {
+        final TextFormatter formatter2 = new TextFormatter((UnaryOperator<TextFormatter.Change>) change -> {
             return pattern.matcher(change.getControlNewText()).matches() ? change : null;
         });
 
-        TextFormatter formatter5 = new TextFormatter((UnaryOperator<TextFormatter.Change>) change -> {
+        final TextFormatter formatter3 = new TextFormatter((UnaryOperator<TextFormatter.Change>) change -> {
             return pattern.matcher(change.getControlNewText()).matches() ? change : null;
         });
-        TextFormatter formatter6 = new TextFormatter((UnaryOperator<TextFormatter.Change>) change -> {
+        final TextFormatter formatter4 = new TextFormatter((UnaryOperator<TextFormatter.Change>) change -> {
+            return pattern.matcher(change.getControlNewText()).matches() ? change : null;
+        });
+
+        final TextFormatter formatter5 = new TextFormatter((UnaryOperator<TextFormatter.Change>) change -> {
+            return pattern.matcher(change.getControlNewText()).matches() ? change : null;
+        });
+        final TextFormatter formatter6 = new TextFormatter((UnaryOperator<TextFormatter.Change>) change -> {
             return pattern.matcher(change.getControlNewText()).matches() ? change : null;
         });
 
@@ -198,9 +200,9 @@ public class PathDataPaneController {
 
                     try{
                         wayManage.createWaypoint(data);
-                    }catch(Exception e){
-                        e.printStackTrace();
-                        e.getMessage();
+                    }catch(final Exception e){
+                        Main.logger.log(Level.WARNING,"Sorry I broke it Again... Dont hate me hate The Math ... \n"+e.getMessage(),e);
+                    
                     }
 
 
@@ -246,7 +248,7 @@ public class PathDataPaneController {
 
             @Override
             public void handle(final ActionEvent event) {
-                Stage stage = (Stage) exit.getScene().getWindow();
+                final Stage stage = (Stage) exit.getScene().getWindow();
 
                 if (!exit.isPressed()) {
                     // TODO: add enty to display_path_entrys

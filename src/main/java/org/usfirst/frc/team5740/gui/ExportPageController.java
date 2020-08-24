@@ -42,6 +42,8 @@ public class ExportPageController {
     @FXML
     private CheckBox enable_neg_mathpi;
 
+    @FXML
+    private Button exit;
     
     public void initialize() {
 
@@ -52,8 +54,10 @@ public class ExportPageController {
         });
         robot_wheelbase_input.setTextFormatter(formatter);
 
-
-
+            /** 
+           * Enables Math.PI calc for a Trajectory 
+           * TODO: Write Docs on how to use tool.
+           */
         enable_mathpi.setOnAction(new EventHandler<ActionEvent>() {
 
             @Override
@@ -67,6 +71,10 @@ public class ExportPageController {
                 }
             }
           });
+          /** 
+           * Enables Negative Math.PI calc for a Trajectory 
+           * TODO: Write Docs on how to use tool.
+           */
           enable_neg_mathpi.setOnAction(new EventHandler<ActionEvent>() {
 
             @Override
@@ -79,9 +87,24 @@ public class ExportPageController {
                     enableNegMathPi = false;
                 }
             }
+          });   
+          /**
+           * Closes Settings WIndow 
+           * TODO: Fix Data persitisance Issue With Inputed data fater window closed
+           */
+          exit.setOnAction(new EventHandler<ActionEvent>() {
+
+            @Override
+            public void handle(final ActionEvent event) {
+                if (exit.isPressed()) {
+                    Main.logger.info("going back to main");
+                    stage.hide();
+                }else{
+                  Main.logger.info("Going to main window");
+                }
+            }
           });
 
-         
     }   
 
     public String getPathName(){
