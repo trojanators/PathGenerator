@@ -283,7 +283,6 @@ public class PathGenerator {
     output[0] = input.copy();
     output[1] = input.copy();
     final Trajectory left = output[0];
-
     final Trajectory right = output[1];
 
     for (int i = 0; i < input.getNumSegments(); ++i) {

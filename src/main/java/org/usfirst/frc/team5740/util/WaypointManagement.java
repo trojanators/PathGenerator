@@ -57,6 +57,7 @@ public class WaypointManagement {
     /**
      * Creates Path Via data from createWaypoint Functions
      */
+    //TODO: Fix NullPointer in Line 63 
     private void createPath(WaypointSequence sequence, Config config){
         Main.logger.info("Generatring Path to File");
         final Path path = PathGenerator.makePath(sequence, config,exportPageController.getRobotWheelBase(), exportPageController.getPathName());

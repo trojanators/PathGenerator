@@ -11,14 +11,12 @@
 
 <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" style="-fx-background-color: rgb(0,0,0);" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.usfirst.frc.team5740.gui.ExportPageController">
 <children>
-      <CheckBox fx:id="display_waypoint_graph" layoutX="481.0" layoutY="344.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="146.0" text="Display graph" textFill="WHITE" />
       <Label layoutX="192.0" layoutY="18.0" prefHeight="39.0" prefWidth="243.0" text="        Settings" textFill="WHITE">
          <font>
             <Font name="Comic Sans MS Bold Italic" size="28.0" />
          </font>
       </Label>
-      <CheckBox fx:id="gen_csv" layoutX="481.0" layoutY="369.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="146.0" text="Generate csv file" textFill="WHITE" />
-      <Label alignment="CENTER" layoutX="459.0" layoutY="250.0" prefHeight="12.0" prefWidth="171.0" style="&#10;" text="Code Settings" textAlignment="CENTER" textFill="WHITE" wrapText="false">
+      <Label alignment="CENTER" layoutX="449.0" layoutY="307.0" prefHeight="12.0" prefWidth="171.0" style="&#10;" text="Code Settings" textAlignment="CENTER" textFill="WHITE" wrapText="false">
          <font>
             <Font size="18.0" />
          </font>
@@ -28,7 +26,6 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <Button fx:id="save" layoutX="235.0" layoutY="353.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="158.0" style="-fx-background-color: rgb(30,30,30);;" text="Save Settings" textFill="WHITE" />
       <ImageView fitHeight="89.0" fitWidth="122.0" layoutY="307.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@44243093.png" />
@@ -48,7 +45,7 @@
          </font>
       </Label>
       <TextField fx:id="path_name_input" layoutX="207.0" layoutY="224.0" prefHeight="26.0" prefWidth="210.0" promptText="enter path name" />
-      <CheckBox fx:id="enable_mathpi" layoutX="462.0" layoutY="315.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="165.0" text="enable mathpi theta" textFill="WHITE" />
-      <CheckBox fx:id="enable_neg_mathpi" layoutX="462.0" layoutY="289.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="165.0" text="enable Neg mathpi theta" textFill="WHITE" />
+      <CheckBox fx:id="enable_mathpi" layoutX="462.0" layoutY="358.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="165.0" text="enable mathpi theta" textFill="WHITE" />
+      <CheckBox fx:id="enable_neg_mathpi" layoutX="462.0" layoutY="334.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="165.0" text="enable Neg mathpi theta" textFill="WHITE" />
 </children>
 </AnchorPane>

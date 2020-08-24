@@ -26,18 +26,7 @@ public class ExportPageController {
 
     private double wheelbase;
     private String pathName;
-    @FXML
-    private Button save;
-
-    @FXML
-    private CheckBox display_waypoint_graph;
-
-    @FXML // fx:id="gen_code"
-    private CheckBox gen_csv; // Value injected by FXMLLoader
-
-    @FXML
-    private Button exit;
-
+    
     @FXML // fx:id="graph_name"
     private TextField csv_location; // Value injected by FXMLLoader
 
@@ -64,72 +53,8 @@ public class ExportPageController {
         robot_wheelbase_input.setTextFormatter(formatter);
 
 
-        // generates csv file Action
-        gen_csv.setOnAction(new EventHandler<ActionEvent>() {
 
-            @Override
-            public void handle(final ActionEvent event) {
-                if (gen_csv.isSelected()) {
-                    // TODO: add csv Generation Function with waypoints and alll maths
-                    Main.logger.info("Setting -> Generating Csv to true");
-                    try{
-                    }
-                    catch(Exception e){
-                        e.printStackTrace();
-                    }
-                }
-
-            }
-
-        });
-
-        // Generates Java code to Read the sv
-        save.setOnAction(new EventHandler<ActionEvent>() {
-
-            @Override
-            public void handle(final ActionEvent event) {
-                if (!save.isPressed()) {
-                    Main.logger.info("Settings -> Save Settings to true");
-                    wheelbase = Double.parseDouble(robot_wheelbase_input.getText());
-                }
-
-            }
-
-        });
-
-        display_waypoint_graph.setOnAction(new EventHandler<ActionEvent>() {
-
-            @Override
-            public void handle(final ActionEvent event) {
-                if (display_waypoint_graph.isSelected()) {
-                    // TODO: add csv Generation Function with waypoints and alll maths
-                    Main.logger.info("Setting -> Enableing Display of graph");
-
-                }
-
-            }
-
-        });
-        save.setOnAction(new EventHandler<ActionEvent>() {
-
-            @Override
-            public void handle(final ActionEvent event) {
-                if (!exit.isPressed()) {
-                    Main.logger.info("Going back to main");
-                    try {
-                        wheelbase = Double.parseDouble(robot_wheelbase_input.getText());
-                        pathName = path_name_input.getText();
-                    } catch (Exception e) {
-                        // TODO Auto-generated catch block
-                        e.printStackTrace();
-                    }
-                  } 
-
-              }
-
-          });
-
-          enable_mathpi.setOnAction(new EventHandler<ActionEvent>() {
+        enable_mathpi.setOnAction(new EventHandler<ActionEvent>() {
 
             @Override
             public void handle(final ActionEvent event) {

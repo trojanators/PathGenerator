@@ -200,6 +200,7 @@ public class PathDataPaneController {
                         wayManage.createWaypoint(data);
                     }catch(Exception e){
                         e.printStackTrace();
+                        e.getMessage();
                     }
 
 
