@@ -10,7 +10,7 @@ import org.usfirst.frc.team5740.trajectory.WaypointSequence;
  * @author Nicholas Blackburn @
  */
 public class WaypointTableData {
-    
+
     private TrajectoryGenerator.Config config = new TrajectoryGenerator.Config();
 
     private int waypointId = 0;
@@ -23,7 +23,8 @@ public class WaypointTableData {
     private double waypointDt = 0;
 
     // Waypoint data constructor
-    public WaypointTableData(int waypoint_id,double waypoint_x, double waypoint_y, double theta, double maxAcc, double maxJerk, double maxVelocity, double dt){
+    public WaypointTableData(int waypoint_id, double waypoint_x, double waypoint_y, double theta, double maxAcc,
+    double maxJerk, double maxVelocity, double dt) {
         this.waypointId = waypoint_id;
         this.waypointX = waypoint_x;
         this.waypointY = waypoint_y;
@@ -34,37 +35,35 @@ public class WaypointTableData {
         this.waypointDt = dt;
     }
 
-
-
-
-    public int getId(){
+    public int getId() {
         return waypointId;
     }
 
-    public double getX(){
+    public double getX() {
         return waypointX;
     }
 
-    public double getY(){
+    public double getY() {
         return waypointY;
     }
 
-    public double getTheta(){
+    public double getTheta() {
         return waypointTheta;
-    }  
-    public double getAcc(){
+    }
+
+    public double getAcc() {
         return waypointMaxAcc;
     }
 
-    public double getJerk(){
+    public double getJerk() {
         return waypointMaxJerk;
     }
 
-    public double getVelocity(){
+    public double getVelocity() {
         return waypointMaxVelocity;
     }
 
-    public double getDt(){
+    public double getDt() {
         return waypointDt;
     }
 
