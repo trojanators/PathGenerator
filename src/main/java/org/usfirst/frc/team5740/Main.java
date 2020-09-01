@@ -2,6 +2,7 @@ package org.usfirst.frc.team5740;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.time.LocalDate;
 import java.util.logging.FileHandler;
 import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
@@ -13,12 +14,11 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class Main extends Application {
-    
-    
+
     private final SimpleFormatter formatter = new SimpleFormatter();
     public static Logger logger = Logger.getLogger(Main.class.getName());
     private final FXMLLoader loader = new FXMLLoader();
-    
+    private LocalDate day = LocalDate.now(); // Create a date object
 
     // Starts JavaFX Gui
     @Override
@@ -27,6 +27,8 @@ public class Main extends Application {
         FileHandler fh = new FileHandler("PathGen.log");
         logger.addHandler(fh);
         fh.setFormatter(formatter);
+             
+        loggerInit();
 
         logger.info("loading Fxml file");
         loader.setLocation(getClass().getResource("/Main.fxml"));
@@ -34,14 +36,24 @@ public class Main extends Application {
         final Parent root = loader.load();
 
         final Scene scene = new Scene(root, 640, 400);
-    
+
         stage.setTitle("PathGenerator By Nicholas Blackburn");
         stage.setScene(scene);
         stage.show();
         logger.warning("Successfully displaying Main page");
-        
-        logger.warning("Starting Init Function");
-       
-    }
 
+        logger.warning("Starting Init Function");
+
+    }
+    private void loggerInit(){
+
+        // Fun logging starting
+        logger.info("=======================================================================\n");
+        logger.info("===           PathGenerator Made by Nicholas Blackburn              ===\n");
+        logger.info("===             Time to Take over World... Finally!!                ===\n");
+        logger.info("=======================================================================\n");
+        logger.info("\n");
+        logger.warning("Date today is"+ day +"\n");
+
+}
 }

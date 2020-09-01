@@ -17,16 +17,25 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.TextFormatter;
 import javafx.stage.Stage;
 
+/**
+ * Controller for JavaFx Settings window 
+ * @author Nicholas Blackburn
+ * @param getPathName Returns The user inputted String 
+ * @param getRobotWheelBaseWidth Return entered Wheel base width Double
+ * @param getEnablePi enables pI calculation on theta
+ * @param getEnableNegPi enables negative pi calculation on theta
+ * 
+ */
 public class ExportPageController {
     private Stage stage = new Stage();
-    private StartMain mainpage = new StartMain();
-    
+    private StartMain mainPage = new StartMain();
+
     private Boolean enableMathPi;
     private Boolean enableNegMathPi;
 
-    private double wheelbase;
+    private double wheelBase;
     private String pathName;
-    
+
     @FXML // fx:id="graph_name"
     private TextField csv_location; // Value injected by FXMLLoader
 
@@ -44,20 +53,19 @@ public class ExportPageController {
 
     @FXML
     private Button exit;
-    
+
     public void initialize() {
 
-        // to format robot width
+        // to format robot width input
         Pattern pattern = Pattern.compile("\\d*(\\.\\d*)?");
         TextFormatter formatter = new TextFormatter((UnaryOperator<TextFormatter.Change>) change -> {
             return pattern.matcher(change.getControlNewText()).matches() ? change : null;
         });
         robot_wheelbase_input.setTextFormatter(formatter);
 
-            /** 
-           * Enables Math.PI calc for a Trajectory 
-           * TODO: Write Docs on how to use tool.
-           */
+        /**
+         * Enables Math.PI calc for a Trajectory TODO: Write Docs on how to use tool.
+         */
         enable_mathpi.setOnAction(new EventHandler<ActionEvent>() {
 
             @Override
@@ -65,63 +73,63 @@ public class ExportPageController {
                 if (enable_mathpi.isSelected()) {
                     Main.logger.info("setEnableAMthPi True");
                     enableMathPi = true;
-                }else{
+                } else {
                     enableMathPi = false;
                     Main.logger.info("setEnableAMthPi False");
                 }
             }
-          });
-          /** 
-           * Enables Negative Math.PI calc for a Trajectory 
-           * TODO: Write Docs on how to use tool.
-           */
-          enable_neg_mathpi.setOnAction(new EventHandler<ActionEvent>() {
+        });
+        /**
+         * Enables Negative Math.PI calc for a Trajectory TODO: Write Docs on how to use
+         * tool.
+         */
+        enable_neg_mathpi.setOnAction(new EventHandler<ActionEvent>() {
 
             @Override
             public void handle(final ActionEvent event) {
                 if (enable_neg_mathpi.isSelected()) {
                     Main.logger.info("setEnable Neg MthPi True");
                     enableNegMathPi = true;
-                }else{
+                } else {
                     Main.logger.info("setEnable Neg MthPi False");
                     enableNegMathPi = false;
                 }
             }
-          });   
-          /**
-           * Closes Settings WIndow 
-           * TODO: Fix Data persitisance Issue With Inputed data fater window closed
-           */
-          exit.setOnAction(new EventHandler<ActionEvent>() {
+        });
+        /**
+         * Closes Settings WIndow TODO: Fix Data persitisance Issue With Inputed data
+         * fater window closed
+         */
+        exit.setOnAction(new EventHandler<ActionEvent>() {
 
             @Override
             public void handle(final ActionEvent event) {
                 if (exit.isPressed()) {
                     Main.logger.info("going back to main");
                     stage.hide();
-                }else{
-                  Main.logger.info("Going to main window");
+                } else {
+                    Main.logger.info("Going to main window");
                 }
             }
-          });
+        });
 
-    }   
+    }
 
-    public String getPathName(){
+    public String getPathName() {
         return pathName;
     }
 
-    public double getRobotWheelBase(){
-        return wheelbase;
+    public double getRobotWheelBase() {
+        return wheelBase;
     }
-    
-    public Boolean getEnableMathPi(){
+
+    public Boolean getEnableMathPi() {
         return enableMathPi;
-        
+
     }
-    
-    public Boolean getEnableNegMathPi(){
+
+    public Boolean getEnableNegMathPi() {
         return enableNegMathPi;
-        
+
     }
 }

@@ -18,6 +18,7 @@ public class WaypointManagement {
     private ExportPageController exportPageController = new ExportPageController();
     private FileGeneration fileGen = new FileGeneration();
     public Boolean generatePAth;
+    
 
     /**
      * Creates Waypoints using the data from the waypoint datatable class
@@ -28,6 +29,7 @@ public class WaypointManagement {
      * @param Boolean           enablePiCalcNegative
      */
     public void createWaypoint(WaypointTableData data) {
+        
         int waypointId = data.getId();
         // Mapping Data from Waypoint Table
         config.max_acc = data.getAcc();
@@ -54,7 +56,7 @@ public class WaypointManagement {
             }
         }
         if (generatePAth) {
-            createPath(sequence, config);
+            createPath(sequence, config,exportPageController.getRobotWheelBase());
         }
 
     }
@@ -63,12 +65,12 @@ public class WaypointManagement {
      * Creates Path Via data from createWaypoint Functions
      */
     // TODO: Fix NullPointer in Path
-    private void createPath(WaypointSequence sequence, Config config) {
+    private void createPath(WaypointSequence sequence, Config config, double wheelBase) {
         Main.logger.info("Generatring Path to File");
-        final Path path = PathGenerator.makePath(sequence, config, exportPageController.getRobotWheelBase(),
+        final Path path = PathGenerator.makePath(sequence, config, wheelBase,
                 exportPageController.getPathName());
         Main.logger.info("path is Generateing");
-        fileGen.writeFiles(exportPageController.getPathName(), path);
+        FileGeneration.writeFiles(exportPageController.getPathName(), path);
 
     }
 }

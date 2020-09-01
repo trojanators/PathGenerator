@@ -8,7 +8,7 @@ package org.usfirst.frc.team5740.trajectory;
 public class TrajectoryFollower {
 
   private double kp_;
-  private double ki_;  // Not currently used, but might be in the future.
+  private double ki_; // Not currently used, but might be in the future.
   private double kd_;
   private double kv_;
   private double ka_;
@@ -42,14 +42,13 @@ public class TrajectoryFollower {
     if (current_segment < profile_.getNumSegments()) {
       Trajectory.Segment segment = profile_.getSegment(current_segment);
       double error = segment.pos - distance_so_far;
-      double output = kp_ * error + kd_ * ((error - last_error_)
-              / segment.dt - segment.vel) + (kv_ * segment.vel
-              + ka_ * segment.acc);
+      double output = kp_ * error + kd_ * ((error - last_error_) / segment.dt - segment.vel)
+          + (kv_ * segment.vel + ka_ * segment.acc);
 
       last_error_ = error;
       current_heading = segment.heading;
       current_segment++;
-      //System.out.println("so far: " + distance_so_far + "; output: " + output);
+      // System.out.println("so far: " + distance_so_far + "; output: " + output);
       return output;
     } else {
       return 0;

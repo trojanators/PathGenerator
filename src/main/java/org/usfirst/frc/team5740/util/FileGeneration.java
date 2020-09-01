@@ -13,8 +13,8 @@ import org.usfirst.frc.team5740.trajectory.io.TextFileSerializer;
  * this class is to Generate java and txt file for paths that are Generated
  * 
  * @author nicholas blackburn
- * @param pathName
- * @param path
+ * @param pathName location of file path
+ * @param path path for path generation
  */
 public class FileGeneration {
 

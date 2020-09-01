@@ -38,7 +38,6 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 
-
 public class PathDataPaneController {
 
     private final WaypointManagement wayManage = new WaypointManagement();
@@ -56,7 +55,7 @@ public class PathDataPaneController {
     private int output;
     private int countor = 0;
 
-    private Boolean enable; 
+    private Boolean enable;
 
     @FXML
     private AnchorPane save_entrys;
@@ -198,13 +197,13 @@ public class PathDataPaneController {
                     data = new WaypointTableData(i - countor, x, y, theta, acc, jerk, velocity, dt);
                     waypoint_table.getItems().add(data);
 
-                    try{
+                    try {
                         wayManage.createWaypoint(data);
-                    }catch(final Exception e){
-                        Main.logger.log(Level.WARNING,"Sorry I broke it Again... Dont hate me hate The Math ... \n"+e.getMessage(),e);
-                    
-                    }
+                    } catch (final Exception e) {
+                        Main.logger.log(Level.WARNING,
+                                "Sorry I broke it Again... Dont hate me hate The Math ... \n" + e.getMessage(), e);
 
+                    }
 
                 }
 
