@@ -16,4 +16,4 @@
 
 ## to build ./gradlew build on linux 
 ## to run ./gradlew run on linux 
-## on windows ./gradlew run  powershell
+## on windows ./gradlew run & to build ./gradlew build   powershell
