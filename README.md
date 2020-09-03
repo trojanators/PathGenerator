@@ -13,7 +13,7 @@
 <li> Open Source!!!</li>
 
 ### --
-
-## to build ./gradlew build on linux 
-## to run ./gradlew run on linux 
-## on windows ./gradlew run & to build ./gradlew build   powershell
+## Building How to 
+### to build ./gradlew build on linux 
+### to run ./gradlew run on linux 
+### on windows ./gradlew run & to build ./gradlew build   powershell
