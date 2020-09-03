@@ -5,9 +5,11 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
-import org.usfirst.frc.team5740.trajectory.Path;
-import org.usfirst.frc.team5740.trajectory.io.JavaSerializer;
-import org.usfirst.frc.team5740.trajectory.io.TextFileSerializer;
+import com.team254.lib.trajectory.Path;
+import com.team254.lib.trajectory.io.JavaSerializer;
+import com.team254.lib.trajectory.io.TextFileSerializer;
+
+
 
 /**
  * this class is to Generate java and txt file for paths that are Generated

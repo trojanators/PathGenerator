@@ -1,6 +1,6 @@
-package org.usfirst.frc.team5740.trajectory;
+package com.team254.lib.trajectory;
 
-import org.usfirst.frc.team5740.util.ChezyMath;
+import com.team254.lib.util.ChezyMath;
 
 /**
  * A WaypointSequence is a sequence of Waypoints.  #whatdidyouexpect

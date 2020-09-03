@@ -1,4 +1,4 @@
-package org.usfirst.frc.team5740.trajectory;
+package com.team254.lib.trajectory;
 
 /**
  * Factory class for creating Trajectories.
@@ -13,7 +13,6 @@ public class TrajectoryGenerator {
     public double dt;
     public double max_vel;
     public double max_acc;
-    public double max_dec;
     public double max_jerk;
   }
 
@@ -55,11 +54,8 @@ public class TrajectoryGenerator {
   // Jerk limits are ignored.
   public static final Strategy TrapezoidalStrategy
           = new Strategy("TrapezoidalStrategy");
-  
-  public static final Strategy UnevenTrapezoidalStrategy 
-  		  = new Strategy("UnevenTrapezoidalStrategy");
 
-  // Move from the start to he goal with a S-curve speed profile.  All limits
+  // Move from the start tot he goal with a S-curve speed profile.  All limits
   // are obeyed, but only point-to-point moves (start_vel = goal_vel = 0) are
   // currently supported.
   public static final Strategy SCurvesStrategy
@@ -101,7 +97,6 @@ public class TrajectoryGenerator {
           double goal_pos,
           double goal_vel,
           double goal_heading) {
-	  
     // Choose an automatic strategy.
     if (strategy == AutomaticStrategy) {
       strategy = chooseStrategy(start_vel, goal_vel, config.max_vel);
@@ -147,41 +142,7 @@ public class TrajectoryGenerator {
       traj = secondOrderFilter(f1_length, 1, config.dt, start_vel,
               adjusted_max_vel, impulse, time, TrapezoidalIntegration);
 
-    } else if (strategy == UnevenTrapezoidalStrategy) {
-    	//System.out.println("made it");
-        // How fast can we go given maximum acceleration and deceleration?
-        double start_discount = .5 * start_vel * start_vel / config.max_acc;
-        double end_discount = .5 * goal_vel * goal_vel / config.max_dec;
-        
-
-        double adjusted_max_vel = Math.min(config.max_vel,
-                Math.sqrt(config.max_acc * goal_pos - start_discount
-                        - end_discount));
-        double t_rampup = (adjusted_max_vel - start_vel) / config.max_acc;
-        double x_rampup = start_vel * t_rampup + .5 * config.max_acc
-                * t_rampup * t_rampup;
-        double t_rampdown = (adjusted_max_vel - goal_vel) / config.max_dec;
-        double x_rampdown = adjusted_max_vel * t_rampdown - .5
-                * config.max_dec * t_rampdown * t_rampdown;
-        double x_cruise = goal_pos - x_rampdown - x_rampup;
-      System.out.println(x_rampdown);
-        
-        // The +.5 is to round to nearest
-        int time = (int) ((t_rampup + t_rampdown + x_cruise
-                / adjusted_max_vel) / config.dt + .5);
-        // Compute the length of the linear filters and impulse.
-        int f1_length = (int) Math.ceil((adjusted_max_vel
-                / config.max_acc) / config.dt);
-        int f2_length = (int) Math.ceil((adjusted_max_vel
-                / config.max_dec) / config.dt);
-        double impulse = (goal_pos / adjusted_max_vel) / config.dt
-                - start_vel / config.max_acc / config.dt
-                + start_discount + end_discount;
-        double cruise =  (int) ((x_cruise / adjusted_max_vel) / config.dt);
-        traj = modifiedSecondOrderFilter(config, f1_length, 1, config.dt, start_vel,
-                adjusted_max_vel, cruise, time, TrapezoidalIntegration);
-
-      } else if (strategy == SCurvesStrategy) {
+    } else if (strategy == SCurvesStrategy) {
       // How fast can we go given maximum acceleration and deceleration?
       double adjusted_max_vel = Math.min(config.max_vel,
               (-config.max_acc * config.max_acc + Math.sqrt(config.max_acc
@@ -194,7 +155,7 @@ public class TrajectoryGenerator {
               / config.max_acc) / config.dt);
       int f2_length = (int) Math.ceil((config.max_acc
               / config.max_jerk) / config.dt);
-      double impulse = (goal_pos / adjusted_max_vel) / config.dt;//units in segments
+      double impulse = (goal_pos / adjusted_max_vel) / config.dt;
       int time = (int) (Math.ceil(f1_length + f2_length + impulse));
       traj = secondOrderFilter(f1_length, f2_length, config.dt, 0,
               adjusted_max_vel, impulse, time, TrapezoidalIntegration);
@@ -216,11 +177,10 @@ public class TrajectoryGenerator {
   }
 
   private static Trajectory secondOrderFilter(
-          int f1_length,//length of accel
-          
-          int f2_length,//length of jerk
+          int f1_length,
+          int f2_length,
           double dt,
-          double start_vel,//
+          double start_vel,
           double max_vel,
           double total_impulse,
           int length,
@@ -248,8 +208,7 @@ public class TrajectoryGenerator {
       double input = Math.min(total_impulse, 1);
       if (input < 1) {
         // The impulse is over, so decelerate
-        //input -= 1;
-    	input -= 1;
+        input -= 1;
         total_impulse = 0;
       } else {
         total_impulse -= input;
@@ -263,7 +222,6 @@ public class TrajectoryGenerator {
         f1_last = f1[0];
       }
       f1[i] = Math.max(0.0, Math.min(f1_length, f1_last + input));
-
 
       f2 = 0;
       // Filter through F2
@@ -285,112 +243,6 @@ public class TrajectoryGenerator {
         traj.segments_[i].pos = (last.vel
                 + traj.segments_[i].vel) / 2.0 * dt + last.pos;
       }
-      traj.segments_[i].x = traj.segments_[i].pos;
-      traj.segments_[i].y = 0;
-
-      // Acceleration and jerk are the differences in velocity and
-      // acceleration, respectively.
-      traj.segments_[i].acc = (traj.segments_[i].vel - last.vel) / dt;
-      traj.segments_[i].jerk = (traj.segments_[i].acc - last.acc) / dt;
-      traj.segments_[i].dt = dt;
-
-      last = traj.segments_[i];
-    }
-
-    return traj;
-  }
-  
-  private static Trajectory modifiedSecondOrderFilter(
-		  Config config,
-          int f1_length,//length of accel
-          
-          int f2_length,//length of jerk
-          double dt,
-          double start_vel,//
-          double max_vel,
-          double total_impulse,
-          int length,
-          IntegrationMethod integration) {
-    if (length <= 0) {
-      return null;
-    }
-    Trajectory traj = new Trajectory(length);
-
-    Trajectory.Segment last = new Trajectory.Segment();
-    // First segment is easy
-    last.pos = 0;
-    last.vel = start_vel;
-    last.acc = 0;
-    last.jerk = 0;
-    last.dt = dt;
-
-    // f2 is the average of the last f2_length samples from f1, so while we
-    // can recursively compute f2's sum, we need to keep a buffer for f1.
-    double[] f1 = new double[length];
-    f1[0] = (start_vel / max_vel) * f1_length;
-    double f2;
-    for (int i = 0; i < length; ++i) {
-      // Apply input
-      /*double input = Math.min(total_impulse, 1);
-      if (input < 1) {
-        // The impulse is over, so decelerate
-        //input -= .5;
-    	input -= config.max_dec/config.max_acc;
-    	  // -= 1/(length - i);
-        total_impulse = 0;
-      } else {
-        total_impulse -= input;
-      }*/
-    	
-    double input;
-    if(i < f1_length){
-    	input = 1;
-    } else if(i < f1_length + total_impulse){
-    	input = 0;
-    } else{
-    	input = -config.max_dec/config.max_acc;
-    }
-
-      // Filter through F1
-      double f1_last;
-      if (i > 0) {
-        f1_last = f1[i - 1];
-      } else {
-        f1_last = f1[0];
-      }
-      f1[i] = Math.max(0.0, Math.min(f1_length, f1_last + input));
-      //System.out.println(total_impulse);
-      //System.out.println(f1[i]);
-     /* try {
-		//Thread.sleep(10);
-	} catch (InterruptedException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	}*/
-
-      f2 = 0;
-      // Filter through F2
-      for (int j = 0; j < f2_length; ++j) {
-        if (i - j < 0) {
-          break;
-        }
-
-        f2 += f1[i - j];
-        
-      }
-      f2 = f2 / f1_length;
-      
-      //System.out.println(f2);
-      // Velocity is the normalized sum of f2 * the max velocity
-      traj.segments_[i].vel = f2 / f2_length * max_vel;
-      //System.out.println(f2 / f2_length * max_vel);
-      if (integration == RectangularIntegration) {
-        traj.segments_[i].pos = traj.segments_[i].vel * dt + last.pos;
-      } else if (integration == TrapezoidalIntegration) {
-        traj.segments_[i].pos = (last.vel
-                + traj.segments_[i].vel) / 2.0 * dt + last.pos;
-      }
-      System.out.println(traj.segments_[i].pos);
       traj.segments_[i].x = traj.segments_[i].pos;
       traj.segments_[i].y = 0;
 

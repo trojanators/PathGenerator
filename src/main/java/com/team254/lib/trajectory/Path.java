@@ -1,6 +1,6 @@
-package org.usfirst.frc.team5740.trajectory;
+package com.team254.lib.trajectory;
 
-import org.usfirst.frc.team5740.trajectory.Trajectory.Segment;
+import com.team254.lib.trajectory.Trajectory.Segment;
 
 /**
  * Base class for an autonomous path.

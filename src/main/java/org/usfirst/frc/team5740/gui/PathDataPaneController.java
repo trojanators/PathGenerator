@@ -55,7 +55,9 @@ public class PathDataPaneController {
     private int output;
     private int countor = 0;
 
-    private Boolean enable;
+    private Boolean enable_Neg_Pi;
+    private Boolean enable_Pi;
+    private Boolean genpath;
 
     @FXML
     private AnchorPane save_entrys;
@@ -95,6 +97,21 @@ public class PathDataPaneController {
 
     @FXML
     private TextField waypoint_dt_input;
+
+    @FXML
+    private TextField path_name;
+
+    @FXML
+    private TextField robot_wheelbase;
+
+    @FXML
+    private TextField pathfile_path;
+
+    @FXML
+    private CheckBox pi_enable;
+
+    @FXML
+    private CheckBox neg_pi;
 
     @FXML
     private TableView<WaypointTableData> waypoint_table;
@@ -159,6 +176,9 @@ public class PathDataPaneController {
         final TextFormatter formatter6 = new TextFormatter((UnaryOperator<TextFormatter.Change>) change -> {
             return pattern.matcher(change.getControlNewText()).matches() ? change : null;
         });
+        final TextFormatter formatter7 = new TextFormatter((UnaryOperator<TextFormatter.Change>) change -> {
+            return pattern.matcher(change.getControlNewText()).matches() ? change : null;
+        });
 
         waypoint_x_input.setTextFormatter(formatter);
         waypoint_y_input.setTextFormatter(formatter1);
@@ -167,6 +187,7 @@ public class PathDataPaneController {
         waypoint_jerk_input.setTextFormatter(formatter4);
         waypoint_velocity_imput.setTextFormatter(formatter5);
         waypoint_dt_input.setTextFormatter(formatter6);
+        robot_wheelbase.setTextFormatter(formatter7);
     }
 
     @FXML
@@ -196,14 +217,7 @@ public class PathDataPaneController {
 
                     data = new WaypointTableData(i - countor, x, y, theta, acc, jerk, velocity, dt);
                     waypoint_table.getItems().add(data);
-
-                    try {
-                        wayManage.createWaypoint(data);
-                    } catch (final Exception e) {
-                        Main.logger.log(Level.WARNING,
-                                "Sorry I broke it Again... Dont hate me hate The Math ... \n" + e.getMessage(), e);
-
-                    }
+                    wayManage.createWaypoint(data, enable_Pi, enable_Neg_Pi,getRobotWheelbase(),getPathName(),getPathSaveLocal(),genpath);
 
                 }
 
@@ -236,7 +250,7 @@ public class PathDataPaneController {
                 if (generate_path.isSelected()) {
                     // TODO: remove data from Waypoint listview
                     Main.logger.info("starting to generate path");
-                    wayManage.generatePAth = true;
+                    genpath = true;
                 }
 
             }
@@ -259,6 +273,51 @@ public class PathDataPaneController {
             }
 
         });
+        // enables pi calc on theta
+        pi_enable.setOnAction((EventHandler<ActionEvent>) new EventHandler<ActionEvent>() {
 
+            @Override
+            public void handle(final ActionEvent event) {
+              
+                if (pi_enable.isSelected()) {
+                    // TODO: add enty to display_path_entrys
+                    Main.logger.info("Enabled Pi calc");
+                     enable_Pi = true;
+                }else{
+                    enable_Pi = false;
+                }
+
+            }
+
+        });
+
+       neg_pi.setOnAction((EventHandler<ActionEvent>) new EventHandler<ActionEvent>() {
+
+            @Override
+            public void handle(final ActionEvent event) {
+              
+                if (pi_enable.isSelected()) {
+                    // TODO: add enty to display_path_entrys
+                    Main.logger.info("Enabled Pi calc");
+                     enable_Neg_Pi = true;
+                }else{
+                    enable_Neg_Pi = false;
+                }
+
+            }
+
+        });
+    }
+
+	private String getPathName() {
+		return path_name.getText();
+    }
+    
+    private double getRobotWheelbase(){
+        return Double.valueOf(robot_wheelbase.getText());
+    }
+
+    private String getPathSaveLocal(){
+        return pathfile_path.getText();
     }
 }

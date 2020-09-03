@@ -1,6 +1,6 @@
-package org.usfirst.frc.team5740.trajectory;
+package com.team254.lib.trajectory;
 
-import org.usfirst.frc.team5740.util.ChezyMath;
+import com.team254.lib.util.ChezyMath;
 
 /**
  * Do cubic spline interpolation between points.
@@ -85,15 +85,14 @@ public class Spline {
     // line between p0 and p1.
     if (almostEqual(Math.abs(theta0_hat), Math.PI / 2)
             || almostEqual(Math.abs(theta1_hat), Math.PI / 2)) {
-      //return false;
-    	
+      return false;
     }
     // We also cannot handle the case that the end angle is facing towards the
     // start angle (total turn > 90 degrees).
     if (Math.abs(ChezyMath.getDifferenceInAngleRadians(theta0_hat,
             theta1_hat))
             >= Math.PI / 2) {
-      //return false;
+      return false;
     }
     // Turn angles into derivatives (slopes)
     double yp0_hat = Math.tan(theta0_hat);

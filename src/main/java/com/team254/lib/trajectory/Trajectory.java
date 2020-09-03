@@ -1,6 +1,6 @@
-package org.usfirst.frc.team5740.trajectory;
+package com.team254.lib.trajectory;
 
-import org.usfirst.frc.team5740.util.ChezyMath;
+import com.team254.lib.util.ChezyMath;
 
 /**
  * Implementation of a Trajectory using arrays as the underlying storage
@@ -9,7 +9,7 @@ import org.usfirst.frc.team5740.util.ChezyMath;
  * @author Jared341
  */
 public class Trajectory {
-
+  
   public static class Pair {
     public Pair(Trajectory left, Trajectory right) {
       this.left = left;
@@ -27,7 +27,8 @@ public class Trajectory {
     public Segment() {
     }
 
-    public Segment(double pos, double vel, double acc, double jerk, double heading, double dt, double x, double y) {
+    public Segment(double pos, double vel, double acc, double jerk,
+            double heading, double dt, double x, double y) {
       this.pos = pos;
       this.vel = vel;
       this.acc = acc;
@@ -50,7 +51,8 @@ public class Trajectory {
     }
 
     public String toString() {
-      return "pos: " + pos + "; vel: " + vel + "; acc: " + acc + "; jerk: " + jerk + "; heading: " + heading;
+      return "pos: " + pos + "; vel: " + vel + "; acc: " + acc + "; jerk: "
+              + jerk + "; heading: " + heading;
     }
   }
 
@@ -63,11 +65,11 @@ public class Trajectory {
       segments_[i] = new Segment();
     }
   }
-
+  
   public Trajectory(Segment[] segments) {
     segments_ = segments;
   }
-
+  
   public void setInvertedY(boolean inverted) {
     inverted_y_ = inverted;
   }
@@ -90,7 +92,7 @@ public class Trajectory {
       return new Segment();
     }
   }
-
+  
   public void setSegment(int index, Segment segment) {
     if (index < getNumSegments()) {
       segments_[index] = segment;
@@ -107,7 +109,8 @@ public class Trajectory {
   }
 
   public void append(Trajectory to_append) {
-    Segment[] temp = new Segment[getNumSegments() + to_append.getNumSegments()];
+    Segment[] temp = new Segment[getNumSegments()
+            + to_append.getNumSegments()];
 
     for (int i = 0; i < getNumSegments(); ++i) {
       temp[i] = new Segment(segments_[i]);
@@ -120,11 +123,12 @@ public class Trajectory {
   }
 
   public Trajectory copy() {
-    Trajectory cloned = new Trajectory(getNumSegments());
+    Trajectory cloned
+            = new Trajectory(getNumSegments());
     cloned.segments_ = copySegments(this.segments_);
     return cloned;
   }
-
+  
   private Segment[] copySegments(Segment[] tocopy) {
     Segment[] copied = new Segment[tocopy.length];
     for (int i = 0; i < tocopy.length; ++i) {

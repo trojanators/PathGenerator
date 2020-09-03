@@ -1,6 +1,6 @@
-package org.usfirst.frc.team5740.trajectory.io;
+package com.team254.lib.trajectory.io;
 
-import org.usfirst.frc.team5740.trajectory.Path;
+import com.team254.lib.trajectory.Path;
 
 /**
  * Interface for methods that deserializes a Path or Trajectory.

@@ -1,6 +1,6 @@
-package org.usfirst.frc.team5740.trajectory.io;
+package com.team254.lib.trajectory.io;
 
-import org.usfirst.frc.team5740.trajectory.Path;
+import com.team254.lib.trajectory.Path;
 import java.util.StringTokenizer;
 
 /**

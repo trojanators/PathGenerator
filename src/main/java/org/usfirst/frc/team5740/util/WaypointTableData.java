@@ -1,8 +1,9 @@
 package org.usfirst.frc.team5740.util;
 
+import com.team254.lib.trajectory.TrajectoryGenerator;
+
 import org.usfirst.frc.team5740.Main;
-import org.usfirst.frc.team5740.trajectory.TrajectoryGenerator;
-import org.usfirst.frc.team5740.trajectory.WaypointSequence;
+
 
 /**
  * This class is for Waypoint Data Management / Creatiom
@@ -21,6 +22,7 @@ public class WaypointTableData {
     private double waypointMaxJerk = 0;
     private double waypointMaxVelocity = 0;
     private double waypointDt = 0;
+    
 
     // Waypoint data constructor
     public WaypointTableData(int waypoint_id, double waypoint_x, double waypoint_y, double theta, double maxAcc,

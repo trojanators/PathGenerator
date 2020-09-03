@@ -2,23 +2,22 @@ package org.usfirst.frc.team5740.util;
 
 import java.io.File;
 
+import com.team254.lib.trajectory.Path;
+import com.team254.lib.trajectory.PathGenerator;
+import com.team254.lib.trajectory.TrajectoryGenerator;
+import com.team254.lib.trajectory.WaypointSequence;
+import com.team254.lib.trajectory.TrajectoryGenerator.Config;
+import com.team254.lib.trajectory.WaypointSequence.Waypoint;
+
 import org.usfirst.frc.team5740.Main;
-import org.usfirst.frc.team5740.gui.ExportPageController;
-import org.usfirst.frc.team5740.trajectory.Path;
-import org.usfirst.frc.team5740.trajectory.PathGenerator;
-import org.usfirst.frc.team5740.trajectory.TrajectoryGenerator;
-import org.usfirst.frc.team5740.trajectory.WaypointSequence;
-import org.usfirst.frc.team5740.trajectory.TrajectoryGenerator.Config;
-import org.usfirst.frc.team5740.trajectory.WaypointSequence.Waypoint;
+
 
 public class WaypointManagement {
 
     private static TrajectoryGenerator.Config config = new TrajectoryGenerator.Config();
-    private WaypointSequence sequence = new WaypointSequence(10);
-    private ExportPageController exportPageController = new ExportPageController();
-    private FileGeneration fileGen = new FileGeneration();
-    public Boolean generatePAth;
-    
+    private final WaypointSequence sequence = new WaypointSequence(10);
+
+    private final FileGeneration fileGen = new FileGeneration();
 
     /**
      * Creates Waypoints using the data from the waypoint datatable class
@@ -28,10 +27,10 @@ public class WaypointManagement {
      * @param Boolan            enablePICalcPositive
      * @param Boolean           enablePiCalcNegative
      */
-    public void createWaypoint(WaypointTableData data) {
-        
-    
-        int waypointId = data.getId();
+    public void createWaypoint(final WaypointTableData data, final Boolean enablePiCalc, final Boolean enableNegPi,
+            final double wheebase, final String pathName, final String Location, final Boolean genpath) {
+
+        final int waypointId = data.getId();
         // Mapping Data from Waypoint Table to config
         config.max_acc = data.getAcc();
         config.max_vel = data.getVelocity();
@@ -41,22 +40,27 @@ public class WaypointManagement {
         // Creates a waypoint without MathPi cal
         if (waypointId > 0) {
             sequence.addWaypoint(new Waypoint(data.getX() / 12.0, data.getY() / 12.0, data.getTheta()));
-            Main.logger.warning("Waypoint" + data.getX() / 12.0 + "" + data.getY() / 12.0 + " THeta" + data.getTheta());
+
         } else {
 
-            if (waypointId >= 0 && exportPageController.getEnableMathPi()) {
+            if (waypointId >= 0 && enablePiCalc) {
                 sequence.addWaypoint(new Waypoint(data.getX() / 12.0, data.getY() / 12.0, Math.PI / data.getTheta()));
                 Main.logger.warning("Waypoint" + data.getX() / 12.0 + "" + data.getY() / 12.0 + " THeta"
                         + Math.PI / data.getTheta());
             }
 
-            if (waypointId >= 0 && exportPageController.getEnableNegMathPi()) {
+            if (waypointId >= 0 && enableNegPi) {
                 sequence.addWaypoint(new Waypoint(data.getX() / 12.0, data.getY() / 12.0, -Math.PI / data.getTheta()));
-                Main.logger.warning("Waypoint" + data.getX() / 12.0 + "," + data.getY() / 12.0 + "THeta"+ -Math.PI / data.getTheta());
+                Main.logger.warning("Waypoint" + data.getX() / 12.0 + "," + data.getY() / 12.0 + "THeta"
+                        + -Math.PI / data.getTheta());
             }
         }
-        if (generatePAth) {
-            createPath(sequence, config,exportPageController.getRobotWheelBase(),exportPageController.getCsvLocation(),exportPageController.getPathName());
+        if (genpath) {
+            // Before Gen path Print out all data
+            Main.logger.warning("Data" + wheebase + "," + Location + "," + pathName);
+            createPath(sequence, config, wheebase, Location, pathName);
+        } else {
+            Main.logger.info("DID NOT CLICK gen");
         }
 
     }
@@ -65,12 +69,12 @@ public class WaypointManagement {
      * Creates Path Via data from createWaypoint Functions
      */
     // TODO: Fix NullPointer in Path
-    private void createPath(WaypointSequence sequence, Config config, double wheelBase, String location, String pathnameString) {
+    private void createPath(final WaypointSequence sequence, final Config config, final double wheelBase,
+            final String location, final String PathName) {
         Main.logger.info("Generatring Path to File");
-        final Path path = PathGenerator.makePath(sequence, config, wheelBase,
-                exportPageController.getPathName());
+        final Path path = PathGenerator.makePath(sequence, config, wheelBase, PathName);
         Main.logger.info("path is Generateing");
-        FileGeneration.writeFiles(location+pathnameString, path);
+        FileGeneration.writeFiles(location+PathName, path);
 
     }
 }

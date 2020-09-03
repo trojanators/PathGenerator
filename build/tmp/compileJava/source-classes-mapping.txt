@@ -1,65 +1,63 @@
-org/usfirst/frc/team5740/trajectory/WaypointSequence.java
- org.usfirst.frc.team5740.trajectory.WaypointSequence
- org.usfirst.frc.team5740.trajectory.WaypointSequence$Waypoint
-org/usfirst/frc/team5740/trajectory/io/TextFileSerializer.java
- org.usfirst.frc.team5740.trajectory.io.TextFileSerializer
 org/usfirst/frc/team5740/gui/MainController.java
  org.usfirst.frc.team5740.gui.MainController
  org.usfirst.frc.team5740.gui.MainController$1
  org.usfirst.frc.team5740.gui.MainController$2
- org.usfirst.frc.team5740.gui.MainController$3
-org/usfirst/frc/team5740/gui/ExportPageController.java
- org.usfirst.frc.team5740.gui.ExportPageController
- org.usfirst.frc.team5740.gui.ExportPageController$1
- org.usfirst.frc.team5740.gui.ExportPageController$2
- org.usfirst.frc.team5740.gui.ExportPageController$3
-org/usfirst/frc/team5740/trajectory/Path.java
- org.usfirst.frc.team5740.trajectory.Path
+com/team254/lib/trajectory/PathGenerator.java
+ com.team254.lib.trajectory.PathGenerator
+com/team254/lib/trajectory/io/IPathDeserializer.java
+ com.team254.lib.trajectory.io.IPathDeserializer
 org/usfirst/frc/team5740/gui/StartMain.java
  org.usfirst.frc.team5740.gui.StartMain
-org/usfirst/frc/team5740/trajectory/Spline.java
- org.usfirst.frc.team5740.trajectory.Spline
- org.usfirst.frc.team5740.trajectory.Spline$Type
-org/usfirst/frc/team5740/trajectory/Trajectory.java
- org.usfirst.frc.team5740.trajectory.Trajectory
- org.usfirst.frc.team5740.trajectory.Trajectory$Pair
- org.usfirst.frc.team5740.trajectory.Trajectory$Segment
-org/usfirst/frc/team5740/trajectory/TrajectoryGenerator.java
- org.usfirst.frc.team5740.trajectory.TrajectoryGenerator
- org.usfirst.frc.team5740.trajectory.TrajectoryGenerator$Config
- org.usfirst.frc.team5740.trajectory.TrajectoryGenerator$IntegrationMethod
- org.usfirst.frc.team5740.trajectory.TrajectoryGenerator$Strategy
-org/usfirst/frc/team5740/trajectory/io/IPathSerializer.java
- org.usfirst.frc.team5740.trajectory.io.IPathSerializer
+com/team254/lib/trajectory/io/JavaStringSerializer.java
+ com.team254.lib.trajectory.io.JavaStringSerializer
+com/team254/lib/trajectory/Spline.java
+ com.team254.lib.trajectory.Spline
+ com.team254.lib.trajectory.Spline$Type
+com/team254/lib/trajectory/io/IPathSerializer.java
+ com.team254.lib.trajectory.io.IPathSerializer
 org/usfirst/frc/team5740/gui/PathDataPaneController.java
  org.usfirst.frc.team5740.gui.PathDataPaneController
  org.usfirst.frc.team5740.gui.PathDataPaneController$1
  org.usfirst.frc.team5740.gui.PathDataPaneController$2
  org.usfirst.frc.team5740.gui.PathDataPaneController$3
  org.usfirst.frc.team5740.gui.PathDataPaneController$4
-org/usfirst/frc/team5740/trajectory/io/IPathDeserializer.java
- org.usfirst.frc.team5740.trajectory.io.IPathDeserializer
-org/usfirst/frc/team5740/trajectory/io/JavaStringSerializer.java
- org.usfirst.frc.team5740.trajectory.io.JavaStringSerializer
+ org.usfirst.frc.team5740.gui.PathDataPaneController$5
+ org.usfirst.frc.team5740.gui.PathDataPaneController$6
+com/team254/lib/trajectory/TrajectoryFollower.java
+ com.team254.lib.trajectory.TrajectoryFollower
 org/usfirst/frc/team5740/util/WaypointTableData.java
  org.usfirst.frc.team5740.util.WaypointTableData
 org/usfirst/frc/team5740/util/FileGeneration.java
  org.usfirst.frc.team5740.util.FileGeneration
 org/usfirst/frc/team5740/gui/StartPathData.java
  org.usfirst.frc.team5740.gui.StartPathData
-org/usfirst/frc/team5740/trajectory/io/JavaSerializer.java
- org.usfirst.frc.team5740.trajectory.io.JavaSerializer
+com/team254/lib/trajectory/Main.java
+ com.team254.lib.trajectory.Main
+com/team254/lib/trajectory/io/TextFileDeserializer.java
+ com.team254.lib.trajectory.io.TextFileDeserializer
 org/usfirst/frc/team5740/util/ChezyMath.java
  org.usfirst.frc.team5740.util.ChezyMath
 org/usfirst/frc/team5740/Main.java
  org.usfirst.frc.team5740.Main
-org/usfirst/frc/team5740/trajectory/TrajectoryFollower.java
- org.usfirst.frc.team5740.trajectory.TrajectoryFollower
-org/usfirst/frc/team5740/gui/StartSettings.java
- org.usfirst.frc.team5740.gui.StartSettings
-org/usfirst/frc/team5740/trajectory/io/TextFileDeserializer.java
- org.usfirst.frc.team5740.trajectory.io.TextFileDeserializer
-org/usfirst/frc/team5740/trajectory/PathGenerator.java
- org.usfirst.frc.team5740.trajectory.PathGenerator
+com/team254/lib/trajectory/Trajectory.java
+ com.team254.lib.trajectory.Trajectory
+ com.team254.lib.trajectory.Trajectory$Pair
+ com.team254.lib.trajectory.Trajectory$Segment
+com/team254/lib/trajectory/io/TextFileSerializer.java
+ com.team254.lib.trajectory.io.TextFileSerializer
+com/team254/lib/util/ChezyMath.java
+ com.team254.lib.util.ChezyMath
+com/team254/lib/trajectory/TrajectoryGenerator.java
+ com.team254.lib.trajectory.TrajectoryGenerator
+ com.team254.lib.trajectory.TrajectoryGenerator$Config
+ com.team254.lib.trajectory.TrajectoryGenerator$IntegrationMethod
+ com.team254.lib.trajectory.TrajectoryGenerator$Strategy
+com/team254/lib/trajectory/Path.java
+ com.team254.lib.trajectory.Path
+com/team254/lib/trajectory/io/JavaSerializer.java
+ com.team254.lib.trajectory.io.JavaSerializer
 org/usfirst/frc/team5740/util/WaypointManagement.java
  org.usfirst.frc.team5740.util.WaypointManagement
+com/team254/lib/trajectory/WaypointSequence.java
+ com.team254.lib.trajectory.WaypointSequence
+ com.team254.lib.trajectory.WaypointSequence$Waypoint
