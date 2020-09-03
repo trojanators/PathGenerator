@@ -1,26 +1,44 @@
-Sep 03, 2020 11:20:57 AM org.usfirst.frc.team5740.Main loggerInit
+Sep 03, 2020 11:03:35 AM org.usfirst.frc.team5740.Main loggerInit
 INFO: =======================================================================
 
-Sep 03, 2020 11:20:57 AM org.usfirst.frc.team5740.Main loggerInit
+Sep 03, 2020 11:03:35 AM org.usfirst.frc.team5740.Main loggerInit
 INFO: ===           PathGenerator Made by Nicholas Blackburn              ===
 
-Sep 03, 2020 11:20:57 AM org.usfirst.frc.team5740.Main loggerInit
+Sep 03, 2020 11:03:35 AM org.usfirst.frc.team5740.Main loggerInit
 INFO: ===             Time to Take over World... Finally!!                ===
 
-Sep 03, 2020 11:20:57 AM org.usfirst.frc.team5740.Main loggerInit
+Sep 03, 2020 11:03:35 AM org.usfirst.frc.team5740.Main loggerInit
 INFO: =======================================================================
 
-Sep 03, 2020 11:20:57 AM org.usfirst.frc.team5740.Main loggerInit
+Sep 03, 2020 11:03:35 AM org.usfirst.frc.team5740.Main loggerInit
 INFO: 
 
-Sep 03, 2020 11:20:57 AM org.usfirst.frc.team5740.Main loggerInit
+Sep 03, 2020 11:03:35 AM org.usfirst.frc.team5740.Main loggerInit
 WARNING: Date today is2020-09-03
 
-Sep 03, 2020 11:20:57 AM org.usfirst.frc.team5740.Main start
+Sep 03, 2020 11:03:35 AM org.usfirst.frc.team5740.Main start
 INFO: loading Fxml file
-Sep 03, 2020 11:20:57 AM org.usfirst.frc.team5740.Main start
+Sep 03, 2020 11:03:35 AM org.usfirst.frc.team5740.Main start
 INFO: Done Loading main.fxml file
-Sep 03, 2020 11:20:57 AM org.usfirst.frc.team5740.Main start
+Sep 03, 2020 11:03:36 AM org.usfirst.frc.team5740.Main start
 WARNING: Successfully displaying Main page
-Sep 03, 2020 11:20:57 AM org.usfirst.frc.team5740.Main start
+Sep 03, 2020 11:03:36 AM org.usfirst.frc.team5740.Main start
 WARNING: Starting Init Function
+Sep 03, 2020 11:03:37 AM org.usfirst.frc.team5740.gui.MainController$1 handle
+INFO: Starting Path Generator
+Sep 03, 2020 11:03:37 AM org.usfirst.frc.team5740.gui.StartPathData start
+INFO: loading Fxml file
+Sep 03, 2020 11:03:37 AM org.usfirst.frc.team5740.gui.StartPathData start
+INFO: Done Loading PathData.fxml file
+Sep 03, 2020 11:03:37 AM org.usfirst.frc.team5740.gui.StartPathData start
+WARNING: Successfully displaying Pathdata page
+Sep 03, 2020 11:03:37 AM org.usfirst.frc.team5740.gui.StartPathData start
+WARNING: Starting PathData Function
+Sep 03, 2020 11:04:01 AM org.usfirst.frc.team5740.gui.PathDataPaneController$3 handle
+INFO: starting to generate path
+Sep 03, 2020 11:04:07 AM org.usfirst.frc.team5740.gui.PathDataPaneController$1 handle
+INFO: new Waypoint
+Sep 03, 2020 11:04:27 AM org.usfirst.frc.team5740.util.WaypointManagement createWaypoint
+WARNING: Data90.0,nick,nick
+Sep 03, 2020 11:04:33 AM org.usfirst.frc.team5740.util.WaypointManagement createPath
+INFO: Generatring Path to File
