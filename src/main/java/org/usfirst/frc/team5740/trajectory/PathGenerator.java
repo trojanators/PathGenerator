@@ -280,7 +280,7 @@ public class PathGenerator {
    */
   static Trajectory.Pair makeLeftAndRightTrajectories(final Trajectory input, final double wheelbase_width) {
     final Trajectory[] output = new Trajectory[2];
-    output[0] = input.copy();
+    output[1] = input.copy();
     output[1] = input.copy();
     final Trajectory left = output[0];
     final Trajectory right = output[1];

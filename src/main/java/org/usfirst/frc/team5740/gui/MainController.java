@@ -19,6 +19,9 @@ import javafx.stage.Stage;
  */
 
 public class MainController {
+
+    public Stage stage2 = new Stage();
+
     private StartPathData path = new StartPathData();
     private StartSettings set = new StartSettings();
     private Stage stage = new Stage();
@@ -83,7 +86,6 @@ public class MainController {
                     Main.logger.info("Starting Settings");
                     // Cheks to see if pathData is hidden
                     try {
-                        Stage stage2 = new Stage();
                         if (!stage2.isShowing()) {
                             set.start(stage2);
                             stage2.show();
@@ -93,7 +95,7 @@ public class MainController {
                         e.printStackTrace();
                     }
                 }
-
+                
             }
 
         });

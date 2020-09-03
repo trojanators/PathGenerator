@@ -30,8 +30,9 @@ public class WaypointManagement {
      */
     public void createWaypoint(WaypointTableData data) {
         
+    
         int waypointId = data.getId();
-        // Mapping Data from Waypoint Table
+        // Mapping Data from Waypoint Table to config
         config.max_acc = data.getAcc();
         config.max_vel = data.getVelocity();
         config.max_jerk = data.getJerk();
@@ -51,12 +52,11 @@ public class WaypointManagement {
 
             if (waypointId >= 0 && exportPageController.getEnableNegMathPi()) {
                 sequence.addWaypoint(new Waypoint(data.getX() / 12.0, data.getY() / 12.0, -Math.PI / data.getTheta()));
-                Main.logger.warning("Waypoint" + data.getX() / 12.0 + "" + data.getY() / 12.0 + " THeta"
-                        + -Math.PI / data.getTheta());
+                Main.logger.warning("Waypoint" + data.getX() / 12.0 + "," + data.getY() / 12.0 + "THeta"+ -Math.PI / data.getTheta());
             }
         }
         if (generatePAth) {
-            createPath(sequence, config,exportPageController.getRobotWheelBase());
+            createPath(sequence, config,exportPageController.getRobotWheelBase(),exportPageController.getCsvLocation(),exportPageController.getPathName());
         }
 
     }
@@ -65,12 +65,12 @@ public class WaypointManagement {
      * Creates Path Via data from createWaypoint Functions
      */
     // TODO: Fix NullPointer in Path
-    private void createPath(WaypointSequence sequence, Config config, double wheelBase) {
+    private void createPath(WaypointSequence sequence, Config config, double wheelBase, String location, String pathnameString) {
         Main.logger.info("Generatring Path to File");
         final Path path = PathGenerator.makePath(sequence, config, wheelBase,
                 exportPageController.getPathName());
         Main.logger.info("path is Generateing");
-        FileGeneration.writeFiles(exportPageController.getPathName(), path);
+        FileGeneration.writeFiles(location+pathnameString, path);
 
     }
 }

@@ -10,11 +10,13 @@ import javafx.stage.Stage;
 
 public class StartSettings extends Application {
 
+    private Stage settings;
     private final FXMLLoader loader = new FXMLLoader();
 
     // Starts JavaFX Gui
     @Override
     public void start(final Stage stage) throws Exception {
+        this.settings = stage; 
         Main.logger.info("loading Fxml file");
         loader.setLocation(getClass().getResource("/settings.fxml"));
         Main.logger.info("Done Loading settings.fxml file");
@@ -32,6 +34,10 @@ public class StartSettings extends Application {
     }
     public void open(Stage stage) {
         stage.show();
+    }
+
+    public Stage getCurrentStage(){
+        return settings;
     }
     
 }

@@ -27,14 +27,14 @@ import javafx.stage.Stage;
  * 
  */
 public class ExportPageController {
-    private Stage stage = new Stage();
-    private StartMain mainPage = new StartMain();
+    private StartSettings setting = new StartSettings();
 
     private Boolean enableMathPi;
     private Boolean enableNegMathPi;
 
-    private double wheelBase;
+    private String wheelBase;
     private String pathName;
+    private String csvpath;
 
     @FXML // fx:id="graph_name"
     private TextField csv_location; // Value injected by FXMLLoader
@@ -52,7 +52,7 @@ public class ExportPageController {
     private CheckBox enable_neg_mathpi;
 
     @FXML
-    private Button exit;
+    private Button save;
 
     public void initialize() {
 
@@ -100,16 +100,13 @@ public class ExportPageController {
          * Closes Settings WIndow TODO: Fix Data persitisance Issue With Inputed data
          * fater window closed
          */
-        exit.setOnAction(new EventHandler<ActionEvent>() {
+        save.setOnAction(new EventHandler<ActionEvent>() {
 
             @Override
             public void handle(final ActionEvent event) {
-                if (exit.isPressed()) {
-                    Main.logger.info("going back to main");
-                    stage.hide();
-                } else {
-                    Main.logger.info("Going to main window");
-                }
+                pathName = path_name_input.getText();
+                wheelBase=robot_wheelbase_input.getText();
+                csvpath=csv_location.getText();
             }
         });
 
@@ -119,8 +116,12 @@ public class ExportPageController {
         return pathName;
     }
 
+    public String getCsvLocation(){
+        return csvpath;
+    }
+
     public double getRobotWheelBase() {
-        return wheelBase;
+        return 90.0;
     }
 
     public Boolean getEnableMathPi() {
