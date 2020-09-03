@@ -217,8 +217,13 @@ public class PathDataPaneController {
 
                     data = new WaypointTableData(i - countor, x, y, theta, acc, jerk, velocity, dt);
                     waypoint_table.getItems().add(data);
-                    wayManage.createWaypoint(data, enable_Pi, enable_Neg_Pi,getRobotWheelbase(),getPathName(),getPathSaveLocal(),genpath);
 
+                    try{
+                        wayManage.createWaypoint(data, enable_Pi, enable_Neg_Pi,getRobotWheelbase(),getPathName(),getPathSaveLocal(),genpath);
+                    }
+                    catch(Exception e){
+                        e.printStackTrace();
+                    }
                 }
 
             }

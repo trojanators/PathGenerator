@@ -15,14 +15,9 @@ com/team254/lib/trajectory/Spline.java
  com.team254.lib.trajectory.Spline$Type
 com/team254/lib/trajectory/io/IPathSerializer.java
  com.team254.lib.trajectory.io.IPathSerializer
-org/usfirst/frc/team5740/gui/PathDataPaneController.java
- org.usfirst.frc.team5740.gui.PathDataPaneController
- org.usfirst.frc.team5740.gui.PathDataPaneController$1
- org.usfirst.frc.team5740.gui.PathDataPaneController$2
- org.usfirst.frc.team5740.gui.PathDataPaneController$3
- org.usfirst.frc.team5740.gui.PathDataPaneController$4
- org.usfirst.frc.team5740.gui.PathDataPaneController$5
- org.usfirst.frc.team5740.gui.PathDataPaneController$6
+com/team254/lib/trajectory/WaypointSequence.java
+ com.team254.lib.trajectory.WaypointSequence
+ com.team254.lib.trajectory.WaypointSequence$Waypoint
 com/team254/lib/trajectory/TrajectoryFollower.java
  com.team254.lib.trajectory.TrajectoryFollower
 org/usfirst/frc/team5740/util/WaypointTableData.java
@@ -58,6 +53,11 @@ com/team254/lib/trajectory/io/JavaSerializer.java
  com.team254.lib.trajectory.io.JavaSerializer
 org/usfirst/frc/team5740/util/WaypointManagement.java
  org.usfirst.frc.team5740.util.WaypointManagement
-com/team254/lib/trajectory/WaypointSequence.java
- com.team254.lib.trajectory.WaypointSequence
- com.team254.lib.trajectory.WaypointSequence$Waypoint
+org/usfirst/frc/team5740/gui/PathDataPaneController.java
+ org.usfirst.frc.team5740.gui.PathDataPaneController
+ org.usfirst.frc.team5740.gui.PathDataPaneController$1
+ org.usfirst.frc.team5740.gui.PathDataPaneController$2
+ org.usfirst.frc.team5740.gui.PathDataPaneController$3
+ org.usfirst.frc.team5740.gui.PathDataPaneController$4
+ org.usfirst.frc.team5740.gui.PathDataPaneController$5
+ org.usfirst.frc.team5740.gui.PathDataPaneController$6
