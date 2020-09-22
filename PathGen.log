@@ -1,68 +1,40 @@
-Sep 22, 2020 12:05:54 PM org.usfirst.frc.team5740.Main loggerInit
+Sep 22, 2020 4:16:30 PM org.usfirst.frc.team5740.Main loggerInit
 INFO: =======================================================================
 
-Sep 22, 2020 12:05:54 PM org.usfirst.frc.team5740.Main loggerInit
+Sep 22, 2020 4:16:30 PM org.usfirst.frc.team5740.Main loggerInit
 INFO: ===           PathGenerator Made by Nicholas Blackburn              ===
 
-Sep 22, 2020 12:05:54 PM org.usfirst.frc.team5740.Main loggerInit
+Sep 22, 2020 4:16:30 PM org.usfirst.frc.team5740.Main loggerInit
 INFO: ===             Time to Take over World... Finally!!                ===
 
-Sep 22, 2020 12:05:54 PM org.usfirst.frc.team5740.Main loggerInit
+Sep 22, 2020 4:16:30 PM org.usfirst.frc.team5740.Main loggerInit
 INFO: =======================================================================
 
-Sep 22, 2020 12:05:54 PM org.usfirst.frc.team5740.Main loggerInit
+Sep 22, 2020 4:16:30 PM org.usfirst.frc.team5740.Main loggerInit
 INFO: 
 
-Sep 22, 2020 12:05:54 PM org.usfirst.frc.team5740.Main loggerInit
+Sep 22, 2020 4:16:30 PM org.usfirst.frc.team5740.Main loggerInit
 WARNING: Date today is2020-09-22
 
-Sep 22, 2020 12:05:54 PM org.usfirst.frc.team5740.Main start
+Sep 22, 2020 4:16:30 PM org.usfirst.frc.team5740.Main start
 INFO: loading Fxml file
-Sep 22, 2020 12:05:54 PM org.usfirst.frc.team5740.Main start
+Sep 22, 2020 4:16:30 PM org.usfirst.frc.team5740.Main start
 INFO: Done Loading main.fxml file
-Sep 22, 2020 12:05:55 PM org.usfirst.frc.team5740.Main start
+Sep 22, 2020 4:16:31 PM org.usfirst.frc.team5740.Main start
 WARNING: Successfully displaying Main page
-Sep 22, 2020 12:05:55 PM org.usfirst.frc.team5740.Main start
+Sep 22, 2020 4:16:31 PM org.usfirst.frc.team5740.Main start
 WARNING: Starting Init Function
-Sep 22, 2020 12:05:56 PM org.usfirst.frc.team5740.gui.MainController$1 handle
+Sep 22, 2020 4:16:32 PM org.usfirst.frc.team5740.gui.MainController$1 handle
 INFO: Starting Path Generator
-Sep 22, 2020 12:05:56 PM org.usfirst.frc.team5740.gui.StartPathData start
+Sep 22, 2020 4:16:32 PM org.usfirst.frc.team5740.gui.StartPathData start
 INFO: loading Fxml file
-Sep 22, 2020 12:05:56 PM org.usfirst.frc.team5740.gui.StartPathData start
+Sep 22, 2020 4:16:32 PM org.usfirst.frc.team5740.gui.StartPathData start
 INFO: Done Loading PathData.fxml file
-Sep 22, 2020 12:05:57 PM org.usfirst.frc.team5740.gui.StartPathData start
+Sep 22, 2020 4:16:33 PM org.usfirst.frc.team5740.gui.StartPathData start
 WARNING: Successfully displaying Pathdata page
-Sep 22, 2020 12:05:57 PM org.usfirst.frc.team5740.gui.StartPathData start
+Sep 22, 2020 4:16:33 PM org.usfirst.frc.team5740.gui.StartPathData start
 WARNING: Starting PathData Function
-Sep 22, 2020 12:06:11 PM org.usfirst.frc.team5740.gui.PathDataPaneController$3 handle
-INFO: starting to generate path
-Sep 22, 2020 12:06:12 PM org.usfirst.frc.team5740.gui.PathDataPaneController$1 handle
+Sep 22, 2020 4:16:50 PM org.usfirst.frc.team5740.gui.PathDataPaneController$1 handle
 INFO: new Waypoint
-Sep 22, 2020 12:06:13 PM org.usfirst.frc.team5740.gui.PathDataPaneController$1 handle
-INFO: new Waypoint
-Sep 22, 2020 12:11:12 PM org.usfirst.frc.team5740.gui.PathDataPaneController$1 handle
-INFO: new Waypoint
-Sep 22, 2020 12:11:15 PM org.usfirst.frc.team5740.gui.PathDataPaneController$2 handle
-INFO: removed waypoint
-Sep 22, 2020 12:11:15 PM org.usfirst.frc.team5740.gui.PathDataPaneController$2 handle
-INFO: waypoint removed successfull!y
-Sep 22, 2020 12:11:16 PM org.usfirst.frc.team5740.gui.PathDataPaneController$2 handle
-INFO: removed waypoint
-Sep 22, 2020 12:11:16 PM org.usfirst.frc.team5740.gui.PathDataPaneController$2 handle
-INFO: waypoint removed successfull!y
-Sep 22, 2020 12:11:16 PM org.usfirst.frc.team5740.gui.PathDataPaneController$1 handle
-INFO: new Waypoint
-Sep 22, 2020 12:11:18 PM org.usfirst.frc.team5740.gui.PathDataPaneController$1 handle
-INFO: new Waypoint
-Sep 22, 2020 12:11:18 PM org.usfirst.frc.team5740.gui.PathDataPaneController$1 handle
-INFO: new Waypoint
-Sep 22, 2020 12:11:18 PM org.usfirst.frc.team5740.gui.PathDataPaneController$1 handle
-INFO: new Waypoint
-Sep 22, 2020 12:11:19 PM org.usfirst.frc.team5740.gui.PathDataPaneController$2 handle
-INFO: removed waypoint
-Sep 22, 2020 12:11:19 PM org.usfirst.frc.team5740.gui.PathDataPaneController$2 handle
-INFO: waypoint removed successfull!y
-Sep 22, 2020 12:11:19 PM org.usfirst.frc.team5740.gui.PathDataPaneController$1 handle
-INFO: new Waypoint
-Sep 22, 2020 12:11:20 PM org.usfirst.frc.team5740.gui.PathDataPaneController$1 handle
-INFO: new Waypoint
+Sep 22, 2020 4:16:53 PM org.usfirst.frc.team5740.util.WaypointTableData addData
+WARNING: Data from all the arraysX array1 Y array1

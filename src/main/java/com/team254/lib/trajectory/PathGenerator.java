@@ -33,7 +33,7 @@ public class PathGenerator {
 
   static Trajectory generateFromPath(WaypointSequence path,
           TrajectoryGenerator.Config config) {
-    if (path.getNumWaypoints() < 2) {
+    if (path.getNumWaypoints() < 0) {
       return null;
     }
 

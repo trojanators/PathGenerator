@@ -29,7 +29,7 @@ public class WaypointManagement {
             final double wheebase, final String pathName, final String Location, final Boolean genpath) {
         
         final WaypointSequence sequence = new WaypointSequence(10);
-        final int waypointId = data.getId();
+        int waypointId = data.getId();
         double x = data.getWaypointXArrayEntry(waypointId);
         double y = data.getWaypointYArrayEntry(waypointId);
         double theta  =  data.getWaypointThetaArrayEntry(waypointId);
@@ -41,12 +41,12 @@ public class WaypointManagement {
         config.dt = data.getWaypointDTArrayEntry(waypointId);
         while(sequence.getNumWaypoints() < 10){
         // Creates a waypoint without MathPi cal
-        if (waypointId >= 0) {
-            sequence.addWaypoint(new Waypoint(x / 12.0, y/ 12.0, theta));
-
+        if (waypointId >= 0 && !enableNegPi) {
+            sequence.addWaypoint(new Waypoint(x / 12.0, y / 12.0, theta), waypointId);
+            
         } else {
 
-            if (waypointId >= 0 && enablePiCalc) {
+        /*    if (waypointId >= 0 && enablePiCalc) {
                 sequence.addWaypoint(new Waypoint(x / 12.0, y / 12.0, Math.PI / theta));
                 Main.logger.warning("Waypoint" + x / 12.0 + "" + y / 12.0 + " THeta"
                         + Math.PI / theta);
@@ -56,17 +56,18 @@ public class WaypointManagement {
                 sequence.addWaypoint(new Waypoint(x / 12.0, y / 12.0, -Math.PI / theta));
                 Main.logger.warning("Waypoint" + x / 12.0 + "," + y / 12.0 + "THeta"
                         + -Math.PI / theta);
-            }
-        
-            if (genpath) {
-            // Before Gen path Print out all data
-            Main.logger.warning("Data" + wheebase + "," + Location + "," + pathName);
-            createPath(sequence, config, wheebase, Location, pathName);
-            }
-            else{
-                
-            }}}
+            }   
+            */
+
         }
+    }
+
+    if (genpath) {
+        // Before Gen path Print out all data
+        Main.logger.warning("Data" + wheebase + "," + Location + "," + pathName);
+        createPath(sequence, config, wheebase, Location, pathName);
+    }
+}
     
     
         
@@ -77,7 +78,7 @@ public class WaypointManagement {
     private void createPath(final WaypointSequence sequence, final Config config, final double wheelBase,
             final String location, final String PathName) {
         Main.logger.info("Generatring Path to File");
-        final Path path = PathGenerator.makePath(sequence, config, wheelBase, PathName);
+        Path path = PathGenerator.makePath(sequence, config, wheelBase, PathName);
         Main.logger.info("path is Generateing");
         FileGeneration.writeFiles(location+PathName, path);
 

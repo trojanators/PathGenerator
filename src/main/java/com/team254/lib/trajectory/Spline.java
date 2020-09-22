@@ -2,6 +2,8 @@ package com.team254.lib.trajectory;
 
 import com.team254.lib.util.ChezyMath;
 
+import org.usfirst.frc.team5740.Main;
+
 /**
  * Do cubic spline interpolation between points.
  *
@@ -112,7 +114,7 @@ public class Spline {
       result.d_ = 0;
       result.e_ = yp0_hat;
     }
-
+    Main.logger.warning("Here in splines data");
     return true;
   }
 

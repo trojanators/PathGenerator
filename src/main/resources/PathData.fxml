@@ -60,8 +60,8 @@
             <TextField fx:id="path_name" layoutX="602.0" layoutY="369.0" prefHeight="26.0" prefWidth="171.0" promptText="enter Path name" />
             <TextField fx:id="robot_wheelbase" layoutX="602.0" layoutY="401.0" prefHeight="26.0" prefWidth="171.0" promptText="enter Robot Wheelbase" />
             <TextField fx:id="pathfile_path" layoutX="602.0" layoutY="434.0" prefHeight="26.0" prefWidth="171.0" promptText="enter save location" />
-            <CheckBox fx:id="pi_enable" layoutX="254.0" layoutY="341.0" mnemonicParsing="false" text="enable neg pi theta" textFill="WHITE" />
-            <CheckBox fx:id="neg_pi" layoutX="607.0" layoutY="341.0" mnemonicParsing="false" text="enable pi theta" textFill="WHITE" />
+            <CheckBox fx:id="neg_pi" layoutX="254.0" layoutY="341.0" mnemonicParsing="false" text="enable neg pi theta" textFill="WHITE" />
+            <CheckBox fx:id="pi_enable" layoutX="607.0" layoutY="341.0" mnemonicParsing="false" text="enable pi theta" textFill="WHITE" />
       </children>
     </AnchorPane>
   </children>
