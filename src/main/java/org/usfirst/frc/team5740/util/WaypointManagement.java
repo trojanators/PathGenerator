@@ -15,8 +15,6 @@ import org.usfirst.frc.team5740.Main;
 public class WaypointManagement {
 
     private static TrajectoryGenerator.Config config = new TrajectoryGenerator.Config();
-    private final WaypointSequence sequence = new WaypointSequence(10);
-
     private final FileGeneration fileGen = new FileGeneration();
 
     /**
@@ -29,20 +27,21 @@ public class WaypointManagement {
      */
     public void createWaypoint(final WaypointTableData data, final Boolean enablePiCalc, final Boolean enableNegPi,
             final double wheebase, final String pathName, final String Location, final Boolean genpath) {
-
-        final int waypointId = data.getID();
-        final double x = data.getWaypointXArrayEntry(waypointId);
-        final double y = data.getWaypointYArrayEntry(waypointId);
-        final double theta  =  data.getWaypointThetaArrayEntry(waypointId);
+        
+        final WaypointSequence sequence = new WaypointSequence(10);
+        final int waypointId = data.getId();
+        double x = data.getWaypointXArrayEntry(waypointId);
+        double y = data.getWaypointYArrayEntry(waypointId);
+        double theta  =  data.getWaypointThetaArrayEntry(waypointId);
 
         // Mapping Data from Waypoint Table to config
         config.max_acc = data.getWaypointMaxACCArrayEntry(waypointId);
         config.max_vel = data.getWaypointMaxVelArrayEntry(waypointId);
         config.max_jerk = data.getWaypointMaxJerkArrayEntry(waypointId);
         config.dt = data.getWaypointDTArrayEntry(waypointId);
-
+        while(sequence.getNumWaypoints() < 10){
         // Creates a waypoint without MathPi cal
-        if (waypointId > 0) {
+        if (waypointId >= 0) {
             sequence.addWaypoint(new Waypoint(x / 12.0, y/ 12.0, theta));
 
         } else {
@@ -58,17 +57,19 @@ public class WaypointManagement {
                 Main.logger.warning("Waypoint" + x / 12.0 + "," + y / 12.0 + "THeta"
                         + -Math.PI / theta);
             }
-        }
-        if (genpath) {
+        
+            if (genpath) {
             // Before Gen path Print out all data
             Main.logger.warning("Data" + wheebase + "," + Location + "," + pathName);
             createPath(sequence, config, wheebase, Location, pathName);
-        } else {
-            Main.logger.info("DID NOT CLICK gen");
+            }
+            else{
+                
+            }}}
         }
-
-    }
-
+    
+    
+        
     /**
      * Creates Path Via data from createWaypoint Functions
      */

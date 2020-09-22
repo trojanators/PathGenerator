@@ -202,7 +202,6 @@ public class PathDataPaneController {
             @Override
             public void handle(final ActionEvent event) {
                 if (!new_waypoint.isPressed()) {
-                    i++;
 
                     Main.logger.info("new Waypoint");
                     /** allows only doubles */
@@ -216,10 +215,12 @@ public class PathDataPaneController {
                     dt = Double.parseDouble(waypoint_dt_input.getText());
 
 
-
+                    System.out.print(i- countor);
                     data = new WaypointTableData(i - countor, x, y, theta, acc, jerk, velocity, dt);
                     waypoint_table.getItems().add(data);
+                    data.addData();
                     wayManage.createWaypoint(data, enable_Pi, enable_Neg_Pi,getRobotWheelbase(),getPathName(),getPathSaveLocal(),genpath);
+                    i++;
 
                 }
 
