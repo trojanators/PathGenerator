@@ -43,6 +43,7 @@ public class WaypointManagement {
         // Creates a waypoint without MathPi cal
         if (waypointId >= 0 && !enableNegPi) {
             sequence.addWaypoint(new Waypoint(x / 12.0, y / 12.0, theta), waypointId);
+            Main.logger.info("WaypointID"+sequence.getNumWaypoints());
             
         } else {
 

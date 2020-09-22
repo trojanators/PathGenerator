@@ -23,14 +23,15 @@ public class WaypointTableData {
     private double dt;
     private TrajectoryGenerator.Config config = new TrajectoryGenerator.Config();
 
-    private ArrayList waypointIdArray = new ArrayList<Double>();
-    private ArrayList waypointXArray = new ArrayList<Double>();
-    private ArrayList waypointYArray = new ArrayList<Double>();
-    private ArrayList waypointThetaArray = new ArrayList<Double>();
-    private ArrayList waypointMaxAccArray = new ArrayList<Double>();
-    private ArrayList waypointMaxJerkArray = new ArrayList<Double>();
-    private ArrayList waypointMaxVelocityArray = new ArrayList<Double>();
-    private ArrayList waypointDtArray = new ArrayList<Double>();
+    
+    private static ArrayList waypointXArray = new ArrayList<Double>(10);
+    private static ArrayList waypointYArray = new ArrayList<Double>(10);
+    private static ArrayList waypointThetaArray = new ArrayList<Double>(10);
+    private static ArrayList waypointMaxAccArray = new ArrayList<Double>(10);
+    private static ArrayList waypointMaxJerkArray = new ArrayList<Double>(10);
+    private static ArrayList waypointMaxVelocityArray = new ArrayList<Double>(10);
+    private static ArrayList waypointDtArray = new ArrayList<Double>(10);
+    private static ArrayList waypointIdArray = new ArrayList<Double>(10);
 
     // Waypoint data constructor
     public WaypointTableData(int waypoint_id, double waypoint_x, double waypoint_y, double theta, double maxAcc,
@@ -48,16 +49,15 @@ public class WaypointTableData {
 
     public void addData(){
        
-        
-        waypointXArray.add(x);
-        waypointYArray.add(y);
-        waypointThetaArray.add(theta);
-        waypointMaxAccArray.add(acc);
-        waypointMaxJerkArray.add(jerk);
-        waypointMaxVelocityArray.add(vel);
-        waypointDtArray.add(dt);
-
-        Main.logger.warning("Data from all the arrays"+"X array"+waypointXArray.size()+" "+ "Y array"+waypointYArray.size());
+        waypointIdArray.add(Id,Id);
+        waypointXArray.add(Id,x);
+        waypointYArray.add(Id,y);
+        waypointThetaArray.add(Id,theta);
+        waypointMaxAccArray.add(Id,acc);
+        waypointMaxJerkArray.add(Id,jerk);
+        waypointMaxVelocityArray.add(Id,vel);
+        waypointDtArray.add(Id,dt);
+        Main.logger.warning("Data from all the arrays\n"+"ID"+waypointIdArray.toString()+"\n"+"X"+waypointXArray.toString()+"\n"+ "Y"+waypointYArray.toString()+"\n" + "Theta" + waypointThetaArray.toString() + "\n");
     }
 
    /**
@@ -124,6 +124,15 @@ public class WaypointTableData {
      */
     public Double getWaypointDTArrayEntry(int waypointId){
         return (double) waypointDtArray.get(waypointId);
+    }
+
+      /**
+     * gets data from  dt array basedon waypoint id 
+     * @param waypointId
+     * @return
+     */
+    public Double getWaypointIdArrayEntry(int waypointId){
+        return (double) waypointIdArray.get(waypointId);
     }
     public int getId(){
         return Id;

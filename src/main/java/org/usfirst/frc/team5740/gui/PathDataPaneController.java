@@ -35,13 +35,14 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.TextFormatter;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.shape.Path;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 
 public class PathDataPaneController {
 
     private final WaypointManagement wayManage = new WaypointManagement();
-
+    private final GraphPage graph = new GraphPage();
     private double x;
     private double y;
     private double theta;
@@ -59,7 +60,6 @@ public class PathDataPaneController {
     private Boolean enable_Pi;
     private Boolean genpath;
 
-    
     @FXML
     private AnchorPane save_entrys;
 
@@ -214,17 +214,14 @@ public class PathDataPaneController {
                     velocity = Double.parseDouble(waypoint_velocity_imput.getText());
                     dt = Double.parseDouble(waypoint_dt_input.getText());
 
-
                     data = new WaypointTableData(i - countor, x, y, theta, acc, jerk, velocity, dt);
                     waypoint_table.getItems().add(data);
-                    
+
                     data.addData();
-                   wayManage.createWaypoint(data, enable_Pi, enable_Neg_Pi,getRobotWheelbase(),getPathName(),getPathSaveLocal(),genpath);
+                    wayManage.createWaypoint(data, enable_Pi, enable_Neg_Pi, getRobotWheelbase(), getPathName(),
+                            getPathSaveLocal(), genpath);
                     i++;
-                    Main.logger.info("increment"+i);
-                   
-                    
-                   
+                    Main.logger.info("increment" + i);
 
                 }
 
@@ -285,12 +282,12 @@ public class PathDataPaneController {
 
             @Override
             public void handle(final ActionEvent event) {
-              
+
                 if (pi_enable.isSelected()) {
                     // TODO: add enty to display_path_entrys
                     Main.logger.info("Enabled Pi calc");
-                     enable_Pi = true;
-                }else{
+                    enable_Pi = true;
+                } else {
                     enable_Pi = false;
                 }
 
@@ -298,23 +295,46 @@ public class PathDataPaneController {
 
         });
 
-       neg_pi.setOnAction((EventHandler<ActionEvent>) new EventHandler<ActionEvent>() {
+        neg_pi.setOnAction((EventHandler<ActionEvent>) new EventHandler<ActionEvent>() {
 
             @Override
             public void handle(final ActionEvent event) {
-              
+
                 if (neg_pi.isSelected()) {
                     // TODO: add enty to display_path_entrys
                     Main.logger.info("Enabled Pi calc neg");
-                     enable_Neg_Pi = true;
-                }else{
+                    enable_Neg_Pi = true;
+                } else {
                     enable_Neg_Pi = false;
                 }
 
             }
 
         });
-    }
+
+        preview_graph.setOnAction((EventHandler<ActionEvent>) new EventHandler<ActionEvent>() {
+
+            @Override
+            public void handle(final ActionEvent event) {
+                Stage stage = new Stage();
+
+                if (!preview_graph.isPressed()) {
+                    try {
+                        graph.start(stage);
+                    } catch (Exception e) {
+                        // TODO Auto-generated catch block
+                        e.printStackTrace();
+                    }
+            }
+
+        }
+
+    });
+}
+
+        
+        
+    
 
 	private String getPathName() {
 		return path_name.getText();
