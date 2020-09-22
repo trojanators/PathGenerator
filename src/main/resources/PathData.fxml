@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="403.0" prefWidth="758.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.usfirst.frc.team5740.gui.PathDataPaneController">
+<VBox prefHeight="462.0" prefWidth="954.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.usfirst.frc.team5740.gui.PathDataPaneController">
   <children>
     <AnchorPane fx:id="save_entrys" maxHeight="-1.0" maxWidth="-1.0" prefHeight="403.0" prefWidth="1167.0" style="-fx-background-color: rgb(0,0,0);" VBox.vgrow="ALWAYS">
       <children>

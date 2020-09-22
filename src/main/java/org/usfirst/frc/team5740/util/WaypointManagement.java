@@ -30,29 +30,33 @@ public class WaypointManagement {
     public void createWaypoint(final WaypointTableData data, final Boolean enablePiCalc, final Boolean enableNegPi,
             final double wheebase, final String pathName, final String Location, final Boolean genpath) {
 
-        final int waypointId = data.getId();
+        final int waypointId = data.getID();
+        final double x = data.getWaypointXArrayEntry(waypointId);
+        final double y = data.getWaypointYArrayEntry(waypointId);
+        final double theta  =  data.getWaypointThetaArrayEntry(waypointId);
+
         // Mapping Data from Waypoint Table to config
-        config.max_acc = data.getAcc();
-        config.max_vel = data.getVelocity();
-        config.max_jerk = data.getJerk();
-        config.dt = data.getDt();
+        config.max_acc = data.getWaypointMaxACCArrayEntry(waypointId);
+        config.max_vel = data.getWaypointMaxVelArrayEntry(waypointId);
+        config.max_jerk = data.getWaypointMaxJerkArrayEntry(waypointId);
+        config.dt = data.getWaypointDTArrayEntry(waypointId);
 
         // Creates a waypoint without MathPi cal
         if (waypointId > 0) {
-            sequence.addWaypoint(new Waypoint(data.getX() / 12.0, data.getY() / 12.0, data.getTheta()));
+            sequence.addWaypoint(new Waypoint(x / 12.0, y/ 12.0, theta));
 
         } else {
 
             if (waypointId >= 0 && enablePiCalc) {
-                sequence.addWaypoint(new Waypoint(data.getX() / 12.0, data.getY() / 12.0, Math.PI / data.getTheta()));
-                Main.logger.warning("Waypoint" + data.getX() / 12.0 + "" + data.getY() / 12.0 + " THeta"
-                        + Math.PI / data.getTheta());
+                sequence.addWaypoint(new Waypoint(x / 12.0, y / 12.0, Math.PI / theta));
+                Main.logger.warning("Waypoint" + x / 12.0 + "" + y / 12.0 + " THeta"
+                        + Math.PI / theta);
             }
 
             if (waypointId >= 0 && enableNegPi) {
-                sequence.addWaypoint(new Waypoint(data.getX() / 12.0, data.getY() / 12.0, -Math.PI / data.getTheta()));
-                Main.logger.warning("Waypoint" + data.getX() / 12.0 + "," + data.getY() / 12.0 + "THeta"
-                        + -Math.PI / data.getTheta());
+                sequence.addWaypoint(new Waypoint(x / 12.0, y / 12.0, -Math.PI / theta));
+                Main.logger.warning("Waypoint" + x / 12.0 + "," + y / 12.0 + "THeta"
+                        + -Math.PI / theta);
             }
         }
         if (genpath) {

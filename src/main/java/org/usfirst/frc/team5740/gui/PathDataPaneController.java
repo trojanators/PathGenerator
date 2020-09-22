@@ -59,6 +59,7 @@ public class PathDataPaneController {
     private Boolean enable_Pi;
     private Boolean genpath;
 
+    
     @FXML
     private AnchorPane save_entrys;
 
@@ -208,12 +209,13 @@ public class PathDataPaneController {
                     x = Double.parseDouble(waypoint_x_input.getText());
                     y = Double.parseDouble(waypoint_y_input.getText());
                     theta = Double.parseDouble(waypoint_theta_input.getText());
-
                     // Additonal math for data
                     acc = Double.parseDouble(waypoint_acc_input.getText());
                     jerk = Double.parseDouble(waypoint_jerk_input.getText());
                     velocity = Double.parseDouble(waypoint_velocity_imput.getText());
                     dt = Double.parseDouble(waypoint_dt_input.getText());
+
+
 
                     data = new WaypointTableData(i - countor, x, y, theta, acc, jerk, velocity, dt);
                     waypoint_table.getItems().add(data);
