@@ -11,6 +11,7 @@ import javafx.stage.Stage;
 public class StartPathData extends Application {
 
     private FXMLLoader loader = new FXMLLoader();
+  
 
     // Starts JavaFX Gui
     @Override

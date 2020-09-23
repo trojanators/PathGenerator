@@ -118,6 +118,7 @@ public class PathDataPaneController {
     private TableView<WaypointTableData> waypoint_table;
 
     private WaypointTableData data;
+    
 
     /**
      * this function sets up cells names and vars to be called and sets up text
@@ -190,11 +191,13 @@ public class PathDataPaneController {
         waypoint_dt_input.setTextFormatter(formatter6);
         robot_wheelbase.setTextFormatter(formatter7);
     }
+    private String PathName;
 
     @FXML
     public void initialize() {
         waypoint_table.setEditable(true);
         cellSetup();
+
 
         // Runs when new waypoint button pressed
         new_waypoint.setOnAction((EventHandler<ActionEvent>) new EventHandler<ActionEvent>() {
@@ -218,8 +221,9 @@ public class PathDataPaneController {
                     waypoint_table.getItems().add(data);
 
                     data.addData();
-                    wayManage.createWaypoint(data, enable_Pi, enable_Neg_Pi, getRobotWheelbase(), getPathName(),
-                            getPathSaveLocal(), genpath);
+                    PathName = path_name.getText();
+                    /*wayManage.createWaypoint(data, enable_Pi, enable_Neg_Pi, getRobotWheelbase(), getPathName(),
+                            getPathSaveLocal(), genpath);*/
                     i++;
                     Main.logger.info("increment" + i);
 
@@ -321,6 +325,7 @@ public class PathDataPaneController {
                 if (!preview_graph.isPressed()) {
                     try {
                         graph.start(stage);
+                        
                     } catch (Exception e) {
                         // TODO Auto-generated catch block
                         e.printStackTrace();
@@ -336,8 +341,8 @@ public class PathDataPaneController {
         
     
 
-	private String getPathName() {
-		return path_name.getText();
+	public String getPathName() {
+		return PathName;
     }
     
     private double getRobotWheelbase(){
@@ -347,4 +352,10 @@ public class PathDataPaneController {
     private String getPathSaveLocal(){
         return pathfile_path.getText();
     }
+
+    public WaypointTableData getData(){
+        return data;
+    }
+
+
 }
