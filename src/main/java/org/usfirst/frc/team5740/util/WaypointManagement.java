@@ -39,35 +39,36 @@ public class WaypointManagement {
         config.max_vel = data.getWaypointMaxVelArrayEntry(waypointId);
         config.max_jerk = data.getWaypointMaxJerkArrayEntry(waypointId);
         config.dt = data.getWaypointDTArrayEntry(waypointId);
-        while(sequence.getNumWaypoints() < 10){
+     
         // Creates a waypoint without MathPi cal
-        if (waypointId >= 0 && !enableNegPi) {
+        if (waypointId >= 0 && enableNegPi) {
             sequence.addWaypoint(new Waypoint(x / 12.0, y / 12.0, theta), waypointId);
             Main.logger.info("WaypointID"+sequence.getNumWaypoints());
             
         } else {
 
-        /*    if (waypointId >= 0 && enablePiCalc) {
-                sequence.addWaypoint(new Waypoint(x / 12.0, y / 12.0, Math.PI / theta));
+            /*if (waypointId >= 0 && enablePiCalc) {
+                sequence.addWaypoint(new Waypoint(x / 12.0, y / 12.0, Math.PI / theta), waypointId);
                 Main.logger.warning("Waypoint" + x / 12.0 + "" + y / 12.0 + " THeta"
                         + Math.PI / theta);
             }
 
             if (waypointId >= 0 && enableNegPi) {
-                sequence.addWaypoint(new Waypoint(x / 12.0, y / 12.0, -Math.PI / theta));
+                sequence.addWaypoint(new Waypoint(x / 12.0, y / 12.0, -Math.PI / theta), waypointId);
                 Main.logger.warning("Waypoint" + x / 12.0 + "," + y / 12.0 + "THeta"
                         + -Math.PI / theta);
             }   
+            
             */
-
         }
-    }
+       
+    
 
-    if (genpath) {
+    /*if (genpath) {
         // Before Gen path Print out all data
         Main.logger.warning("Data" + wheebase + "," + Location + "," + pathName);
         createPath(sequence, config, wheebase, Location, pathName);
-    }
+    }*/
 }
     
     

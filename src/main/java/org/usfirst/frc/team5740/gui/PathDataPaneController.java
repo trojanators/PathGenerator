@@ -2,6 +2,7 @@ package org.usfirst.frc.team5740.gui;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 /**
  * This Class is the javafx controller for Path Entry Window in java fx 
  * @author Nicholas Blackburn
@@ -50,6 +51,7 @@ public class PathDataPaneController {
     private double velocity;
     private double jerk;
     private double dt;
+    private Random rando = new Random();
 
     // Counters for Inc
     private int i = 0;
@@ -222,8 +224,30 @@ public class PathDataPaneController {
 
                     data.addData();
                     PathName = path_name.getText();
-                    /*wayManage.createWaypoint(data, enable_Pi, enable_Neg_Pi, getRobotWheelbase(), getPathName(),
-                            getPathSaveLocal(), genpath);*/
+                    wayManage.createWaypoint(data, enable_Pi, enable_Neg_Pi, getRobotWheelbase(), getPathName(),
+                            getPathSaveLocal(), genpath);
+                    i++;
+                    Main.logger.info("increment" + i);
+
+                }
+                // this fills randome numbers in the graph
+                //TODO:Remove From Production Release
+                if(!new_waypoint.isPressed() && neg_pi.isSelected()){
+                    rando.doubles(2);
+                    x = rando.nextDouble();
+                    y = rando.nextDouble();
+                    theta = rando.nextDouble();
+                    acc = rando.nextDouble();
+                    jerk = rando.nextDouble();
+                    velocity = rando.nextDouble();
+                    dt = rando.nextDouble();
+                    
+                    data = new WaypointTableData(i - countor, x, y, theta, acc, jerk, velocity, dt);
+                    waypoint_table.getItems().add(data);
+
+                    data.addData();
+                   wayManage.createWaypoint(data, enable_Pi, enable_Neg_Pi, getRobotWheelbase(), getPathName(),
+                            getPathSaveLocal(), genpath);
                     i++;
                     Main.logger.info("increment" + i);
 
@@ -258,6 +282,7 @@ public class PathDataPaneController {
                 if (generate_path.isSelected()) {
                     // TODO: remove data from Waypoint listview
                     Main.logger.info("starting to generate path");
+                    
                     genpath = true;
                 }
 

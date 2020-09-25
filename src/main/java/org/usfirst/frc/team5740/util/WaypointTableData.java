@@ -46,6 +46,10 @@ public class WaypointTableData {
 
     }
 
+    public WaypointTableData(){
+
+    }
+
     public void addData() {
 
         waypointIdArray.add(Id, Id);
@@ -67,7 +71,7 @@ public class WaypointTableData {
      * @param waypointId
      * @return
      */
-    public static Double getWaypointXArrayEntry(int waypointId) {
+    public Double getWaypointXArrayEntry(int waypointId) {
         return (double) waypointXArray.get(waypointId);
     }
 
@@ -77,7 +81,7 @@ public class WaypointTableData {
      * @param waypointId
      * @return
      */
-    public static Double getWaypointYArrayEntry(int waypointId) {
+    public Double getWaypointYArrayEntry(int waypointId) {
         return (double) waypointYArray.get(waypointId);
     }
 
@@ -137,8 +141,8 @@ public class WaypointTableData {
      * @param waypointId
      * @return
      */
-    public Double getWaypointIdArrayEntry(int waypointId) {
-        return (double) waypointIdArray.get(waypointId);
+    public Object getWaypointIdArrayEntry(int waypointId) {
+        return waypointIdArray.get(waypointId).toString();
     }
 
     public int getId() {
