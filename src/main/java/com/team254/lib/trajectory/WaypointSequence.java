@@ -37,10 +37,10 @@ public class WaypointSequence {
     waypoints_ = new Waypoint[max_size];
   }
 
-  public void addWaypoint(Waypoint w, int WaypointIndex) {
+  public void addWaypoint(Waypoint w) {
     if (num_waypoints_ < waypoints_.length) {
       waypoints_[num_waypoints_] = w;
-      num_waypoints_= WaypointIndex;
+      ++num_waypoints_;
     }
   }
 

@@ -25,7 +25,7 @@ public class WaypointManagement {
      * @param Boolan            enablePICalcPositive
      * @param Boolean           enablePiCalcNegative
      */
-    public void createWaypoint(final WaypointTableData data, final Boolean enablePiCalc, final Boolean enableNegPi,
+    public void createWaypoint(final WaypointTableData data,final Boolean enableRando, final Boolean enablePiCalc, final Boolean enableNegPi,
             final double wheebase, final String pathName, final String Location, final Boolean genpath) {
         
         final WaypointSequence sequence = new WaypointSequence(10);
@@ -40,10 +40,11 @@ public class WaypointManagement {
         config.max_jerk = data.getWaypointMaxJerkArrayEntry(waypointId);
         config.dt = data.getWaypointDTArrayEntry(waypointId);
      
+     
         // Creates a waypoint without MathPi cal
-        if (waypointId >= 0 && enableNegPi) {
-            sequence.addWaypoint(new Waypoint(x / 12.0, y / 12.0, theta), waypointId);
-            Main.logger.info("WaypointID"+sequence.getNumWaypoints());
+        if (waypointId >= 0 && enableRando) {
+            sequence.addWaypoint(new Waypoint(x / 12.0, y / 12.0, theta));
+          
             
         } else {
 
@@ -59,12 +60,11 @@ public class WaypointManagement {
                         + -Math.PI / theta);
             }   
             
-            */
+        */
         }
-       
+        Main.logger.info("WayPoints in Created Waypoint Sequ is"+sequence.getNumWaypoints());
     
-
-    /*if (genpath) {
+    /*if (sequence.getNumWaypoints() < 10) {
         // Before Gen path Print out all data
         Main.logger.warning("Data" + wheebase + "," + Location + "," + pathName);
         createPath(sequence, config, wheebase, Location, pathName);

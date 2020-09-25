@@ -61,7 +61,7 @@ public class PathDataPaneController {
     private Boolean enable_Neg_Pi;
     private Boolean enable_Pi;
     private Boolean genpath;
-
+    private boolean enableRando;
     @FXML
     private AnchorPane save_entrys;
 
@@ -206,10 +206,11 @@ public class PathDataPaneController {
 
             @Override
             public void handle(final ActionEvent event) {
+                /*
                 if (!new_waypoint.isPressed()) {
 
                     Main.logger.info("new Waypoint");
-                    /** allows only doubles */
+                 
                     x = Double.parseDouble(waypoint_x_input.getText());
                     y = Double.parseDouble(waypoint_y_input.getText());
                     theta = Double.parseDouble(waypoint_theta_input.getText());
@@ -230,9 +231,12 @@ public class PathDataPaneController {
                     Main.logger.info("increment" + i);
 
                 }
+                */
+                
                 // this fills randome numbers in the graph
                 //TODO:Remove From Production Release
                 if(!new_waypoint.isPressed() && neg_pi.isSelected()){
+                    enableRando = true;
                     rando.doubles(2);
                     x = rando.nextDouble();
                     y = rando.nextDouble();
@@ -246,11 +250,14 @@ public class PathDataPaneController {
                     waypoint_table.getItems().add(data);
 
                     data.addData();
-                   wayManage.createWaypoint(data, enable_Pi, enable_Neg_Pi, getRobotWheelbase(), getPathName(),
+                   wayManage.createWaypoint(data, enableRando, enable_Pi, enable_Neg_Pi, getRobotWheelbase(), getPathName(),
                             getPathSaveLocal(), genpath);
                     i++;
                     Main.logger.info("increment" + i);
 
+                }
+                else{
+                    enableRando= false;
                 }
 
             }
@@ -265,8 +272,9 @@ public class PathDataPaneController {
                     countor++;
                     // TODO: remove data from Waypoint listview
                     Main.logger.info("removed waypoint");
+                    data.removeData();
                     waypoint_table.getItems().remove(data);
-
+                    
                     Main.logger.info("waypoint removed successfull!y");
 
                 }

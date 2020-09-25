@@ -65,6 +65,22 @@ public class WaypointTableData {
                 + waypointThetaArray.toString() + "\n");
     }
 
+    public void removeData(){
+
+        waypointIdArray.remove(Id);
+        waypointXArray.remove(Id);
+        waypointYArray.remove(Id);
+        waypointThetaArray.remove(Id);
+        waypointMaxAccArray.remove(Id);
+        waypointMaxJerkArray.remove(Id);
+        waypointMaxVelocityArray.remove(Id);
+        waypointDtArray.remove(Id);
+        Main.logger.warning("Data from all the arrays\n" + "ID" + waypointIdArray.toString() + "\n" + "X"
+                + waypointXArray.toString() + "\n" + "Y" + waypointYArray.toString() + "\n" + "Theta"
+                + waypointThetaArray.toString() + "\n");
+
+    }
+
     /**
      * Gets Waypoint data based on waypoint id
      * 

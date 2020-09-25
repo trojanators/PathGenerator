@@ -1,40 +1,54 @@
 package org.usfirst.frc.team5740.gui;
 
 import org.usfirst.frc.team5740.Main;
+import org.usfirst.frc.team5740.util.WaypointTableData;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.chart.LineChart;
+import javafx.scene.chart.NumberAxis;
+import javafx.scene.chart.XYChart;
 import javafx.stage.Stage;
 
 public class GraphPage extends Application{
 
     private FXMLLoader loader = new FXMLLoader();
-  
+    private WaypointTableData data = new WaypointTableData();
 
     // Starts JavaFX Gui
     @Override
     public void start(Stage stage) throws Exception {
 
-        Main.logger.info("loading Fxml file");
-        loader.setLocation(getClass().getResource("/Path_display.fxml"));
-        Main.logger.info("Done Loading PathData.fxml file");
-
-        Parent root_path = loader.load();
-        Scene scene = new Scene(root_path, 954, 462);
-
-        stage.setTitle("PathGenerator By Nicholas Blackburn");
+        stage.setTitle("PathGenerator by Nicholas Blackburn");
+        //defining the axes
+        final NumberAxis xAxis = new NumberAxis();
+        final NumberAxis yAxis = new NumberAxis();
+        xAxis.setLabel("Path");
+        //creating the chart
+        final LineChart<Number,Number> lineChart = 
+                new LineChart<Number,Number>(xAxis,yAxis);
+                
+        lineChart.setTitle("Robot Path");
+        //defining a series
+        XYChart.Series series = new XYChart.Series();
+        series.setName("Robot Path");
+        //populating the series with data
+        for(int i =0; i <= 10;){
+        series.getData().add(new XYChart.Data(data.getWaypointYArrayEntry(i),data.getWaypointXArrayEntry(i)));
+        series.getData().add(new XYChart.Data(data.getWaypointXArrayEntry(i),data.getWaypointYArrayEntry(i)));
+        }
+        
+        Scene scene  = new Scene(lineChart,800,600);
+        lineChart.getData().add(series);
+       
         stage.setScene(scene);
         stage.show();
-        Main.logger.warning("Successfully displaying Pathdata page");
-
-        Main.logger.warning("Starting PathData Function");
     }
-
-    // closes fx stage for PAthData
-    public void onClose(Stage stage) {
-        stage.hide();
+ 
+    public static void main(String[] args) {
+        launch(args);
     }
 
     
