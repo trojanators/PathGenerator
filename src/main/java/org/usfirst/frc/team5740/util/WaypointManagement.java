@@ -64,11 +64,11 @@ public class WaypointManagement {
         */
         
        
-    /*if (sequence.getNumWaypoints() < 10) {
+    if(sequence.getNumWaypoints() == 10) {
         // Before Gen path Print out all data
         Main.logger.warning("Data" + wheebase + "," + Location + "," + pathName);
         createPath(sequence, config, wheebase, Location, pathName);
-    }*/ 
+    } 
     
 }
     
