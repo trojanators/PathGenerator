@@ -9,6 +9,8 @@ import com.team254.lib.trajectory.Path;
 import com.team254.lib.trajectory.io.JavaSerializer;
 import com.team254.lib.trajectory.io.TextFileSerializer;
 
+import org.usfirst.frc.team5740.Main;
+
 
 
 /**
@@ -21,32 +23,23 @@ import com.team254.lib.trajectory.io.TextFileSerializer;
 //TODO: add correct User location to store generated paths
 public class FileGeneration {
 
-	private static String javaDirectory = "~/";
 
-	public static void writeFiles(final String pathName, final Path path) {
+	public static void writeFiles(final String javaDirectory, final String fileName, final Path path) {
 
-		// Outputs to the directory supplied as the first argument.
-		final JavaSerializer js = new JavaSerializer();
-		final String serialized = js.serialize(path);
-		System.out.print(serialized);
-		final String fullpath = joinPath(javaDirectory, pathName + ".java");
-		if (!writeFile(fullpath, serialized)) {
-			System.err.println(fullpath + " could not be written!!!!1");
-			System.exit(1);
-		} else {
-			System.out.println("Wrote " + fullpath);
-		}
 
 		// Outputs to the directory supplied as the first argument.
 		final TextFileSerializer ts = new TextFileSerializer();
 		final String serializedtext = ts.serialize(path);
 		// System.out.print(serialized);
-		final String fullpathtext = joinPath(javaDirectory, pathName + ".txt");
+		final String fullpathtext = joinPath(javaDirectory, fileName + ".txt");
 		if (!writeFile(fullpathtext, serializedtext)) {
 			System.err.println(fullpathtext + " could not be written!!!!1");
 			System.exit(1);
 		} else {
-			System.out.println("Wrote " + fullpathtext);
+			Main.logger.info("Wrote " + fullpathtext);
+			Main.logger.warning("FINISHED");
+			
+
 		}
 
 	}

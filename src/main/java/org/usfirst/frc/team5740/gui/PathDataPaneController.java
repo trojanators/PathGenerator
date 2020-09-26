@@ -197,7 +197,7 @@ public class PathDataPaneController {
 
     @FXML
     public void initialize() {
-        waypoint_table.setEditable(true);
+        waypoint_table.setEditable(false);
         cellSetup();
 
 
@@ -235,7 +235,7 @@ public class PathDataPaneController {
                 
                 // this fills randome numbers in the graph
                 //TODO:Remove From Production Release
-                if(!new_waypoint.isPressed() && neg_pi.isSelected()){
+                if(!new_waypoint.isPressed() && generate_path.isSelected()){
                     enableRando = true;
                     rando.doubles(2);
                     x = rando.nextDouble();
@@ -248,7 +248,7 @@ public class PathDataPaneController {
                     
                     data = new WaypointTableData(i - countor, x, y, theta, acc, jerk, velocity, dt);
                     waypoint_table.getItems().add(data);
-
+                    PathName = path_name.getText();
                     data.addData();
                    wayManage.createWaypoint(data, enableRando, enable_Pi, enable_Neg_Pi, getRobotWheelbase(), getPathName(),getPathSaveLocal(), genpath);
                     i++;

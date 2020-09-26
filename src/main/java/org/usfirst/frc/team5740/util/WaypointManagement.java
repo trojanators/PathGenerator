@@ -47,30 +47,28 @@ public class WaypointManagement {
             Main.logger.info("WayPoints in Created Waypoint Sequ is"+sequence.getNumWaypoints());
             Main.logger.warning("waypoint sequ list" +sequence.getWaypoint(waypointId));
             
-        } 
-
-            /*if (waypointId >= 0 && enablePiCalc) {
-                sequence.addWaypoint(new Waypoint(x / 12.0, y / 12.0, Math.PI / theta), waypointId);
+        /*
+            if (enableRando && enablePiCalc) {
+                sequence.addWaypoint(new WaypointSequence.Waypoint(x / 12.0, y / 12.0, Math.PI / theta), waypointId);
                 Main.logger.warning("Waypoint" + x / 12.0 + "" + y / 12.0 + " THeta"
                         + Math.PI / theta);
-            }
+            }else{
 
-            if (waypointId >= 0 && enableNegPi) {
-                sequence.addWaypoint(new Waypoint(x / 12.0, y / 12.0, -Math.PI / theta), waypointId);
+            if (enableRando && enableNegPi) {
+                sequence.addWaypoint(new WaypointSequence.Waypoint(x / 12.0, y / 12.0, -Math.PI / theta), waypointId);
                 Main.logger.warning("Waypoint" + x / 12.0 + "," + y / 12.0 + "THeta"
                         + -Math.PI / theta);
-            }   
-            
-        */
-        
-       
-    if(sequence.getNumWaypoints() == 10) {
+            }*/
+
+        if(sequence.getNumWaypoints() == 10) {
         // Before Gen path Print out all data
         Main.logger.warning("Data" + wheebase + "," + Location + "," + pathName);
         createPath(sequence, config, wheebase, Location, pathName);
-    } 
-    
-}
+        } 
+    }
+    }
+        
+        
     
     
         
@@ -83,7 +81,7 @@ public class WaypointManagement {
         Main.logger.info("Generatring Path to File");
         Path path = PathGenerator.makePath(sequence, config, wheelBase, PathName);
         Main.logger.info("path is Generateing");
-        FileGeneration.writeFiles(location+PathName, path);
+        FileGeneration.writeFiles(location,PathName, path);
 
     }
 }
