@@ -20,7 +20,7 @@ import com.team254.lib.trajectory.io.TextFileSerializer;
  */
 public class FileGeneration {
 
-	private static String javaDirectory = "";
+	private static String javaDirectory = "~/";
 
 	public static void writeFiles(final String pathName, final Path path) {
 
@@ -59,7 +59,7 @@ public class FileGeneration {
 				file.createNewFile();
 			}
 
-			final FileWriter fw = new FileWriter(file.getAbsoluteFile());
+			final FileWriter fw = new FileWriter(file.getAbsolutePath());
 			final BufferedWriter bw = new BufferedWriter(fw);
 			bw.write(data);
 			bw.close();
