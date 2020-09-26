@@ -18,6 +18,7 @@ import com.team254.lib.trajectory.io.TextFileSerializer;
  * @param pathName location of file path
  * @param path path for path generation
  */
+//TODO: add correct User location to store generated paths
 public class FileGeneration {
 
 	private static String javaDirectory = "~/";
