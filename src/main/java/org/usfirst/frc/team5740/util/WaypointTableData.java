@@ -49,7 +49,8 @@ public class WaypointTableData {
     public WaypointTableData(){
 
     }
-
+    
+    // adds data to array list
     public void addData() {
 
         waypointIdArray.add(Id, Id);
@@ -65,6 +66,7 @@ public class WaypointTableData {
                 + waypointThetaArray.toString() + "\n");
     }
 
+    //removes data fromlist 
     public void removeData(){
 
         waypointIdArray.remove(Id);
@@ -194,7 +196,7 @@ public class WaypointTableData {
     }
 
     public int getSize(){
-        return waypointXArray.size();
+        return waypointIdArray.size();
     }
 
 }

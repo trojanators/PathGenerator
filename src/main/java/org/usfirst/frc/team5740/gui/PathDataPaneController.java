@@ -250,8 +250,7 @@ public class PathDataPaneController {
                     waypoint_table.getItems().add(data);
 
                     data.addData();
-                   wayManage.createWaypoint(data, enableRando, enable_Pi, enable_Neg_Pi, getRobotWheelbase(), getPathName(),
-                            getPathSaveLocal(), genpath);
+                   wayManage.createWaypoint(data, enableRando, enable_Pi, enable_Neg_Pi, getRobotWheelbase(), getPathName(),getPathSaveLocal(), genpath);
                     i++;
                     Main.logger.info("increment" + i);
 

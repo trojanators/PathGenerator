@@ -20,7 +20,7 @@ public class GraphPage extends Application{
     // Starts JavaFX Gui
     @Override
     public void start(Stage stage) throws Exception {
-
+        loader.setLocation(getClass().getResource("/Path_display.fxml"));
         stage.setTitle("PathGenerator by Nicholas Blackburn");
         //defining the axes
         final NumberAxis xAxis = new NumberAxis();
@@ -47,9 +47,5 @@ public class GraphPage extends Application{
         stage.show();
     }
  
-    public static void main(String[] args) {
-        launch(args);
-    }
-
     
 }

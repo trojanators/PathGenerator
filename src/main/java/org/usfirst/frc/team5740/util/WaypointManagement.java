@@ -28,7 +28,7 @@ public class WaypointManagement {
     public void createWaypoint(final WaypointTableData data,final Boolean enableRando, final Boolean enablePiCalc, final Boolean enableNegPi,
             final double wheebase, final String pathName, final String Location, final Boolean genpath) {
         
-        final WaypointSequence sequence = new WaypointSequence(10);
+        final WaypointSequence sequence = new WaypointSequence();
         int waypointId = data.getId();
         double x = data.getWaypointXArrayEntry(waypointId);
         double y = data.getWaypointYArrayEntry(waypointId);
@@ -42,11 +42,12 @@ public class WaypointManagement {
      
      
         // Creates a waypoint without MathPi cal
-        if (waypointId >= 0 && enableRando) {
-            sequence.addWaypoint(new Waypoint(x / 12.0, y / 12.0, theta));
-          
+        if (enableRando) {
+            sequence.addWaypoint(new WaypointSequence.Waypoint(x /12, y/12, theta), waypointId);
+            Main.logger.info("WayPoints in Created Waypoint Sequ is"+sequence.getNumWaypoints());
+            Main.logger.warning("waypoint sequ list" +sequence.getWaypoint(waypointId));
             
-        } else {
+        } 
 
             /*if (waypointId >= 0 && enablePiCalc) {
                 sequence.addWaypoint(new Waypoint(x / 12.0, y / 12.0, Math.PI / theta), waypointId);
@@ -61,14 +62,14 @@ public class WaypointManagement {
             }   
             
         */
-        }
-        Main.logger.info("WayPoints in Created Waypoint Sequ is"+sequence.getNumWaypoints());
-    
+        
+       
     /*if (sequence.getNumWaypoints() < 10) {
         // Before Gen path Print out all data
         Main.logger.warning("Data" + wheebase + "," + Location + "," + pathName);
         createPath(sequence, config, wheebase, Location, pathName);
-    }*/
+    }*/ 
+    
 }
     
     

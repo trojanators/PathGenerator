@@ -1,6 +1,10 @@
 package com.team254.lib.trajectory;
 
+import java.util.ArrayList;
+
 import com.team254.lib.util.ChezyMath;
+
+import org.usfirst.frc.team5740.Main;
 
 /**
  * A WaypointSequence is a sequence of Waypoints.  #whatdidyouexpect
@@ -11,6 +15,7 @@ import com.team254.lib.util.ChezyMath;
  */
 public class WaypointSequence {
 
+  public int num_waypoints_;
   public static class Waypoint {
 
     public Waypoint(double x, double y, double theta) {
@@ -30,19 +35,18 @@ public class WaypointSequence {
     public double theta;
   }
 
-  Waypoint[] waypoints_;
-  int num_waypoints_;
+  static ArrayList<Waypoint> waypoints_ = new ArrayList<Waypoint>(10);
 
-  public WaypointSequence(int max_size) {
-    waypoints_ = new Waypoint[max_size];
-  }
 
-  public void addWaypoint(Waypoint w) {
-    if (num_waypoints_ < waypoints_.length) {
-      waypoints_[num_waypoints_] = w;
-      ++num_waypoints_;
-    }
+  //TODO: Fix Incramenting
+  public void addWaypoint(Waypoint w, int WaypointID) {
+      waypoints_.add(WaypointID, w);
+      Main.logger.warning("Waypoints In list" + waypoints_.size());
+      num_waypoints_ = WaypointID;
+    
   }
+  
+  
 
   public int getNumWaypoints() {
     return num_waypoints_;
@@ -50,12 +54,13 @@ public class WaypointSequence {
 
   public Waypoint getWaypoint(int index) {
     if (index >= 0 && index < getNumWaypoints()) {
-      return waypoints_[index];
+      return waypoints_.get(index);
     } else {
       return null;
     }
   }
   
+  /*
   public WaypointSequence invertY() {
     WaypointSequence inverted = new WaypointSequence(waypoints_.length);
     inverted.num_waypoints_ = num_waypoints_;
@@ -68,4 +73,5 @@ public class WaypointSequence {
     
     return inverted;
   }
+  */
 }

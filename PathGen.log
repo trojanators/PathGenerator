@@ -1,115 +1,188 @@
-Sep 25, 2020 4:38:33 PM org.usfirst.frc.team5740.Main loggerInit
+Sep 26, 2020 10:25:10 AM org.usfirst.frc.team5740.Main loggerInit
 INFO: =======================================================================
 
-Sep 25, 2020 4:38:33 PM org.usfirst.frc.team5740.Main loggerInit
+Sep 26, 2020 10:25:10 AM org.usfirst.frc.team5740.Main loggerInit
 INFO: ===           PathGenerator Made by Nicholas Blackburn              ===
 
-Sep 25, 2020 4:38:33 PM org.usfirst.frc.team5740.Main loggerInit
+Sep 26, 2020 10:25:10 AM org.usfirst.frc.team5740.Main loggerInit
 INFO: ===             Time to Take over World... Finally!!                ===
 
-Sep 25, 2020 4:38:33 PM org.usfirst.frc.team5740.Main loggerInit
+Sep 26, 2020 10:25:10 AM org.usfirst.frc.team5740.Main loggerInit
 INFO: =======================================================================
 
-Sep 25, 2020 4:38:33 PM org.usfirst.frc.team5740.Main loggerInit
+Sep 26, 2020 10:25:10 AM org.usfirst.frc.team5740.Main loggerInit
 INFO: 
 
-Sep 25, 2020 4:38:33 PM org.usfirst.frc.team5740.Main loggerInit
-WARNING: Date today is2020-09-25
+Sep 26, 2020 10:25:10 AM org.usfirst.frc.team5740.Main loggerInit
+WARNING: Date today is2020-09-26
 
-Sep 25, 2020 4:38:33 PM org.usfirst.frc.team5740.Main start
+Sep 26, 2020 10:25:10 AM org.usfirst.frc.team5740.Main start
 INFO: loading Fxml file
-Sep 25, 2020 4:38:33 PM org.usfirst.frc.team5740.Main start
+Sep 26, 2020 10:25:10 AM org.usfirst.frc.team5740.Main start
 INFO: Done Loading main.fxml file
-Sep 25, 2020 4:38:34 PM org.usfirst.frc.team5740.Main start
+Sep 26, 2020 10:25:11 AM org.usfirst.frc.team5740.Main start
 WARNING: Successfully displaying Main page
-Sep 25, 2020 4:38:34 PM org.usfirst.frc.team5740.Main start
+Sep 26, 2020 10:25:11 AM org.usfirst.frc.team5740.Main start
 WARNING: Starting Init Function
-Sep 25, 2020 4:38:37 PM org.usfirst.frc.team5740.gui.MainController$1 handle
+Sep 26, 2020 10:25:12 AM org.usfirst.frc.team5740.gui.MainController$1 handle
 INFO: Starting Path Generator
-Sep 25, 2020 4:38:37 PM org.usfirst.frc.team5740.gui.StartPathData start
+Sep 26, 2020 10:25:12 AM org.usfirst.frc.team5740.gui.StartPathData start
 INFO: loading Fxml file
-Sep 25, 2020 4:38:37 PM org.usfirst.frc.team5740.gui.StartPathData start
+Sep 26, 2020 10:25:12 AM org.usfirst.frc.team5740.gui.StartPathData start
 INFO: Done Loading PathData.fxml file
-Sep 25, 2020 4:38:37 PM org.usfirst.frc.team5740.gui.StartPathData start
+Sep 26, 2020 10:25:12 AM org.usfirst.frc.team5740.gui.StartPathData start
 WARNING: Successfully displaying Pathdata page
-Sep 25, 2020 4:38:37 PM org.usfirst.frc.team5740.gui.StartPathData start
+Sep 26, 2020 10:25:12 AM org.usfirst.frc.team5740.gui.StartPathData start
 WARNING: Starting PathData Function
-Sep 25, 2020 4:39:09 PM org.usfirst.frc.team5740.gui.PathDataPaneController$6 handle
+Sep 26, 2020 10:25:25 AM org.usfirst.frc.team5740.gui.PathDataPaneController$6 handle
 INFO: Enabled Pi calc neg
-Sep 25, 2020 4:39:10 PM org.usfirst.frc.team5740.util.WaypointTableData addData
+Sep 26, 2020 10:25:25 AM org.usfirst.frc.team5740.util.WaypointTableData addData
 WARNING: Data from all the arrays
 ID[0]
-X[0.48028936536262945]
-Y[0.6667914847079998]
-Theta[0.19834023842715587]
+X[0.282833800778564]
+Y[0.9375898114881368]
+Theta[0.16144841336617688]
 
-Sep 25, 2020 4:39:10 PM org.usfirst.frc.team5740.util.WaypointManagement createWaypoint
-INFO: WayPoints in Created Waypoint Sequ is1
-Sep 25, 2020 4:39:10 PM org.usfirst.frc.team5740.gui.PathDataPaneController$1 handle
+Sep 26, 2020 10:25:53 AM com.team254.lib.trajectory.WaypointSequence addWaypoint
+WARNING: Waypoints In list1
+Sep 26, 2020 10:26:01 AM org.usfirst.frc.team5740.util.WaypointManagement createWaypoint
+INFO: WayPoints in Created Waypoint Sequ is0
+Sep 26, 2020 10:26:04 AM org.usfirst.frc.team5740.util.WaypointManagement createWaypoint
+WARNING: waypoint sequ listnull
+Sep 26, 2020 10:26:06 AM org.usfirst.frc.team5740.gui.PathDataPaneController$1 handle
 INFO: increment1
-Sep 25, 2020 4:39:11 PM org.usfirst.frc.team5740.util.WaypointTableData addData
+Sep 26, 2020 10:26:10 AM org.usfirst.frc.team5740.util.WaypointTableData addData
 WARNING: Data from all the arrays
 ID[0, 1]
-X[0.48028936536262945, 0.028149373941293243]
-Y[0.6667914847079998, 0.5059555181157804]
-Theta[0.19834023842715587, 0.45692111860464124]
+X[0.282833800778564, 0.9723728924126163]
+Y[0.9375898114881368, 0.34511229205077776]
+Theta[0.16144841336617688, 0.3458644234000233]
 
-Sep 25, 2020 4:39:11 PM org.usfirst.frc.team5740.util.WaypointManagement createWaypoint
+Sep 26, 2020 10:26:20 AM com.team254.lib.trajectory.WaypointSequence addWaypoint
+WARNING: Waypoints In list2
+Sep 26, 2020 10:26:47 AM org.usfirst.frc.team5740.util.WaypointManagement createWaypoint
 INFO: WayPoints in Created Waypoint Sequ is1
-Sep 25, 2020 4:39:11 PM org.usfirst.frc.team5740.gui.PathDataPaneController$1 handle
+Sep 26, 2020 10:26:50 AM org.usfirst.frc.team5740.util.WaypointManagement createWaypoint
+WARNING: waypoint sequ listnull
+Sep 26, 2020 10:26:50 AM org.usfirst.frc.team5740.gui.PathDataPaneController$1 handle
 INFO: increment2
-Sep 25, 2020 4:39:11 PM org.usfirst.frc.team5740.util.WaypointTableData addData
+Sep 26, 2020 10:26:54 AM org.usfirst.frc.team5740.util.WaypointTableData addData
 WARNING: Data from all the arrays
 ID[0, 1, 2]
-X[0.48028936536262945, 0.028149373941293243, 0.19582783354087974]
-Y[0.6667914847079998, 0.5059555181157804, 0.5455970355784002]
-Theta[0.19834023842715587, 0.45692111860464124, 0.39399233086844576]
+X[0.282833800778564, 0.9723728924126163, 0.459095407250958]
+Y[0.9375898114881368, 0.34511229205077776, 0.02047011662924536]
+Theta[0.16144841336617688, 0.3458644234000233, 0.2551119106577755]
 
-Sep 25, 2020 4:39:11 PM org.usfirst.frc.team5740.util.WaypointManagement createWaypoint
-INFO: WayPoints in Created Waypoint Sequ is1
-Sep 25, 2020 4:39:11 PM org.usfirst.frc.team5740.gui.PathDataPaneController$1 handle
+Sep 26, 2020 10:26:57 AM com.team254.lib.trajectory.WaypointSequence addWaypoint
+WARNING: Waypoints In list3
+Sep 26, 2020 10:26:58 AM org.usfirst.frc.team5740.util.WaypointManagement createWaypoint
+INFO: WayPoints in Created Waypoint Sequ is2
+Sep 26, 2020 10:27:01 AM org.usfirst.frc.team5740.util.WaypointManagement createWaypoint
+WARNING: waypoint sequ listnull
+Sep 26, 2020 10:27:02 AM org.usfirst.frc.team5740.gui.PathDataPaneController$1 handle
 INFO: increment3
-Sep 25, 2020 4:39:12 PM org.usfirst.frc.team5740.util.WaypointTableData addData
+Sep 26, 2020 10:27:06 AM org.usfirst.frc.team5740.util.WaypointTableData addData
 WARNING: Data from all the arrays
 ID[0, 1, 2, 3]
-X[0.48028936536262945, 0.028149373941293243, 0.19582783354087974, 0.4537578174042993]
-Y[0.6667914847079998, 0.5059555181157804, 0.5455970355784002, 0.8656318771614058]
-Theta[0.19834023842715587, 0.45692111860464124, 0.39399233086844576, 0.5383739676687077]
+X[0.282833800778564, 0.9723728924126163, 0.459095407250958, 0.3077374980573764]
+Y[0.9375898114881368, 0.34511229205077776, 0.02047011662924536, 0.08458287138668708]
+Theta[0.16144841336617688, 0.3458644234000233, 0.2551119106577755, 0.25947299760455733]
 
-Sep 25, 2020 4:39:12 PM org.usfirst.frc.team5740.util.WaypointManagement createWaypoint
-INFO: WayPoints in Created Waypoint Sequ is1
-Sep 25, 2020 4:39:12 PM org.usfirst.frc.team5740.gui.PathDataPaneController$1 handle
+Sep 26, 2020 10:27:10 AM com.team254.lib.trajectory.WaypointSequence addWaypoint
+WARNING: Waypoints In list4
+Sep 26, 2020 10:27:10 AM org.usfirst.frc.team5740.util.WaypointManagement createWaypoint
+INFO: WayPoints in Created Waypoint Sequ is3
+Sep 26, 2020 10:27:10 AM org.usfirst.frc.team5740.util.WaypointManagement createWaypoint
+WARNING: waypoint sequ listnull
+Sep 26, 2020 10:27:10 AM org.usfirst.frc.team5740.gui.PathDataPaneController$1 handle
 INFO: increment4
-Sep 25, 2020 4:39:13 PM org.usfirst.frc.team5740.gui.PathDataPaneController$2 handle
-INFO: removed waypoint
-Sep 25, 2020 4:39:13 PM org.usfirst.frc.team5740.util.WaypointTableData removeData
-WARNING: Data from all the arrays
-ID[0, 1, 2]
-X[0.48028936536262945, 0.028149373941293243, 0.19582783354087974]
-Y[0.6667914847079998, 0.5059555181157804, 0.5455970355784002]
-Theta[0.19834023842715587, 0.45692111860464124, 0.39399233086844576]
-
-Sep 25, 2020 4:39:13 PM org.usfirst.frc.team5740.gui.PathDataPaneController$2 handle
-INFO: waypoint removed successfull!y
-Sep 25, 2020 4:39:15 PM org.usfirst.frc.team5740.util.WaypointTableData addData
-WARNING: Data from all the arrays
-ID[0, 1, 2, 3]
-X[0.48028936536262945, 0.028149373941293243, 0.19582783354087974, 0.4370860511894318]
-Y[0.6667914847079998, 0.5059555181157804, 0.5455970355784002, 0.28489858825647096]
-Theta[0.19834023842715587, 0.45692111860464124, 0.39399233086844576, 0.19137943552908177]
-
-Sep 25, 2020 4:39:15 PM org.usfirst.frc.team5740.util.WaypointManagement createWaypoint
-INFO: WayPoints in Created Waypoint Sequ is1
-Sep 25, 2020 4:39:15 PM org.usfirst.frc.team5740.gui.PathDataPaneController$1 handle
-INFO: increment5
-Sep 25, 2020 4:39:22 PM org.usfirst.frc.team5740.util.WaypointTableData addData
+Sep 26, 2020 10:27:13 AM org.usfirst.frc.team5740.util.WaypointTableData addData
 WARNING: Data from all the arrays
 ID[0, 1, 2, 3, 4]
-X[0.48028936536262945, 0.028149373941293243, 0.19582783354087974, 0.4370860511894318, 0.7573252184062031]
-Y[0.6667914847079998, 0.5059555181157804, 0.5455970355784002, 0.28489858825647096, 0.4867313018448879]
-Theta[0.19834023842715587, 0.45692111860464124, 0.39399233086844576, 0.19137943552908177, 0.8290051833657643]
+X[0.282833800778564, 0.9723728924126163, 0.459095407250958, 0.3077374980573764, 0.2692792012521107]
+Y[0.9375898114881368, 0.34511229205077776, 0.02047011662924536, 0.08458287138668708, 0.278793045030012]
+Theta[0.16144841336617688, 0.3458644234000233, 0.2551119106577755, 0.25947299760455733, 0.4712040040212141]
 
-Sep 25, 2020 4:39:22 PM org.usfirst.frc.team5740.util.WaypointManagement createWaypoint
-INFO: WayPoints in Created Waypoint Sequ is1
-Sep 25, 2020 4:39:22 PM org.usfirst.frc.team5740.gui.PathDataPaneController$1 handle
+Sep 26, 2020 10:27:15 AM com.team254.lib.trajectory.WaypointSequence addWaypoint
+WARNING: Waypoints In list5
+Sep 26, 2020 10:27:15 AM org.usfirst.frc.team5740.util.WaypointManagement createWaypoint
+INFO: WayPoints in Created Waypoint Sequ is4
+Sep 26, 2020 10:27:15 AM org.usfirst.frc.team5740.util.WaypointManagement createWaypoint
+WARNING: waypoint sequ listnull
+Sep 26, 2020 10:27:15 AM org.usfirst.frc.team5740.gui.PathDataPaneController$1 handle
+INFO: increment5
+Sep 26, 2020 10:27:19 AM org.usfirst.frc.team5740.util.WaypointTableData addData
+WARNING: Data from all the arrays
+ID[0, 1, 2, 3, 4, 5]
+X[0.282833800778564, 0.9723728924126163, 0.459095407250958, 0.3077374980573764, 0.2692792012521107, 0.7648700195409418]
+Y[0.9375898114881368, 0.34511229205077776, 0.02047011662924536, 0.08458287138668708, 0.278793045030012, 0.2510662860691525]
+Theta[0.16144841336617688, 0.3458644234000233, 0.2551119106577755, 0.25947299760455733, 0.4712040040212141, 0.9549306169524294]
+
+Sep 26, 2020 10:27:21 AM com.team254.lib.trajectory.WaypointSequence addWaypoint
+WARNING: Waypoints In list6
+Sep 26, 2020 10:27:21 AM org.usfirst.frc.team5740.util.WaypointManagement createWaypoint
+INFO: WayPoints in Created Waypoint Sequ is5
+Sep 26, 2020 10:27:21 AM org.usfirst.frc.team5740.util.WaypointManagement createWaypoint
+WARNING: waypoint sequ listnull
+Sep 26, 2020 10:27:21 AM org.usfirst.frc.team5740.gui.PathDataPaneController$1 handle
 INFO: increment6
+Sep 26, 2020 10:27:24 AM org.usfirst.frc.team5740.util.WaypointTableData addData
+WARNING: Data from all the arrays
+ID[0, 1, 2, 3, 4, 5, 6]
+X[0.282833800778564, 0.9723728924126163, 0.459095407250958, 0.3077374980573764, 0.2692792012521107, 0.7648700195409418, 0.897682538978549]
+Y[0.9375898114881368, 0.34511229205077776, 0.02047011662924536, 0.08458287138668708, 0.278793045030012, 0.2510662860691525, 0.22884923309545135]
+Theta[0.16144841336617688, 0.3458644234000233, 0.2551119106577755, 0.25947299760455733, 0.4712040040212141, 0.9549306169524294, 0.27175219400437733]
+
+Sep 26, 2020 10:27:26 AM com.team254.lib.trajectory.WaypointSequence addWaypoint
+WARNING: Waypoints In list7
+Sep 26, 2020 10:27:26 AM org.usfirst.frc.team5740.util.WaypointManagement createWaypoint
+INFO: WayPoints in Created Waypoint Sequ is6
+Sep 26, 2020 10:27:26 AM org.usfirst.frc.team5740.util.WaypointManagement createWaypoint
+WARNING: waypoint sequ listnull
+Sep 26, 2020 10:27:26 AM org.usfirst.frc.team5740.gui.PathDataPaneController$1 handle
+INFO: increment7
+Sep 26, 2020 10:27:29 AM org.usfirst.frc.team5740.util.WaypointTableData addData
+WARNING: Data from all the arrays
+ID[0, 1, 2, 3, 4, 5, 6, 7]
+X[0.282833800778564, 0.9723728924126163, 0.459095407250958, 0.3077374980573764, 0.2692792012521107, 0.7648700195409418, 0.897682538978549, 0.7161602452945861]
+Y[0.9375898114881368, 0.34511229205077776, 0.02047011662924536, 0.08458287138668708, 0.278793045030012, 0.2510662860691525, 0.22884923309545135, 0.3701736482043275]
+Theta[0.16144841336617688, 0.3458644234000233, 0.2551119106577755, 0.25947299760455733, 0.4712040040212141, 0.9549306169524294, 0.27175219400437733, 0.10292227806810117]
+
+Sep 26, 2020 10:27:30 AM com.team254.lib.trajectory.WaypointSequence addWaypoint
+WARNING: Waypoints In list8
+Sep 26, 2020 10:27:30 AM org.usfirst.frc.team5740.util.WaypointManagement createWaypoint
+INFO: WayPoints in Created Waypoint Sequ is7
+Sep 26, 2020 10:27:30 AM org.usfirst.frc.team5740.util.WaypointManagement createWaypoint
+WARNING: waypoint sequ listnull
+Sep 26, 2020 10:27:30 AM org.usfirst.frc.team5740.gui.PathDataPaneController$1 handle
+INFO: increment8
+Sep 26, 2020 10:27:34 AM org.usfirst.frc.team5740.util.WaypointTableData addData
+WARNING: Data from all the arrays
+ID[0, 1, 2, 3, 4, 5, 6, 7, 8]
+X[0.282833800778564, 0.9723728924126163, 0.459095407250958, 0.3077374980573764, 0.2692792012521107, 0.7648700195409418, 0.897682538978549, 0.7161602452945861, 0.5261145161360973]
+Y[0.9375898114881368, 0.34511229205077776, 0.02047011662924536, 0.08458287138668708, 0.278793045030012, 0.2510662860691525, 0.22884923309545135, 0.3701736482043275, 0.3575729083932545]
+Theta[0.16144841336617688, 0.3458644234000233, 0.2551119106577755, 0.25947299760455733, 0.4712040040212141, 0.9549306169524294, 0.27175219400437733, 0.10292227806810117, 0.023910849215888486]
+
+Sep 26, 2020 10:27:36 AM com.team254.lib.trajectory.WaypointSequence addWaypoint
+WARNING: Waypoints In list9
+Sep 26, 2020 10:27:36 AM org.usfirst.frc.team5740.util.WaypointManagement createWaypoint
+INFO: WayPoints in Created Waypoint Sequ is8
+Sep 26, 2020 10:27:36 AM org.usfirst.frc.team5740.util.WaypointManagement createWaypoint
+WARNING: waypoint sequ listnull
+Sep 26, 2020 10:27:36 AM org.usfirst.frc.team5740.gui.PathDataPaneController$1 handle
+INFO: increment9
+Sep 26, 2020 10:27:42 AM org.usfirst.frc.team5740.util.WaypointTableData addData
+WARNING: Data from all the arrays
+ID[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+X[0.282833800778564, 0.9723728924126163, 0.459095407250958, 0.3077374980573764, 0.2692792012521107, 0.7648700195409418, 0.897682538978549, 0.7161602452945861, 0.5261145161360973, 0.3461557775891698]
+Y[0.9375898114881368, 0.34511229205077776, 0.02047011662924536, 0.08458287138668708, 0.278793045030012, 0.2510662860691525, 0.22884923309545135, 0.3701736482043275, 0.3575729083932545, 0.728994279145248]
+Theta[0.16144841336617688, 0.3458644234000233, 0.2551119106577755, 0.25947299760455733, 0.4712040040212141, 0.9549306169524294, 0.27175219400437733, 0.10292227806810117, 0.023910849215888486, 0.026369129165798255]
+
+Sep 26, 2020 10:27:45 AM com.team254.lib.trajectory.WaypointSequence addWaypoint
+WARNING: Waypoints In list10
+Sep 26, 2020 10:27:45 AM org.usfirst.frc.team5740.util.WaypointManagement createWaypoint
+INFO: WayPoints in Created Waypoint Sequ is9
+Sep 26, 2020 10:27:45 AM org.usfirst.frc.team5740.util.WaypointManagement createWaypoint
+WARNING: waypoint sequ listnull
+Sep 26, 2020 10:27:45 AM org.usfirst.frc.team5740.gui.PathDataPaneController$1 handle
+INFO: increment10
