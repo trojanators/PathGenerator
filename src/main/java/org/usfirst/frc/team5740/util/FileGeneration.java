@@ -20,7 +20,7 @@ import org.usfirst.frc.team5740.Main;
  * @param pathName location of file path
  * @param path path for path generation
  */
-//TODO: add correct User location to store generated paths
+//TODO: generate output to csv format
 public class FileGeneration {
 
 
