@@ -12,3 +12,8 @@
 <li> Highly Configurable</li>
 <li> Open Source!!!</li>
 
+### --
+## Building How to 
+### to build ./gradlew build on linux 
+### to run ./gradlew run on linux 
+### on windows ./gradlew run & to build ./gradlew build   powershell

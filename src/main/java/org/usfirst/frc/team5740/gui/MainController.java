@@ -19,8 +19,11 @@ import javafx.stage.Stage;
  */
 
 public class MainController {
+
+    public Stage stage2 = new Stage();
+
     private StartPathData path = new StartPathData();
-    private StartSettings set = new StartSettings();
+
     private Stage stage = new Stage();
 
     @FXML // ResourceBundle that was given to the FXMLLoader
@@ -53,7 +56,7 @@ public class MainController {
                             path.start(stage);
                         }
                     } catch (Exception e) {
-                        Main.logger.warning(e.getMessage().toString());
+                        e.printStackTrace();
                     }
                 }
 
@@ -69,29 +72,6 @@ public class MainController {
                 if (!exit.isPressed()) {
                     Main.logger.info("Exiting Bye!");
                     System.exit(0);
-                }
-
-            }
-
-        });
-        // opens settings menu for app
-        settings.setOnAction(new EventHandler<ActionEvent>() {
-
-            @Override
-            public void handle(ActionEvent event) {
-                if (!settings.isPressed()) {
-                    Main.logger.info("Starting Settings");
-                    // Cheks to see if pathData is hidden
-                    try {
-
-                        if (!stage.isShowing()) {
-                            set.start(stage);
-                            stage.show();
-                        }
-
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
                 }
 
             }

@@ -3,21 +3,14 @@
 <?import javafx.scene.chart.CategoryAxis?>
 <?import javafx.scene.chart.LineChart?>
 <?import javafx.scene.chart.NumberAxis?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
 
-<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" >
   <children>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" style="-fx-background-color: rgb(0,0,0);" VBox.vgrow="ALWAYS">
       <children>
-        <Label alignment="CENTER" layoutX="209.0" layoutY="14.0" style="&#10;" text="Path Display Graph" textAlignment="CENTER" textFill="WHITE" wrapText="false">
-          <font>
-            <Font name="System Italic" size="24.0" />
-          </font>
-        </Label>
-            <LineChart fx:id="distance_graph" alternativeColumnFillVisible="true" layoutY="45.0" mouseTransparent="true" prefHeight="354.0" prefWidth="640.0" style="-fx-background-color: rgb(30,30,30); -fx-title-side: top;">
+            <LineChart fx:id="path" alternativeColumnFillVisible="true" layoutY="45.0" mouseTransparent="true" prefHeight="354.0" prefWidth="640.0" style="-fx-background-color: rgb(30,30,30); -fx-title-side: top;">
               <xAxis>
                 <CategoryAxis label="x Axis" side="BOTTOM" />
               </xAxis>

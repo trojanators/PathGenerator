@@ -11,6 +11,7 @@ import javafx.stage.Stage;
 public class StartPathData extends Application {
 
     private FXMLLoader loader = new FXMLLoader();
+  
 
     // Starts JavaFX Gui
     @Override
@@ -21,7 +22,7 @@ public class StartPathData extends Application {
         Main.logger.info("Done Loading PathData.fxml file");
 
         Parent root_path = loader.load();
-        Scene scene = new Scene(root_path, 640, 400);
+        Scene scene = new Scene(root_path, 954, 462);
 
         stage.setTitle("PathGenerator By Nicholas Blackburn");
         stage.setScene(scene);
