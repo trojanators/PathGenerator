@@ -21,9 +21,16 @@
 <li> The generation of a csv file </li>
 <li> Really only allows 10 waypoints max but will enable user defined waypoint amount</li>
 
+### -- 
+## Using Path Generator 
+<li> launch path-generator </li>
+<li> when program opens click start creating paths </li>
+<li> when a window with an empty table opens enter data into the blank text inputs </li>
+<li>make sure there are 11 separate waypoints entered to generate path </li>
+
 
 ### --
-### Building How to 
+## Building / Running How to 
 <li>make sure u have the java 11 jdk installed!</li>
 <li>To Run on windows cd into the pathgenerator Dir and then in powershell type in ./gradlew run to Run the Program</li>
 <li> To Build a Runnable Jar... I have not got there yet.</li>
