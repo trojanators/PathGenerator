@@ -58,8 +58,8 @@ public class PathDataPaneController {
     private int output;
     private int countor = 0;
 
-    private Boolean enable_Neg_Pi;
-    private Boolean enable_Pi;
+    private Boolean enable_Neg_Pi = false;
+    private Boolean enable_Pi = false;
     private Boolean genpath;
     private boolean enableRando;
     @FXML
@@ -120,7 +120,6 @@ public class PathDataPaneController {
     private TableView<WaypointTableData> waypoint_table;
 
     private WaypointTableData data;
-    
 
     /**
      * this function sets up cells names and vars to be called and sets up text
@@ -193,6 +192,7 @@ public class PathDataPaneController {
         waypoint_dt_input.setTextFormatter(formatter6);
         robot_wheelbase.setTextFormatter(formatter7);
     }
+
     private String PathName;
 
     @FXML
@@ -200,121 +200,8 @@ public class PathDataPaneController {
         waypoint_table.setEditable(false);
         cellSetup();
 
-
-        // Runs when new waypoint button pressed
-        new_waypoint.setOnAction((EventHandler<ActionEvent>) new EventHandler<ActionEvent>() {
-
-            @Override
-            public void handle(final ActionEvent event) {
-                /*
-                if (!new_waypoint.isPressed()) {
-
-                    Main.logger.info("new Waypoint");
-                 
-                    x = Double.parseDouble(waypoint_x_input.getText());
-                    y = Double.parseDouble(waypoint_y_input.getText());
-                    theta = Double.parseDouble(waypoint_theta_input.getText());
-                    // Additonal math for data
-                    acc = Double.parseDouble(waypoint_acc_input.getText());
-                    jerk = Double.parseDouble(waypoint_jerk_input.getText());
-                    velocity = Double.parseDouble(waypoint_velocity_imput.getText());
-                    dt = Double.parseDouble(waypoint_dt_input.getText());
-
-                    data = new WaypointTableData(i - countor, x, y, theta, acc, jerk, velocity, dt);
-                    waypoint_table.getItems().add(data);
-
-                    data.addData();
-                    PathName = path_name.getText();
-                    wayManage.createWaypoint(data, enable_Pi, enable_Neg_Pi, getRobotWheelbase(), getPathName(),
-                            getPathSaveLocal(), genpath);
-                    i++;
-                    Main.logger.info("increment" + i);
-
-                }
-                */
-                
-                // this fills randome numbers in the graph
-                //TODO:Remove From Production Release
-                if(!new_waypoint.isPressed() && generate_path.isSelected()){
-                    enableRando = true;
-                    rando.doubles(2);
-                    x = rando.nextDouble();
-                    y = rando.nextDouble();
-                    theta = rando.nextDouble();
-                    acc = rando.nextDouble();
-                    jerk = rando.nextDouble();
-                    velocity = rando.nextDouble();
-                    dt = rando.nextDouble();
-                    
-                    data = new WaypointTableData(i - countor, x, y, theta, acc, jerk, velocity, dt);
-                    waypoint_table.getItems().add(data);
-                    PathName = path_name.getText();
-                    data.addData();
-                   wayManage.createWaypoint(data, enableRando, enable_Pi, enable_Neg_Pi, getRobotWheelbase(), getPathName(),getPathSaveLocal(), genpath);
-                    i++;
-                    Main.logger.info("increment" + i);
-
-                }
-                else{
-                    enableRando= false;
-                }
-
-            }
-
-        });
-
-        remove_path.setOnAction((EventHandler<ActionEvent>) new EventHandler<ActionEvent>() {
-
-            @Override
-            public void handle(final ActionEvent event) {
-                if (!remove_path.isPressed()) {
-                    countor++;
-                    // TODO: remove data from Waypoint listview
-                    Main.logger.info("removed waypoint");
-                    data.removeData();
-                    waypoint_table.getItems().remove(data);
-                    
-                    Main.logger.info("waypoint removed successfull!y");
-
-                }
-
-            }
-
-        });
-
-        generate_path.setOnAction((EventHandler<ActionEvent>) new EventHandler<ActionEvent>() {
-
-            @Override
-            public void handle(final ActionEvent event) {
-                if (generate_path.isSelected()) {
-                    // TODO: remove data from Waypoint listview
-                    Main.logger.info("starting to generate path");
-                    
-                    genpath = true;
-                }
-
-            }
-
-        });
-
-        exit.setOnAction((EventHandler<ActionEvent>) new EventHandler<ActionEvent>() {
-
-            @Override
-            public void handle(final ActionEvent event) {
-                final Stage stage = (Stage) exit.getScene().getWindow();
-
-                if (!exit.isPressed()) {
-                    // TODO: add enty to display_path_entrys
-                    Main.logger.info("exited path menu");
-                    stage.hide();
-
-                }
-
-            }
-
-        });
-        // enables pi calc on theta
-        pi_enable.setOnAction((EventHandler<ActionEvent>) new EventHandler<ActionEvent>() {
+         // enables pi calc on theta
+         pi_enable.setOnAction((EventHandler<ActionEvent>) new EventHandler<ActionEvent>() {
 
             @Override
             public void handle(final ActionEvent event) {
@@ -348,6 +235,118 @@ public class PathDataPaneController {
 
         });
 
+        // Runs when new waypoint button pressed
+        new_waypoint.setOnAction((EventHandler<ActionEvent>) new EventHandler<ActionEvent>() {
+
+            @Override
+            public void handle(final ActionEvent event) {
+                //TODO: Remove comment and enable code again
+                /*
+                 * if (!new_waypoint.isPressed()) { enableRando = true;
+                 * Main.logger.info("new Waypoint");
+                 * 
+                 * x = Double.parseDouble(waypoint_x_input.getText()); y =
+                 * Double.parseDouble(waypoint_y_input.getText()); theta =
+                 * Double.parseDouble(waypoint_theta_input.getText()); // Additonal math for
+                 * data acc = Double.parseDouble(waypoint_acc_input.getText()); jerk =
+                 * Double.parseDouble(waypoint_jerk_input.getText()); velocity =
+                 * Double.parseDouble(waypoint_velocity_imput.getText()); dt =
+                 * Double.parseDouble(waypoint_dt_input.getText());
+                 * 
+                 * data = new WaypointTableData(i - countor, x, y, theta, acc, jerk, velocity,
+                 * dt); waypoint_table.getItems().add(data);
+                 * 
+                 * data.addData(); PathName = path_name.getText();
+                 * wayManage.createWaypoint(data,enableRando, enable_Pi, enable_Neg_Pi,
+                 * getRobotWheelbase(), getPathName(), getPathSaveLocal(), genpath); i++;
+                 * Main.logger.info("increment" + i);
+                 * 
+                 * } else{ enableRando = false; }
+                 */
+
+                /**
+                 * This is for testing
+                 */
+                // TODO:Remove From Production Release
+                if (!new_waypoint.isPressed() && generate_path.isSelected()) {
+                    enableRando = true;
+                    rando.doubles(2);
+                    x = rando.nextDouble();
+                    y = rando.nextDouble();
+                    theta = rando.nextDouble();
+                    acc = rando.nextDouble();
+                    jerk = rando.nextDouble();
+                    velocity = rando.nextDouble();
+                    dt = rando.nextDouble();
+
+                    data = new WaypointTableData(i - countor, x, y, theta, acc, jerk, velocity, dt);
+                    waypoint_table.getItems().add(data);
+                    PathName = path_name.getText();
+                    data.addData();
+                    wayManage.createWaypoint(data, enableRando, enable_Pi, enable_Neg_Pi, getRobotWheelbase(),
+                            getPathName(), getPathSaveLocal(), genpath);
+                    i++;
+                    Main.logger.info("increment" + i);
+
+                } else {
+                    enableRando = false;
+                }
+
+            }
+
+        });
+
+        remove_path.setOnAction((EventHandler<ActionEvent>) new EventHandler<ActionEvent>() {
+
+            @Override
+            public void handle(final ActionEvent event) {
+                if (!remove_path.isPressed()) {
+                    countor++;
+                    // TODO: remove data from Waypoint listview
+                    Main.logger.info("removed waypoint");
+                    data.removeData();
+                    waypoint_table.getItems().remove(data);
+
+                    Main.logger.info("waypoint removed successfull!y");
+
+                }
+
+            }
+
+        });
+
+        generate_path.setOnAction((EventHandler<ActionEvent>) new EventHandler<ActionEvent>() {
+
+            @Override
+            public void handle(final ActionEvent event) {
+                if (generate_path.isSelected()) {
+                    // TODO: remove data from Waypoint listview
+                    Main.logger.info("starting to generate path");
+
+                    genpath = true;
+                }
+
+            }
+
+        });
+
+        exit.setOnAction((EventHandler<ActionEvent>) new EventHandler<ActionEvent>() {
+
+            @Override
+            public void handle(final ActionEvent event) {
+                final Stage stage = (Stage) exit.getScene().getWindow();
+
+                if (!exit.isPressed()) {
+                    // TODO: add enty to display_path_entrys
+                    Main.logger.info("exited path menu");
+                    stage.hide();
+
+                }
+
+            }
+
+        });
+       
         preview_graph.setOnAction((EventHandler<ActionEvent>) new EventHandler<ActionEvent>() {
 
             @Override
@@ -357,37 +356,32 @@ public class PathDataPaneController {
                 if (!preview_graph.isPressed()) {
                     try {
                         graph.start(stage);
-                        
+
                     } catch (Exception e) {
                         // TODO Auto-generated catch block
                         e.printStackTrace();
                     }
+                }
+
             }
 
-        }
-
-    });
-}
-
-        
-        
-    
-
-	public String getPathName() {
-		return PathName;
+        });
     }
-    
-    private double getRobotWheelbase(){
+
+    public String getPathName() {
+        return PathName;
+    }
+
+    private double getRobotWheelbase() {
         return Double.valueOf(robot_wheelbase.getText());
     }
 
-    private String getPathSaveLocal(){
+    private String getPathSaveLocal() {
         return pathfile_path.getText();
     }
 
-    public WaypointTableData getData(){
+    public WaypointTableData getData() {
         return data;
     }
-
 
 }
