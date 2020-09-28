@@ -80,7 +80,8 @@ public class WaypointManagement {
             final String location, final String PathName) {
         Main.logger.info("Generatring Path to File");
         Path path = PathGenerator.makePath(sequence, config, wheelBase, PathName);
-        Main.logger.info("path is Generateing");
+        Main.logger.info("path is Generateing"+ path.getLeftWheelTrajectory().toStringProfile());
+        Main.logger.info("path is Generateing"+ path.getLeftWheelTrajectory().toStringProfile());
         FileGeneration.writeFiles(location,PathName, path);
 
     }
