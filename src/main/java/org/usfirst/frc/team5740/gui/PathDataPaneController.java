@@ -238,40 +238,40 @@ public class PathDataPaneController {
 
         });
 
+
         // Runs when new waypoint button pressed
         new_waypoint.setOnAction((EventHandler<ActionEvent>) new EventHandler<ActionEvent>() {
 
             @Override
             public void handle(final ActionEvent event) {
                 //TODO: Remove comment and enable code again
-                /*
-                 * if (!new_waypoint.isPressed()) { enableRando = true;
-                 * Main.logger.info("new Waypoint");
-                 * 
-                 * x = Double.parseDouble(waypoint_x_input.getText()); y =
-                 * Double.parseDouble(waypoint_y_input.getText()); theta =
-                 * Double.parseDouble(waypoint_theta_input.getText()); // Additonal math for
-                 * data acc = Double.parseDouble(waypoint_acc_input.getText()); jerk =
-                 * Double.parseDouble(waypoint_jerk_input.getText()); velocity =
-                 * Double.parseDouble(waypoint_velocity_imput.getText()); dt =
-                 * Double.parseDouble(waypoint_dt_input.getText());
-                 * 
-                 * data = new WaypointTableData(i - countor, x, y, theta, acc, jerk, velocity,
-                 * dt); waypoint_table.getItems().add(data);
-                 * 
-                 * data.addData(); PathName = path_name.getText();
-                 * wayManage.createWaypoint(data,enableRando, enable_Pi, enable_Neg_Pi,
-                 * getRobotWheelbase(), getPathName(), getPathSaveLocal(), genpath); i++;
-                 * Main.logger.info("increment" + i);
-                 * 
-                 * } else{ enableRando = false; }
-                 */
+                
+                 if (!new_waypoint.isPressed()) { enableRando = true;
+                  Main.logger.info("new Waypoint");
+                  
+                  x = Double.parseDouble(waypoint_x_input.getText()); 
+                  y = Double.parseDouble(waypoint_y_input.getText()); 
+                  theta =Double.parseDouble(waypoint_theta_input.getText()); // Additonal math for
+                  acc = Double.parseDouble(waypoint_acc_input.getText()); 
+                  jerk = Double.parseDouble(waypoint_jerk_input.getText()); 
+                  velocity = Double.parseDouble(waypoint_velocity_imput.getText()); 
+                  dt = Double.parseDouble(waypoint_dt_input.getText());
+                  data = new WaypointTableData(i - countor, x, y, theta, acc, jerk, velocity,dt); 
+                  waypoint_table.getItems().add(data);
+                  
+                  data.addData(); 
+                  PathName = path_name.getText();
+                  wayManage.createWaypoint(data,enableRando, enable_Pi, enable_Neg_Pi,getRobotWheelbase(), getPathName(), getPathSaveLocal(), genpath); i++;
+                  Main.logger.info("increment" + i);
+                  
+                  } else{ enableRando = false; }
+                 
 
                 /**
                  * This is for testing
                  */
                 // TODO:Remove From Production Release
-                if (!new_waypoint.isPressed() && generate_path.isSelected()) {
+                if (generate_path.isSelected()) {
                     enableRando = true;
                     rando.doubles(2);
                     x = rando.nextDouble();
@@ -357,13 +357,22 @@ public class PathDataPaneController {
                 Stage stage = new Stage();
 
                 if (!preview_graph.isPressed()) {
-                    try {
-                        graph.start(stage);
+                    Main.logger.info("NEED TO GET GRAPH FXML done Path Display not ready yet!!");
+                }
 
-                    } catch (Exception e) {
-                        // TODO Auto-generated catch block
-                        e.printStackTrace();
-                    }
+            }
+
+        });
+        invert_y.setOnAction((EventHandler<ActionEvent>) new EventHandler<ActionEvent>() {
+
+            @Override
+            public void handle(final ActionEvent event) {
+
+                if (invert_y.isSelected()) {
+                    // TODO: add invert y fucntion 
+                    Main.logger.info("NOT ADDED YET WAIT plz. INVERT y needs fixed!");
+                } else {
+                    enable_Neg_Pi = false;
                 }
 
             }
