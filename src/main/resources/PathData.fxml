@@ -32,13 +32,13 @@
                </font>
             </Label>
             <Button fx:id="remove_path" layoutX="99.0" layoutY="434.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="132.0" style="-fx-background-color: rgb(30,30,30);" text="remove WayPoint" textFill="WHITE" />
-            <Button fx:id="preview_graph" layoutX="807.0" layoutY="401.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="118.0" style="-fx-background-color: rgb(30,30,30);" text="Preview Graph" textFill="WHITE" />
-            <Label layoutX="807.0" layoutY="372.0" prefHeight="21.0" prefWidth="118.0" text="Preview path" textFill="WHITE">
+            <Button fx:id="preview_graph" layoutX="783.0" layoutY="370.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="118.0" style="-fx-background-color: rgb(30,30,30);" text="Preview Graph" textFill="WHITE" />
+            <Label layoutX="783.0" layoutY="340.0" prefHeight="21.0" prefWidth="118.0" text="Preview path" textFill="WHITE">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <ImageView fitHeight="89.0" fitWidth="122.0" layoutY="369.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="89.0" fitWidth="122.0" layoutX="1.0" layoutY="379.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@44243093.png" />
                </image>
@@ -56,12 +56,13 @@
             <TextField fx:id="waypoint_jerk_input" layoutX="417.0" layoutY="403.0" prefHeight="26.0" prefWidth="179.0" promptText="enter max Jerk" />
             <TextField fx:id="waypoint_velocity_imput" layoutX="417.0" layoutY="436.0" prefHeight="26.0" prefWidth="179.0" promptText="enter Velocity" />
             <TextField fx:id="waypoint_dt_input" layoutX="417.0" layoutY="337.0" prefHeight="26.0" prefWidth="179.0" promptText="            enter dt" />
-            <CheckBox fx:id="generate_path" layoutX="807.0" layoutY="438.0" mnemonicParsing="false" text="Generate Path" textFill="WHITE" />
+            <CheckBox fx:id="generate_path" layoutX="783.0" layoutY="407.0" mnemonicParsing="false" text="Test (Fill random)" textFill="WHITE" />
             <TextField fx:id="path_name" layoutX="602.0" layoutY="369.0" prefHeight="26.0" prefWidth="171.0" promptText="enter Path name" />
             <TextField fx:id="robot_wheelbase" layoutX="602.0" layoutY="401.0" prefHeight="26.0" prefWidth="171.0" promptText="enter Robot Wheelbase" />
             <TextField fx:id="pathfile_path" layoutX="602.0" layoutY="434.0" prefHeight="26.0" prefWidth="171.0" promptText="enter save location" />
             <CheckBox fx:id="neg_pi" layoutX="254.0" layoutY="341.0" mnemonicParsing="false" text="enable neg pi theta" textFill="WHITE" />
             <CheckBox fx:id="pi_enable" layoutX="607.0" layoutY="341.0" mnemonicParsing="false" text="enable pi theta" textFill="WHITE" />
+            <CheckBox fx:id="invert_y" layoutX="783.0" layoutY="438.0" mnemonicParsing="false" text="Invert Y" textFill="WHITE" />
       </children>
     </AnchorPane>
   </children>

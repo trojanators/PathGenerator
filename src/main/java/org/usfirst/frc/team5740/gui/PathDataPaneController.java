@@ -115,6 +115,9 @@ public class PathDataPaneController {
 
     @FXML
     private CheckBox neg_pi;
+    
+    @FXML
+    private CheckBox invert_y;
 
     @FXML
     private TableView<WaypointTableData> waypoint_table;
