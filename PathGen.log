@@ -1,36 +1,70 @@
-Sep 28, 2020 2:42:56 PM org.usfirst.frc.team5740.Main loggerInit
+Sep 29, 2020 9:04:31 AM org.usfirst.frc.team5740.Main loggerInit
 INFO: =======================================================================
 
-Sep 28, 2020 2:42:56 PM org.usfirst.frc.team5740.Main loggerInit
+Sep 29, 2020 9:04:31 AM org.usfirst.frc.team5740.Main loggerInit
 INFO: ===           PathGenerator Made by Nicholas Blackburn              ===
 
-Sep 28, 2020 2:42:56 PM org.usfirst.frc.team5740.Main loggerInit
+Sep 29, 2020 9:04:31 AM org.usfirst.frc.team5740.Main loggerInit
 INFO: ===             Time to Take over World... Finally!!                ===
 
-Sep 28, 2020 2:42:56 PM org.usfirst.frc.team5740.Main loggerInit
+Sep 29, 2020 9:04:31 AM org.usfirst.frc.team5740.Main loggerInit
 INFO: =======================================================================
 
-Sep 28, 2020 2:42:56 PM org.usfirst.frc.team5740.Main loggerInit
+Sep 29, 2020 9:04:31 AM org.usfirst.frc.team5740.Main loggerInit
 INFO: 
 
-Sep 28, 2020 2:42:56 PM org.usfirst.frc.team5740.Main loggerInit
-WARNING: Date today is2020-09-28
+Sep 29, 2020 9:04:31 AM org.usfirst.frc.team5740.Main loggerInit
+WARNING: Date today is2020-09-29
 
-Sep 28, 2020 2:42:56 PM org.usfirst.frc.team5740.Main start
+Sep 29, 2020 9:04:31 AM org.usfirst.frc.team5740.Main start
 INFO: loading Fxml file
-Sep 28, 2020 2:42:56 PM org.usfirst.frc.team5740.Main start
+Sep 29, 2020 9:04:31 AM org.usfirst.frc.team5740.Main start
 INFO: Done Loading main.fxml file
-Sep 28, 2020 2:42:57 PM org.usfirst.frc.team5740.Main start
+Sep 29, 2020 9:04:31 AM org.usfirst.frc.team5740.Main start
 WARNING: Successfully displaying Main page
-Sep 28, 2020 2:42:57 PM org.usfirst.frc.team5740.Main start
+Sep 29, 2020 9:04:31 AM org.usfirst.frc.team5740.Main start
 WARNING: Starting Init Function
-Sep 28, 2020 2:42:58 PM org.usfirst.frc.team5740.gui.MainController$1 handle
+Sep 29, 2020 9:04:33 AM org.usfirst.frc.team5740.gui.MainController$1 handle
 INFO: Starting Path Generator
-Sep 28, 2020 2:42:58 PM org.usfirst.frc.team5740.gui.StartPathData start
+Sep 29, 2020 9:04:33 AM org.usfirst.frc.team5740.gui.StartPathData start
 INFO: loading Fxml file
-Sep 28, 2020 2:42:58 PM org.usfirst.frc.team5740.gui.StartPathData start
+Sep 29, 2020 9:04:33 AM org.usfirst.frc.team5740.gui.StartPathData start
 INFO: Done Loading PathData.fxml file
-Sep 28, 2020 2:42:58 PM org.usfirst.frc.team5740.gui.StartPathData start
+Sep 29, 2020 9:04:33 AM org.usfirst.frc.team5740.gui.StartPathData start
 WARNING: Successfully displaying Pathdata page
-Sep 28, 2020 2:42:58 PM org.usfirst.frc.team5740.gui.StartPathData start
+Sep 29, 2020 9:04:33 AM org.usfirst.frc.team5740.gui.StartPathData start
 WARNING: Starting PathData Function
+Sep 29, 2020 9:05:34 AM org.usfirst.frc.team5740.gui.PathDataPaneController$3 handle
+INFO: new Waypoint
+Sep 29, 2020 9:05:35 AM org.usfirst.frc.team5740.util.WaypointTableData addData
+WARNING: Data from all the arrays
+ID[0]
+X[0.0]
+Y[0.0]
+Theta[0.0]
+
+Sep 29, 2020 9:05:37 AM com.team254.lib.trajectory.WaypointSequence addWaypoint
+WARNING: Waypoints In list1
+Sep 29, 2020 9:05:38 AM org.usfirst.frc.team5740.util.WaypointManagement createWaypoint
+INFO: WayPoints in Created Waypoint Sequ is0
+Sep 29, 2020 9:05:38 AM org.usfirst.frc.team5740.util.WaypointManagement createWaypoint
+WARNING: waypoint sequ listnull
+Sep 29, 2020 9:05:39 AM org.usfirst.frc.team5740.gui.PathDataPaneController$3 handle
+INFO: increment1
+Sep 29, 2020 9:05:45 AM org.usfirst.frc.team5740.gui.PathDataPaneController$5 handle
+INFO: starting to generate path
+Sep 29, 2020 9:05:50 AM org.usfirst.frc.team5740.util.WaypointTableData addData
+WARNING: Data from all the arrays
+ID[0, 1]
+X[0.0, 0.47027358899881666]
+Y[0.0, 0.6442807721883037]
+Theta[0.0, 0.5481065135172174]
+
+Sep 29, 2020 9:05:52 AM com.team254.lib.trajectory.WaypointSequence addWaypoint
+WARNING: Waypoints In list2
+Sep 29, 2020 9:05:52 AM org.usfirst.frc.team5740.util.WaypointManagement createWaypoint
+INFO: WayPoints in Created Waypoint Sequ is1
+Sep 29, 2020 9:05:52 AM org.usfirst.frc.team5740.util.WaypointManagement createWaypoint
+WARNING: waypoint sequ listnull
+Sep 29, 2020 9:05:54 AM org.usfirst.frc.team5740.gui.PathDataPaneController$3 handle
+INFO: increment2

@@ -62,6 +62,7 @@ public class PathDataPaneController {
     private Boolean enable_Pi = false;
     private Boolean genpath;
     private boolean enableRando;
+    private Boolean enableTestMode = true;
     @FXML
     private AnchorPane save_entrys;
 
@@ -246,7 +247,7 @@ public class PathDataPaneController {
             public void handle(final ActionEvent event) {
                 //TODO: Remove comment and enable code again
                 
-                 if (!new_waypoint.isPressed()) { enableRando = true;
+                 if (!new_waypoint.isPressed() && !generate_path.isSelected()) { enableRando = true;
                   Main.logger.info("new Waypoint");
                   
                   x = Double.parseDouble(waypoint_x_input.getText()); 
@@ -271,7 +272,7 @@ public class PathDataPaneController {
                  * This is for testing
                  */
                 // TODO:Remove From Production Release
-                if (generate_path.isSelected()) {
+                if (!new_waypoint.isPressed() && generate_path.isSelected() && enableTestMode) {
                     enableRando = true;
                     rando.doubles(2);
                     x = rando.nextDouble();

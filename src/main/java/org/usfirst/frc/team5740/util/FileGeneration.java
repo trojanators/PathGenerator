@@ -69,4 +69,11 @@ public class FileGeneration {
 		final File file2 = new File(file1, path2);
 		return file2.getPath();
 	}
+	
+	/**
+	 * creates csv file with path
+	 */
+	public void writeCsv(){
+
+	}
 }
