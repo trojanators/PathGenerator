@@ -44,7 +44,7 @@
                </image>
             </ImageView>
             <Button fx:id="exit" layoutX="27.0" layoutY="19.0" mnemonicParsing="false" style="-fx-background-color: rgb(30,30,30);" text="exit" textFill="WHITE" />
-            <TableView fx:id="waypoint_table" editable="true" layoutX="45.0" layoutY="86.0" prefHeight="200.0" prefWidth="832.0" style="-fx-background-color: rgb(28,28,28);" tableMenuButtonVisible="true">
+            <TableView fx:id="waypoint_table" editable="true" layoutX="45.0" layoutY="86.0" prefHeight="200.0" prefWidth="867.0" style="-fx-background-color: rgb(28,28,28);" tableMenuButtonVisible="true">
                <columnResizePolicy>
                   <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                </columnResizePolicy>
@@ -63,6 +63,7 @@
             <CheckBox fx:id="neg_pi" layoutX="254.0" layoutY="341.0" mnemonicParsing="false" text="enable neg pi theta" textFill="WHITE" />
             <CheckBox fx:id="pi_enable" layoutX="607.0" layoutY="341.0" mnemonicParsing="false" text="enable pi theta" textFill="WHITE" />
             <CheckBox fx:id="invert_y" layoutX="783.0" layoutY="438.0" mnemonicParsing="false" text="Invert Y" textFill="WHITE" />
+            <TextField fx:id="sec_size" layoutX="417.0" layoutY="304.0" prefHeight="26.0" prefWidth="179.0" promptText="enter number of waypoints" />
       </children>
     </AnchorPane>
   </children>

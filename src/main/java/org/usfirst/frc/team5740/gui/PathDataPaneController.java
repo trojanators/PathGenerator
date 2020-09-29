@@ -51,6 +51,7 @@ public class PathDataPaneController {
     private double velocity;
     private double jerk;
     private double dt;
+    private double seqSize;
     private Random rando = new Random();
 
     // Counters for Inc
@@ -123,6 +124,10 @@ public class PathDataPaneController {
     @FXML
     private TableView<WaypointTableData> waypoint_table;
 
+    @FXML
+    private TextField sec_size;
+
+
     private WaypointTableData data;
 
     /**
@@ -187,6 +192,11 @@ public class PathDataPaneController {
             return pattern.matcher(change.getControlNewText()).matches() ? change : null;
         });
 
+        final TextFormatter formatter8 = new TextFormatter((UnaryOperator<TextFormatter.Change>) change -> {
+            return pattern.matcher(change.getControlNewText()).matches() ? change : null;
+        });
+
+
         waypoint_x_input.setTextFormatter(formatter);
         waypoint_y_input.setTextFormatter(formatter1);
         waypoint_theta_input.setTextFormatter(formatter2);
@@ -195,6 +205,7 @@ public class PathDataPaneController {
         waypoint_velocity_imput.setTextFormatter(formatter5);
         waypoint_dt_input.setTextFormatter(formatter6);
         robot_wheelbase.setTextFormatter(formatter7);
+        sec_size.setTextFormatter(formatter8);
     }
 
     private String PathName;
@@ -257,12 +268,14 @@ public class PathDataPaneController {
                   jerk = Double.parseDouble(waypoint_jerk_input.getText()); 
                   velocity = Double.parseDouble(waypoint_velocity_imput.getText()); 
                   dt = Double.parseDouble(waypoint_dt_input.getText());
+                  seqSize = Double.parseDouble(sec_size.getText());
                   data = new WaypointTableData(i - countor, x, y, theta, acc, jerk, velocity,dt); 
                   waypoint_table.getItems().add(data);
                   
                   data.addData(); 
                   PathName = path_name.getText();
-                  wayManage.createWaypoint(data,enableRando, enable_Pi, enable_Neg_Pi,getRobotWheelbase(), getPathName(), getPathSaveLocal(), genpath); i++;
+                  wayManage.createWaypoint(data,enableRando, enable_Pi, enable_Neg_Pi,getRobotWheelbase(), getPathName(), getPathSaveLocal(), genpath, (int)seqSize); 
+                  i++;
                   Main.logger.info("increment" + i);
                   
                   } else{ enableRando = false; }
@@ -282,13 +295,13 @@ public class PathDataPaneController {
                     jerk = rando.nextDouble();
                     velocity = rando.nextDouble();
                     dt = rando.nextDouble();
-
+                    seqSize = Double.parseDouble(sec_size.getText());
                     data = new WaypointTableData(i - countor, x, y, theta, acc, jerk, velocity, dt);
                     waypoint_table.getItems().add(data);
                     PathName = path_name.getText();
                     data.addData();
                     wayManage.createWaypoint(data, enableRando, enable_Pi, enable_Neg_Pi, getRobotWheelbase(),
-                            getPathName(), getPathSaveLocal(), genpath);
+                            getPathName(), getPathSaveLocal(), genpath, (int)seqSize);
                     i++;
                     Main.logger.info("increment" + i);
 

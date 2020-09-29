@@ -23,10 +23,16 @@ public class WaypointManagement {
      * @param WaypointTableData data
      * @param Boolan            enablePICalcPositive
      * @param Boolean           enablePiCalcNegative
+     * @param Double 
+     * @param pathName
+     * @param String 
+     * @param Location
+     * @param Boolean 
+     * @param Boolean
      */
     public void createWaypoint(final WaypointTableData data,  Boolean enableRando, Boolean enablePiCalc,
              Boolean enableNegPi, final double wheebase,  String pathName,  String Location,
-             Boolean genpath) {
+             Boolean genpath, int Seqnum) {
 
         final WaypointSequence sequence = new WaypointSequence();
         int waypointId = data.getId();
@@ -58,7 +64,7 @@ public class WaypointManagement {
     
     
 
-        if (sequence.getNumWaypoints() == 10) {
+        if (sequence.getNumWaypoints() == Seqnum) {
             // Before Gen path Print out all data
             Main.logger.warning("Data" + wheebase + "," + Location + "," + pathName);
             createPath(sequence, config, wheebase, Location, pathName);
