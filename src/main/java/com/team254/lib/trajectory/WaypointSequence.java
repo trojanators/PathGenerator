@@ -35,7 +35,7 @@ public class WaypointSequence {
     public double theta;
   }
 
-  static ArrayList<Waypoint> waypoints_ = new ArrayList<Waypoint>(10);
+  static ArrayList<Waypoint> waypoints_ = new ArrayList<Waypoint>();
 
 
   //TODO: Fix Incramenting
