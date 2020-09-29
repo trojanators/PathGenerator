@@ -21,6 +21,10 @@ public class Main extends Application {
     private LocalDate day = LocalDate.now(); // Create a date object
 
     // Starts JavaFX Gui
+    public static void main(String[] args) {
+        launch(args);
+    }
+    
     @Override
     public void start(final Stage stage) throws Exception {
         // logger setup
