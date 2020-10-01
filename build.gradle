@@ -44,7 +44,7 @@ application {
 
 task genJar(type: Jar) {
     manifest {
-        attributes 'Main-Class': 'pathgenerator'
+        attributes 'Main-Class': 'pathgenerator.Main'
     }
     baseName = 'PathGenerator'
     from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }

@@ -34,14 +34,16 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextFormatter;
+import javafx.scene.control.TextFormatter.Change;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Path;
 import javafx.stage.Stage;
 import javafx.util.Callback;
+import javafx.util.converter.DoubleStringConverter;
 
 public class PathDataPaneController {
-
+    
     private final WaypointManagement wayManage = new WaypointManagement();
     private final GraphPage graph = new GraphPage();
     private double x;
@@ -145,7 +147,7 @@ public class PathDataPaneController {
 
         final TableColumn waypoint_y = new TableColumn("y");
         waypoint_y.setCellValueFactory(new PropertyValueFactory<>("y"));
-
+        
         final TableColumn waypoint_theta = new TableColumn("theta");
         waypoint_theta.setCellValueFactory(new PropertyValueFactory<>("theta"));
 
@@ -164,48 +166,39 @@ public class PathDataPaneController {
         waypoint_table.getColumns().addAll(waypoint_id, waypoint_x, waypoint_y, waypoint_theta, waypoint_acc,
                 waypoint_vel, waypoint_jerk, waypoint_dt);
 
+
         final Pattern pattern = Pattern.compile("\\d*(\\.\\d*)?");
         final TextFormatter formatter = new TextFormatter((UnaryOperator<TextFormatter.Change>) change -> {
             return pattern.matcher(change.getControlNewText()).matches() ? change : null;
         });
-        final TextFormatter formatter1 = new TextFormatter((UnaryOperator<TextFormatter.Change>) change -> {
-            return pattern.matcher(change.getControlNewText()).matches() ? change : null;
-        });
-        final TextFormatter formatter2 = new TextFormatter((UnaryOperator<TextFormatter.Change>) change -> {
-            return pattern.matcher(change.getControlNewText()).matches() ? change : null;
-        });
 
-        final TextFormatter formatter3 = new TextFormatter((UnaryOperator<TextFormatter.Change>) change -> {
+        waypoint_x_input.setTextFormatter( new TextFormatter((UnaryOperator<TextFormatter.Change>)change -> {
             return pattern.matcher(change.getControlNewText()).matches() ? change : null;
-        });
-        final TextFormatter formatter4 = new TextFormatter((UnaryOperator<TextFormatter.Change>) change -> {
+        }));
+        waypoint_y_input.setTextFormatter(new TextFormatter((UnaryOperator<TextFormatter.Change>) change -> {
             return pattern.matcher(change.getControlNewText()).matches() ? change : null;
-        });
-
-        final TextFormatter formatter5 = new TextFormatter((UnaryOperator<TextFormatter.Change>) change -> {
+        }));
+        waypoint_theta_input.setTextFormatter(new TextFormatter((UnaryOperator<TextFormatter.Change>) change -> {
             return pattern.matcher(change.getControlNewText()).matches() ? change : null;
-        });
-        final TextFormatter formatter6 = new TextFormatter((UnaryOperator<TextFormatter.Change>) change -> {
+        }));
+        waypoint_acc_input.setTextFormatter(new TextFormatter((UnaryOperator<TextFormatter.Change>) change -> {
             return pattern.matcher(change.getControlNewText()).matches() ? change : null;
-        });
-        final TextFormatter formatter7 = new TextFormatter((UnaryOperator<TextFormatter.Change>) change -> {
+        }));
+        waypoint_jerk_input.setTextFormatter(new TextFormatter((UnaryOperator<TextFormatter.Change>) change -> {
             return pattern.matcher(change.getControlNewText()).matches() ? change : null;
-        });
-
-        final TextFormatter formatter8 = new TextFormatter((UnaryOperator<TextFormatter.Change>) change -> {
+        }));
+        waypoint_velocity_imput.setTextFormatter(new TextFormatter((UnaryOperator<TextFormatter.Change>) change -> {
             return pattern.matcher(change.getControlNewText()).matches() ? change : null;
-        });
-
-
-        waypoint_x_input.setTextFormatter(formatter);
-        waypoint_y_input.setTextFormatter(formatter1);
-        waypoint_theta_input.setTextFormatter(formatter2);
-        waypoint_acc_input.setTextFormatter(formatter3);
-        waypoint_jerk_input.setTextFormatter(formatter4);
-        waypoint_velocity_imput.setTextFormatter(formatter5);
-        waypoint_dt_input.setTextFormatter(formatter6);
-        robot_wheelbase.setTextFormatter(formatter7);
-        sec_size.setTextFormatter(formatter8);
+        }));
+        waypoint_dt_input.setTextFormatter(new TextFormatter((UnaryOperator<TextFormatter.Change>) change -> {
+            return pattern.matcher(change.getControlNewText()).matches() ? change : null;
+        }));
+        robot_wheelbase.setTextFormatter(new TextFormatter((UnaryOperator<TextFormatter.Change>) change -> {
+            return pattern.matcher(change.getControlNewText()).matches() ? change : null;
+        }));
+        sec_size.setTextFormatter(new TextFormatter((UnaryOperator<TextFormatter.Change>) change -> {
+            return pattern.matcher(change.getControlNewText()).matches() ? change : null;
+        }));
     }
 
     private String PathName;
@@ -269,9 +262,9 @@ public class PathDataPaneController {
                   velocity = Double.parseDouble(waypoint_velocity_imput.getText()); 
                   dt = Double.parseDouble(waypoint_dt_input.getText());
                   seqSize = Double.parseDouble(sec_size.getText());
+
                   data = new WaypointTableData(i - countor, x, y, theta, acc, jerk, velocity,dt); 
                   waypoint_table.getItems().add(data);
-                  
                   data.addData(); 
                   PathName = path_name.getText();
                   wayManage.createWaypoint(data,enableRando, enable_Pi, enable_Neg_Pi,getRobotWheelbase(), getPathName(), getPathSaveLocal(), genpath, (int)seqSize); 
