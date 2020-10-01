@@ -21,7 +21,7 @@
 <li> The generation of a csv file </li>
 
 ### -- 
-## Using Path Generator 
+## How to Use Path Generator 
 <li> launch path-generator </li>
 <li> when program opens click start creating paths </li>
 <li> when a window with an empty table opens enter data into the blank text inputs </li>

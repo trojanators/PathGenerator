@@ -21,6 +21,7 @@ public class WaypointTableData {
     private double jerk;
     private double vel;
     private double dt;
+    
     private TrajectoryGenerator.Config config = new TrajectoryGenerator.Config();
 
     private static ArrayList waypointXArray = new ArrayList<Double>(10);
