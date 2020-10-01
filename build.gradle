@@ -38,13 +38,13 @@ javafx {
 
 application {
     // Define the main class for the application.
-    mainClassName = 'org.usfirst.frc.team5740.Main'
+    mainClassName = 'pathgenerator.Main'
 }
 
 
 task genJar(type: Jar) {
     manifest {
-        attributes 'Main-Class': 'org.usfirst.frc.team5740'
+        attributes 'Main-Class': 'pathgenerator'
     }
     baseName = 'PathGenerator'
     from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
