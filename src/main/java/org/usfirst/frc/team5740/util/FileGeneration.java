@@ -6,7 +6,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Writer;
 
-import au.com.bytecode.opencsv.CSVWriter;
+
 
 import com.team254.lib.trajectory.Path;
 import com.team254.lib.trajectory.io.JavaSerializer;
@@ -15,26 +15,24 @@ import com.team254.lib.trajectory.io.TextFileSerializer;
 import org.supercsv.io.CsvBeanWriter;
 import org.usfirst.frc.team5740.Main;
 
-
-
 /**
  * this class is to Generate java and txt file for paths that are Generated
  * 
  * @author nicholas blackburn
  * @param pathName location of file path
- * @param path path for path generation
+ * @param path     path for path generation
  */
-//TODO: generate output to csv format
+// TODO: generate output to csv format
 public class FileGeneration {
 
 	/**
 	 * writes a txt file filled with generated path
+	 * 
 	 * @param Directory
 	 * @param fileName
 	 * @param path
 	 */
 	public static void writeFiles(final String Directory, final String fileName, final Path path) {
-
 
 		// Outputs to the directory supplied as the first argument.
 		final TextFileSerializer ts = new TextFileSerializer();
@@ -47,14 +45,14 @@ public class FileGeneration {
 		} else {
 			Main.logger.info("Wrote " + fullpathtext);
 			Main.logger.warning("FINISHED");
-			
 
 		}
 
 	}
-	
+
 	/**
-	 * Creates Java class file with path values in it 
+	 * Creates Java class file with path values in it
+	 * 
 	 * @param path
 	 * @param data
 	 * @return
@@ -85,15 +83,15 @@ public class FileGeneration {
 		final File file2 = new File(file1, path2);
 		return file2.getPath();
 	}
-	
+
 	/***
 	 * Outputs Generated Path to csv file
+	 * 
 	 * @param String Directory, Filename
-	 * @param Path robot path
+	 * @param Path   robot path
 	 * 
 	 */
-	public void writeCsv(final String Directory, final String fileName, final Path path) throws IOException{
+	public void writeCsv(final String Directory, final String fileName, final Path path) throws IOException {
 
-		
 	}
 }

@@ -23,8 +23,8 @@ public class WaypointTableData {
     private double dt;
     private TrajectoryGenerator.Config config = new TrajectoryGenerator.Config();
 
-    public static ArrayList waypointXArray = new ArrayList<Double>(10);
-    public  static ArrayList waypointYArray = new ArrayList<Double>(10);
+    private static ArrayList waypointXArray = new ArrayList<Double>(10);
+    private static ArrayList waypointYArray = new ArrayList<Double>(10);
     private static ArrayList waypointThetaArray = new ArrayList<Double>(10);
     private static ArrayList waypointMaxAccArray = new ArrayList<Double>(10);
     private static ArrayList waypointMaxJerkArray = new ArrayList<Double>(10);
