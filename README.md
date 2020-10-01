@@ -19,14 +19,13 @@
 <li> Invert Y axis on path </li>
 <li> The Generated Path Display Graph </>
 <li> The generation of a csv file </li>
-<li> Really only allows 10 waypoints max but will enable user defined waypoint amount</li>
 
 ### -- 
-## Using Path Generator 
+## How to Use Path Generator 
 <li> launch path-generator </li>
 <li> when program opens click start creating paths </li>
 <li> when a window with an empty table opens enter data into the blank text inputs </li>
-<li>make sure there are 11 separate waypoints entered to generate path </li>
+
 
 
 ### --
