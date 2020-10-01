@@ -1,6 +1,5 @@
-package pathgenerator.lib.trajectory.io;
-
-import pathgenerator.lib.trajectory.Path;
+package pathgenerator.trajectory.io;
+import pathgenerator.trajectory.Path;
 import java.util.StringTokenizer;
 
 /**
@@ -13,8 +12,8 @@ public class JavaStringSerializer implements IPathSerializer {
 
   public String serialize(Path path) {
     String contents = "package pathgenerator.frc2014.paths;\n\n";
-    contents += "import pathgenerator.lib.trajectory.Trajectory;\n";
-    contents += "import pathgenerator.lib.trajectory.io.TextFileDeserializer;\n";
+    contents += "import pathgenerator.trajectory;.trajectory.Trajectory;\n";
+    contents += "import pathgenerator.trajectory;.trajectory.io.TextFileDeserializer;\n";
     contents += "import pathgenerator.path.Path;\n\n";
     contents += "public class " + path.getName() + " extends Path {\n";
   

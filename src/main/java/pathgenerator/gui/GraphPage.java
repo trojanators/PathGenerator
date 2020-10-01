@@ -1,8 +1,7 @@
 package pathgenerator.gui;
 
 import pathgenerator.Main;
-
-
+import pathgenerator.util.WaypointTableData;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;

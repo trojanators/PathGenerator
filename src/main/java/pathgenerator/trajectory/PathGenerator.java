@@ -1,4 +1,4 @@
-package pathgenerator.lib.trajectory;
+package pathgenerator.trajectory;
 
 /**
  * Generate a smooth Trajectory from a Path.

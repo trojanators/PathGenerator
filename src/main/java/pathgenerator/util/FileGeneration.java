@@ -8,9 +8,9 @@ import java.io.Writer;
 
 
 
-import pathgenerator.lib.trajectory.Path;
-import pathgenerator.lib.trajectory.io.JavaSerializer;
-import pathgenerator.lib.trajectory.io.TextFileSerializer;
+import pathgenerator.trajectory.Path;
+import pathgenerator.trajectory.io.JavaSerializer;
+import pathgenerator.trajectory.io.TextFileSerializer;
 
 import org.supercsv.io.CsvBeanWriter;
 import pathgenerator.Main;

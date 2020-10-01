@@ -2,12 +2,12 @@ package pathgenerator.util;
 
 import java.io.File;
 
-import pathgenerator.lib.trajectory.Path;
-import pathgenerator.lib.trajectory.PathGenerator;
-import pathgenerator.lib.trajectory.TrajectoryGenerator;
-import pathgenerator.lib.trajectory.WaypointSequence;
-import pathgenerator.lib.trajectory.TrajectoryGenerator.Config;
-import pathgenerator.lib.trajectory.WaypointSequence.Waypoint;
+import pathgenerator.trajectory.Path;
+import pathgenerator.trajectory.PathGenerator;
+import pathgenerator.trajectory.TrajectoryGenerator;
+import pathgenerator.trajectory.WaypointSequence;
+import pathgenerator.trajectory.TrajectoryGenerator.Config;
+import pathgenerator.trajectory.WaypointSequence.Waypoint;
 
 import pathgenerator.Main;
 

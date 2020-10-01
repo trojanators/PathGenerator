@@ -1,8 +1,7 @@
-package pathgenerator.lib.trajectory.io;
-
-import pathgenerator.lib.trajectory.Trajectory;
-import pathgenerator.lib.trajectory.Trajectory.Segment;
-import pathgenerator.lib.trajectory.Path;
+package pathgenerator.trajectory.io;
+import pathgenerator.trajectory.Trajectory;
+import pathgenerator.trajectory.Trajectory.Segment;
+import pathgenerator.trajectory.Path;
 
 /**
  * Serializes a Path to a simple space and CR separated text file.
@@ -48,5 +47,6 @@ public class TextFileSerializer implements IPathSerializer {
     }
     return content;
   }
+
   
 }

@@ -1,6 +1,4 @@
-package pathgenerator.lib.trajectory;
-
-import pathgenerator.lib.util.ChezyMath;
+package pathgenerator.trajectory;
 
 /**
  * Implementation of a Trajectory using arrays as the underlying storage

@@ -1,6 +1,6 @@
-package pathgenerator.lib.trajectory;
+package pathgenerator.trajectory;
 
-import pathgenerator.lib.trajectory.Trajectory.Segment;
+import pathgenerator.trajectory.Trajectory.Segment;
 
 /**
  * Base class for an autonomous path.

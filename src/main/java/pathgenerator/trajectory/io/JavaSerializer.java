@@ -1,7 +1,8 @@
-package pathgenerator.lib.trajectory.io;
+package pathgenerator.trajectory.io;
 
-import pathgenerator.lib.trajectory.Trajectory;
-import pathgenerator.lib.trajectory.Path;
+import pathgenerator.trajectory.Path;
+import pathgenerator.trajectory.Trajectory;
+
 
 /**
  * Serialize a path to a Java file that can be compiled into a J2ME project.
@@ -20,15 +21,13 @@ public class JavaSerializer implements IPathSerializer {
    */
   public String serialize(Path path) {
     String contents = "package pathgenerator.frc2014.paths;\n\n";
-    contents += "import pathgenerator.lib.trajectory.Trajectory;\n";
+    contents += "import pathgenerator.trajectory;.trajectory.Trajectory;\n";
     contents += "import pathgenerator.path.Path;\n\n";
     contents += "public class " + path.getName() + " extends Path {\n";
     path.goLeft();
-    contents += serializeTrajectory("kLeftWheel", 
-            path.getLeftWheelTrajectory());
-    contents += serializeTrajectory("kRightWheel", 
-            path.getRightWheelTrajectory());
-    
+    contents += serializeTrajectory("kLeftWheel", path.getLeftWheelTrajectory());
+    contents += serializeTrajectory("kRightWheel", path.getRightWheelTrajectory());
+
     contents += "  public " + path.getName() + "() {\n";
     contents += "    this.name_ = \"" + path.getName() + "\";\n";
     contents += "    this.go_left_pair_ = new Trajectory.Pair(kLeftWheel, kRightWheel);\n";
@@ -37,19 +36,18 @@ public class JavaSerializer implements IPathSerializer {
     contents += "}\n";
     return contents;
   }
-  
+
   private String serializeTrajectory(String name, Trajectory traj) {
-    String contents = 
-            "  private final Trajectory " + name + " = new Trajectory( new Trajectory.Segment[] {\n";
+    String contents = "  private final Trajectory " + name + " = new Trajectory( new Trajectory.Segment[] {\n";
     for (int i = 0; i < traj.getNumSegments(); ++i) {
       Trajectory.Segment seg = traj.getSegment(i);
-      contents += "    new Trajectory.Segment("
-              + seg.pos + ", " + seg.vel + ", " + seg.acc + ", "
-              + seg.jerk + ", " + seg.heading + ", " + seg.dt + ", "
-              + seg.x + ", " + seg.y + "),\n";
+      contents += "    new Trajectory.Segment(" + seg.pos + ", " + seg.vel + ", " + seg.acc + ", " + seg.jerk + ", "
+          + seg.heading + ", " + seg.dt + ", " + seg.x + ", " + seg.y + "),\n";
     }
     contents += "  });\n\n";
     return contents;
   }
+
+
 
 }

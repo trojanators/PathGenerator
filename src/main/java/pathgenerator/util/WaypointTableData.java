@@ -2,9 +2,8 @@ package pathgenerator.util;
 
 import java.util.ArrayList;
 
-import pathgenerator.lib.trajectory.TrajectoryGenerator;
-
 import pathgenerator.Main;
+import pathgenerator.trajectory.TrajectoryGenerator;
 
 
 /**

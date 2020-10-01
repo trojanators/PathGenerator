@@ -1,5 +1,4 @@
-package pathgenerator.lib.trajectory;
-
+package pathgenerator.trajectory;
 /**
  * Factory class for creating Trajectories.
  *

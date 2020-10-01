@@ -1,6 +1,6 @@
-package pathgenerator.lib.trajectory.io;
+package pathgenerator.trajectory.io;
 
-import pathgenerator.lib.trajectory.Path;
+import pathgenerator.trajectory.Path;
 
 /**
  * Interface for methods that serialize a Path or Trajectory.

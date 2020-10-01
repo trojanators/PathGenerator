@@ -1,4 +1,4 @@
-package pathgenerator.lib.trajectory;
+package pathgenerator.trajectory;
 
 /**
  * PID + Feedforward controller for following a Trajectory.

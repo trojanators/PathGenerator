@@ -1,8 +1,7 @@
-package pathgenerator.lib.trajectory;
-
-import pathgenerator.lib.util.ChezyMath;
+package pathgenerator.trajectory;
 
 import pathgenerator.Main;
+import pathgenerator.util.ChezyMath;
 
 /**
  * Do cubic spline interpolation between points.
