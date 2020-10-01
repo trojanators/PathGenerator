@@ -31,8 +31,9 @@ com/team254/lib/trajectory/TrajectoryFollower.java
  com.team254.lib.trajectory.TrajectoryFollower
 org/usfirst/frc/team5740/util/WaypointTableData.java
  org.usfirst.frc.team5740.util.WaypointTableData
-org/usfirst/frc/team5740/util/FileGeneration.java
- org.usfirst.frc.team5740.util.FileGeneration
+com/team254/lib/trajectory/WaypointSequence.java
+ com.team254.lib.trajectory.WaypointSequence
+ com.team254.lib.trajectory.WaypointSequence$Waypoint
 org/usfirst/frc/team5740/gui/StartPathData.java
  org.usfirst.frc.team5740.gui.StartPathData
 com/team254/lib/trajectory/io/TextFileDeserializer.java
@@ -60,6 +61,5 @@ com/team254/lib/trajectory/io/JavaSerializer.java
  com.team254.lib.trajectory.io.JavaSerializer
 org/usfirst/frc/team5740/util/WaypointManagement.java
  org.usfirst.frc.team5740.util.WaypointManagement
-com/team254/lib/trajectory/WaypointSequence.java
- com.team254.lib.trajectory.WaypointSequence
- com.team254.lib.trajectory.WaypointSequence$Waypoint
+org/usfirst/frc/team5740/util/FileGeneration.java
+ org.usfirst.frc.team5740.util.FileGeneration

@@ -37,8 +37,8 @@ public class FileGeneration {
 		// Outputs to the directory supplied as the first argument.
 		final TextFileSerializer ts = new TextFileSerializer();
 		final String serializedtext = ts.serialize(path);
-		// System.out.print(serialized);
 		final String fullpathtext = joinPath(Directory, fileName + ".txt");
+		
 		if (!writeFile(fullpathtext, serializedtext)) {
 			System.err.println(fullpathtext + " could not be written!!!!1");
 			System.exit(1);
