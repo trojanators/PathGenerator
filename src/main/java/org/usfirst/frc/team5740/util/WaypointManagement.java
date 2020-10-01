@@ -11,6 +11,11 @@ import com.team254.lib.trajectory.WaypointSequence.Waypoint;
 
 import org.usfirst.frc.team5740.Main;
 
+/** 
+ * this class manages waypoint creation
+ * @author nicholas blackburn
+*/
+
 public class WaypointManagement {
 
     private static TrajectoryGenerator.Config config = new TrajectoryGenerator.Config();
@@ -19,10 +24,10 @@ public class WaypointManagement {
     /**
      * Creates Waypoints using the data from the waypoint datatable class
      * 
-     * @author Nicholas Blackburn
+     * 
      * @param WaypointTableData data
      * @param Boolan            enablePICalcPositive
-     * @param Boolean           enablePiCalcNegative
+     * @param Boolean           
      * @param Double 
      * @param pathName
      * @param String 
@@ -61,8 +66,6 @@ public class WaypointManagement {
             WaypointSequence.Waypoint(x / 12.0, y / 12.0, -Math.PI / theta), waypointId);
             Main.logger.warning("Waypoint" + x / 12.0 + "," + y / 12.0 + "THeta" + -Math.PI / theta); 
         }
-    
-    
 
         if (sequence.getNumWaypoints() == Seqnum) {
             // Before Gen path Print out all data
