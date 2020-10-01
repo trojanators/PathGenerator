@@ -1,4 +1,3 @@
-
 # Created by https://www.toptal.com/developers/gitignore/api/gradle,visualstudiocode,visualstudio,java,windows,linux
 # Edit at https://www.toptal.com/developers/gitignore?templates=gradle,visualstudiocode,visualstudio,java,windows,linux
 
@@ -453,3 +452,7 @@ MigrationBackup/
 .ionide/
 
 # End of https://www.toptal.com/developers/gitignore/api/gradle,visualstudiocode,visualstudio,java,windows,linux
+
+
+# Added on 2020.10.01
+PathGen.log
