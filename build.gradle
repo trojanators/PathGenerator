@@ -5,12 +5,13 @@
  * For more details take a look at the Java Quickstart chapter in the Gradle
  * User Manual available at https://docs.gradle.org/6.6/userguide/tutorial_java_projects.html
  */
-
+apply plugin: 'gradle-one-jar'//this section contains declarations for the build script run.
 plugins {
     // Apply the java plugin to add support for Java
     id 'java'
     id 'application'
     id 'org.openjfx.javafxplugin' version '0.0.9'
+    
 }
 
 repositories {
