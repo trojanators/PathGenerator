@@ -55,4 +55,5 @@ task genJar(type: Jar) {
 
 test {
 	    useJUnitPlatform()
+        include '**test/pathgenerator/trajectory/'
 	}
