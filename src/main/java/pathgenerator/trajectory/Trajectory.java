@@ -12,7 +12,6 @@ import pathgenerator.Main;
  */
 public class Trajectory {
 
-  public int Id;
   public static ArrayList<Double> generatedPos = new ArrayList<>(10);
   public static ArrayList<Double> generatedVel = new ArrayList<>(10);
   public static ArrayList<Double> generatedAcc = new ArrayList<>(10);
@@ -152,7 +151,7 @@ public class Trajectory {
     // Outpus Data into arrays 
     public void outputArray() {
       Main.logger.info("adding Gen data to Arrays");
-      for (Id = 0; Id < getNumSegments(); ++Id) {
+      for (int Id = 0; Id < getNumSegments(); ++Id) {
       Trajectory.Segment segment = getSegment(Id);
       
        generatedPos.add(Id,segment.pos);

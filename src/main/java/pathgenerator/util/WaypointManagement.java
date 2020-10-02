@@ -80,13 +80,19 @@ public class WaypointManagement {
 
     /**
      * Creates Path Via data from createWaypoint Functions
+     * @param seqnum
+     * @param sequence
+     * @param config
+     * @param wheelBase
+     * @param location
+     * @param PathName
      */
     // TODO: Fix NullPointer in Path
     private void createPath(int seqnum, final WaypointSequence sequence, final Config config, final double wheelBase,
             final String location, final String PathName) {
         Main.logger.info("Generatring Path to File");
         Path path = PathGenerator.makePath(sequence, config, wheelBase, PathName);
-        trajectory.outputArray();
+        
         FileGeneration.writeFiles(location, PathName, path);
         try {
             fileGen.writePathFile(seqnum, location, PathName, ".csv", path);
