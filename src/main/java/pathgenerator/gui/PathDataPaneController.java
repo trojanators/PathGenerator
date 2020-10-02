@@ -365,12 +365,6 @@ public class PathDataPaneController {
 
                 if (!preview_graph.isPressed()) {
                     Main.logger.info("NEED TO GET GRAPH FXML done Path Display not ready yet!!");
-                    try {
-                      //  graph.start(stage);
-                    } catch (Exception e) {
-                        // TODO Auto-generated catch block
-                        e.printStackTrace();
-                    }
                 }
 
             }
