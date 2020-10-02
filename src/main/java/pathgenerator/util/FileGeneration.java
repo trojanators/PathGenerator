@@ -6,12 +6,13 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Writer;
 
-
-
 import pathgenerator.trajectory.Path;
 import pathgenerator.trajectory.io.JavaSerializer;
 import pathgenerator.trajectory.io.TextFileSerializer;
 
+import org.supercsv.cellprocessor.constraint.NotNull;
+import org.supercsv.cellprocessor.constraint.UniqueHashCode;
+import org.supercsv.cellprocessor.ift.CellProcessor;
 import org.supercsv.io.CsvBeanWriter;
 import pathgenerator.Main;
 
@@ -37,7 +38,7 @@ public class FileGeneration {
 		// Outputs to the directory supplied as the first argument.
 		final TextFileSerializer ts = new TextFileSerializer();
 		final String serializedtext = ts.serialize(path);
-		final String fullpathtext = joinPath(Directory, fileName + ".txt");
+		final String fullpathtext = joinPath(Directory, fileName + ".path");
 		
 		if (!writeFile(fullpathtext, serializedtext)) {
 			System.err.println(fullpathtext + " could not be written!!!!1");
@@ -85,13 +86,15 @@ public class FileGeneration {
 	}
 
 	/***
-	 * Outputs Generated Path to csv file
+	 * Outputs Generated Path to csv file but with  .Path Extension
 	 * 
 	 * @param String Directory, Filename
 	 * @param Path   robot path
 	 * 
 	 */
-	public void writeCsv(final String Directory, final String fileName, final Path path) throws IOException {
+	public void writePathFile(final String Directory, final String fileName, final String fileExtension,final Path path) throws IOException {
 
 	}
+ 
+
 }
