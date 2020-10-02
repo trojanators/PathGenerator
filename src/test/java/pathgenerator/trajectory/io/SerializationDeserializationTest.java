@@ -8,13 +8,13 @@ import pathgenerator.trajectory.Trajectory;
 import pathgenerator.trajectory.TrajectoryGenerator;
 import pathgenerator.trajectory.io.JavaSerializer;
 import pathgenerator.trajectory.Path;
-import junit.framework.Assert;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
-import static org.junit.Assert.*;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
 
 /**
  *
@@ -60,7 +60,7 @@ public class SerializationDeserializationTest {
     String serialized = js.serialize(path);
     System.out.print(serialized);
 
-    //Assert.assertEquals(serialized, kGoldenOutput);
+    //Assertions.assertEquals(serialized, kGoldenOutput);
   }
   
   public boolean almostEqual(double a, double b) {
@@ -68,14 +68,14 @@ public class SerializationDeserializationTest {
   }
   
   public void checkSegmentsEqual(Trajectory.Segment a, Trajectory.Segment b) {
-    Assert.assertTrue(almostEqual(a.acc, b.acc));
-    Assert.assertTrue(almostEqual(a.jerk, b.jerk));
-    Assert.assertTrue(almostEqual(a.vel, b.vel));
-    Assert.assertTrue(almostEqual(a.pos, b.pos));
-    Assert.assertTrue(almostEqual(a.heading, b.heading));
-    Assert.assertTrue(almostEqual(a.dt, b.dt));
-    Assert.assertTrue(almostEqual(a.x, b.x));
-    Assert.assertTrue(almostEqual(a.y, b.y));
+    Assertions.assertTrue(almostEqual(a.acc, b.acc));
+    Assertions.assertTrue(almostEqual(a.jerk, b.jerk));
+    Assertions.assertTrue(almostEqual(a.vel, b.vel));
+    Assertions.assertTrue(almostEqual(a.pos, b.pos));
+    Assertions.assertTrue(almostEqual(a.heading, b.heading));
+    Assertions.assertTrue(almostEqual(a.dt, b.dt));
+    Assertions.assertTrue(almostEqual(a.x, b.x));
+    Assertions.assertTrue(almostEqual(a.y, b.y));
   }
   
   @Test
@@ -100,10 +100,10 @@ public class SerializationDeserializationTest {
     TextFileDeserializer tfd = new TextFileDeserializer();
     Path deserialized = tfd.deserialize(serialized);
     
-    Assert.assertEquals("TestPath", deserialized.getName());
-    Assert.assertEquals(deserialized.getLeftWheelTrajectory().getNumSegments(), 
+    Assertions.assertEquals("TestPath", deserialized.getName());
+    Assertions.assertEquals(deserialized.getLeftWheelTrajectory().getNumSegments(), 
             path.getLeftWheelTrajectory().getNumSegments());
-    Assert.assertEquals(deserialized.getRightWheelTrajectory().getNumSegments(), 
+    Assertions.assertEquals(deserialized.getRightWheelTrajectory().getNumSegments(), 
             path.getRightWheelTrajectory().getNumSegments());
     
     // Check segments as well

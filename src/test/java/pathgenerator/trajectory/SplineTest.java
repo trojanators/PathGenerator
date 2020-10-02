@@ -1,13 +1,14 @@
 
 package pathgenerator.trajectory;
 
-import com.team254.lib.util.ChezyMath;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import pathgenerator.util.ChezyMath;
+
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 /**
  * Unit test for Spline class.
@@ -21,43 +22,37 @@ public class SplineTest {
     return Math.abs(x - y) < 1E-6;
   }
 
-  public void test(double x0, double y0, double theta0, double x1, double y1,
-          double theta1, boolean is_straight) {
-    Spline.Type[] types = {Spline.CubicHermite, Spline.QuinticHermite};
+  public void test(double x0, double y0, double theta0, double x1, double y1, double theta1, boolean is_straight) {
+    Spline.Type[] types = { Spline.CubicHermite, Spline.QuinticHermite };
     for (Spline.Type type : types) {
       Spline s = new Spline();
-      Assert.assertTrue(Spline.reticulateSplines(x0, y0, theta0, x1, y1, theta1,
-              s, type));
+      Assertions.assertTrue(Spline.reticulateSplines(x0, y0, theta0, x1, y1, theta1, s, type));
       System.out.println(s.toString());
 
       for (double t = 0; t <= 1.0; t += .05) {
         System.out.println("" + t + ", " + s.valueAt(t) + ", " + s.angleAt(t));
       }
 
-      Assert.assertTrue(almostEqual(s.valueAt(0), y0));
-      Assert.assertTrue(almostEqual(s.valueAt(1), y1));
+      Assertions.assertTrue(almostEqual(s.valueAt(0), y0));
+      Assertions.assertTrue(almostEqual(s.valueAt(1), y1));
 
-      Assert.assertTrue(almostEqual(
-              ChezyMath.boundAngleNegPiToPiRadians(s.angleAt(0)),
-              ChezyMath.boundAngleNegPiToPiRadians(theta0)));
-      Assert.assertTrue(almostEqual(
-              ChezyMath.boundAngleNegPiToPiRadians(s.angleAt(1)),
-              ChezyMath.boundAngleNegPiToPiRadians(theta1)));
+      Assertions.assertTrue(almostEqual(ChezyMath.boundAngleNegPiToPiRadians(s.angleAt(0)),
+          ChezyMath.boundAngleNegPiToPiRadians(theta0)));
+      Assertions.assertTrue(almostEqual(ChezyMath.boundAngleNegPiToPiRadians(s.angleAt(1)),
+          ChezyMath.boundAngleNegPiToPiRadians(theta1)));
 
       if (is_straight) {
         double expected = Math.sqrt((x1 - x0) * (x1 - x0) + (y1 - y0) * (y1 - y0));
-        System.out.println("Expected length=" + expected + "; actual="
-                + s.calculateLength());
-        Assert.assertTrue(almostEqual(s.calculateLength(), expected));
+        System.out.println("Expected length=" + expected + "; actual=" + s.calculateLength());
+        Assertions.assertTrue(almostEqual(s.calculateLength(), expected));
       }
 
       if (type == Spline.QuinticHermite) {
         // Second derivatives should be 0
-        Assert.assertTrue(almostEqual(0, s.angleChangeAt(0)));
-        Assert.assertTrue(almostEqual(0, s.angleChangeAt(1)));
+        Assertions.assertTrue(almostEqual(0, s.angleChangeAt(0)));
+        Assertions.assertTrue(almostEqual(0, s.angleChangeAt(1)));
 
-        System.out.println("From (" + x0 + "," + y0 + ") to (" + x1 + "," + y1
-                + ")");
+        System.out.println("From (" + x0 + "," + y0 + ") to (" + x1 + "," + y1 + ")");
         for (double t = 0; t <= 1.04; t += .05) {
           System.out.println(t + "\t" + s.angleAt(t));
         }
@@ -71,40 +66,36 @@ public class SplineTest {
       for (int i = 1; i <= 100; ++i) {
         double percentage = s.getPercentageForDistance(i * length / 100);
         double[] xy = s.getXandY(percentage);
-        double measured = Math.sqrt((xy[0] - x_last) * (xy[0] - x_last)
-                + (xy[1] - y_last) * (xy[1] - y_last));
-        System.out.println(i + "\t" + percentage + "\t" + length / 100 + "\t"
-                + measured);
+        double measured = Math.sqrt((xy[0] - x_last) * (xy[0] - x_last) + (xy[1] - y_last) * (xy[1] - y_last));
+        System.out.println(i + "\t" + percentage + "\t" + length / 100 + "\t" + measured);
         x_last = xy[0];
         y_last = xy[1];
-        Assert.assertTrue(almostEqual(measured / 1E3, length / 100 / 1E3));
+        Assertions.assertTrue(almostEqual(measured / 1E3, length / 100 / 1E3));
       }
     }
   }
 
-  public void expectFailure(double x0, double y0, double theta0, double x1,
-          double y1, double theta1) {
+  public void expectFailure(double x0, double y0, double theta0, double x1, double y1, double theta1) {
     Spline s = new Spline();
-    Assert.assertFalse(Spline.reticulateSplines(x0, y0, theta0, x1, y1, theta1,
-            s, Spline.CubicHermite));
+    Assertions.assertFalse(Spline.reticulateSplines(x0, y0, theta0, x1, y1, theta1, s, Spline.CubicHermite));
   }
 
   public SplineTest() {
   }
 
-  @BeforeClass
+  @BeforeAll
   public static void setUpClass() {
   }
 
-  @AfterClass
+  @AfterAll
   public static void tearDownClass() {
   }
 
-  @Before
+  @BeforeEach
   public void setUp() {
   }
 
-  @After
+  @AfterEach
   public void tearDown() {
   }
 

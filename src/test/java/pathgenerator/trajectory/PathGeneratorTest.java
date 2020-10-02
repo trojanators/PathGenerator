@@ -3,14 +3,18 @@ package pathgenerator.trajectory;
 
 import pathgenerator.trajectory.Trajectory.Segment;
 import static pathgenerator.trajectory.TrajectoryGeneratorTest.test;
-import com.team254.lib.util.ChezyMath;
-import junit.framework.Assert;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
-import static org.junit.Assert.*;
+
+
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+
+import pathgenerator.util.ChezyMath;
+
 
 /**
  *
@@ -63,11 +67,11 @@ public class PathGeneratorTest {
     for (int i = 0; i < path.getNumWaypoints(); ++i) {
       WaypointSequence.Waypoint waypoint = path.getWaypoint(i);
       Segment closest = new Segment();
-      Assert.assertTrue(1 > distanceToClosest(traj, waypoint, closest));
+      Assertions.assertTrue(1 > distanceToClosest(traj, waypoint, closest));
       double heading_diff = Math.abs(ChezyMath.getDifferenceInAngleRadians(
               closest.heading, waypoint.theta));
       System.out.println("Heading diff: " + heading_diff);
-      Assert.assertTrue(heading_diff < 1E-2);
+      Assertions.assertTrue(heading_diff < 1E-2);
     }
 
     Trajectory.Pair output = PathGenerator.makeLeftAndRightTrajectories(traj,
@@ -86,10 +90,10 @@ public class PathGeneratorTest {
     for (int i = 0; i < traj.getNumSegments(); ++i) {
       Segment left = output.left.getSegment(i);
       Segment right = output.right.getSegment(i);
-      Assert.assertTrue(Math.abs(Math.sqrt((left.x - right.x) * (left.x - right.x)
+      Assertions.assertTrue(Math.abs(Math.sqrt((left.x - right.x) * (left.x - right.x)
               + (left.y - right.y) * (left.y - right.y)) - 20.0) < 1E-3);
       double angle_left_to_right = Math.atan2(left.y - right.y, left.x - right.x);
-      Assert.assertTrue(Math.abs(
+      Assertions.assertTrue(Math.abs(
               ChezyMath.getDifferenceInAngleRadians(angle_left_to_right,
                       traj.getSegment(i).heading + Math.PI / 2)) < 1E-3);
     }
