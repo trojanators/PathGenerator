@@ -3,12 +3,13 @@ package pathgenerator.trajectory;
 
 import pathgenerator.trajectory.Trajectory;
 import pathgenerator.trajectory.TrajectoryGenerator;
-import junit.framework.Assert;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
+
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 /**
  *
@@ -16,47 +17,39 @@ import org.junit.Test;
  */
 public class TrajectoryGeneratorTest {
 
-  static void test(double start_vel, double goal_vel, double goal_distance,
-          TrajectoryGenerator.Strategy strategy) {
+  static void test(double start_vel, double goal_vel, double goal_distance, TrajectoryGenerator.Strategy strategy) {
     TrajectoryGenerator.Config config = new TrajectoryGenerator.Config();
     config.dt = .01;
     config.max_acc = 250.0;
     config.max_jerk = 1250.0;
     config.max_vel = 100.0;
 
-    Trajectory traj = TrajectoryGenerator.generate(
-            config,
-            strategy,
-            start_vel,
-            -75.0,
-            goal_distance,
-            goal_vel,
-            75.0);
+    Trajectory traj = TrajectoryGenerator.generate(config, strategy, start_vel, -75.0, goal_distance, goal_vel, 75.0);
 
     System.out.print(traj.toString());
 
     Trajectory.Segment last = traj.getSegment(traj.getNumSegments() - 1);
-    Assert.assertFalse(Math.abs(last.pos - goal_distance) > 1.0);
-    Assert.assertFalse(Math.abs(last.vel - goal_vel) > 1.0);
-    Assert.assertFalse(Math.abs(last.heading - 75.0) > 1.0);
+    Assertions.assertFalse(Math.abs(last.pos - goal_distance) > 1.0);
+    Assertions.assertFalse(Math.abs(last.vel - goal_vel) > 1.0);
+    Assertions.assertFalse(Math.abs(last.heading - 75.0) > 1.0);
   }
 
   public TrajectoryGeneratorTest() {
   }
 
-  @BeforeClass
+  @BeforeAll
   public static void setUpClass() {
   }
 
-  @AfterClass
+  @AfterAll
   public static void tearDownClass() {
   }
 
-  @Before
+  @BeforeEach
   public void setUp() {
   }
 
-  @After
+  @AfterEach
   public void tearDown() {
   }
 

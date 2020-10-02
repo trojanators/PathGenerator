@@ -25,25 +25,25 @@ public class SerializationDeserializationTest {
   public SerializationDeserializationTest() {
   }
 
-  @BeforeClass
+  @BeforeAll
   public static void setUpClass() {
   }
 
-  @AfterClass
+  @AfterAll
   public static void tearDownClass() {
   }
 
-  @Before
+  @BeforeEach
   public void setUp() {
   }
 
-  @After
+  @AfterEach
   public void tearDown() {
   }
 
   @Test
   public void testJavaSerialization() {
-    WaypointSequence p = new WaypointSequence(10);
+    WaypointSequence p = new WaypointSequence();
     p.addWaypoint(new Waypoint(0, 0, 0), 0);
     p.addWaypoint(new Waypoint(10, 0, 0), 1);
     p.addWaypoint(new Waypoint(20, 20, Math.PI / 4), 2);
@@ -80,7 +80,7 @@ public class SerializationDeserializationTest {
   
   @Test
   public void testTextFileSerialization() {
-    WaypointSequence p = new WaypointSequence(10);
+    WaypointSequence p = new WaypointSequence();
     p.addWaypoint(new Waypoint(0, 0, 0), 0);
     p.addWaypoint(new Waypoint(10, 0, 0), 1);
     p.addWaypoint(new Waypoint(20, 20, Math.PI / 4), 2);
@@ -124,7 +124,7 @@ public class SerializationDeserializationTest {
   
   @Test
   public void testJavaStringSerializerDeserializer() {
-    WaypointSequence p = new WaypointSequence(10);
+    WaypointSequence p = new WaypointSequence();
     p.addWaypoint(new Waypoint(0, 0, 0), 0);
     p.addWaypoint(new Waypoint(10, 0, 0), 1);
     p.addWaypoint(new Waypoint(20, 20, Math.PI / 4), 2);

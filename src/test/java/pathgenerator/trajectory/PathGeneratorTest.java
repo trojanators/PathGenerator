@@ -57,10 +57,9 @@ public class PathGeneratorTest {
     config.max_vel = 100.0;
     Trajectory traj = PathGenerator.generateFromPath(path, config);
 
-    System.out.print(traj.toStringProfile());
+    System.out.print(traj.toString());
     System.out.print(traj.toStringEuclidean());
-    System.out.println("Final distance="
-            + traj.getSegment(traj.getNumSegments() - 1).pos);
+    System.out.println("Final distance=" + traj.getSegment(traj.getNumSegments() - 1).pos);
 
     // The trajectory should be close (allowing for loss of precision) to each
     // desired waypoint.
@@ -68,20 +67,18 @@ public class PathGeneratorTest {
       WaypointSequence.Waypoint waypoint = path.getWaypoint(i);
       Segment closest = new Segment();
       Assertions.assertTrue(1 > distanceToClosest(traj, waypoint, closest));
-      double heading_diff = Math.abs(ChezyMath.getDifferenceInAngleRadians(
-              closest.heading, waypoint.theta));
+      double heading_diff = Math.abs(ChezyMath.getDifferenceInAngleRadians(closest.heading, waypoint.theta));
       System.out.println("Heading diff: " + heading_diff);
       Assertions.assertTrue(heading_diff < 1E-2);
     }
 
-    Trajectory.Pair output = PathGenerator.makeLeftAndRightTrajectories(traj,
-            20.0);
+    Trajectory.Pair output = PathGenerator.makeLeftAndRightTrajectories(traj, 20.0);
 
     System.out.println("LEFT PROFILE:");
-    System.out.println(output.left.toStringProfile());
+    System.out.println(output.left.toString());
     System.out.println(output.left.toStringEuclidean());
     System.out.println("RIGHT PROFILE:");
-    System.out.println(output.right.toStringProfile());
+    System.out.println(output.right.toString());
     System.out.println(output.right.toStringEuclidean());
 
     // At all points, the distance from left to right should equal the wheelbase
@@ -102,81 +99,81 @@ public class PathGeneratorTest {
   public PathGeneratorTest() {
   }
 
-  @BeforeClass
+  @BeforeAll
   public static void setUpClass() {
   }
 
-  @AfterClass
+  @AfterAll
   public static void tearDownClass() {
   }
 
-  @Before
+  @BeforeEach
   public void setUp() {
   }
 
-  @After
+  @AfterEach
   public void tearDown() {
   }
 
   @Test
   public void testSimplePath() {
-    WaypointSequence p = new WaypointSequence(10);
-    p.addWaypoint(new WaypointSequence.Waypoint(0, 0, 0));
-    p.addWaypoint(new WaypointSequence.Waypoint(100, 0, 0));
-    p.addWaypoint(new WaypointSequence.Waypoint(150, 50, Math.PI / 4));
+    WaypointSequence p = new WaypointSequence();
+    p.addWaypoint(new WaypointSequence.Waypoint(0, 0, 0), 0);
+    p.addWaypoint(new WaypointSequence.Waypoint(100, 0, 0), 1);
+    p.addWaypoint(new WaypointSequence.Waypoint(150, 50, Math.PI / 4), 2);
     test(p);
   }
 
   @Test
   public void testSCurveLikePath() {
-    WaypointSequence p = new WaypointSequence(10);
-    p.addWaypoint(new WaypointSequence.Waypoint(0, 0, 0));
-    p.addWaypoint(new WaypointSequence.Waypoint(10 * 12, 0, 0));
+    WaypointSequence p = new WaypointSequence();
+    p.addWaypoint(new WaypointSequence.Waypoint(0, 0, 0), 0);
+    p.addWaypoint(new WaypointSequence.Waypoint(10 * 12, 0, 0), 1);
     test(p);
-    p.addWaypoint(new WaypointSequence.Waypoint(15 * 12, 5 * 12, Math.PI / 4));
+    p.addWaypoint(new WaypointSequence.Waypoint(15 * 12, 5 * 12, Math.PI / 4), 2);
     test(p);
-    p.addWaypoint(new WaypointSequence.Waypoint(20 * 12, 10 * 12, Math.PI / 4));
+    p.addWaypoint(new WaypointSequence.Waypoint(20 * 12, 10 * 12, Math.PI / 4), 3);
     test(p);
-    p.addWaypoint(new WaypointSequence.Waypoint(30 * 12, 10 * 12, 0));
+    p.addWaypoint(new WaypointSequence.Waypoint(30 * 12, 10 * 12, 0), 4);
     test(p);
   }
 
   @Test
   public void testZigZag() {
-    WaypointSequence p = new WaypointSequence(10);
-    p.addWaypoint(new WaypointSequence.Waypoint(0, 0, 0));
-    p.addWaypoint(new WaypointSequence.Waypoint(10, 5, 0));
-    p.addWaypoint(new WaypointSequence.Waypoint(30, -5, 0));
-    p.addWaypoint(new WaypointSequence.Waypoint(40, 0, 0));
+    WaypointSequence p = new WaypointSequence();
+    p.addWaypoint(new WaypointSequence.Waypoint(0, 0, 0), 0);
+    p.addWaypoint(new WaypointSequence.Waypoint(10, 5, 0), 1);
+    p.addWaypoint(new WaypointSequence.Waypoint(30, -5, 0), 2);
+    p.addWaypoint(new WaypointSequence.Waypoint(40, 0, 0), 3);
     test(p);
   }
 
   @Test
   public void testZigZagWithHeadings() {
-    WaypointSequence p = new WaypointSequence(10);
-    p.addWaypoint(new WaypointSequence.Waypoint(0, 0, 0));
-    p.addWaypoint(new WaypointSequence.Waypoint(5, 2.5, Math.PI / 5));
-    p.addWaypoint(new WaypointSequence.Waypoint(25, -2.5, -Math.PI / 5));
-    p.addWaypoint(new WaypointSequence.Waypoint(40, 0, 0));
+    WaypointSequence p = new WaypointSequence();
+    p.addWaypoint(new WaypointSequence.Waypoint(0, 0, 0), 0);
+    p.addWaypoint(new WaypointSequence.Waypoint(5, 2.5, Math.PI / 5), 1);
+    p.addWaypoint(new WaypointSequence.Waypoint(25, -2.5, -Math.PI / 5),2);
+    p.addWaypoint(new WaypointSequence.Waypoint(40, 0, 0), 3);
     test(p);
   }
 
   @Test
   public void testRealishAutoMode() {
-    WaypointSequence p = new WaypointSequence(10);
-    p.addWaypoint(new WaypointSequence.Waypoint(0, 0, 0));
-    p.addWaypoint(new WaypointSequence.Waypoint(5 * 12, 0, 0));
-    p.addWaypoint(new WaypointSequence.Waypoint(16 * 12, 12 * 12, 0));
-    p.addWaypoint(new WaypointSequence.Waypoint(18 * 12, 12 * 12, 0));
+    WaypointSequence p = new WaypointSequence();
+    p.addWaypoint(new WaypointSequence.Waypoint(0, 0, 0),0);
+    p.addWaypoint(new WaypointSequence.Waypoint(5 * 12, 0, 0),1);
+    p.addWaypoint(new WaypointSequence.Waypoint(16 * 12, 12 * 12, 0),2);
+    p.addWaypoint(new WaypointSequence.Waypoint(18 * 12, 12 * 12, 0),3);
     test(p);
   }
 
   @Test
   public void testDiscontinuity() {
-    WaypointSequence p = new WaypointSequence(10);
-    p.addWaypoint(new WaypointSequence.Waypoint(0, 0, 0));
-    p.addWaypoint(new WaypointSequence.Waypoint(60, 0, 0));
-    p.addWaypoint(new WaypointSequence.Waypoint(200, 100, 0));
+    WaypointSequence p = new WaypointSequence();
+    p.addWaypoint(new WaypointSequence.Waypoint(0, 0, 0),0);
+    p.addWaypoint(new WaypointSequence.Waypoint(60, 0, 0),1);
+    p.addWaypoint(new WaypointSequence.Waypoint(200, 100, 0),2);
     test(p);
   }
 }

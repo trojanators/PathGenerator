@@ -1,33 +1,38 @@
 
 package pathgenerator.trajectory;
 
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.runner.RunWith;
+import org.junit.runners.Suite;
 
+import junit.runner.*;
 /**
  * Test suite.
  *
  * @author Jared341
  */
 @RunWith(Suite.class)
-@Suite.SuiteClasses({
-  pathgenerator.trajectory.TrajectoryGeneratorTest.class,
-  pathgenerator.trajectory.SplineTest.class,
-  pathgenerator.trajectory.PathGeneratorTest.class,
-  pathgenerator.trajectory.io.SerializationDeserializationTest.class})
+@SelectPackages ({ pathgenerator.trajectory.TrajectoryGeneratorTest.class, pathgenerator.trajectory.SplineTest.class,
+    pathgenerator.trajectory.PathGeneratorTest.class,
+    pathgenerator.trajectory.io.SerializationDeserializationTest.class })
 public class TrajectoryLibTestSuite {
 
-  @BeforeClass
+  @BeforeAll
   public static void setUpClass() throws Exception {
   }
 
-  @AfterClass
+  @AfterAll
   public static void tearDownClass() throws Exception {
   }
 
-  @Before
+  @BeforeEach
   public void setUp() throws Exception {
   }
 
-  @After
+  @AfterEach
   public void tearDown() throws Exception {
   }
 
