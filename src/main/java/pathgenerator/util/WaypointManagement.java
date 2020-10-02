@@ -85,6 +85,5 @@ public class WaypointManagement {
         Main.logger.info("path is Generateing" + path.getLeftWheelTrajectory().toStringProfile());
         Main.logger.info("path is Generateing" + path.getLeftWheelTrajectory().toStringProfile());
         FileGeneration.writeFiles(location, PathName, path);
-
     }
 }
