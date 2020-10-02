@@ -45,7 +45,7 @@ import javafx.util.converter.DoubleStringConverter;
 public class PathDataPaneController {
 
     private final WaypointManagement wayManage = new WaypointManagement();
-    private final GraphPage graph = new GraphPage();
+  
     private double x;
     private double y;
     private double theta;
