@@ -43,7 +43,7 @@ import javafx.util.Callback;
 import javafx.util.converter.DoubleStringConverter;
 
 public class PathDataPaneController {
-    
+
     private final WaypointManagement wayManage = new WaypointManagement();
     private final GraphPage graph = new GraphPage();
     private double x;
@@ -119,7 +119,7 @@ public class PathDataPaneController {
 
     @FXML
     private CheckBox neg_pi;
-    
+
     @FXML
     private CheckBox invert_y;
 
@@ -128,7 +128,6 @@ public class PathDataPaneController {
 
     @FXML
     private TextField sec_size;
-
 
     private WaypointTableData data;
 
@@ -147,7 +146,7 @@ public class PathDataPaneController {
 
         final TableColumn waypoint_y = new TableColumn("y");
         waypoint_y.setCellValueFactory(new PropertyValueFactory<>("y"));
-        
+
         final TableColumn waypoint_theta = new TableColumn("theta");
         waypoint_theta.setCellValueFactory(new PropertyValueFactory<>("theta"));
 
@@ -166,13 +165,12 @@ public class PathDataPaneController {
         waypoint_table.getColumns().addAll(waypoint_id, waypoint_x, waypoint_y, waypoint_theta, waypoint_acc,
                 waypoint_vel, waypoint_jerk, waypoint_dt);
 
-
         final Pattern pattern = Pattern.compile("\\d*(\\.\\d*)?");
         final TextFormatter formatter = new TextFormatter((UnaryOperator<TextFormatter.Change>) change -> {
             return pattern.matcher(change.getControlNewText()).matches() ? change : null;
         });
 
-        waypoint_x_input.setTextFormatter( new TextFormatter((UnaryOperator<TextFormatter.Change>)change -> {
+        waypoint_x_input.setTextFormatter(new TextFormatter((UnaryOperator<TextFormatter.Change>) change -> {
             return pattern.matcher(change.getControlNewText()).matches() ? change : null;
         }));
         waypoint_y_input.setTextFormatter(new TextFormatter((UnaryOperator<TextFormatter.Change>) change -> {
@@ -208,8 +206,8 @@ public class PathDataPaneController {
         waypoint_table.setEditable(false);
         cellSetup();
 
-         // enables pi calc on theta
-         pi_enable.setOnAction((EventHandler<ActionEvent>) new EventHandler<ActionEvent>() {
+        // enables pi calc on theta
+        pi_enable.setOnAction((EventHandler<ActionEvent>) new EventHandler<ActionEvent>() {
 
             @Override
             public void handle(final ActionEvent event) {
@@ -243,36 +241,38 @@ public class PathDataPaneController {
 
         });
 
-
         // Runs when new waypoint button pressed
         new_waypoint.setOnAction((EventHandler<ActionEvent>) new EventHandler<ActionEvent>() {
 
             @Override
             public void handle(final ActionEvent event) {
-                //TODO: Remove comment and enable code again
-                
-                 if (!new_waypoint.isPressed() && !generate_path.isSelected()) { enableRando = true;
-                  Main.logger.info("new Waypoint");
-                  
-                  x = Double.parseDouble(waypoint_x_input.getText()); 
-                  y = Double.parseDouble(waypoint_y_input.getText()); 
-                  theta =Double.parseDouble(waypoint_theta_input.getText()); // Additonal math for
-                  acc = Double.parseDouble(waypoint_acc_input.getText()); 
-                  jerk = Double.parseDouble(waypoint_jerk_input.getText()); 
-                  velocity = Double.parseDouble(waypoint_velocity_imput.getText()); 
-                  dt = Double.parseDouble(waypoint_dt_input.getText());
-                  seqSize = Double.parseDouble(sec_size.getText());
+                // TODO: Remove comment and enable code again
 
-                  data = new WaypointTableData(i - countor, x, y, theta, acc, jerk, velocity,dt); 
-                  waypoint_table.getItems().add(data);
-                  data.addData(); 
-                  PathName = path_name.getText();
-                  wayManage.createWaypoint(data,enableRando, enable_Pi, enable_Neg_Pi,getRobotWheelbase(), getPathName(), getPathSaveLocal(), genpath, (int)seqSize); 
-                  i++;
-                  Main.logger.info("increment" + i);
-                  
-                  } else{ enableRando = false; }
-                 
+                if (!new_waypoint.isPressed() && !generate_path.isSelected()) {
+                    enableRando = true;
+                    Main.logger.info("new Waypoint");
+
+                    x = Double.parseDouble(waypoint_x_input.getText());
+                    y = Double.parseDouble(waypoint_y_input.getText());
+                    theta = Double.parseDouble(waypoint_theta_input.getText()); // Additonal math for
+                    acc = Double.parseDouble(waypoint_acc_input.getText());
+                    jerk = Double.parseDouble(waypoint_jerk_input.getText());
+                    velocity = Double.parseDouble(waypoint_velocity_imput.getText());
+                    dt = Double.parseDouble(waypoint_dt_input.getText());
+                    seqSize = Double.parseDouble(sec_size.getText());
+
+                    data = new WaypointTableData(i - countor, x, y, theta, acc, jerk, velocity, dt);
+                    waypoint_table.getItems().add(data);
+                    data.addData();
+                    PathName = path_name.getText();
+                    wayManage.createWaypoint(data, enableRando, enable_Pi, enable_Neg_Pi, getRobotWheelbase(),
+                            getPathName(), getPathSaveLocal(), genpath, (int) seqSize);
+                    i++;
+                    Main.logger.info("increment" + i);
+
+                } else {
+                    enableRando = false;
+                }
 
                 /**
                  * This is for testing
@@ -294,7 +294,7 @@ public class PathDataPaneController {
                     PathName = path_name.getText();
                     data.addData();
                     wayManage.createWaypoint(data, enableRando, enable_Pi, enable_Neg_Pi, getRobotWheelbase(),
-                            getPathName(), getPathSaveLocal(), genpath, (int)seqSize);
+                            getPathName(), getPathSaveLocal(), genpath, (int) seqSize);
                     i++;
                     Main.logger.info("increment" + i);
 
@@ -356,7 +356,7 @@ public class PathDataPaneController {
             }
 
         });
-       
+
         preview_graph.setOnAction((EventHandler<ActionEvent>) new EventHandler<ActionEvent>() {
 
             @Override
@@ -365,6 +365,12 @@ public class PathDataPaneController {
 
                 if (!preview_graph.isPressed()) {
                     Main.logger.info("NEED TO GET GRAPH FXML done Path Display not ready yet!!");
+                    try {
+                      //  graph.start(stage);
+                    } catch (Exception e) {
+                        // TODO Auto-generated catch block
+                        e.printStackTrace();
+                    }
                 }
 
             }
