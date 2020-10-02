@@ -49,10 +49,12 @@ task genJar(type: Jar) {
         attributes 'Main-Class': 'pathgenerator.Main'
     }
     baseName = 'PathGenerator'
-    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+    from { 
+            configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } 
+        }
     with jar
 }
 
 test {
-	    useJUnitPlatform()
-	}
+    useJUnitPlatform()
+}
