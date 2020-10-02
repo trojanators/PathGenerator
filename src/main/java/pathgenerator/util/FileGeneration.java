@@ -5,15 +5,17 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Writer;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+
+import org.apache.commons.csv.CSVFormat;
+import org.apache.commons.csv.CSVPrinter;
 
 import pathgenerator.trajectory.Path;
+import pathgenerator.trajectory.Trajectory;
 import pathgenerator.trajectory.io.JavaSerializer;
 import pathgenerator.trajectory.io.TextFileSerializer;
 
-import org.supercsv.cellprocessor.constraint.NotNull;
-import org.supercsv.cellprocessor.constraint.UniqueHashCode;
-import org.supercsv.cellprocessor.ift.CellProcessor;
-import org.supercsv.io.CsvBeanWriter;
 import pathgenerator.Main;
 
 /**
@@ -25,7 +27,9 @@ import pathgenerator.Main;
  */
 // TODO: generate output to csv format
 public class FileGeneration {
-
+	private Trajectory trajectory = new Trajectory();
+	private BufferedWriter writer;
+	private CSVPrinter csvPrinter;
 	/**
 	 * writes a txt file filled with generated path
 	 * 
@@ -92,9 +96,27 @@ public class FileGeneration {
 	 * @param Path   robot path
 	 * 
 	 */
-	public void writePathFile(final String Directory, final String fileName, final String fileExtension,final Path path) throws IOException {
+	public void writePathFile(int sequenceNum, final String Directory, final String fileName, final String fileExtension,final Path path) throws IOException {
+		try {
+			Main.logger.info("Starting to write data to csv file");
+            writer = Files.newBufferedWriter(Paths.get(Directory + fileName + fileExtension));
+            csvPrinter = new CSVPrinter(writer, CSVFormat.DEFAULT.withHeader("ID", "x", "y", "pos", "vel","acc","jerk","dt"));
+			
+			for(int i = 0; i < sequenceNum; i++){
+				csvPrinter.printRecord(
+					i, trajectory.generatedX.get(i), trajectory.generatedY.get(i), 
+					trajectory.generatedPos.get(i),trajectory.generatedVel.get(i),
+					trajectory.generatedAcc.get(i),trajectory.generatedJerk.get(i),
+					trajectory.generatedDt.get(i));
 
+			}
+
+			csvPrinter.flush();    
+			Main.logger.warning("Finished Writing Data to FIle"+ Directory+"/"+fileName+fileExtension);
+		}
+		catch(Exception e){
+			System.err.println(e);
+			}
+ 		}
 	}
  
-
-}

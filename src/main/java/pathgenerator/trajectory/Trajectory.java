@@ -1,5 +1,9 @@
 package pathgenerator.trajectory;
 
+import java.util.ArrayList;
+
+import pathgenerator.Main;
+
 /**
  * Implementation of a Trajectory using arrays as the underlying storage
  * mechanism.
@@ -7,7 +11,17 @@ package pathgenerator.trajectory;
  * @author Jared341
  */
 public class Trajectory {
-  
+
+  public int Id;
+  public static ArrayList<Double> generatedPos = new ArrayList<>(10);
+  public static ArrayList<Double> generatedVel = new ArrayList<>(10);
+  public static ArrayList<Double> generatedAcc = new ArrayList<>(10);
+  public static ArrayList<Double> generatedJerk = new ArrayList<>(10);
+  public static ArrayList<Double> generatedHeading = new ArrayList<>(10);
+  public static ArrayList<Double> generatedX = new ArrayList<>(10);
+  public static ArrayList<Double> generatedY = new ArrayList<>(10);
+  public static ArrayList<Double> generatedDt = new ArrayList<>(10);
+
     public static class Pair {
       public Pair(Trajectory left, Trajectory right) {
         this.left = left;
@@ -135,25 +149,26 @@ public class Trajectory {
       return copied;
     }
   
-    public String toString() {
-      String str = "Segment\tPos\tVel\tAcc\tJerk\tHeading\n";
-      for (int i = 0; i < getNumSegments(); ++i) {
-        Trajectory.Segment segment = getSegment(i);
-        str += i + "\t";
-        str += segment.pos + "\t";
-        str += segment.vel + "\t";
-        str += segment.acc + "\t";
-        str += segment.jerk + "\t";
-        str += segment.heading + "\t";
-        str += "\n";
+    // Outpus Data into arrays 
+    public void outputArray() {
+      Main.logger.info("adding Gen data to Arrays");
+      for (Id = 0; Id < getNumSegments(); ++Id) {
+      Trajectory.Segment segment = getSegment(Id);
+      
+       generatedPos.add(Id,segment.pos);
+       generatedVel.add(Id,segment.vel);
+       generatedAcc.add(Id, segment.acc);
+       generatedJerk.add(Id,segment.jerk);
+       generatedHeading.add(Id, segment.heading);
+       generatedX.add(Id, segment.x);
+       generatedY.add(Id, segment.y);
+       generatedDt.add(Id, segment.dt);
+       Main.logger.info("Gen data in arrays now");
       }
   
-      return str;
+  
     }
   
-    public String toStringProfile() {
-      return toString();
-    }
   
     public String toStringEuclidean() {
       String str = "Segment\tx\ty\tHeading\n";
@@ -168,5 +183,7 @@ public class Trajectory {
   
       return str;
     }
-  
+  public Trajectory(){
+
+  }
 }
