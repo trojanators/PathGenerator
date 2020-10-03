@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.io.Writer;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.Arrays;
 
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVPrinter;
@@ -45,7 +46,7 @@ public class FileGeneration {
 		final String fullpathtext = joinPath(Directory, fileName + ".path");
 		
 		if (!writeFile(fullpathtext, serializedtext)) {
-			System.err.println(fullpathtext + " could not be written!!!!1");
+			System.err.println(fullpathtext + " could not be written!!!!");
 			System.exit(1);
 		} else {
 			Main.logger.info("Wrote " + fullpathtext);
@@ -88,35 +89,5 @@ public class FileGeneration {
 		final File file2 = new File(file1, path2);
 		return file2.getPath();
 	}
-
-	/***
-	 * Outputs Generated Path to csv file but with  .Path Extension
-	 * 
-	 * @param String Directory, Filename
-	 * @param Path   robot path
-	 * 
-	 */
-	public void writePathFile(int sequenceNum, final String Directory, final String fileName, final String fileExtension,final Path path) throws IOException {
-		try {
-			Main.logger.info("Starting to write data to csv file");
-            writer = Files.newBufferedWriter(Paths.get(Directory + fileName + fileExtension));
-            csvPrinter = new CSVPrinter(writer, CSVFormat.DEFAULT.withHeader("ID", "x", "y", "pos", "vel","acc","jerk","dt"));
-			
-			for(int i = 0; i < sequenceNum; i++){
-				csvPrinter.printRecord(
-					i, trajectory.generatedX.get(i), trajectory.generatedY.get(i), 
-					trajectory.generatedPos.get(i),trajectory.generatedVel.get(i),
-					trajectory.generatedAcc.get(i),trajectory.generatedJerk.get(i),
-					trajectory.generatedDt.get(i));
-
-			}
-
-			csvPrinter.flush();    
-			Main.logger.warning("Finished Writing Data to FIle"+ Directory+"/"+fileName+fileExtension);
-		}
-		catch(Exception e){
-			System.err.println(e);
-			}
- 		}
-	}
+}
  
