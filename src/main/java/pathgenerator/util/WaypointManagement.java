@@ -94,11 +94,5 @@ public class WaypointManagement {
         Path path = PathGenerator.makePath(sequence, config, wheelBase, PathName);
         
         FileGeneration.writeFiles(location, PathName, path);
-        try {
-            fileGen.writePathFile(seqnum, location, PathName, ".csv", path);
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
     }
 }
