@@ -2,7 +2,12 @@
 
 ## 1.0  Path File Definition 
 
-#### This file is for Storing the Generated Path Data from the PathGenerator tool.
+#### This file is for Storing the Generated Path Data from the PathGenerator tool. 
+### -- 
+
+## 1.0.1 Short Description of the PathGenerator File.
+
+#### The PathGenerator File holds the generated data created by the PathGenerator tool. This FIle holds waypoints starting from numerical 0 to the signed 32 bit integer limit 2,147,483,647. This file holds the Generated Data of **Id**, **Pos**, **Vel**, **Acc**,  **Jerk**, **Heading**, **Dt**, **X**, **Y** and **User Comments**
 
 ### --
 
@@ -44,7 +49,7 @@
 
 #### This is the Example of the Data Structure of 
 ``` 
-#Comments Created by user
+[UserComment]
 [Waypoint ID]
 [Pos]
 [Vel]
@@ -54,3 +59,8 @@
 [Dt]
 [X]
 [Y]
+```
+### --
+## 1.2.1 Data Structure Continued 
+
+#### The Data Structure of this file uses a top - down approach. This means that the Path Data file reads, linearly Starting With the User Comment and ending with the Y value of the Waypoint. Refer to figure 1.2 Data Structure for the file layout. 
