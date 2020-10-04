@@ -6,7 +6,7 @@
 ### ---
 
 **Written in java and for the Gui is written in JavaFx 11 and Designed with Functionality and Modern Gui Schemes this Robot PathGenerator will Surpass your Expectations.**
-### --
+### ---
 ## Features of PathGenerator
 <li> Generates a csv file with path to easily integrate with java code</li>
 <li> Clean modern UI for Ease of Use </li>
