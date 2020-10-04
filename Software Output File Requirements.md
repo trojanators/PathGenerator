@@ -7,7 +7,7 @@
 
 ## 1.0.1 Short Description of the PathGenerator File.
 
-#### The PathGenerator File holds the generated data created by the PathGenerator tool. This FIle holds waypoints starting from numerical 0 to the signed 32 bit integer limit 2,147,483,647. This file holds the Generated Data of **Id**, **Pos**, **Vel**, **Acc**,  **Jerk**, **Heading**, **Dt**, **X**, **Y** and **User Comments**
+#### The PathGenerator File holds the generated data created by the PathGenerator tool. This FIle holds waypoints starting from numerical 0 to the signed 32 bit integer limit. The waypoints Consist of the Generated Data **Id**, **Pos**, **Vel**, **Acc**,  **Jerk**, **Heading**, **Dt**, **X**, **Y** and **User Comments**. Each waypoint is read in order according to the value of the Id integer. Then After the WayPoint is Read by the Id integer, the Rest of that Specific Waypoint is loaded Into an Array which in turn is read by the End user's Program.
 
 ### --
 
