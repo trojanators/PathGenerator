@@ -56,4 +56,4 @@
 ### --
 ## 1.2.1 Data Structure Continued 
 
-#### The Data Structure of this file uses a top - down approach. This means that the Path Data file reads, linearly Starting With the User Comment and ending with the Y value of the Waypoint. Refer to figure 1.2 Data Structure for the file layout. The Liner Layout 
+#### The Data Structure of this file uses a top - down approach. This means that the Path Data file reads, linearly Starting With the User Comment and ending with the Y value of the Waypoint. Refer to figure 1.2 Data Structure for the file layout. The Liner Layout of the DataStructure makes it  easy to comply with human readable format standard.
