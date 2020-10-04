@@ -1,5 +1,4 @@
 # PathGenerator Output file Specification
-
 ## 1.0  Path File Definition 
 
 #### This file is for Storing the Generated Path Data from the PathGenerator tool. 
