@@ -1,51 +1,29 @@
 package pathgenerator.gui;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
-/**
- * This Class is the javafx controller for Path Entry Window in java fx 
- * @author Nicholas Blackburn
- */
-import java.util.Set;
 import java.util.function.UnaryOperator;
-import java.util.logging.Level;
 import java.util.regex.Pattern;
 
-import com.jfoenix.controls.JFXListView;
-import com.jfoenix.controls.JFXTreeTableView;
-
-import pathgenerator.Main;
-import pathgenerator.util.WaypointManagement;
-import pathgenerator.util.WaypointTableData;
-
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListCell;
-import javafx.scene.control.ListView;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextFormatter;
-import javafx.scene.control.TextFormatter.Change;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.shape.Path;
 import javafx.stage.Stage;
-import javafx.util.Callback;
-import javafx.util.converter.DoubleStringConverter;
+import pathgenerator.Main;
+import pathgenerator.util.WaypointManagement;
+import pathgenerator.util.WaypointTableData;
 
 public class PathDataPaneController {
 
     private final WaypointManagement wayManage = new WaypointManagement();
-  
+
     private double x;
     private double y;
     private double theta;
@@ -376,7 +354,7 @@ public class PathDataPaneController {
             public void handle(final ActionEvent event) {
 
                 if (invert_y.isSelected()) {
-                    // TODO: add invert y fucntion 
+                    // TODO: add invert y fucntion
                     Main.logger.info("NOT ADDED YET WAIT plz. INVERT y needs fixed!");
                 } else {
                     enable_Neg_Pi = false;
