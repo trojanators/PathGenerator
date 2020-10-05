@@ -30,7 +30,7 @@ import pathgenerator.Main;
 public class FileGeneration {
 	private Trajectory trajectory = new Trajectory();
 	private BufferedWriter writer;
-	private CSVPrinter csvPrinter;
+
 	
 	/**
 	 * writes a .path file filled with generated path
@@ -44,9 +44,6 @@ public class FileGeneration {
 		// Outputs to the directory supplied as the first argument.
 		final TextFileSerializer ts = new TextFileSerializer();
 		final String serializedtext = ts.serialize(path);
-		Main.logger.severe("TRAJECTORY TO String" + path.getLeftWheelTrajectory().toStringEuclidean());
-		Main.logger.severe("PATH DATA" + path.getRightWheelTrajectory().toStringEuclidean());
-		Main.logger.severe("FULL DATA PATH" + serializedtext);
 		final String fullpathtext = joinPath(Directory, fileName + ".path");
 		
 		if (!writeFile(fullpathtext, serializedtext)) {
