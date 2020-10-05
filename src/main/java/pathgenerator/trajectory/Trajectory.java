@@ -40,8 +40,7 @@ public class Trajectory {
       public Segment() {
       }
   
-      public Segment(double pos, double vel, double acc, double jerk,
-              double heading, double dt, double x, double y) {
+      public Segment(double pos, double vel, double acc, double jerk, double heading, double dt, double x, double y) {
         this.pos = pos;
         this.vel = vel;
         this.acc = acc;
@@ -168,6 +167,27 @@ public class Trajectory {
   
       return str;
     }
+
+
+    public Double getX(){
+      double result = 0;
+      for (int i = 0; i < getNumSegments(); ++i) {
+        Trajectory.Segment segment = getSegment(i);
+        result = segment.x;
+      }
+      return (double)result;
+    }
+
+    public Double getY(){
+      double y = 0 ;
+      Trajectory.Segment segment;
+      for (int i = 0; i < getNumSegments(); ++i) {
+       segment = getSegment(i);
+        y = (double)segment.y;
+      }
+      return y;
+    }
+
   public Trajectory(){
 
   }

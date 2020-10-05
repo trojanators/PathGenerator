@@ -12,12 +12,14 @@ import java.util.Arrays;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVPrinter;
 
+import javafx.stage.Stage;
 import pathgenerator.trajectory.Path;
 import pathgenerator.trajectory.Trajectory;
 import pathgenerator.trajectory.io.JavaSerializer;
 import pathgenerator.trajectory.io.TextFileSerializer;
 
 import pathgenerator.Main;
+import pathgenerator.gui.DataGraph;
 
 /**
  * this class is to Generate java and txt file for paths that are Generated
@@ -30,8 +32,8 @@ import pathgenerator.Main;
 public class FileGeneration {
 	private Trajectory trajectory = new Trajectory();
 	private BufferedWriter writer;
+	private static DataGraph graph = new DataGraph();
 
-	
 	/**
 	 * writes a .path file filled with generated path
 	 * 
@@ -45,13 +47,19 @@ public class FileGeneration {
 		final TextFileSerializer ts = new TextFileSerializer();
 		final String serializedtext = ts.serialize(path);
 		final String fullpathtext = joinPath(Directory, fileName + ".path");
+
 		
+
 		if (!writeFile(fullpathtext, serializedtext)) {
 			System.err.println(fullpathtext + " could not be written!!!!");
+			
+		
 			System.exit(1);
 		} else {
 			Main.logger.info("Wrote " + fullpathtext);
 			Main.logger.warning("FINISHED");
+			Stage stage = new Stage();
+			
 
 		}
 
