@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" >
+  <children>
+    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" style="-fx-background-color: rgb(0,0,0);" VBox.vgrow="ALWAYS">
+      <children>
+            <LineChart fx:id="path" alternativeColumnFillVisible="true" layoutY="45.0" mouseTransparent="true" prefHeight="354.0" prefWidth="640.0" style="-fx-background-color: rgb(30,30,30); -fx-title-side: top;">
+              <xAxis>
+                <CategoryAxis label="x Axis" side="BOTTOM" />
+              </xAxis>
+              <yAxis>
+                <NumberAxis label="y Axis" side="LEFT" />
+              </yAxis>
+            </LineChart>
+      </children>
+    </AnchorPane>
+  </children>
+</VBox>
