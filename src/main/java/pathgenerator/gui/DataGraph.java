@@ -1,18 +1,24 @@
 package pathgenerator.gui;
 
+import java.util.ArrayList;
+
 import de.gsi.chart.XYChart;
 import de.gsi.chart.axes.AxisLabelOverlapPolicy;
 import de.gsi.chart.axes.spi.CategoryAxis;
 import de.gsi.chart.axes.spi.DefaultNumericAxis;
+import de.gsi.chart.plugins.DataPointTooltip;
 import de.gsi.chart.plugins.EditAxis;
 import de.gsi.chart.plugins.ParameterMeasurements;
 import de.gsi.chart.plugins.Zoomer;
 import de.gsi.chart.renderer.LineStyle;
 import de.gsi.chart.renderer.spi.ErrorDataSetRenderer;
+import de.gsi.dataset.DataSet;
 import de.gsi.dataset.spi.DefaultErrorDataSet;
+import de.gsi.dataset.utils.ProcessingProfiler;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.scene.Scene;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import pathgenerator.trajectory.Path;
@@ -22,63 +28,68 @@ public class DataGraph extends Application {
 
     private Trajectory traj = new Trajectory();
     private Path path = new Path();
-    private double leftX=0;
-    private double leftY=0;
-    private double rightX=0;
-    private double rightY=0;
+    
+    private static ArrayList<Double> leftWheelX = new ArrayList<>(1);
+    private static ArrayList<Double> rightWheelX = new ArrayList<>(1);
+    private static ArrayList<Double> leftWheelY = new ArrayList<>(1);
+    private static ArrayList<Double> rightWheelY = new ArrayList<>(1);
     @Override
     public void start(final Stage primaryStage) {
-        final StackPane root = new StackPane();
-        final CategoryAxis xAxis = new CategoryAxis("months");
-        // xAxis.setTickLabelRotation(90);
-        // alt:
-        xAxis.setOverlapPolicy(AxisLabelOverlapPolicy.SHIFT_ALT);
-        xAxis.setMaxMajorTickLabelCount(1);
-        final DefaultNumericAxis yAxis = new DefaultNumericAxis("yAxis");
+        ProcessingProfiler.setVerboseOutputState(true);
+        ProcessingProfiler.setLoggerOutputState(true);
+        ProcessingProfiler.setDebugState(false);
 
-        final XYChart lineChartPlot = new XYChart(xAxis, yAxis);
-        // set them false to make the plot faster
-        lineChartPlot.setAnimated(false);
-        lineChartPlot.getRenderers().clear();
-        // lineChartPlot.getRenderers().add(new ReducingLineRenderer());
-        final ErrorDataSetRenderer renderer = new ErrorDataSetRenderer();
-        renderer.setPolyLineStyle(LineStyle.NORMAL);
-        renderer.setPolyLineStyle(LineStyle.HISTOGRAM);
-        lineChartPlot.getRenderers().add(renderer);
-        lineChartPlot.legendVisibleProperty().set(true);
-
-        lineChartPlot.getPlugins().add(new ParameterMeasurements());
-        lineChartPlot.getPlugins().add(new EditAxis());
-        final Zoomer zoomer = new Zoomer();
-        // zoomer.setSliderVisible(false);
-        // zoomer.setAddButtonsToToolBar(false);
-        lineChartPlot.getPlugins().add(zoomer);
-
-        final DefaultErrorDataSet dataSet = new DefaultErrorDataSet("myData");
+        final BorderPane root = new BorderPane();
         final Scene scene = new Scene(root, 800, 600);
 
-    
-      
-        for (int n = 0; n < 10; n++) {
-           leftX = path.getLeftWheelTrajectory().getX();
-           leftY = path.getLeftWheelTrajectory().getY();
-           rightX = path.getLeftWheelTrajectory().getX();
-           rightY = path.
-        
+        final DefaultNumericAxis xAxis1 = new DefaultNumericAxis("time", "iso");
+        xAxis1.setOverlapPolicy(AxisLabelOverlapPolicy.SKIP_ALT);
+        final DefaultNumericAxis yAxis1 = new DefaultNumericAxis("y-axis", "a.u.");
+
+        final XYChart chart = new XYChart(xAxis1, yAxis1);
+        chart.legendVisibleProperty().set(true);
+     
+        chart.getPlugins().add(new EditAxis());
+       
+        // set them false to make the plot faster
+        chart.setAnimated(false);
+
+        xAxis1.setAutoRangeRounding(false);
+        // xAxis1.invertAxis(true); TODO: bug inverted time axis crashes when zooming
+        xAxis1.setTimeAxis(true);
+        yAxis1.setAutoRangeRounding(true);
+
+        final DefaultErrorDataSet dataSet = new DefaultErrorDataSet("TestData");
+
+        for(int i=0; i< 10; i++){
+            leftWheelX.add(path.getLeftWheelTrajectory().getX());
+            leftWheelY.add(path.getLeftWheelTrajectory().getY());
+            dataSet.add(leftWheelX.get(i), leftWheelY.get(i));
         }
 
-        // setting the axis categories to null forces the first data set's
-        // category
-        // enable this if you want to use the data set's categories
-        // xAxis.setCategories(null);
+        long startTime = ProcessingProfiler.getTimeStamp();
+        chart.getDatasets().add(dataSet);
+        ProcessingProfiler.getTimeDiff(startTime, "adding data to chart");
 
-        lineChartPlot.getDatasets().add(dataSet);
-        root.getChildren().add(lineChartPlot);
+        startTime = ProcessingProfiler.getTimeStamp();
+        root.setCenter(chart);
+        ProcessingProfiler.getTimeDiff(startTime, "adding chart into StackPane");
 
+        startTime = ProcessingProfiler.getTimeStamp();
         primaryStage.setTitle(this.getClass().getSimpleName());
         primaryStage.setScene(scene);
         primaryStage.setOnCloseRequest(evt -> Platform.exit());
         primaryStage.show();
+        ProcessingProfiler.getTimeDiff(startTime, "for showing");
+    }
+
+    /**
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(final String[] args) {
+        Application.launch(args);
     }
     
 }

@@ -47,18 +47,16 @@ public class FileGeneration {
 		final TextFileSerializer ts = new TextFileSerializer();
 		final String serializedtext = ts.serialize(path);
 		final String fullpathtext = joinPath(Directory, fileName + ".path");
-
-		
+		Stage stage = new Stage();
+		graph.start(stage);
 
 		if (!writeFile(fullpathtext, serializedtext)) {
 			System.err.println(fullpathtext + " could not be written!!!!");
-			
-		
 			System.exit(1);
 		} else {
 			Main.logger.info("Wrote " + fullpathtext);
 			Main.logger.warning("FINISHED");
-			Stage stage = new Stage();
+			
 			
 
 		}
