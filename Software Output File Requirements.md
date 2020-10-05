@@ -45,10 +45,9 @@
     Type:   Double-Precision floating point number  
     Unit:   Unitless;  
     Range:  -1.0 to +1.0  
-    Notes:  A value between -1.0 and +1.0, where 0.0 is no motor movement, -1.0 is maximum reverse speed of the motor, and +1.0 is the maximum 
-        | forward speed of the motor.  
+    Notes:  A value between -1.0 and +1.0, where 0.0 is no motor movement, -1.0 is maximum reverse speed of the motor, and +1.0 is the maximum | forward speed of the motor.  
 
-# NICK: See if you can figure out how to align the text in the "Notes" description above to align to the U in Unitless.
+
 
 ## 2.4 Acceleration
 ### Describes the desired rate-of-change of speed. For the robot to speed up, acceleration is a positive, to slow down, the acceleration is a negative
@@ -75,7 +74,7 @@
 ```
 ### -- 
 
-## 1.1 Data Structure 
+## 3.0 Data Structure 
 
 #### This is the Example of the Data Structure  
 ``` 
@@ -91,7 +90,7 @@
     [Y]
 ```
 ### --
-## 1.2.1 Data Structure Continued 
+## 3.1.0 Data Structure Continued 
 
 #### The Data Structure of this file uses a top - down approach. This means that the Path Data file reads, linearly Starting With the User Comment and ending with the Y value of the Waypoint. Refer to figure 1.2 Data Structure for the file layout. The Liner Layout of the DataStructure makes it  easy to comply with human readable format standard.
 
