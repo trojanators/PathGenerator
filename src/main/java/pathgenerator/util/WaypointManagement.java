@@ -74,6 +74,7 @@ public class WaypointManagement {
         if (sequence.getNumWaypoints() == Seqnum) {
             // Before Gen path Print out all data
             Main.logger.warning("Data" + wheebase + "," + Location + "," + pathName);
+          
             createPath(Seqnum,sequence, config, wheebase, Location, pathName);
         }
     }
@@ -92,13 +93,6 @@ public class WaypointManagement {
             final String location, final String PathName) {
         Main.logger.info("Generatring Path to File");
         Path path = PathGenerator.makePath(sequence, config, wheelBase, PathName);
-        
         FileGeneration.writeFiles(location, PathName, path);
-        try {
-            fileGen.writePathFile(seqnum, location, PathName, ".csv", path);
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
     }
 }

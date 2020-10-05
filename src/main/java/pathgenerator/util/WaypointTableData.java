@@ -30,7 +30,7 @@ public class WaypointTableData {
     private static ArrayList waypointMaxJerkArray = new ArrayList<Double>(10);
     private static ArrayList waypointMaxVelocityArray = new ArrayList<Double>(10);
     private static ArrayList waypointDtArray = new ArrayList<Double>(10);
-    private static ArrayList waypointIdArray = new ArrayList<Double>(10);
+    private static ArrayList waypointIdArray = new ArrayList<Integer>(10);
 
     // Waypoint data constructor
     public WaypointTableData(int waypoint_id, double waypoint_x, double waypoint_y, double theta, double maxAcc,

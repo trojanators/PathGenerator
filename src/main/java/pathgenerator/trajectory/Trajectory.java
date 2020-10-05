@@ -12,14 +12,16 @@ import pathgenerator.Main;
  */
 public class Trajectory {
 
-  public static ArrayList<Double> generatedPos = new ArrayList<>(10);
-  public static ArrayList<Double> generatedVel = new ArrayList<>(10);
-  public static ArrayList<Double> generatedAcc = new ArrayList<>(10);
-  public static ArrayList<Double> generatedJerk = new ArrayList<>(10);
-  public static ArrayList<Double> generatedHeading = new ArrayList<>(10);
-  public static ArrayList<Double> generatedX = new ArrayList<>(10);
-  public static ArrayList<Double> generatedY = new ArrayList<>(10);
-  public static ArrayList<Double> generatedDt = new ArrayList<>(10);
+  public static ArrayList generatedPos = new ArrayList<>(10);
+  public static ArrayList generatedVel = new ArrayList<>(10);
+  public static ArrayList generatedAcc = new ArrayList<>(10);
+  public static ArrayList generatedJerk = new ArrayList<>(10);
+  public static ArrayList generatedHeading = new ArrayList<>(10);
+  public static ArrayList generatedX = new ArrayList<>(10);
+  public static ArrayList generatedY = new ArrayList<>(10);
+  public static ArrayList generatedDt = new ArrayList<>(10);
+
+  public static ArrayList allgenoutput = new ArrayList<>(10);
 
     public static class Pair {
       public Pair(Trajectory left, Trajectory right) {
@@ -48,6 +50,7 @@ public class Trajectory {
         this.dt = dt;
         this.x = x;
         this.y = y;
+       
       }
   
       public Segment(Segment to_copy) {
@@ -59,6 +62,7 @@ public class Trajectory {
         dt = to_copy.dt;
         x = to_copy.x;
         y = to_copy.y;
+       
       }
   
       public String toString() {
@@ -100,7 +104,9 @@ public class Trajectory {
           return segment;
         }
       } else {
+       
         return new Segment();
+        
       }
     }
     
@@ -146,26 +152,6 @@ public class Trajectory {
         copied[i] = new Segment(tocopy[i]);
       }
       return copied;
-    }
-  
-    // Outpus Data into arrays 
-    public void outputArray() {
-      Main.logger.info("adding Gen data to Arrays");
-      for (int Id = 0; Id < getNumSegments(); ++Id) {
-      Trajectory.Segment segment = getSegment(Id);
-      
-       generatedPos.add(Id,segment.pos);
-       generatedVel.add(Id,segment.vel);
-       generatedAcc.add(Id, segment.acc);
-       generatedJerk.add(Id,segment.jerk);
-       generatedHeading.add(Id, segment.heading);
-       generatedX.add(Id, segment.x);
-       generatedY.add(Id, segment.y);
-       generatedDt.add(Id, segment.dt);
-       Main.logger.info("Gen data in arrays now");
-      }
-  
-  
     }
   
   
