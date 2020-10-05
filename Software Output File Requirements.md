@@ -72,8 +72,6 @@
     UserComment: An String For user to Write a 255 Char Limited Message
 
 ```
-### -- 
-
 ## 3.0 Data Structure 
 
 #### This is the Example of the Data Structure  
@@ -89,8 +87,8 @@
     [X]
     [Y]
 ```
-### --
+
 ## 3.1.0 Data Structure Continued 
 
-#### The Data Structure of this file uses a top - down approach. This means that the Path Data file reads, linearly Starting With the User Comment and ending with the Y value of the Waypoint. Refer to figure 1.2 Data Structure for the file layout. The Liner Layout of the DataStructure makes it  easy to comply with human readable format standard.
+#### The Data Structure of this file uses a top - down approach. This means that the Path Data file reads, linearly Starting With the Waypoint Id and ending with the Y value of the Waypoint. Refer to figure 1.2 Data Structure for the file layout. The Liner Layout of the DataStructure makes it  easy to comply with human readable format standard.
 
