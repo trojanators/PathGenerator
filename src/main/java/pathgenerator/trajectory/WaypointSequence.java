@@ -3,6 +3,7 @@ package pathgenerator.trajectory;
 import java.util.ArrayList;
 
 import pathgenerator.Main;
+import pathgenerator.util.ChezyMath;
 
 /**
  * A WaypointSequence is a sequence of Waypoints. #whatdidyouexpect
@@ -68,6 +69,7 @@ public class WaypointSequence {
       for(int i =0; i < waypoints_.size(); i++){
       inverted.addWaypoint(waypoints_.get(i), i);
       }
-    return inverted; }
+    return inverted;
+   }
    
 }
