@@ -19,7 +19,6 @@ import pathgenerator.trajectory.io.JavaSerializer;
 import pathgenerator.trajectory.io.TextFileSerializer;
 
 import pathgenerator.Main;
-import pathgenerator.gui.DataGraph;
 
 /**
  * this class is to Generate java and txt file for paths that are Generated
@@ -32,7 +31,7 @@ import pathgenerator.gui.DataGraph;
 public class FileGeneration {
 	private Trajectory trajectory = new Trajectory();
 	private BufferedWriter writer;
-	private static DataGraph graph = new DataGraph();
+
 
 	/**
 	 * writes a .path file filled with generated path
@@ -47,8 +46,7 @@ public class FileGeneration {
 		final TextFileSerializer ts = new TextFileSerializer();
 		final String serializedtext = ts.serialize(path);
 		final String fullpathtext = joinPath(Directory, fileName + ".path");
-		Stage stage = new Stage();
-		graph.start(stage);
+	
 
 		if (!writeFile(fullpathtext, serializedtext)) {
 			System.err.println(fullpathtext + " could not be written!!!!");
