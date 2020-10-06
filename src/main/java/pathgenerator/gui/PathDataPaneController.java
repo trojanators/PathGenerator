@@ -102,9 +102,6 @@ public class PathDataPaneController {
     @FXML
     private TableView<WaypointTableData> waypoint_table;
 
-    @FXML
-    private TextField sec_size;
-
     private WaypointTableData data;
 
     /**
@@ -170,9 +167,7 @@ public class PathDataPaneController {
         robot_wheelbase.setTextFormatter(new TextFormatter((UnaryOperator<TextFormatter.Change>) change -> {
             return pattern.matcher(change.getControlNewText()).matches() ? change : null;
         }));
-        sec_size.setTextFormatter(new TextFormatter((UnaryOperator<TextFormatter.Change>) change -> {
-            return pattern.matcher(change.getControlNewText()).matches() ? change : null;
-        }));
+      
     }
 
     private String PathName;
@@ -235,7 +230,7 @@ public class PathDataPaneController {
                     jerk = Double.parseDouble(waypoint_jerk_input.getText());
                     velocity = Double.parseDouble(waypoint_velocity_imput.getText());
                     dt = Double.parseDouble(waypoint_dt_input.getText());
-                    seqSize = Double.parseDouble(sec_size.getText());
+                    
 
                     data = new WaypointTableData(i - countor, x, y, theta, acc, jerk, velocity, dt);
                     waypoint_table.getItems().add(data);
@@ -264,7 +259,6 @@ public class PathDataPaneController {
                     jerk = rando.nextDouble();
                     velocity = rando.nextDouble();
                     dt = rando.nextDouble();
-                    seqSize = Double.parseDouble(sec_size.getText());
                     data = new WaypointTableData(i - countor, x, y, theta, acc, jerk, velocity, dt);
                     waypoint_table.getItems().add(data);
                     PathName = path_name.getText();

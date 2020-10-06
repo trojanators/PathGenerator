@@ -50,7 +50,7 @@ public class WaypointManagement {
 
         // Mapping Data from Waypoint Table to config
         config.max_acc = data.getWaypointMaxACCArrayEntry(waypointId);
-        config.max_vel = data.getWaypointMaxVelArrayEntry( = rando.waypointId);
+        config.max_vel = data.getWaypointMaxVelArrayEntry(waypointId);
         config.max_jerk = data.getWaypointMaxJerkArrayEntry(waypointId);
         config.dt = data.getWaypointDTArrayEntry(waypointId);
 
