@@ -12,17 +12,22 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import pathgenerator.springboot.StartWebApp;
 
 public class Main extends Application {
-
+    
     private final SimpleFormatter formatter = new SimpleFormatter();
     public static Logger logger = Logger.getLogger(Main.class.getName());
     private final FXMLLoader loader = new FXMLLoader();
     private LocalDate day = LocalDate.now(); // Create a date object
+    private static StartWebApp webapp = new StartWebApp();
 
     // Starts JavaFX Gui
     public static void main(String[] args) {
+        
+        
         launch(args);
+        
     }
     
     @Override
@@ -59,5 +64,6 @@ public class Main extends Application {
         logger.info("\n");
         logger.warning("Date today is"+ day +"\n");
 
-}
+    }
+
 }

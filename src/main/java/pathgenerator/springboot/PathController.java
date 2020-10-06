@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * @author Nicholas Blackburn
  */
 @Controller
-@RequestMapping("path")
+@RequestMapping("/path")
 public class PathController {
     
     @GetMapping("pathCreator")
