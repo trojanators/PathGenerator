@@ -62,14 +62,12 @@ public class WaypointSequence {
   }
 
   // TODO: fix Invert Y
-  /*
-   * public WaypointSequence invertY() { WaypointSequence inverted = new
-   * WaypointSequence(waypoints_.length); inverted.num_waypoints_ =
-   * num_waypoints_; for (int i = 0; i < num_waypoints_; ++i) {
-   * inverted.waypoints_[i] = waypoints_[i]; inverted.waypoints_[i].y *= -1;
-   * inverted.waypoints_[i].theta = ChezyMath.boundAngle0to2PiRadians( 2*Math.PI -
-   * inverted.waypoints_[i].theta); }
-   * 
-   * return inverted; }
-   */
+  
+    public WaypointSequence invertY() { 
+      WaypointSequence inverted = new WaypointSequence();
+      for(int i =0; i < waypoints_.size(); i++){
+      inverted.addWaypoint(waypoints_.get(i), i);
+      }
+    return inverted; }
+   
 }
