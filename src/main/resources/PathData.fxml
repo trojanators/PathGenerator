@@ -16,55 +16,39 @@
   <children>
     <AnchorPane fx:id="save_entrys" maxHeight="-1.0" maxWidth="-1.0" prefHeight="858.0" prefWidth="1376.0" style="-fx-background-color: rgb(0,0,0);" VBox.vgrow="ALWAYS">
       <children>
-        <Label alignment="CENTER" layoutX="548.0" layoutY="14.0" style="&#10;" text="Path Entry Data" textAlignment="CENTER" textFill="WHITE" wrapText="false">
-          <font>
-            <Font name="System Italic" size="28.0" />
-          </font>
-        </Label>
-            <Button fx:id="new_waypoint" layoutX="250.0" layoutY="825.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="132.0" style="-fx-background-color: rgb(30,30,30);" text="add Waypoint" textFill="WHITE" />
-            <Label layoutX="254.0" layoutY="756.0" text=" Edit entrys" textFill="WHITE">
+            <Button fx:id="new_waypoint" layoutX="7.0" layoutY="511.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="132.0" style="-fx-background-color: rgb(30,30,30);" text="add Waypoint" textFill="WHITE" />
+            <Label layoutX="566.0" layoutY="14.0" prefHeight="27.0" prefWidth="188.0" text="        Entry Editor" textFill="WHITE">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <Label layoutX="594.0" layoutY="57.0" prefHeight="27.0" prefWidth="188.0" text="        Entry Editor" textFill="WHITE">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-            <Button fx:id="remove_path" layoutX="250.0" layoutY="799.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="132.0" style="-fx-background-color: rgb(30,30,30);" text="remove WayPoint" textFill="WHITE" />
-            <Label layoutX="929.0" layoutY="724.0" prefHeight="21.0" prefWidth="118.0" text="Preview path" textFill="WHITE">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
+            <Button fx:id="remove_path" layoutX="7.0" layoutY="553.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="132.0" style="-fx-background-color: rgb(30,30,30);" text="remove WayPoint" textFill="WHITE" />
             <ImageView fitHeight="89.0" fitWidth="122.0" layoutX="-9.0" layoutY="769.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@44243093.png" />
                </image>
             </ImageView>
-            <Button fx:id="exit" layoutX="306.0" layoutY="722.0" mnemonicParsing="false" style="-fx-background-color: rgb(30,30,30);" text="exit" textFill="WHITE" />
-            <TableView fx:id="waypoint_table" editable="true" layoutX="198.0" layoutY="482.0" prefHeight="205.0" prefWidth="922.0" style="-fx-background-color: rgb(28,28,28);" tableMenuButtonVisible="true">
+            <Button fx:id="exit" layoutX="1175.0" layoutY="71.0" mnemonicParsing="false" style="-fx-background-color: rgb(30,30,30);" text="exit" textFill="WHITE" />
+            <TableView fx:id="waypoint_table" editable="true" layoutX="145.0" layoutY="511.0" prefHeight="205.0" prefWidth="1061.0" style="-fx-background-color: rgb(28,28,28);" tableMenuButtonVisible="true">
                <columnResizePolicy>
                   <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                </columnResizePolicy>
             </TableView>
-            <TextField fx:id="waypoint_x_input" layoutX="396.0" layoutY="753.0" prefHeight="26.0" prefWidth="159.0" promptText="enter waypoint x" />
-            <TextField fx:id="waypoint_y_input" layoutX="396.0" layoutY="787.0" prefHeight="26.0" prefWidth="159.0" promptText="enter waypoint y" />
-            <TextField fx:id="waypoint_theta_input" layoutX="396.0" layoutY="820.0" prefHeight="26.0" prefWidth="159.0" promptText="enter waypoint Theta" />
-            <TextField fx:id="waypoint_acc_input" layoutX="563.0" layoutY="753.0" prefHeight="26.0" prefWidth="179.0" promptText="enter max acceleration" />
-            <TextField fx:id="waypoint_jerk_input" layoutX="563.0" layoutY="787.0" prefHeight="26.0" prefWidth="179.0" promptText="enter max Jerk" />
-            <TextField fx:id="waypoint_velocity_imput" layoutX="563.0" layoutY="820.0" prefHeight="26.0" prefWidth="179.0" promptText="enter Velocity" />
-            <TextField fx:id="waypoint_dt_input" layoutX="563.0" layoutY="721.0" prefHeight="26.0" prefWidth="179.0" promptText="            enter dt" />
-            <CheckBox fx:id="generate_path" layoutX="929.0" layoutY="791.0" mnemonicParsing="false" text="Test (Fill random)" textFill="WHITE" />
-            <TextField fx:id="path_name" layoutX="748.0" layoutY="753.0" prefHeight="26.0" prefWidth="171.0" promptText="enter Path name" />
-            <TextField fx:id="robot_wheelbase" layoutX="748.0" layoutY="785.0" prefHeight="26.0" prefWidth="171.0" promptText="enter Robot Wheelbase" />
-            <TextField fx:id="pathfile_path" layoutX="748.0" layoutY="818.0" prefHeight="26.0" prefWidth="171.0" promptText="enter save location" />
-            <CheckBox fx:id="neg_pi" layoutX="400.0" layoutY="725.0" mnemonicParsing="false" text="enable neg pi theta" textFill="WHITE" />
-            <CheckBox fx:id="pi_enable" layoutX="753.0" layoutY="725.0" mnemonicParsing="false" text="enable pi theta" textFill="WHITE" />
-            <CheckBox fx:id="invert_y" layoutX="929.0" layoutY="822.0" mnemonicParsing="false" text="Invert Y" textFill="WHITE" />
-            <TextField fx:id="sec_size" layoutX="563.0" layoutY="687.0" prefHeight="26.0" prefWidth="179.0" promptText="enter number of waypoints" />
-            <Canvas fx:id="Canvis" height="414.0" layoutX="109.0" layoutY="71.0" style="-fx-background-color: white;" width="1214.0" />
+            <TextField fx:id="waypoint_x_input" layoutX="317.0" layoutY="769.0" prefHeight="26.0" prefWidth="159.0" promptText="enter waypoint x" />
+            <TextField fx:id="waypoint_y_input" layoutX="317.0" layoutY="730.0" prefHeight="26.0" prefWidth="159.0" promptText="enter waypoint y" />
+            <TextField fx:id="waypoint_theta_input" layoutX="513.0" layoutY="769.0" prefHeight="26.0" prefWidth="179.0" promptText="enter waypoint Theta" />
+            <TextField fx:id="waypoint_acc_input" layoutX="940.0" layoutY="743.0" prefHeight="26.0" prefWidth="179.0" promptText="enter max acceleration" />
+            <TextField fx:id="waypoint_jerk_input" layoutX="720.0" layoutY="730.0" prefHeight="26.0" prefWidth="179.0" promptText="enter max Jerk" />
+            <TextField fx:id="waypoint_velocity_imput" layoutX="720.0" layoutY="769.0" prefHeight="26.0" prefWidth="179.0" promptText="enter Velocity" />
+            <TextField fx:id="waypoint_dt_input" layoutX="513.0" layoutY="730.0" prefHeight="26.0" prefWidth="179.0" promptText="            enter dt" />
+            <CheckBox fx:id="generate_path" layoutX="770.0" layoutY="75.0" mnemonicParsing="false" text="Test (Fill random)" textFill="WHITE" />
+            <TextField fx:id="path_name" layoutX="196.0" layoutY="71.0" prefHeight="26.0" prefWidth="171.0" promptText="enter Path name" />
+            <TextField fx:id="robot_wheelbase" layoutX="574.0" layoutY="71.0" prefHeight="26.0" prefWidth="171.0" promptText="enter Robot Wheelbase" />
+            <TextField fx:id="pathfile_path" layoutX="948.0" layoutY="71.0" prefHeight="26.0" prefWidth="171.0" promptText="enter save location" />
+            <CheckBox fx:id="neg_pi" layoutX="139.0" layoutY="734.0" mnemonicParsing="false" text="enable neg pi theta" textFill="WHITE" />
+            <CheckBox fx:id="pi_enable" layoutX="145.0" layoutY="773.0" mnemonicParsing="false" text="enable pi theta" textFill="WHITE" />
+            <CheckBox fx:id="invert_y" layoutX="438.0" layoutY="75.0" mnemonicParsing="false" text="Invert Y" textFill="WHITE" />
+            <Canvas fx:id="Canvis" height="412.0" layoutX="54.0" layoutY="97.0" style="-fx-background-color: white;" width="1251.0" />
       </children>
     </AnchorPane>
   </children>
