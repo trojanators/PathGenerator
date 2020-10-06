@@ -64,7 +64,7 @@
             <CheckBox fx:id="pi_enable" layoutX="753.0" layoutY="725.0" mnemonicParsing="false" text="enable pi theta" textFill="WHITE" />
             <CheckBox fx:id="invert_y" layoutX="929.0" layoutY="822.0" mnemonicParsing="false" text="Invert Y" textFill="WHITE" />
             <TextField fx:id="sec_size" layoutX="563.0" layoutY="687.0" prefHeight="26.0" prefWidth="179.0" promptText="enter number of waypoints" />
-            <Canvas fx:id="Canvis" height="200.0" layoutX="191.0" layoutY="112.0" style="-fx-background-color: white;" width="906.0" />
+            <Canvas fx:id="Canvis" height="414.0" layoutX="109.0" layoutY="71.0" style="-fx-background-color: white;" width="1214.0" />
       </children>
     </AnchorPane>
   </children>
