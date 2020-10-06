@@ -53,8 +53,6 @@ public class PathDataPaneController {
     @FXML
     private Button remove_path;
 
-    @FXML
-    private Button preview_graph;
 
     @FXML
     private CheckBox generate_path;
@@ -335,19 +333,7 @@ public class PathDataPaneController {
 
         });
 
-        preview_graph.setOnAction((EventHandler<ActionEvent>) new EventHandler<ActionEvent>() {
 
-            @Override
-            public void handle(final ActionEvent event) {
-                Stage stage = new Stage();
-
-                if (!preview_graph.isPressed()) {
-                    Main.logger.info("NEED TO GET GRAPH FXML done Path Display not ready yet!!");
-                }
-
-            }
-
-        });
         invert_y.setOnAction((EventHandler<ActionEvent>) new EventHandler<ActionEvent>() {
 
             @Override
