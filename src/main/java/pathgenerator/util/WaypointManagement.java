@@ -93,6 +93,7 @@ public class WaypointManagement {
             final String location, final String PathName) {
         Main.logger.info("Generatring Path to File");
         Path path = PathGenerator.makePath(sequence, config, wheelBase, PathName);
-        FileGeneration.writeFiles(location, PathName, path);
+
+        fileGen.writeFiles(location, PathName, path);
     }
 }

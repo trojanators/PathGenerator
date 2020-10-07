@@ -54,6 +54,8 @@ public class WaypointSequence {
     return num_waypoints_;
   }
 
+
+
   public Waypoint getWaypoint(int index) {
     if (index >= 0 && index < getNumWaypoints()) {
       return waypoints_.get(index);

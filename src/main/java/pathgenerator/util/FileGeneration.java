@@ -2,19 +2,28 @@ package pathgenerator.util;
 
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.StringWriter;
 import java.io.Writer;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
-import org.apache.commons.csv.CSVFormat;
-import org.apache.commons.csv.CSVPrinter;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ObjectNode;
+
+import org.yaml.snakeyaml.nodes.SequenceNode;
+import org.yaml.snakeyaml.Yaml;
+import org.yaml.snakeyaml.composer.*; 
 
 import javafx.stage.Stage;
 import pathgenerator.trajectory.Path;
 import pathgenerator.trajectory.Trajectory;
+import pathgenerator.trajectory.WaypointSequence;
 import pathgenerator.trajectory.io.JavaSerializer;
 import pathgenerator.trajectory.io.TextFileSerializer;
 
@@ -30,8 +39,11 @@ import pathgenerator.Main;
 // TODO: generate output to csv format
 public class FileGeneration {
 	private Trajectory trajectory = new Trajectory();
-	private BufferedWriter writer;
+	private WaypointSequence sequence = new WaypointSequence();
+	private WaypointTableData tableData = new WaypointTableData();
 
+	private static String yamlBaseKey = "Waypoint";
+	private Map<String, Object> data = new HashMap<String, Object>();
 
 	/**
 	 * writes a .path file filled with generated path
@@ -39,26 +51,34 @@ public class FileGeneration {
 	 * @param Directory
 	 * @param fileName
 	 * @param path
+	 * @param sequence
+	 * @throws IOException
 	 */
-	public static void writeFiles(final String Directory, final String fileName, final Path path) {
-
-		// Outputs to the directory supplied as the first argument.
-		final TextFileSerializer ts = new TextFileSerializer();
-		final String serializedtext = ts.serialize(path);
-		final String fullpathtext = joinPath(Directory, fileName + ".path");
-	
-
-		if (!writeFile(fullpathtext, serializedtext)) {
-			System.err.println(fullpathtext + " could not be written!!!!");
-			System.exit(1);
-		} else {
-			Main.logger.info("Wrote " + fullpathtext);
-			Main.logger.warning("FINISHED");
-			
-			
-
+	public void writeFiles(final String Directory, final String fileName, final Path path){
+		
+		for(int i = 0; i<sequence.getNumWaypoints(); i++){
+		data.put(yamlBaseKey + ".Id", tableData.getId());
+		data.put(yamlBaseKey + ".UserComments","Exampel String");
+		data.put(yamlBaseKey + ".Pos", path.getPair().left.getPos());
+		data.put(yamlBaseKey + ".Acc", path.getPair().left.getAcc());
+		data.put(yamlBaseKey + ".Jerk",path.getPair().left.getJerk());
+		data.put(yamlBaseKey + ".Heading",path.getPair().left.getHeading());
+		//data.put(yamlBaseKey + ".Dt",path.getPair().left.;
+		data.put(yamlBaseKey + ".X", path.getPair().left.getX());
+		data.put(yamlBaseKey +".Y", path.getPair().left.getY());
 		}
-
+		Yaml yaml = new Yaml();
+		FileWriter writer;
+		try {
+			writer = new FileWriter(Directory + fileName);
+			yaml.dump(data, writer);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	
+		
 	}
 
 	/**

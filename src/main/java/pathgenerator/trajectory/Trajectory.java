@@ -10,7 +10,8 @@ import pathgenerator.Main;
  *
  * @author Jared341
  */
-public class Trajectory {
+public class 
+Trajectory {
 
   public static ArrayList generatedPos = new ArrayList<>(10);
   public static ArrayList generatedVel = new ArrayList<>(10);
@@ -186,6 +187,56 @@ public class Trajectory {
         y = (double)segment.y;
       }
       return y;
+    }
+
+    public Double getAcc(){
+      double acc = 0 ;
+      Trajectory.Segment segment;
+      for (int i = 0; i < getNumSegments(); ++i) {
+       segment = getSegment(i);
+      acc = (double)segment.acc;
+      }
+      return acc;
+    }
+
+    public Double getPos(){
+      double pos = 0 ;
+      Trajectory.Segment segment;
+      for (int i = 0; i < getNumSegments(); ++i) {
+       segment = getSegment(i);
+      pos = (double)segment.pos;
+      }
+      return pos;
+    }
+
+    
+    public Double getHeading(){
+      double heading = 0 ;
+      Trajectory.Segment segment;
+      for (int i = 0; i < getNumSegments(); ++i) {
+       segment = getSegment(i);
+      heading = (double)segment.heading;
+      }
+      return heading;
+    }
+
+    public Double getJerk(){
+      double heading = 0 ;
+      Trajectory.Segment segment;
+      for (int i = 0; i < getNumSegments(); ++i) {
+       segment = getSegment(i);
+      heading = (double)segment.jerk;
+      }
+      return heading;
+    }
+    public Double getVel(){
+      double vel = 0 ;
+      Trajectory.Segment segment;
+      for (int i = 0; i < getNumSegments(); ++i) {
+       segment = getSegment(i);
+      vel = (double)segment.vel;
+      }
+      return vel;
     }
 
   public Trajectory(){
