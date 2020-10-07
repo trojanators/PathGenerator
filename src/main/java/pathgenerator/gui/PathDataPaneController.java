@@ -54,6 +54,7 @@ public class PathDataPaneController {
     private Button remove_path;
 
 
+
     @FXML
     private CheckBox generate_path;
 
@@ -327,7 +328,7 @@ public class PathDataPaneController {
 
         });
 
-
+    
         invert_y.setOnAction((EventHandler<ActionEvent>) new EventHandler<ActionEvent>() {
 
             @Override

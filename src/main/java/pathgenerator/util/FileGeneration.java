@@ -17,6 +17,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
 import org.yaml.snakeyaml.nodes.SequenceNode;
+import org.yaml.snakeyaml.DumperOptions;
 import org.yaml.snakeyaml.Yaml;
 import org.yaml.snakeyaml.composer.*; 
 
@@ -42,7 +43,7 @@ public class FileGeneration {
 	private WaypointSequence sequence = new WaypointSequence();
 	private WaypointTableData tableData = new WaypointTableData();
 
-	private static String yamlBaseKey = "Waypoint";
+	private static String yamlBaseKey = "Waypoint.";
 	private Map<String, Object> data = new HashMap<String, Object>();
 
 	/**
@@ -55,31 +56,37 @@ public class FileGeneration {
 	 * @throws IOException
 	 */
 	public void writeFiles(final String Directory, final String fileName, final Path path){
-		
-		for(int i = 0; i<sequence.getNumWaypoints(); i++){
-		data.put(yamlBaseKey + ".Id", tableData.getId());
-		data.put(yamlBaseKey + ".UserComments","Exampel String");
-		data.put(yamlBaseKey + ".Pos", path.getPair().left.getPos());
-		data.put(yamlBaseKey + ".Acc", path.getPair().left.getAcc());
-		data.put(yamlBaseKey + ".Jerk",path.getPair().left.getJerk());
-		data.put(yamlBaseKey + ".Heading",path.getPair().left.getHeading());
+		Main.logger.info("Gen file");
+		data.put(yamlBaseKey+"Id", tableData.getId());
+		data.put(yamlBaseKey + "UserComments","Exampel String");
+		data.put(yamlBaseKey + "Pos", path.getPair().left.getPos());
+		data.put(yamlBaseKey + "Acc", path.getPair().left.getAcc());
+		data.put(yamlBaseKey + "Jerk",path.getPair().left.getJerk());
+		data.put(yamlBaseKey + "Heading",path.getPair().left.getHeading());
 		//data.put(yamlBaseKey + ".Dt",path.getPair().left.;
-		data.put(yamlBaseKey + ".X", path.getPair().left.getX());
-		data.put(yamlBaseKey +".Y", path.getPair().left.getY());
-		}
-		Yaml yaml = new Yaml();
-		FileWriter writer;
+		data.put(yamlBaseKey + "X", path.getPair().left.getX());
+		data.put(yamlBaseKey +"Y", path.getPair().left.getY());
+		Main.logger.info("here is file data"+ data.toString());
 		try {
-			writer = new FileWriter(Directory + fileName);
-			yaml.dump(data, writer);
+			saveYamlToFile(data, Directory, fileName);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
 	
 		
 	}
+
+	public static void saveYamlToFile(final Object object, String dir, String name) throws IOException {
+		final DumperOptions options = new DumperOptions();
+		options.setDefaultFlowStyle(DumperOptions.FlowStyle.BLOCK);
+		options.setPrettyFlow(true);
+		final Yaml yaml = new Yaml(options);
+	
+		final FileWriter writer = new FileWriter(dir +name+".path");
+		yaml.dump(object, writer);
+	}
+	
 
 	/**
 	 * Creates Java class file with path values in it

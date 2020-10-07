@@ -71,7 +71,7 @@ public class WaypointManagement {
             Main.logger.warning("Waypoint" + x / 12.0 + "," + y / 12.0 + "THeta" + -Math.PI / theta);
         }
 
-        if (sequence.getNumWaypoints() == Seqnum) {
+        if (sequence.getNumWaypoints() == 10) {
             // Before Gen path Print out all data
             Main.logger.warning("Data" + wheebase + "," + Location + "," + pathName);
           
