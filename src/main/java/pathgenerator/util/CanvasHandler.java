@@ -12,8 +12,7 @@ public class CanvasHandler {
 
 
     public void addFillArray(int index, Path path){
-        nodeXArray.add(index, path.getPair().left.getX());
-        nodeXArray.add(index, path.getPair().right.getX());
+        
     }
     
 }

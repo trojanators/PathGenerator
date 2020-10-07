@@ -44,31 +44,28 @@ public class WaypointManagement {
 
         final WaypointSequence sequence = new WaypointSequence();
         int waypointId = data.getId();
-        double x = data.getWaypointXArrayEntry(waypointId);
-        double y = data.getWaypointYArrayEntry(waypointId);
-        double theta = data.getWaypointThetaArrayEntry(waypointId);
 
         // Mapping Data from Waypoint Table to config
-        config.max_acc = data.getWaypointMaxACCArrayEntry(waypointId);
-        config.max_vel = data.getWaypointMaxVelArrayEntry(waypointId);
-        config.max_jerk = data.getWaypointMaxJerkArrayEntry(waypointId);
-        config.dt = data.getWaypointDTArrayEntry(waypointId);
+        config.max_acc = data.getAcc();
+        config.max_vel = data.getVelocity();
+        config.max_jerk = data.getJerk();
+        config.dt = data.getDt();
 
         // Creates a waypoint without MathPi cal
         if (enableRando && !enableNegPi && !enablePiCalc) {
-            sequence.addWaypoint(new WaypointSequence.Waypoint(x / 12, y / 12, theta), waypointId);
+            sequence.addWaypoint(new WaypointSequence.Waypoint(data.getX()/ 12, data.getY() / 12, data.getTheta()), waypointId);
             Main.logger.info("WayPoints in Created Waypoint Sequ is" + sequence.getNumWaypoints());
             Main.logger.warning("waypoint sequ list" + sequence.getWaypoint(waypointId));
             
         }
         if (enableRando && enablePiCalc) {
-            sequence.addWaypoint(new WaypointSequence.Waypoint(x / 12.0, y / 12.0, Math.PI / theta), waypointId);
-            Main.logger.warning("Waypoint" + x / 12.0 + "" + y / 12.0 + " THeta" + Math.PI / theta);
+            sequence.addWaypoint(new WaypointSequence.Waypoint(data.getX() / 12.0, data.getY() / 12.0, Math.PI / data.getTheta()), waypointId);
+            Main.logger.warning("Waypoint" + data.getX() / 12.0 + "" + data.getY() / 12.0 + " data.getTheta()" + Math.PI / data.getTheta());
         }
 
         if (enableRando && enableNegPi) {
-            sequence.addWaypoint(new WaypointSequence.Waypoint(x / 12.0, y / 12.0, -Math.PI / theta), waypointId);
-            Main.logger.warning("Waypoint" + x / 12.0 + "," + y / 12.0 + "THeta" + -Math.PI / theta);
+            sequence.addWaypoint(new WaypointSequence.Waypoint(data.getX() / 12.0, data.getY() / 12.0, -Math.PI / data.getTheta()), waypointId);
+            Main.logger.warning("Waypoint" + data.getX() / 12.0 + "," + data.getY() / 12.0 + "data.getTheta()" + -Math.PI / data.getTheta());
         }
 
         if (sequence.getNumWaypoints() == 10) {
@@ -94,6 +91,6 @@ public class WaypointManagement {
         Main.logger.info("Generatring Path to File");
         Path path = PathGenerator.makePath(sequence, config, wheelBase, PathName);
 
-        fileGen.writeFiles(location, PathName, path);
+        fileGen.writeFiles("test",location, PathName, path);
     }
 }

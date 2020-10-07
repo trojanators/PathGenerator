@@ -13,13 +13,14 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.amihaiemil.eoyaml.Yaml;
+import com.amihaiemil.eoyaml.YamlMapping;
+import com.amihaiemil.eoyaml.YamlMappingBuilder;
+import com.amihaiemil.eoyaml.YamlNode;
+import com.amihaiemil.eoyaml.YamlPrinter;
+import com.amihaiemil.eoyaml.YamlSequence;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
-
-import org.yaml.snakeyaml.nodes.SequenceNode;
-import org.yaml.snakeyaml.DumperOptions;
-import org.yaml.snakeyaml.Yaml;
-import org.yaml.snakeyaml.composer.*; 
 
 import javafx.stage.Stage;
 import pathgenerator.trajectory.Path;
@@ -42,9 +43,10 @@ public class FileGeneration {
 	private Trajectory trajectory = new Trajectory();
 	private WaypointSequence sequence = new WaypointSequence();
 	private WaypointTableData tableData = new WaypointTableData();
-
+	
 	private static String yamlBaseKey = "Waypoint.";
-	private Map<String, Object> data = new HashMap<String, Object>();
+	private static String right = ".right";
+	private static String left = ".left";
 
 	/**
 	 * writes a .path file filled with generated path
@@ -55,38 +57,57 @@ public class FileGeneration {
 	 * @param sequence
 	 * @throws IOException
 	 */
-	public void writeFiles(final String Directory, final String fileName, final Path path){
-		Main.logger.info("Gen file");
+	public void writeFiles(String comments,final String Directory, final String fileName, final Path path){
+
+		int id = 0;
+		File file = new File(Directory+fileName+".path");
+		for (id =0; id<path.getRightWheelTrajectory().getNumSegments(); ++id){
+		YamlMapping yaml = Yaml.createYamlMappingBuilder()
+		.add(
+			yamlBaseKey+id+left,
+			Yaml.createYamlSequenceBuilder()
+				.add(Double.toString(path.getLeftWheelTrajectory().getSegment(id).pos))
+				.add(Double.toString(path.getLeftWheelTrajectory().getSegment(id).vel))
+				.add(Double.toString(path.getLeftWheelTrajectory().getSegment(id).acc))
+				.add(Double.toString(path.getLeftWheelTrajectory().getSegment(id).jerk))
+				.add(Double.toString(path.getLeftWheelTrajectory().getSegment(id).heading))
+				.add(Double.toString(path.getLeftWheelTrajectory().getSegment(id).dt))
+				.add(Double.toString(path.getLeftWheelTrajectory().getSegment(id).x))
+				.add(Double.toString(path.getLeftWheelTrajectory().getSegment(id).y))
+				.build(comments)
+		).add(
+			yamlBaseKey+id+right,
+			Yaml.createYamlSequenceBuilder()
+				.add(Double.toString(path.getRightWheelTrajectory().getSegment(id).pos))
+				.add(Double.toString(path.getRightWheelTrajectory().getSegment(id).vel))
+				.add(Double.toString(path.getRightWheelTrajectory().getSegment(id).acc))
+				.add(Double.toString(path.getRightWheelTrajectory().getSegment(id).jerk))
+				.add(Double.toString(path.getRightWheelTrajectory().getSegment(id).heading))
+				.add(Double.toString(path.getRightWheelTrajectory().getSegment(id).dt))
+				.add(Double.toString(path.getRightWheelTrajectory().getSegment(id).x))
+				.add(Double.toString(path.getRightWheelTrajectory().getSegment(id).y))
+				.build(comments)
+		).build();
+	
 		
-		data.put(yamlBaseKey+"Id", path.getPair().left.getId()) ;
-		data.put(yamlBaseKey + "UserComments","Exampel String");
-		data.put(yamlBaseKey + "Pos", path.getPair().left.getPos());
-		data.put(yamlBaseKey + "Acc", path.getPair().left.getAcc());
-		data.put(yamlBaseKey + "Jerk",path.getPair().left.getJerk());
-		data.put(yamlBaseKey + "Heading",path.getPair().left.getHeading());
-		//data.put(yamlBaseKey + ".Dt",path.getPair().left.;
-		data.put(yamlBaseKey + "X", path.getPair().left.getX());
-		data.put(yamlBaseKey +"Y", path.getPair().left.getY());
-		Main.logger.info("here is file data"+ data.toString());
 		try {
-			saveYamlToFile(data, Directory, fileName);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
+
+			// if file doesn't exists, then create it
+			if (!file.exists()) {
+				file.createNewFile();
+			}
+			final YamlPrinter printer = Yaml.createYamlPrinter(new FileWriter(file));
+			
+			printer.print(yaml);
+			
+		}catch(Exception e){
 			e.printStackTrace();
 		}
+	
 	}
 	
 		
-	
-	public static void saveYamlToFile(final Object object, String dir, String name) throws IOException {
-		final DumperOptions options = new DumperOptions();
-		options.setDefaultFlowStyle(DumperOptions.FlowStyle.FLOW);
-		options.setPrettyFlow(true);
-		final Yaml yaml = new Yaml(options);
-	
-		final FileWriter writer = new FileWriter(dir +name+".path");
-		yaml.dump(object, writer);
-	}
+
 	
 
 	/**

@@ -235,7 +235,6 @@ public class PathDataPaneController {
 
                     data = new WaypointTableData(i - countor, x, y, theta, acc, jerk, velocity, dt);
                     waypoint_table.getItems().add(data);
-                    data.addData();
                     PathName = path_name.getText();
                     wayManage.createWaypoint(data, enableRando, enable_Pi, enable_Neg_Pi, getRobotWheelbase(),
                             getPathName(), getPathSaveLocal(), genpath, (int) seqSize);
@@ -265,12 +264,9 @@ public class PathDataPaneController {
 
                     PathName = path_name.getText();
                     Main.logger.info("Waypoint Table info"+waypoint_table.getItems().get(i).toString());
-                   
-
-                    /*
+                
                     wayManage.createWaypoint(data, enableRando, enable_Pi, enable_Neg_Pi, getRobotWheelbase(),
                             getPathName(), getPathSaveLocal(), genpath, (int) seqSize);
-                */
                     i++;
                     Main.logger.info("increment" + i);
 
@@ -290,7 +286,6 @@ public class PathDataPaneController {
                     countor++;
                     // TODO: remove data from Waypoint listview
                     Main.logger.info("removed waypoint");
-                    data.removeData();
                     waypoint_table.getItems().remove(data);
 
                     Main.logger.info("waypoint removed successfull!y");

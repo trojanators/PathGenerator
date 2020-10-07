@@ -76,15 +76,25 @@
 
 #### This is the Example of the Data Structure  
 ``` 
-[Waypoint ID]
-    [UserComment]
-    [Pos]
-    [Vel]
-    [Acc]
-    [Jerk]
-    [Heading]
-    [Dt]
-    [X]
-    [Y]
+# comment
+Waypoint.id.left
+  - pos
+  - vel
+  - acc
+  - jerk
+  - heading
+  - dt
+  - x
+  - y
+# comment
+Waypoint.id.right:
+  - pos
+  - vel
+  - acc
+  - jerk
+  - heading
+  - dt
+  - x
+  - y
 ```
 
