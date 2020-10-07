@@ -57,7 +57,8 @@ public class FileGeneration {
 	 */
 	public void writeFiles(final String Directory, final String fileName, final Path path){
 		Main.logger.info("Gen file");
-		data.put(yamlBaseKey+"Id", tableData.getId());
+		
+		data.put(yamlBaseKey+"Id", path.getPair().left.getId()) ;
 		data.put(yamlBaseKey + "UserComments","Exampel String");
 		data.put(yamlBaseKey + "Pos", path.getPair().left.getPos());
 		data.put(yamlBaseKey + "Acc", path.getPair().left.getAcc());
@@ -73,13 +74,13 @@ public class FileGeneration {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
 	
 		
-	}
-
+	
 	public static void saveYamlToFile(final Object object, String dir, String name) throws IOException {
 		final DumperOptions options = new DumperOptions();
-		options.setDefaultFlowStyle(DumperOptions.FlowStyle.BLOCK);
+		options.setDefaultFlowStyle(DumperOptions.FlowStyle.FLOW);
 		options.setPrettyFlow(true);
 		final Yaml yaml = new Yaml(options);
 	

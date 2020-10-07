@@ -199,5 +199,10 @@ public class WaypointTableData {
         return waypointIdArray.size();
     }
 
+    @Override
+    public String toString(){
+        return ""+Id+"  "+x+""+y+""+theta+""+vel+""+dt+""+""+jerk;
+    }
+    
 }
 

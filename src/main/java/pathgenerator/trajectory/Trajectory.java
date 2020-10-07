@@ -209,6 +209,16 @@ Trajectory {
       return pos;
     }
 
+    public int getId(){
+      int id = 0;
+      Trajectory.Segment segment;
+      for (int i = 0; i < getNumSegments(); ++i) {
+       
+        id = i;
+      }
+      return id;
+    }
+
     
     public Double getHeading(){
       double heading = 0 ;
