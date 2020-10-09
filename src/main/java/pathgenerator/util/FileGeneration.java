@@ -10,6 +10,7 @@ import java.io.Writer;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -19,6 +20,8 @@ import com.amihaiemil.eoyaml.YamlMappingBuilder;
 import com.amihaiemil.eoyaml.YamlNode;
 import com.amihaiemil.eoyaml.YamlPrinter;
 import com.amihaiemil.eoyaml.YamlSequence;
+import com.amihaiemil.eoyaml.YamlStream;
+import com.amihaiemil.eoyaml.YamlStreamBuilder;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
@@ -60,22 +63,22 @@ public class FileGeneration {
 		int id = 0;
 		File file = new File(Directory+fileName+".path");
 		for (id =0; id<path.getRightWheelTrajectory().getNumSegments(); ++id){
-		YamlMapping yaml = Yaml.createYamlMappingBuilder()
-		.add(
-			yamlBaseKey+id,
-			Yaml.createYamlSequenceBuilder()
-				.add(Double.toString(path.getLeftWheelTrajectory().getSegment(id).pos)+","+Double.toString(path.getRightWheelTrajectory().getSegment(id).pos))
-				.add(Double.toString(path.getLeftWheelTrajectory().getSegment(id).vel)+ ","+Double.toString(path.getRightWheelTrajectory().getSegment(id).vel))
-				.add(Double.toString(path.getLeftWheelTrajectory().getSegment(id).acc)+ "," +Double.toString(path.getRightWheelTrajectory().getSegment(id).acc))
-				.add(Double.toString(path.getLeftWheelTrajectory().getSegment(id).jerk)+ ","+Double.toString(path.getRightWheelTrajectory().getSegment(id).jerk))
-				.add(Double.toString(path.getLeftWheelTrajectory().getSegment(id).heading)+","+Double.toString(path.getRightWheelTrajectory().getSegment(id).heading))
-				.add(Double.toString(path.getLeftWheelTrajectory().getSegment(id).dt)+ ","+Double.toString(path.getRightWheelTrajectory().getSegment(id).dt))
-				.add(Double.toString(path.getLeftWheelTrajectory().getSegment(id).x)+ "," +Double.toString(path.getRightWheelTrajectory().getSegment(id).x))
-				.add(Double.toString(path.getLeftWheelTrajectory().getSegment(id).y)+ "," +Double.toString(path.getRightWheelTrajectory().getSegment(id).y))
-				.build(comments)
-		).build();
+		final YamlMapping yaml = Yaml.createYamlMappingBuilder()
+				.add(yamlBaseKey+id, "")
+				.add("pos",Double.toString(path.getLeftWheelTrajectory().getSegment(id).pos)+","+Double.toString(path.getRightWheelTrajectory().getSegment(id).pos))
+				.add("vel",Double.toString(path.getLeftWheelTrajectory().getSegment(id).vel)+","+Double.toString(path.getRightWheelTrajectory().getSegment(id).vel))
+				.add("acc",Double.toString(path.getLeftWheelTrajectory().getSegment(id).acc)+","+Double.toString(path.getRightWheelTrajectory().getSegment(id).acc))
+				.add("jerk",Double.toString(path.getLeftWheelTrajectory().getSegment(id).jerk)+","+Double.toString(path.getRightWheelTrajectory().getSegment(id).jerk))
+				.add("heading",Double.toString(path.getLeftWheelTrajectory().getSegment(id).heading)+","+Double.toString(path.getRightWheelTrajectory().getSegment(id).heading))
+				.add("dt",Double.toString(path.getLeftWheelTrajectory().getSegment(id).dt)+","+Double.toString(path.getRightWheelTrajectory().getSegment(id).dt))
+				.add("x",Double.toString(path.getLeftWheelTrajectory().getSegment(id).x)+","+Double.toString(path.getRightWheelTrajectory().getSegment(id).x))
+				.add("y",Double.toString(path.getLeftWheelTrajectory().getSegment(id).y)+","+Double.toString(path.getRightWheelTrajectory().getSegment(id).y))
+			
+				.build(comments);
 	
 		
+		final Collection<YamlNode> documents = yaml.values();
+		Main.logger.warning("yaml data"+ documents.stream().toArray().length);
 		try {
 
 			// if file doesn't exists, then create it

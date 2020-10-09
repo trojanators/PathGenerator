@@ -79,13 +79,13 @@
 ``` 
 # comment
 Waypoint.id:
-  - posL,PosR
-  - velL,velR
-  - accL,accR
-  - jerkL,jerkR
-  - headingL, headingR
-  - dtL,dtR
-  - xL,xR
-  - yL,yR
+  - pos: dataL,dataR
+  - vel: dataL,dataR
+  - acc: dataL,dataR
+  - jerk: dataL,dataR
+  - heading: dataL,dataR
+  - dt: dataL,dataR
+  - x: dataL,dataR
+  - y: dataL,dataR
 ```
 
