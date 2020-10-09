@@ -47,7 +47,7 @@ public class FileGeneration {
 	private WaypointSequence sequence = new WaypointSequence();
 	private WaypointTableData tableData = new WaypointTableData();
 	
-	private static String yamlBaseKey = "Waypoint.";
+	private static String yamlBaseKey = "Waypoint";
 
 	/**
 	 * writes a .path file filled with generated path
@@ -63,8 +63,9 @@ public class FileGeneration {
 		int id = 0;
 		File file = new File(Directory+fileName+".path");
 		for (id =0; id<path.getRightWheelTrajectory().getNumSegments(); ++id){
+			
 		final YamlMapping yaml = Yaml.createYamlMappingBuilder()
-				.add(yamlBaseKey+id, "")
+				.add(yamlBaseKey,Integer.toString(id))
 				.add("pos",Double.toString(path.getLeftWheelTrajectory().getSegment(id).pos)+","+Double.toString(path.getRightWheelTrajectory().getSegment(id).pos))
 				.add("vel",Double.toString(path.getLeftWheelTrajectory().getSegment(id).vel)+","+Double.toString(path.getRightWheelTrajectory().getSegment(id).vel))
 				.add("acc",Double.toString(path.getLeftWheelTrajectory().getSegment(id).acc)+","+Double.toString(path.getRightWheelTrajectory().getSegment(id).acc))
