@@ -75,26 +75,17 @@
 ## 3.0 Data Structure 
 
 #### This is the Example of the Data Structure  
+**NOTE**: the keys in the example are ordered left to right (ie: posL, posR)
 ``` 
 # comment
-Waypoint.id.left
-  - pos
-  - vel
-  - acc
-  - jerk
-  - heading
-  - dt
-  - x
-  - y
-# comment
-Waypoint.id.right:
-  - pos
-  - vel
-  - acc
-  - jerk
-  - heading
-  - dt
-  - x
-  - y
+Waypoint.id:
+  - posL,PosR
+  - velL,velR
+  - accL,accR
+  - jerkL,jerkR
+  - headingL, headingR
+  - dtL,dtR
+  - xL,xR
+  - yL,yR
 ```
 

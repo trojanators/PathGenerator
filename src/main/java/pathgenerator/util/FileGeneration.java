@@ -64,14 +64,14 @@ public class FileGeneration {
 		.add(
 			yamlBaseKey+id,
 			Yaml.createYamlSequenceBuilder()
-				.add(Double.toString(path.getLeftWheelTrajectory().getSegment(id).pos)+ "," + Double.toString(path.getRightWheelTrajectory().getSegment(id).pos))
-				.add(Double.toString(path.getLeftWheelTrajectory().getSegment(id).vel)+ "," + Double.toString(path.getRightWheelTrajectory().getSegment(id).vel))
-				.add(Double.toString(path.getLeftWheelTrajectory().getSegment(id).acc)+ "," + Double.toString(path.getRightWheelTrajectory().getSegment(id).acc))
-				.add(Double.toString(path.getLeftWheelTrajectory().getSegment(id).jerk)+ "," + Double.toString(path.getRightWheelTrajectory().getSegment(id).jerk))
-				.add(Double.toString(path.getLeftWheelTrajectory().getSegment(id).heading)+ "," + Double.toString(path.getRightWheelTrajectory().getSegment(id).heading))
-				.add(Double.toString(path.getLeftWheelTrajectory().getSegment(id).dt)+ "," + Double.toString(path.getRightWheelTrajectory().getSegment(id).dt))
-				.add(Double.toString(path.getLeftWheelTrajectory().getSegment(id).x)+ "," + Double.toString(path.getRightWheelTrajectory().getSegment(id).x))
-				.add(Double.toString(path.getLeftWheelTrajectory().getSegment(id).y)+ "," + Double.toString(path.getRightWheelTrajectory().getSegment(id).y))
+				.add(Double.toString(path.getLeftWheelTrajectory().getSegment(id).pos)+","+Double.toString(path.getRightWheelTrajectory().getSegment(id).pos))
+				.add(Double.toString(path.getLeftWheelTrajectory().getSegment(id).vel)+ ","+Double.toString(path.getRightWheelTrajectory().getSegment(id).vel))
+				.add(Double.toString(path.getLeftWheelTrajectory().getSegment(id).acc)+ "," +Double.toString(path.getRightWheelTrajectory().getSegment(id).acc))
+				.add(Double.toString(path.getLeftWheelTrajectory().getSegment(id).jerk)+ ","+Double.toString(path.getRightWheelTrajectory().getSegment(id).jerk))
+				.add(Double.toString(path.getLeftWheelTrajectory().getSegment(id).heading)+","+Double.toString(path.getRightWheelTrajectory().getSegment(id).heading))
+				.add(Double.toString(path.getLeftWheelTrajectory().getSegment(id).dt)+ ","+Double.toString(path.getRightWheelTrajectory().getSegment(id).dt))
+				.add(Double.toString(path.getLeftWheelTrajectory().getSegment(id).x)+ "," +Double.toString(path.getRightWheelTrajectory().getSegment(id).x))
+				.add(Double.toString(path.getLeftWheelTrajectory().getSegment(id).y)+ "," +Double.toString(path.getRightWheelTrajectory().getSegment(id).y))
 				.build(comments)
 		).build();
 	
