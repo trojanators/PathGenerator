@@ -47,7 +47,7 @@ public class FileGeneration {
 	private WaypointSequence sequence = new WaypointSequence();
 	private WaypointTableData tableData = new WaypointTableData();
 	
-	private static String yamlBaseKey = "Waypoint";
+	private static String yamlBaseKey = "Waypoint.";
 
 	/**
 	 * writes a .path file filled with generated path
@@ -58,28 +58,37 @@ public class FileGeneration {
 	 * @param sequence
 	 * @throws IOException
 	 */
-	public void writeFiles(String comments,final String Directory, final String fileName, final Path path){
+	public void writeFiles(int id, String comments,final String Directory, final String fileName, final Path path){
 
-		int id = 0;
 		File file = new File(Directory+fileName+".path");
-		for (id =0; id<path.getRightWheelTrajectory().getNumSegments(); ++id){
 			
-		final YamlMapping yaml = Yaml.createYamlMappingBuilder()
-				.add(yamlBaseKey,Integer.toString(id))
-				.add("pos",Double.toString(path.getLeftWheelTrajectory().getSegment(id).pos)+","+Double.toString(path.getRightWheelTrajectory().getSegment(id).pos))
-				.add("vel",Double.toString(path.getLeftWheelTrajectory().getSegment(id).vel)+","+Double.toString(path.getRightWheelTrajectory().getSegment(id).vel))
-				.add("acc",Double.toString(path.getLeftWheelTrajectory().getSegment(id).acc)+","+Double.toString(path.getRightWheelTrajectory().getSegment(id).acc))
-				.add("jerk",Double.toString(path.getLeftWheelTrajectory().getSegment(id).jerk)+","+Double.toString(path.getRightWheelTrajectory().getSegment(id).jerk))
-				.add("heading",Double.toString(path.getLeftWheelTrajectory().getSegment(id).heading)+","+Double.toString(path.getRightWheelTrajectory().getSegment(id).heading))
-				.add("dt",Double.toString(path.getLeftWheelTrajectory().getSegment(id).dt)+","+Double.toString(path.getRightWheelTrajectory().getSegment(id).dt))
-				.add("x",Double.toString(path.getLeftWheelTrajectory().getSegment(id).x)+","+Double.toString(path.getRightWheelTrajectory().getSegment(id).x))
-				.add("y",Double.toString(path.getLeftWheelTrajectory().getSegment(id).y)+","+Double.toString(path.getRightWheelTrajectory().getSegment(id).y))
-			
-				.build(comments);
-	
-		
-		final Collection<YamlNode> documents = yaml.values();
-		Main.logger.warning("yaml data"+ documents.stream().toArray().length);
+		 YamlMapping yaml =Yaml.createYamlMappingBuilder().add(yamlBaseKey, Integer.toString(id))
+						.add("pos",
+								Double.toString(path.getLeftWheelTrajectory().getSegment(id).pos) + ','
+										+ Double.toString(path.getRightWheelTrajectory().getSegment(id).pos))
+						.add("vel",
+								Double.toString(path.getLeftWheelTrajectory().getSegment(id).vel) + ','
+										+ Double.toString(path.getRightWheelTrajectory().getSegment(id).vel))
+						.add("acc",
+								Double.toString(path.getLeftWheelTrajectory().getSegment(id).acc) + ','
+										+ Double.toString(path.getRightWheelTrajectory().getSegment(id).acc))
+						.add("jerk",
+								Double.toString(path.getLeftWheelTrajectory().getSegment(id).jerk) + ','
+										+ Double.toString(path.getRightWheelTrajectory().getSegment(id).jerk))
+						.add("heading",
+								Double.toString(path.getLeftWheelTrajectory().getSegment(id).heading) + ','
+										+ Double.toString(path.getRightWheelTrajectory().getSegment(id).heading))
+						.add("dt",
+								Double.toString(path.getLeftWheelTrajectory().getSegment(id).dt) + ','
+										+ Double.toString(path.getRightWheelTrajectory().getSegment(id).dt))
+						.add("x",
+								Double.toString(path.getLeftWheelTrajectory().getSegment(id).x)+','+
+										 Double.toString(path.getRightWheelTrajectory().getSegment(id).x))
+						.add("y",
+								Double.toString(path.getLeftWheelTrajectory().getSegment(id).y) + ','
+										+ Double.toString(path.getRightWheelTrajectory().getSegment(id).y))
+						.build(comments);
+						
 		try {
 
 			// if file doesn't exists, then create it
@@ -93,7 +102,7 @@ public class FileGeneration {
 		}catch(Exception e){
 			e.printStackTrace();
 		}
-	}
+	
 	}
 	
 		

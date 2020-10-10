@@ -23,7 +23,7 @@ public class StartPathData extends Application {
 
         Parent root_path = loader.load();
         Scene scene = new Scene(root_path, 1376, 857);
-
+        
         stage.setTitle("PathGenerator By Nicholas Blackburn");
         stage.setScene(scene);
         stage.show();

@@ -7,6 +7,8 @@ import java.util.regex.Pattern;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.scene.canvas.Canvas;
+import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.TableColumn;
@@ -15,15 +17,14 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.TextFormatter;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import pathgenerator.Main;
+import pathgenerator.util.CanvasHandler;
 import pathgenerator.util.WaypointManagement;
 import pathgenerator.util.WaypointTableData;
 
 public class PathDataPaneController {
-
-    private final WaypointManagement wayManage = new WaypointManagement();
-
     private double x;
     private double y;
     private double theta;
@@ -33,6 +34,7 @@ public class PathDataPaneController {
     private double dt;
     private double seqSize;
     private Random rando = new Random();
+
 
     // Counters for Inc
     private int i = 0;
@@ -103,6 +105,9 @@ public class PathDataPaneController {
     @FXML
     private TableView<WaypointTableData> waypoint_table;
 
+    @FXML
+    private Pane canvas;
+
     private WaypointTableData data;
 
     /**
@@ -172,7 +177,8 @@ public class PathDataPaneController {
     }
 
     private String PathName;
-
+    private final WaypointManagement wayManage = new WaypointManagement(canvas);
+    
     @FXML
     public void initialize() {
         waypoint_table.setEditable(false);
@@ -231,8 +237,7 @@ public class PathDataPaneController {
                     jerk = Double.parseDouble(waypoint_jerk_input.getText());
                     velocity = Double.parseDouble(waypoint_velocity_imput.getText());
                     dt = Double.parseDouble(waypoint_dt_input.getText());
-                    
-
+                
                     data = new WaypointTableData(i - countor, x, y, theta, acc, jerk, velocity, dt);
                     waypoint_table.getItems().add(data);
                     PathName = path_name.getText();
@@ -240,7 +245,7 @@ public class PathDataPaneController {
                             getPathName(), getPathSaveLocal(), genpath, (int) seqSize);
                     i++;
                     Main.logger.info("increment" + i);
-
+                    
                 } else {
                     enableRando = false;
                 }
@@ -267,6 +272,7 @@ public class PathDataPaneController {
                 
                     wayManage.createWaypoint(data, enableRando, enable_Pi, enable_Neg_Pi, getRobotWheelbase(),
                             getPathName(), getPathSaveLocal(), genpath, (int) seqSize);
+                            
                     i++;
                     Main.logger.info("increment" + i);
 
