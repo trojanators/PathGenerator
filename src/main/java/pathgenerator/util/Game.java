@@ -1,7 +1,6 @@
 
 package pathgenerator.util;
 
-
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.StringWriter;
@@ -10,7 +9,10 @@ import java.util.Objects;
 import java.util.Set;
 
 import javafx.scene.image.Image;
-
+import pathgenerator.extentions.ExtensionLoader;
+/**
+ * @author pathweaver 
+ * */ 
 public final class Game {
   private static final Set<Game> GAMES = new LinkedHashSet<>();
   public static final Game INFINTE_RECHARGE_2020 = loadGameFromResource("2020-infiniterecharge.json");
@@ -95,5 +97,7 @@ public final class Game {
     } catch (IOException e) {
       throw new IllegalStateException("Could not load the resource game definition: " + gameJsonPath, e);
     }
-}
+    ExtensionLoader loader = new ExtensionLoader();
+    return loader.loadFromJsonString(name -> new Image(Game.class.getResourceAsStream(name)), jsonText);
+  }
 }

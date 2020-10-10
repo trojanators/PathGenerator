@@ -1,5 +1,8 @@
 package pathgenerator.util;
 
+/**
+ * @attribute PathWeaver 
+ */
 public class DuplicateGameException extends RuntimeException {
     /**
    *

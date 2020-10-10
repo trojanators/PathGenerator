@@ -8,7 +8,10 @@ import tech.units.indriya.quantity.Quantities;
 import javax.measure.Quantity;
 import javax.measure.Unit;
 import javax.measure.quantity.Length;
-
+/**
+ * Created by the Pathweaver project
+ * @author pathWeaver
+ */
 public class Field {
 	private Supplier<Image> imageSupplier;
 	private Image image;

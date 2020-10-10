@@ -16,15 +16,22 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextFormatter;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import pathgenerator.Main;
 import pathgenerator.util.CanvasHandler;
+import pathgenerator.util.Field;
+import pathgenerator.util.ProjectPreferences;
 import pathgenerator.util.WaypointManagement;
 import pathgenerator.util.WaypointTableData;
 
 public class PathDataPaneController {
+    private String PathName;
+    private Field field;
+
     private double x;
     private double y;
     private double theta;
@@ -108,81 +115,25 @@ public class PathDataPaneController {
     @FXML
     private Pane canvas;
 
+    @FXML
+    private ImageView backgroundImage;
+
     private WaypointTableData data;
-
-    /**
-     * this function sets up cells names and vars to be called and sets up text
-     * formater
-     */
-    public void cellSetup() {
-
-        // creates columns based on waypoint id , x and y
-        final TableColumn waypoint_id = new TableColumn("id");
-        waypoint_id.setCellValueFactory(new PropertyValueFactory<>("id"));
-
-        final TableColumn waypoint_x = new TableColumn("x");
-        waypoint_x.setCellValueFactory(new PropertyValueFactory<>("x"));
-
-        final TableColumn waypoint_y = new TableColumn("y");
-        waypoint_y.setCellValueFactory(new PropertyValueFactory<>("y"));
-
-        final TableColumn waypoint_theta = new TableColumn("theta");
-        waypoint_theta.setCellValueFactory(new PropertyValueFactory<>("theta"));
-
-        final TableColumn waypoint_acc = new TableColumn("maxAcc");
-        waypoint_acc.setCellValueFactory(new PropertyValueFactory<>("acc"));
-
-        final TableColumn waypoint_jerk = new TableColumn("maxJerk");
-        waypoint_jerk.setCellValueFactory(new PropertyValueFactory<>("jerk"));
-
-        final TableColumn waypoint_vel = new TableColumn("maxVelocity");
-        waypoint_vel.setCellValueFactory(new PropertyValueFactory<>("Velocity"));
-
-        final TableColumn waypoint_dt = new TableColumn("Dt");
-        waypoint_dt.setCellValueFactory(new PropertyValueFactory<>("Dt"));
-
-        waypoint_table.getColumns().addAll(waypoint_id, waypoint_x, waypoint_y, waypoint_theta, waypoint_acc,
-                waypoint_vel, waypoint_jerk, waypoint_dt);
-
-        final Pattern pattern = Pattern.compile("\\d*(\\.\\d*)?");
-        final TextFormatter formatter = new TextFormatter((UnaryOperator<TextFormatter.Change>) change -> {
-            return pattern.matcher(change.getControlNewText()).matches() ? change : null;
-        });
-
-        waypoint_x_input.setTextFormatter(new TextFormatter((UnaryOperator<TextFormatter.Change>) change -> {
-            return pattern.matcher(change.getControlNewText()).matches() ? change : null;
-        }));
-        waypoint_y_input.setTextFormatter(new TextFormatter((UnaryOperator<TextFormatter.Change>) change -> {
-            return pattern.matcher(change.getControlNewText()).matches() ? change : null;
-        }));
-        waypoint_theta_input.setTextFormatter(new TextFormatter((UnaryOperator<TextFormatter.Change>) change -> {
-            return pattern.matcher(change.getControlNewText()).matches() ? change : null;
-        }));
-        waypoint_acc_input.setTextFormatter(new TextFormatter((UnaryOperator<TextFormatter.Change>) change -> {
-            return pattern.matcher(change.getControlNewText()).matches() ? change : null;
-        }));
-        waypoint_jerk_input.setTextFormatter(new TextFormatter((UnaryOperator<TextFormatter.Change>) change -> {
-            return pattern.matcher(change.getControlNewText()).matches() ? change : null;
-        }));
-        waypoint_velocity_imput.setTextFormatter(new TextFormatter((UnaryOperator<TextFormatter.Change>) change -> {
-            return pattern.matcher(change.getControlNewText()).matches() ? change : null;
-        }));
-        waypoint_dt_input.setTextFormatter(new TextFormatter((UnaryOperator<TextFormatter.Change>) change -> {
-            return pattern.matcher(change.getControlNewText()).matches() ? change : null;
-        }));
-        robot_wheelbase.setTextFormatter(new TextFormatter((UnaryOperator<TextFormatter.Change>) change -> {
-            return pattern.matcher(change.getControlNewText()).matches() ? change : null;
-        }));
-      
-    }
-
-    private String PathName;
     private final WaypointManagement wayManage = new WaypointManagement(canvas);
-    
+
+
+
     @FXML
     public void initialize() {
-        waypoint_table.setEditable(false);
         cellSetup();
+        setupCanvasPaneSizing();
+
+        Image image = new Image("/2020-Field.png");
+        backgroundImage.setImage(image);
+    
+
+        waypoint_table.setEditable(true);
+        
 
         // enables pi calc on theta
         pi_enable.setOnAction((EventHandler<ActionEvent>) new EventHandler<ActionEvent>() {
@@ -352,6 +303,85 @@ public class PathDataPaneController {
         });
     }
 
+
+    /**
+     * Sets up Canvas Sizeeing
+     */
+    private void setupCanvasPaneSizing() {
+        canvas.setPrefHeight(canvas.getMaxHeight());
+        canvas.setPrefWidth(canvas.getMaxWidth());
+        canvas.setLayoutX(canvas.getLayoutX());
+        canvas.setLayoutY(canvas.getLayoutY());
+        canvas.setScaleX(canvas.getScaleX());
+        canvas.setScaleY(canvas.getScaleY());
+    }
+
+    /**
+     * this function sets up cells names and vars to be called and sets up text
+     * formater
+     */
+    public void cellSetup() {
+
+        // creates columns based on waypoint id , x and y
+        final TableColumn waypoint_id = new TableColumn("id");
+        waypoint_id.setCellValueFactory(new PropertyValueFactory<>("id"));
+
+        final TableColumn waypoint_x = new TableColumn("x");
+        waypoint_x.setCellValueFactory(new PropertyValueFactory<>("x"));
+
+        final TableColumn waypoint_y = new TableColumn("y");
+        waypoint_y.setCellValueFactory(new PropertyValueFactory<>("y"));
+
+        final TableColumn waypoint_theta = new TableColumn("theta");
+        waypoint_theta.setCellValueFactory(new PropertyValueFactory<>("theta"));
+
+        final TableColumn waypoint_acc = new TableColumn("maxAcc");
+        waypoint_acc.setCellValueFactory(new PropertyValueFactory<>("acc"));
+
+        final TableColumn waypoint_jerk = new TableColumn("maxJerk");
+        waypoint_jerk.setCellValueFactory(new PropertyValueFactory<>("jerk"));
+
+        final TableColumn waypoint_vel = new TableColumn("maxVelocity");
+        waypoint_vel.setCellValueFactory(new PropertyValueFactory<>("Velocity"));
+
+        final TableColumn waypoint_dt = new TableColumn("Dt");
+        waypoint_dt.setCellValueFactory(new PropertyValueFactory<>("Dt"));
+
+        waypoint_table.getColumns().addAll(waypoint_id, waypoint_x, waypoint_y, waypoint_theta, waypoint_acc,
+                waypoint_vel, waypoint_jerk, waypoint_dt);
+
+        final Pattern pattern = Pattern.compile("\\d*(\\.\\d*)?");
+        final TextFormatter formatter = new TextFormatter((UnaryOperator<TextFormatter.Change>) change -> {
+            return pattern.matcher(change.getControlNewText()).matches() ? change : null;
+        });
+
+        waypoint_x_input.setTextFormatter(new TextFormatter((UnaryOperator<TextFormatter.Change>) change -> {
+            return pattern.matcher(change.getControlNewText()).matches() ? change : null;
+        }));
+        waypoint_y_input.setTextFormatter(new TextFormatter((UnaryOperator<TextFormatter.Change>) change -> {
+            return pattern.matcher(change.getControlNewText()).matches() ? change : null;
+        }));
+        waypoint_theta_input.setTextFormatter(new TextFormatter((UnaryOperator<TextFormatter.Change>) change -> {
+            return pattern.matcher(change.getControlNewText()).matches() ? change : null;
+        }));
+        waypoint_acc_input.setTextFormatter(new TextFormatter((UnaryOperator<TextFormatter.Change>) change -> {
+            return pattern.matcher(change.getControlNewText()).matches() ? change : null;
+        }));
+        waypoint_jerk_input.setTextFormatter(new TextFormatter((UnaryOperator<TextFormatter.Change>) change -> {
+            return pattern.matcher(change.getControlNewText()).matches() ? change : null;
+        }));
+        waypoint_velocity_imput.setTextFormatter(new TextFormatter((UnaryOperator<TextFormatter.Change>) change -> {
+            return pattern.matcher(change.getControlNewText()).matches() ? change : null;
+        }));
+        waypoint_dt_input.setTextFormatter(new TextFormatter((UnaryOperator<TextFormatter.Change>) change -> {
+            return pattern.matcher(change.getControlNewText()).matches() ? change : null;
+        }));
+        robot_wheelbase.setTextFormatter(new TextFormatter((UnaryOperator<TextFormatter.Change>) change -> {
+            return pattern.matcher(change.getControlNewText()).matches() ? change : null;
+        }));
+      
+    }
+
     public String getPathName() {
         return PathName;
     }
@@ -366,6 +396,11 @@ public class PathDataPaneController {
 
     public WaypointTableData getData() {
         return data;
+    }
+    
+    public boolean checkBounds(double x, double y) {
+        //Convert waypoint convention to JavaFX
+        return canvas.getLayoutBounds().contains(x, -y);
     }
 
 }
