@@ -8,7 +8,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.canvas.Canvas;
-import javafx.scene.canvas.GraphicsContext;
+
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.TableColumn;
@@ -18,19 +18,20 @@ import javafx.scene.control.TextFormatter;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
+import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import pathgenerator.Main;
-import pathgenerator.util.CanvasHandler;
-import pathgenerator.util.Field;
-import pathgenerator.util.ProjectPreferences;
+import pathgenerator.trajectory.Path;
 import pathgenerator.util.WaypointManagement;
 import pathgenerator.util.WaypointTableData;
 
 public class PathDataPaneController {
     private String PathName;
-    private Field field;
 
     private double x;
     private double y;
@@ -40,8 +41,9 @@ public class PathDataPaneController {
     private double jerk;
     private double dt;
     private double seqSize;
+    
     private Random rando = new Random();
-
+    private Circle waypointPoint = new Circle(5,Color.WHITE);
 
     // Counters for Inc
     private int i = 0;
@@ -61,8 +63,6 @@ public class PathDataPaneController {
 
     @FXML
     private Button remove_path;
-
-
 
     @FXML
     private CheckBox generate_path;
@@ -119,18 +119,17 @@ public class PathDataPaneController {
     private ImageView backgroundImage;
 
     private WaypointTableData data;
-    private final WaypointManagement wayManage = new WaypointManagement(canvas);
-
-
+    private final WaypointManagement wayManage = new WaypointManagement(canvas, waypointPoint);
 
     @FXML
     public void initialize() {
         cellSetup();
-        setupCanvasPaneSizing();
-
+        canvas.setPrefSize(canvas.getMaxWidth(),canvas.getMaxHeight());
+    
         Image image = new Image("/2020-Field.png");
         backgroundImage.setImage(image);
-    
+        backgroundImage.setScaleX(canvas.getMaxWidth());
+        backgroundImage.setScaleY(canvas.getMaxHeight());
 
         waypoint_table.setEditable(true);
         
@@ -153,6 +152,7 @@ public class PathDataPaneController {
 
         });
 
+
         neg_pi.setOnAction((EventHandler<ActionEvent>) new EventHandler<ActionEvent>() {
 
             @Override
@@ -169,6 +169,8 @@ public class PathDataPaneController {
             }
 
         });
+        
+    
 
         // Runs when new waypoint button pressed
         new_waypoint.setOnAction((EventHandler<ActionEvent>) new EventHandler<ActionEvent>() {
@@ -176,7 +178,7 @@ public class PathDataPaneController {
             @Override
             public void handle(final ActionEvent event) {
                 // TODO: Remove comment and enable code again
-
+                    
                 if (!new_waypoint.isPressed() && !generate_path.isSelected()) {
                     enableRando = true;
                     Main.logger.info("new Waypoint");
@@ -305,18 +307,6 @@ public class PathDataPaneController {
 
 
     /**
-     * Sets up Canvas Sizeeing
-     */
-    private void setupCanvasPaneSizing() {
-        canvas.setPrefHeight(canvas.getMaxHeight());
-        canvas.setPrefWidth(canvas.getMaxWidth());
-        canvas.setLayoutX(canvas.getLayoutX());
-        canvas.setLayoutY(canvas.getLayoutY());
-        canvas.setScaleX(canvas.getScaleX());
-        canvas.setScaleY(canvas.getScaleY());
-    }
-
-    /**
      * this function sets up cells names and vars to be called and sets up text
      * formater
      */
@@ -397,10 +387,4 @@ public class PathDataPaneController {
     public WaypointTableData getData() {
         return data;
     }
-    
-    public boolean checkBounds(double x, double y) {
-        //Convert waypoint convention to JavaFX
-        return canvas.getLayoutBounds().contains(x, -y);
-    }
-
 }

@@ -60,7 +60,7 @@ public class FileGeneration {
 	 */
 	public void writeFiles(int id, String comments,final String Directory, final String fileName, final Path path){
 
-		File file = new File(Directory+fileName+".path");
+		File file = new File(Directory+fileName+id+".path");
 			
 		 YamlMapping yaml =Yaml.createYamlMappingBuilder().add(yamlBaseKey, Integer.toString(id))
 						.add("pos",

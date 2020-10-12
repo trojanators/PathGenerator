@@ -6,6 +6,7 @@ import java.io.IOException;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.layout.Pane;
+import javafx.scene.shape.Circle;
 import pathgenerator.trajectory.Path;
 import pathgenerator.trajectory.PathGenerator;
 import pathgenerator.trajectory.Trajectory;
@@ -15,6 +16,7 @@ import pathgenerator.trajectory.TrajectoryGenerator.Config;
 import pathgenerator.trajectory.WaypointSequence.Waypoint;
 
 import pathgenerator.Main;
+import pathgenerator.gui.DrawWaypoints;
 
 /**
  * this class manages waypoint creation
@@ -24,15 +26,19 @@ import pathgenerator.Main;
 
 public class WaypointManagement {
     private Pane pane;
+    private Circle circle;
+
     private static TrajectoryGenerator.Config config = new TrajectoryGenerator.Config();
     private static Trajectory trajectory = new Trajectory();
     private final FileGeneration fileGen = new FileGeneration();
-    private final CanvasHandler canvasHandler = new CanvasHandler(pane);
+    private final DrawWaypoints drawWaypoints = new DrawWaypoints(pane, circle);
+
  
    
 
-    public WaypointManagement(Pane pane){
-        this.pane = pane;
+    public WaypointManagement(Pane pane, Circle circle){
+     this.pane = pane;
+     this.circle = circle;
     }
 
     /**
@@ -102,15 +108,11 @@ public class WaypointManagement {
     // TODO: Fix NullPointer in Path
     private void createPath(int seqnum, final WaypointSequence sequence, final Config config, final double wheelBase,
             final String location, final String PathName) {
+
         Main.logger.info("Generatring Path to File");
         Path path = PathGenerator.makePath(sequence, config, wheelBase, PathName);
-       
-        /*for(int i=0; i<=sequence.getNumWaypoints(); i++){ 
-            fileGen.writeFiles(i, "test", location, PathName, path);
-    */
-    for(int i = 0; i< sequence.getNumWaypoints(); i++){
-        canvasHandler.addFillArray(i, path);
-        canvasHandler.drawPoint();
-        }
+        
+        // Draws Point 
+        drawWaypoints.drawWaypoints(path);
     }
 }
