@@ -50,7 +50,11 @@
             <CheckBox fx:id="invert_y" layoutX="438.0" layoutY="75.0" mnemonicParsing="false" text="Invert Y" textFill="WHITE" />
             <Pane fx:id="canvas" layoutX="130.0" layoutY="123.0" prefHeight="360.0" prefWidth="1061.0">
                <children>
-                  <ImageView fx:id="backgroundImage" fitHeight="360.0" fitWidth="1061.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="backgroundImage" fitHeight="360.0" fitWidth="1164.0" layoutX="153.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@2020-Field.png" />
+                     </image>
+                  </ImageView>
                </children>
             </Pane>
       </children>

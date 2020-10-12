@@ -25,20 +25,15 @@ import pathgenerator.gui.DrawWaypoints;
  */
 
 public class WaypointManagement {
-    private Pane pane;
-    private Circle circle;
-
     private static TrajectoryGenerator.Config config = new TrajectoryGenerator.Config();
     private static Trajectory trajectory = new Trajectory();
     private final FileGeneration fileGen = new FileGeneration();
-    private final DrawWaypoints drawWaypoints = new DrawWaypoints(pane, circle);
-
- 
+    private final WaypointSequence sequence = new WaypointSequence();
+    private Path path;
    
 
-    public WaypointManagement(Pane pane, Circle circle){
-     this.pane = pane;
-     this.circle = circle;
+    public WaypointManagement(){
+   
     }
 
     /**
@@ -58,8 +53,6 @@ public class WaypointManagement {
     //TODO: FIX LOOPING ISSUE AND FIX OVERWRITE file issue
     public void createWaypoint(final WaypointTableData data, Boolean enableRando, Boolean enablePiCalc,
             Boolean enableNegPi, final double wheebase, String pathName, String Location, Boolean genpath, int Seqnum) {
-
-        final WaypointSequence sequence = new WaypointSequence();
         int waypointId = data.getId();
 
         // Mapping Data from Waypoint Table to config
@@ -110,9 +103,16 @@ public class WaypointManagement {
             final String location, final String PathName) {
 
         Main.logger.info("Generatring Path to File");
-        Path path = PathGenerator.makePath(sequence, config, wheelBase, PathName);
+         this.path = PathGenerator.makePath(sequence, config, wheelBase, PathName);
         
-        // Draws Point 
-        drawWaypoints.drawWaypoints(path);
+     
+    }
+    
+    public Path getGeneratedPath(){
+        return this.path;
+    }
+
+    public int getWaypointSequence(){
+        return sequence.getNumWaypoints();
     }
 }

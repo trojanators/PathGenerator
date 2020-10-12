@@ -1,8 +1,10 @@
 package pathgenerator.gui;
 
+import java.util.ArrayList;
 import java.util.Random;
 import java.util.function.UnaryOperator;
 import java.util.regex.Pattern;
+import java.util.stream.DoubleStream;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -43,8 +45,7 @@ public class PathDataPaneController {
     private double seqSize;
     
     private Random rando = new Random();
-    private Circle waypointPoint = new Circle(5,Color.WHITE);
-
+  
     // Counters for Inc
     private int i = 0;
     private int output;
@@ -113,30 +114,29 @@ public class PathDataPaneController {
     private TableView<WaypointTableData> waypoint_table;
 
     @FXML
-    private Pane canvas;
+    public Pane canvas = new Pane();
 
     @FXML
     private ImageView backgroundImage;
 
-    private WaypointTableData data;
-    private final WaypointManagement wayManage = new WaypointManagement(canvas, waypointPoint);
-
+    private WaypointTableData data= new WaypointTableData();
+    private WaypointManagement wayManage = new WaypointManagement();
+  
+    private DrawWaypoints drawWaypoints = new DrawWaypoints(canvas,data);
+    
     @FXML
     public void initialize() {
+        
         cellSetup();
-        canvas.setPrefSize(canvas.getMaxWidth(),canvas.getMaxHeight());
-    
+        
         Image image = new Image("/2020-Field.png");
         backgroundImage.setImage(image);
-        backgroundImage.setScaleX(canvas.getMaxWidth());
-        backgroundImage.setScaleY(canvas.getMaxHeight());
-
-        waypoint_table.setEditable(true);
         
-
+        waypoint_table.setEditable(true);
+       
         // enables pi calc on theta
         pi_enable.setOnAction((EventHandler<ActionEvent>) new EventHandler<ActionEvent>() {
-
+            
             @Override
             public void handle(final ActionEvent event) {
 
@@ -180,6 +180,7 @@ public class PathDataPaneController {
                 // TODO: Remove comment and enable code again
                     
                 if (!new_waypoint.isPressed() && !generate_path.isSelected()) {
+                
                     enableRando = true;
                     Main.logger.info("new Waypoint");
 
@@ -209,14 +210,14 @@ public class PathDataPaneController {
                 // TODO:Remove From Production Release
                 if (!new_waypoint.isPressed() && generate_path.isSelected() && enableTestMode) {
                     enableRando = true;
-                    rando.doubles(2);
-                    x = rando.nextDouble();
-                    y = rando.nextDouble();
-                    theta = rando.nextDouble();
-                    acc = rando.nextDouble();
-                    jerk = rando.nextDouble();
-                    velocity = rando.nextDouble();
-                    dt = rando.nextDouble();
+                  
+                    x = getRandomNum();
+                    y = getRandomNum();
+                    theta = getRandomNum();
+                    acc = getRandomNum();
+                    jerk = getRandomNum();
+                    velocity = getRandomNum();
+                    dt = getRandomNum();
                     data = new WaypointTableData(i - countor, x, y, theta, acc, jerk, velocity, dt);
                     waypoint_table.getItems().add(data);
 
@@ -225,6 +226,8 @@ public class PathDataPaneController {
                 
                     wayManage.createWaypoint(data, enableRando, enable_Pi, enable_Neg_Pi, getRobotWheelbase(),
                             getPathName(), getPathSaveLocal(), genpath, (int) seqSize);
+
+                    drawWaypoints.drawWaypoints(i);
                             
                     i++;
                     Main.logger.info("increment" + i);
@@ -386,5 +389,10 @@ public class PathDataPaneController {
 
     public WaypointTableData getData() {
         return data;
+    }
+
+    private double getRandomNum() {
+
+	    return rando.nextInt(3000);
     }
 }
