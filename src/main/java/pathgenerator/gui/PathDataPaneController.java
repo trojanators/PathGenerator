@@ -131,8 +131,6 @@ public class PathDataPaneController {
         
         Image image = new Image("/2020-Field.png");
         backgroundImage.setImage(image);
-
-        canvas.setPrefSize(backgroundImage.getFitWidth(),backgroundImage.getFitHeight());
         
         waypoint_table.setEditable(true);
        

@@ -42,8 +42,8 @@ public class DrawWaypoints {
         double pathY = data.getY();
 
         if(checkBounds(pathX, pathY)){
-            waypointPointArray.get(i).relocate(pathX, pathY);
-            this.canvas.getChildren().add(waypointPointArray.get(i));
+            this.waypointPointArray.get(i).relocate(pathX,-pathY);
+            this.canvas.getChildren().addAll(waypointPointArray.get(i));
         } else{
             Main.logger.severe("ERROR CANNOT DRAW WAYPOINT PATH IS "+pathX + pathY);
         }
