@@ -6,7 +6,6 @@ import java.io.IOException;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.layout.Pane;
-import javafx.scene.shape.Circle;
 import pathgenerator.trajectory.Path;
 import pathgenerator.trajectory.PathGenerator;
 import pathgenerator.trajectory.Trajectory;
@@ -16,7 +15,6 @@ import pathgenerator.trajectory.TrajectoryGenerator.Config;
 import pathgenerator.trajectory.WaypointSequence.Waypoint;
 
 import pathgenerator.Main;
-import pathgenerator.gui.DrawWaypoints;
 
 /**
  * this class manages waypoint creation
@@ -101,7 +99,6 @@ public class WaypointManagement {
     // TODO: Fix NullPointer in Path
     private void createPath(int seqnum, final WaypointSequence sequence, final Config config, final double wheelBase,
             final String location, final String PathName) {
-
         Main.logger.info("Generatring Path to File");
          this.path = PathGenerator.makePath(sequence, config, wheelBase, PathName);
         

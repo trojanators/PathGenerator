@@ -10,7 +10,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.canvas.Canvas;
-
+import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.TableColumn;
@@ -20,20 +20,19 @@ import javafx.scene.control.TextFormatter;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Circle;
-import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import pathgenerator.Main;
-import pathgenerator.trajectory.Path;
+import pathgenerator.util.CanvasHandler;
+import pathgenerator.util.Field;
+import pathgenerator.util.ProjectPreferences;
 import pathgenerator.util.WaypointManagement;
 import pathgenerator.util.WaypointTableData;
 
 public class PathDataPaneController {
     private String PathName;
+    private Field field;
 
     private double x;
     private double y;
@@ -43,7 +42,6 @@ public class PathDataPaneController {
     private double jerk;
     private double dt;
     private double seqSize;
-    
     private Random rando = new Random();
   
     // Counters for Inc
@@ -64,6 +62,8 @@ public class PathDataPaneController {
 
     @FXML
     private Button remove_path;
+
+
 
     @FXML
     private CheckBox generate_path;
@@ -154,7 +154,6 @@ public class PathDataPaneController {
 
         });
 
-
         neg_pi.setOnAction((EventHandler<ActionEvent>) new EventHandler<ActionEvent>() {
 
             @Override
@@ -171,8 +170,6 @@ public class PathDataPaneController {
             }
 
         });
-        
-    
 
         // Runs when new waypoint button pressed
         new_waypoint.setOnAction((EventHandler<ActionEvent>) new EventHandler<ActionEvent>() {
@@ -180,7 +177,7 @@ public class PathDataPaneController {
             @Override
             public void handle(final ActionEvent event) {
                 // TODO: Remove comment and enable code again
-                    
+
                 if (!new_waypoint.isPressed() && !generate_path.isSelected()) {
                 
                     enableRando = true;
@@ -310,6 +307,18 @@ public class PathDataPaneController {
         });
     }
 
+
+    /**
+     * Sets up Canvas Sizeeing
+     */
+    private void setupCanvasPaneSizing() {
+        canvas.setPrefHeight(canvas.getMaxHeight());
+        canvas.setPrefWidth(canvas.getMaxWidth());
+        canvas.setLayoutX(canvas.getLayoutX());
+        canvas.setLayoutY(canvas.getLayoutY());
+        canvas.setScaleX(canvas.getScaleX());
+        canvas.setScaleY(canvas.getScaleY());
+    }
 
     /**
      * this function sets up cells names and vars to be called and sets up text
