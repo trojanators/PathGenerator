@@ -78,7 +78,7 @@
 **NOTE**: the keys in the example are ordered left to right (ie: posL, posR)
 ``` 
 # comment
-Waypoint: id
+Waypoint.id:
   - pos: dataL,dataR
   - vel: dataL,dataR
   - acc: dataL,dataR
