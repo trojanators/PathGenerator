@@ -24,7 +24,6 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import pathgenerator.Main;
-import pathgenerator.util.CanvasHandler;
 import pathgenerator.util.Field;
 import pathgenerator.util.ProjectPreferences;
 import pathgenerator.util.WaypointManagement;
