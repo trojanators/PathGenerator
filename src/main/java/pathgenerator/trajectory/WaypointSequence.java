@@ -51,7 +51,7 @@ public class WaypointSequence {
   }
 
   public int getNumWaypoints() {
-    return num_waypoints_;
+    return waypoints_.size();
   }
 
 
