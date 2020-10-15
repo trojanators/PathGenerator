@@ -24,14 +24,11 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import pathgenerator.Main;
-import pathgenerator.util.Field;
-import pathgenerator.util.ProjectPreferences;
 import pathgenerator.util.WaypointManagement;
 import pathgenerator.util.WaypointTableData;
 
 public class PathDataPaneController {
     private String PathName;
-    private Field field;
 
     private double x;
     private double y;
