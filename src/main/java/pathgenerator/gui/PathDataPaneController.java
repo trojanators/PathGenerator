@@ -242,6 +242,7 @@ public class PathDataPaneController {
                     // TODO: remove data from Waypoint listview
                     Main.logger.info("removed waypoint");
                     waypoint_table.getItems().remove(data);
+                    
 
                     Main.logger.info("waypoint removed successfull!y");
 

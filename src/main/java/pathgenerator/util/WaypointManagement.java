@@ -49,8 +49,7 @@ public class WaypointManagement {
      * @param Boolean
      */
     //TODO: FIX LOOPING ISSUE AND FIX OVERWRITE file issue
-    public void createWaypoint(final WaypointTableData data, Boolean enableRando, Boolean enablePiCalc,
-            Boolean enableNegPi, final double wheebase, String pathName, String Location, Boolean genpath, int Seqnum) {
+    public void createWaypoint(final WaypointTableData data, Boolean enableRando, Boolean enablePiCalc, Boolean enableNegPi, final double wheebase, String pathName, String Location, Boolean genpath, int Seqnum) {
         int waypointId = data.getId();
 
         // Mapping Data from Waypoint Table to config
@@ -96,12 +95,12 @@ public class WaypointManagement {
      * @param location
      * @param PathName
      */
-    // TODO: Fix NullPointer in Path
+
     private void createPath(int seqnum, final WaypointSequence sequence, final Config config, final double wheelBase,
             final String location, final String PathName) {
         Main.logger.info("Generatring Path to File");
-         this.path = PathGenerator.makePath(sequence, config, wheelBase, PathName);
-        
+        this.path = PathGenerator.makePath(sequence, config, wheelBase, PathName);
+        fileGen.writeFiles("test", location, PathName, path);
      
     }
     
