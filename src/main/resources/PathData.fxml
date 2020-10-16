@@ -32,7 +32,6 @@
                </font>
             </Label>
             <Button fx:id="remove_path" layoutX="99.0" layoutY="434.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="132.0" style="-fx-background-color: rgb(30,30,30);" text="remove WayPoint" textFill="WHITE" />
-            <Button fx:id="preview_graph" layoutX="783.0" layoutY="370.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="118.0" style="-fx-background-color: rgb(30,30,30);" text="Preview Graph" textFill="WHITE" />
             <Label layoutX="783.0" layoutY="340.0" prefHeight="21.0" prefWidth="118.0" text="Preview path" textFill="WHITE">
                <font>
                   <Font size="18.0" />

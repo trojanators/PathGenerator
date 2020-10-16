@@ -1,5 +1,9 @@
 package pathgenerator.trajectory;
 
+import java.util.ArrayList;
+
+import pathgenerator.Main;
+
 /**
  * Implementation of a Trajectory using arrays as the underlying storage
  * mechanism.
@@ -7,7 +11,18 @@ package pathgenerator.trajectory;
  * @author Jared341
  */
 public class Trajectory {
-  
+
+  public static ArrayList generatedPos = new ArrayList<>(10);
+  public static ArrayList generatedVel = new ArrayList<>(10);
+  public static ArrayList generatedAcc = new ArrayList<>(10);
+  public static ArrayList generatedJerk = new ArrayList<>(10);
+  public static ArrayList generatedHeading = new ArrayList<>(10);
+  public static ArrayList generatedX = new ArrayList<>(10);
+  public static ArrayList generatedY = new ArrayList<>(10);
+  public static ArrayList generatedDt = new ArrayList<>(10);
+
+  public static ArrayList allgenoutput = new ArrayList<>(10);
+
     public static class Pair {
       public Pair(Trajectory left, Trajectory right) {
         this.left = left;
@@ -25,8 +40,7 @@ public class Trajectory {
       public Segment() {
       }
   
-      public Segment(double pos, double vel, double acc, double jerk,
-              double heading, double dt, double x, double y) {
+      public Segment(double pos, double vel, double acc, double jerk, double heading, double dt, double x, double y) {
         this.pos = pos;
         this.vel = vel;
         this.acc = acc;
@@ -35,6 +49,7 @@ public class Trajectory {
         this.dt = dt;
         this.x = x;
         this.y = y;
+       
       }
   
       public Segment(Segment to_copy) {
@@ -46,6 +61,7 @@ public class Trajectory {
         dt = to_copy.dt;
         x = to_copy.x;
         y = to_copy.y;
+       
       }
   
       public String toString() {
@@ -87,7 +103,9 @@ public class Trajectory {
           return segment;
         }
       } else {
+       
         return new Segment();
+        
       }
     }
     
@@ -135,25 +153,6 @@ public class Trajectory {
       return copied;
     }
   
-    public String toString() {
-      String str = "Segment\tPos\tVel\tAcc\tJerk\tHeading\n";
-      for (int i = 0; i < getNumSegments(); ++i) {
-        Trajectory.Segment segment = getSegment(i);
-        str += i + "\t";
-        str += segment.pos + "\t";
-        str += segment.vel + "\t";
-        str += segment.acc + "\t";
-        str += segment.jerk + "\t";
-        str += segment.heading + "\t";
-        str += "\n";
-      }
-  
-      return str;
-    }
-  
-    public String toStringProfile() {
-      return toString();
-    }
   
     public String toStringEuclidean() {
       String str = "Segment\tx\ty\tHeading\n";
@@ -168,5 +167,28 @@ public class Trajectory {
   
       return str;
     }
-  
+
+
+    public Double getX(){
+      double result = 0;
+      for (int i = 0; i < getNumSegments(); ++i) {
+        Trajectory.Segment segment = getSegment(i);
+        result = segment.x;
+      }
+      return (double)result;
+    }
+
+    public Double getY(){
+      double y = 0 ;
+      Trajectory.Segment segment;
+      for (int i = 0; i < getNumSegments(); ++i) {
+       segment = getSegment(i);
+        y = (double)segment.y;
+      }
+      return y;
+    }
+
+  public Trajectory(){
+
+  }
 }

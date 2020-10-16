@@ -1,9 +1,11 @@
 package pathgenerator.util;
 
 import java.io.File;
+import java.io.IOException;
 
 import pathgenerator.trajectory.Path;
 import pathgenerator.trajectory.PathGenerator;
+import pathgenerator.trajectory.Trajectory;
 import pathgenerator.trajectory.TrajectoryGenerator;
 import pathgenerator.trajectory.WaypointSequence;
 import pathgenerator.trajectory.TrajectoryGenerator.Config;
@@ -11,14 +13,16 @@ import pathgenerator.trajectory.WaypointSequence.Waypoint;
 
 import pathgenerator.Main;
 
-/** 
+/**
  * this class manages waypoint creation
+ * 
  * @author nicholas blackburn
-*/
+ */
 
 public class WaypointManagement {
 
     private static TrajectoryGenerator.Config config = new TrajectoryGenerator.Config();
+    private static Trajectory trajectory = new Trajectory();
     private final FileGeneration fileGen = new FileGeneration();
 
     /**
@@ -27,17 +31,16 @@ public class WaypointManagement {
      * 
      * @param WaypointTableData data
      * @param Boolan            enablePICalcPositive
-     * @param Boolean           
-     * @param Double 
+     * @param Boolean
+     * @param Double
      * @param pathName
-     * @param String 
+     * @param String
      * @param Location
-     * @param Boolean 
+     * @param Boolean
      * @param Boolean
      */
-    public void createWaypoint(final WaypointTableData data,  Boolean enableRando, Boolean enablePiCalc,
-             Boolean enableNegPi, final double wheebase,  String pathName,  String Location,
-             Boolean genpath, int Seqnum) {
+    public void createWaypoint(final WaypointTableData data, Boolean enableRando, Boolean enablePiCalc,
+            Boolean enableNegPi, final double wheebase, String pathName, String Location, Boolean genpath, int Seqnum) {
 
         final WaypointSequence sequence = new WaypointSequence();
         int waypointId = data.getId();
@@ -56,34 +59,40 @@ public class WaypointManagement {
             sequence.addWaypoint(new WaypointSequence.Waypoint(x / 12, y / 12, theta), waypointId);
             Main.logger.info("WayPoints in Created Waypoint Sequ is" + sequence.getNumWaypoints());
             Main.logger.warning("waypoint sequ list" + sequence.getWaypoint(waypointId));
+            
         }
         if (enableRando && enablePiCalc) {
             sequence.addWaypoint(new WaypointSequence.Waypoint(x / 12.0, y / 12.0, Math.PI / theta), waypointId);
             Main.logger.warning("Waypoint" + x / 12.0 + "" + y / 12.0 + " THeta" + Math.PI / theta);
-        } 
+        }
 
-        if (enableRando && enableNegPi) { sequence.addWaypoint(new
-            WaypointSequence.Waypoint(x / 12.0, y / 12.0, -Math.PI / theta), waypointId);
-            Main.logger.warning("Waypoint" + x / 12.0 + "," + y / 12.0 + "THeta" + -Math.PI / theta); 
+        if (enableRando && enableNegPi) {
+            sequence.addWaypoint(new WaypointSequence.Waypoint(x / 12.0, y / 12.0, -Math.PI / theta), waypointId);
+            Main.logger.warning("Waypoint" + x / 12.0 + "," + y / 12.0 + "THeta" + -Math.PI / theta);
         }
 
         if (sequence.getNumWaypoints() == Seqnum) {
             // Before Gen path Print out all data
             Main.logger.warning("Data" + wheebase + "," + Location + "," + pathName);
-            createPath(sequence, config, wheebase, Location, pathName);
+          
+            createPath(Seqnum,sequence, config, wheebase, Location, pathName);
         }
     }
 
     /**
      * Creates Path Via data from createWaypoint Functions
+     * @param seqnum
+     * @param sequence
+     * @param config
+     * @param wheelBase
+     * @param location
+     * @param PathName
      */
     // TODO: Fix NullPointer in Path
-    private void createPath(final WaypointSequence sequence, final Config config, final double wheelBase,
+    private void createPath(int seqnum, final WaypointSequence sequence, final Config config, final double wheelBase,
             final String location, final String PathName) {
         Main.logger.info("Generatring Path to File");
         Path path = PathGenerator.makePath(sequence, config, wheelBase, PathName);
-        Main.logger.info("path is Generateing" + path.getLeftWheelTrajectory().toStringProfile());
-        Main.logger.info("path is Generateing" + path.getLeftWheelTrajectory().toStringProfile());
         FileGeneration.writeFiles(location, PathName, path);
     }
 }
