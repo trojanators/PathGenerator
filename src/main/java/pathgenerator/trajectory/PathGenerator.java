@@ -46,7 +46,7 @@ public class PathGenerator {
     for (int i = 0; i < splines.length; ++i) {
       splines[i] = new Spline();
       if (!Spline.reticulateSplines(path.getWaypoint(i),path.getWaypoint(i + 1), splines[i], Spline.QuinticHermite)) {
-      //return null;
+      return null;
       }
       spline_lengths[i] = splines[i].calculateLength();
       total_distance += spline_lengths[i];
