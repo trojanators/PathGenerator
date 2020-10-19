@@ -387,6 +387,6 @@ public class PathDataPaneController {
 
     private double getRandomNum() {
 
-	    return rando.nextInt(1000);
+	    return rando.nextInt(55);
     }
 }
