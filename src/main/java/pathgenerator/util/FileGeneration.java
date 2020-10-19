@@ -52,7 +52,7 @@ public class FileGeneration {
 	private File file;
 	private FileWriter fileWriter;
 
-	private ArrayList<YamlMapping> map = new ArrayList<>();
+	private Map<String,Object> map = new HashMap<>();
 
 	private static String yamlBaseKey = "Waypoint.";
 
@@ -172,16 +172,15 @@ public class FileGeneration {
 			}
 			for(int id=0; id<sequence.getNumWaypoints(); id++){
 			// Yaml Default layout
-			yamlFile.createSection(yamlBaseKey+id);
-			yamlFile.set(yamlBaseKey+"Pos", path.getLeftWheelTrajectory().getSegmentId(id).pos+","+path.getRightWheelTrajectory().getSegmentId(id).pos);
-			yamlFile.set(yamlBaseKey+"Vel",path.getLeftWheelTrajectory().getSegmentId(id).vel+","+path.getRightWheelTrajectory().getSegmentId(id).vel);
-			yamlFile.set(yamlBaseKey+"Acc",path.getLeftWheelTrajectory().getSegmentId(id).acc+","+path.getRightWheelTrajectory().getSegmentId(id).acc);
-			yamlFile.set(yamlBaseKey+"Jerk",path.getLeftWheelTrajectory().getSegmentId(id).jerk+","+path.getRightWheelTrajectory().getSegmentId(id).jerk);
-			yamlFile.set(yamlBaseKey+"Heading",path.getLeftWheelTrajectory().getSegmentId(id).heading+","+path.getRightWheelTrajectory().getSegmentId(id).heading);
-			yamlFile.set(yamlBaseKey+"Dt",path.getLeftWheelTrajectory().getSegmentId(id).dt+","+path.getRightWheelTrajectory().getSegmentId(id).dt);
-			yamlFile.set(yamlBaseKey+"X", path.getLeftWheelTrajectory().getSegmentId(id).x+","+path.getRightWheelTrajectory().getSegmentId(id).x);
-			yamlFile.set(yamlBaseKey+"Y", path.getLeftWheelTrajectory().getSegmentId(id).y+","+path.getRightWheelTrajectory().getSegmentId(id).y);
-			
+			map.put("Pos",path.getLeftWheelTrajectory().getSegmentId(id).pos+","+path.getRightWheelTrajectory().getSegmentId(id).pos);
+			map.put("Vel",path.getLeftWheelTrajectory().getSegmentId(id).vel+","+path.getRightWheelTrajectory().getSegmentId(id).vel);
+			map.put(yamlBaseKey+"Acc",path.getLeftWheelTrajectory().getSegmentId(id).acc+","+path.getRightWheelTrajectory().getSegmentId(id).acc);
+			map.put("Jerk",path.getLeftWheelTrajectory().getSegmentId(id).jerk+","+path.getRightWheelTrajectory().getSegmentId(id).jerk);
+			map.put("Heading",path.getLeftWheelTrajectory().getSegmentId(id).heading+","+path.getRightWheelTrajectory().getSegmentId(id).heading);
+			map.put("Dt",path.getLeftWheelTrajectory().getSegmentId(id).dt+","+path.getRightWheelTrajectory().getSegmentId(id).dt);
+			map.put("X", path.getLeftWheelTrajectory().getSegmentId(id).x+","+path.getRightWheelTrajectory().getSegmentId(id).x);
+			map.put("Y", path.getLeftWheelTrajectory().getSegmentId(id).y+","+path.getRightWheelTrajectory().getSegmentId(id).y);
+			yamlFile.createSection(yamlBaseKey+id,map);
 			// Finally, save changes!
 			try {
 				yamlFile.save();

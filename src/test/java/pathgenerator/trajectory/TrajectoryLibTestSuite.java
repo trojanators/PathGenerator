@@ -15,7 +15,7 @@ import junit.runner.*;
  * @author Jared341
  */
 @RunWith(Suite.class)
-@SelectPackages ({ pathgenerator.trajectory.TrajectoryGeneratorTest.class, pathgenerator.trajectory.SplineTest.class,
+ ({ pathgenerator.trajectory.TrajectoryGeneratorTest.class, pathgenerator.trajectory.SplineTest.class,
     pathgenerator.trajectory.PathGeneratorTest.class,
     pathgenerator.trajectory.io.SerializationDeserializationTest.class })
 public class TrajectoryLibTestSuite {

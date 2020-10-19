@@ -302,19 +302,6 @@ public class PathDataPaneController {
         });
     }
 
-
-    /**
-     * Sets up Canvas Sizeeing
-     */
-    private void setupCanvasPaneSizing() {
-        canvas.setPrefHeight(canvas.getMaxHeight());
-        canvas.setPrefWidth(canvas.getMaxWidth());
-        canvas.setLayoutX(canvas.getLayoutX());
-        canvas.setLayoutY(canvas.getLayoutY());
-        canvas.setScaleX(canvas.getScaleX());
-        canvas.setScaleY(canvas.getScaleY());
-    }
-
     /**
      * this function sets up cells names and vars to be called and sets up text
      * formater
