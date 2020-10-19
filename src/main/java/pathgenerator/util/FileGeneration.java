@@ -54,7 +54,7 @@ public class FileGeneration {
 
 	private Map<String,Object> map = new HashMap<>();
 
-	private static String yamlBaseKey = "Waypoint.";
+	private static String yamlBaseKey = "Waypoints";
 
 	/**
 	 * writes a .path file filled with generated path
@@ -170,7 +170,7 @@ public class FileGeneration {
 			} catch (final Exception e) {
 				e.printStackTrace();
 			}
-			for(int id=0; id<sequence.getNumWaypoints(); id++){
+			for(int id=0; id<=path.getLeftWheelTrajectory().getNumSegments(); id++){
 			// Yaml Default layout
 			map.put("Pos",path.getLeftWheelTrajectory().getSegmentId(id).pos+","+path.getRightWheelTrajectory().getSegmentId(id).pos);
 			map.put("Vel",path.getLeftWheelTrajectory().getSegmentId(id).vel+","+path.getRightWheelTrajectory().getSegmentId(id).vel);
@@ -180,7 +180,7 @@ public class FileGeneration {
 			map.put("Dt",path.getLeftWheelTrajectory().getSegmentId(id).dt+","+path.getRightWheelTrajectory().getSegmentId(id).dt);
 			map.put("X", path.getLeftWheelTrajectory().getSegmentId(id).x+","+path.getRightWheelTrajectory().getSegmentId(id).x);
 			map.put("Y", path.getLeftWheelTrajectory().getSegmentId(id).y+","+path.getRightWheelTrajectory().getSegmentId(id).y);
-			yamlFile.createSection(Integer.toString(id),map);
+			yamlFile.createSection(yamlBaseKey+Integer.toString(id),map);
 			
 			
 			// Finally, save changes!

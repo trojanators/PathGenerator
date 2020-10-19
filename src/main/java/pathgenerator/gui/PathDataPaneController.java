@@ -127,6 +127,7 @@ public class PathDataPaneController {
         
         Image image = new Image("/2020-Field.png");
         backgroundImage.setImage(image);
+        canvas.setMaxSize(backgroundImage.getFitWidth(), backgroundImage.getFitHeight());
         
         waypoint_table.setEditable(true);
        
@@ -386,6 +387,6 @@ public class PathDataPaneController {
 
     private double getRandomNum() {
 
-	    return rando.nextInt(3000);
+	    return rando.nextInt(1000);
     }
 }
