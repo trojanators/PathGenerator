@@ -38,15 +38,15 @@ public class PathGenerator {
     }
 
     // Compute the total length of the path by creating splines for each pair
-    // of waypoints.
+    // of waypoints. 
+    //TODO: FIX The RETurn DATA to not throw null
     Spline[] splines = new Spline[path.getNumWaypoints() - 1];
     double[] spline_lengths = new double[splines.length];
     double total_distance = 0;
     for (int i = 0; i < splines.length; ++i) {
       splines[i] = new Spline();
-      if (!Spline.reticulateSplines(path.getWaypoint(i),
-              path.getWaypoint(i + 1), splines[i], Spline.QuinticHermite)) {
-        return null;
+      if (!Spline.reticulateSplines(path.getWaypoint(i),path.getWaypoint(i + 1), splines[i], Spline.QuinticHermite)) {
+      //return null;
       }
       spline_lengths[i] = splines[i].calculateLength();
       total_distance += spline_lengths[i];

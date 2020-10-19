@@ -24,8 +24,6 @@ public class Main extends Application {
 
     // Starts JavaFX Gui
     public static void main(String[] args) {
-        
-        
         launch(args);
         
     }

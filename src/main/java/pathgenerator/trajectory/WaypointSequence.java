@@ -15,9 +15,10 @@ import pathgenerator.util.ChezyMath;
 public class WaypointSequence {
 
   public int num_waypoints_;
-
+  private  static ArrayList<Waypoint> waypoints_ = new ArrayList<Waypoint>();
+  
   public static class Waypoint {
-
+   
     public Waypoint(double x, double y, double theta) {
       this.x = x;
       this.y = y;
@@ -35,7 +36,7 @@ public class WaypointSequence {
     public double theta;
   }
 
-  static ArrayList<Waypoint> waypoints_ = new ArrayList<Waypoint>();
+ 
 
   /***
    * Created an new Way of Incrementing and waypoint Storage
@@ -51,8 +52,10 @@ public class WaypointSequence {
   }
 
   public int getNumWaypoints() {
-    return num_waypoints_;
+    return waypoints_.size();
   }
+
+
 
   public Waypoint getWaypoint(int index) {
     if (index >= 0 && index < getNumWaypoints()) {
@@ -63,7 +66,7 @@ public class WaypointSequence {
   }
 
   // TODO: fix Invert Y
-  
+  /*
     public WaypointSequence invertY() { 
       WaypointSequence inverted = new WaypointSequence();
       for(int i =0; i < waypoints_.size(); i++){
@@ -71,5 +74,6 @@ public class WaypointSequence {
       }
     return inverted;
    }
+   */
    
 }

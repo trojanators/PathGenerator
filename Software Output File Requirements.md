@@ -58,19 +58,35 @@
     Notes:  N/A
 
 
+``` 
+    Jerk: An Double for accounting for Minor Movements in Robot Motion / unknown purpose Units: Unknown 
+
+    Heading: An Double for a Unknown Use. Units Unknown
+    
+    Dt: An Double used for setting the period of your loop. Units Mills/ Unknown
+
+    X: An Double used for setting UNknown Units: Unknown 
+
+    Y: An Double Used For Unknown  Unis: Unknown
+
+    UserComment: An String For user to Write a 255 Char Limited Message
+
+```
 ## 3.0 Data Structure 
 
 #### This is the Example of the Data Structure  
+**NOTE**: the keys in the example are ordered left to right (ie: posL, posR)
 ``` 
-[Waypoint ID]
-    [UserComment]
-    [Pos]
-    [Vel]
-    [Acc]
-    [Jerk]
-    [Heading]
-    [Dt]
-    [X]
-    [Y]
+
+# comment
+  id:
+    - pos: dataL,dataR
+    - vel: dataL,dataR
+    - acc: dataL,dataR
+    - jerk: dataL,dataR
+    - heading: dataL,dataR
+    - dt: dataL,dataR
+    - x: dataL,dataR
+    - y: dataL,dataR
 ```
 

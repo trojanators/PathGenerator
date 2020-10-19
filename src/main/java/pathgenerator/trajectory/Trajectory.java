@@ -1,5 +1,6 @@
 package pathgenerator.trajectory;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 import pathgenerator.Main;
@@ -12,16 +13,6 @@ import pathgenerator.Main;
  */
 public class Trajectory {
 
-  public static ArrayList generatedPos = new ArrayList<>(10);
-  public static ArrayList generatedVel = new ArrayList<>(10);
-  public static ArrayList generatedAcc = new ArrayList<>(10);
-  public static ArrayList generatedJerk = new ArrayList<>(10);
-  public static ArrayList generatedHeading = new ArrayList<>(10);
-  public static ArrayList generatedX = new ArrayList<>(10);
-  public static ArrayList generatedY = new ArrayList<>(10);
-  public static ArrayList generatedDt = new ArrayList<>(10);
-
-  public static ArrayList allgenoutput = new ArrayList<>(10);
 
     public static class Pair {
       public Pair(Trajectory left, Trajectory right) {
@@ -49,6 +40,7 @@ public class Trajectory {
         this.dt = dt;
         this.x = x;
         this.y = y;
+        
        
       }
   
@@ -61,7 +53,7 @@ public class Trajectory {
         dt = to_copy.dt;
         x = to_copy.x;
         y = to_copy.y;
-       
+      
       }
   
       public String toString() {
@@ -95,11 +87,14 @@ public class Trajectory {
     public Segment getSegment(int index) {
       if (index < getNumSegments()) {
         if (!inverted_y_) {
+        
           return segments_[index];
         } else {
           Segment segment = new Segment(segments_[index]);
           segment.y *= -1.0;
           segment.heading *= -1.0;
+        
+          
           return segment;
         }
       } else {
@@ -107,6 +102,11 @@ public class Trajectory {
         return new Segment();
         
       }
+    }
+
+    public Segment getSegmentId(int id){
+      
+      return (Segment) Array.get(segments_,id);
     }
     
     public void setSegment(int index, Segment segment) {
@@ -168,25 +168,17 @@ public class Trajectory {
       return str;
     }
 
-
-    public Double getX(){
-      double result = 0;
+    public int getSegmentId(){
+      int id = 0;
       for (int i = 0; i < getNumSegments(); ++i) {
         Trajectory.Segment segment = getSegment(i);
-        result = segment.x;
+        id += i;
       }
-      return (double)result;
+      return id;
     }
 
-    public Double getY(){
-      double y = 0 ;
-      Trajectory.Segment segment;
-      for (int i = 0; i < getNumSegments(); ++i) {
-       segment = getSegment(i);
-        y = (double)segment.y;
-      }
-      return y;
-    }
+
+  
 
   public Trajectory(){
 

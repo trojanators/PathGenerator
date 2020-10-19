@@ -16,6 +16,7 @@ public class TrajectoryFollower {
   private double current_heading = 0;
   private int current_segment;
   private Trajectory profile_;
+  
 
   public TrajectoryFollower() {
 
