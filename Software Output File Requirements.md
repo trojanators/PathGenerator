@@ -77,8 +77,9 @@
 #### This is the Example of the Data Structure  
 **NOTE**: the keys in the example are ordered left to right (ie: posL, posR)
 ``` 
-# comment
-Waypoint:
+
+Waypoints:
+  # comment
   id:
     - pos: dataL,dataR
     - vel: dataL,dataR
