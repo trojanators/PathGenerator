@@ -78,14 +78,15 @@
 **NOTE**: the keys in the example are ordered left to right (ie: posL, posR)
 ``` 
 # comment
-Waypoint.id:
-  - pos: dataL,dataR
-  - vel: dataL,dataR
-  - acc: dataL,dataR
-  - jerk: dataL,dataR
-  - heading: dataL,dataR
-  - dt: dataL,dataR
-  - x: dataL,dataR
-  - y: dataL,dataR
+Waypoint:
+  id:
+    - pos: dataL,dataR
+    - vel: dataL,dataR
+    - acc: dataL,dataR
+    - jerk: dataL,dataR
+    - heading: dataL,dataR
+    - dt: dataL,dataR
+    - x: dataL,dataR
+    - y: dataL,dataR
 ```
 
