@@ -205,13 +205,13 @@ public class PathDataPaneController {
                 if (!new_waypoint.isPressed() && generate_path.isSelected() && enableTestMode) {
                     enableRando = true;
                   
-                    x = getRandomNum();
-                    y = getRandomNum();
-                    theta = getRandomNum();
-                    acc = getRandomNum();
-                    jerk = getRandomNum();
-                    velocity = getRandomNum();
-                    dt = getRandomNum();
+                    x = (double) getRandomNum();
+                    y = (double) getRandomNum();
+                    theta =(double) getRandomNum();
+                    acc = (double) getRandomNum();
+                    jerk = (double) getRandomNum();
+                    velocity = (double) getRandomNum();
+                    dt = (double) getRandomNum();
                     data = new WaypointTableData(i - countor, x, y, theta, acc, jerk, velocity, dt);
                     waypoint_table.getItems().add(data);
 
