@@ -24,10 +24,7 @@ public class Main extends Application {
 
     // Starts JavaFX Gui
     public static void main(String[] args) {
-        
-        
         launch(args);
-        
     }
     
     @Override
@@ -36,7 +33,7 @@ public class Main extends Application {
         FileHandler fh = new FileHandler("PathGen.log");
         logger.addHandler(fh);
         fh.setFormatter(formatter);
-             
+        
         loggerInit();
 
         logger.info("loading Fxml file");
@@ -54,6 +51,8 @@ public class Main extends Application {
         logger.warning("Starting Init Function");
 
     }
+
+
     private void loggerInit(){
 
         // Fun logging starting

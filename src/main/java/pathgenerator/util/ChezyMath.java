@@ -23,65 +23,83 @@ public class ChezyMath {
     static final double nan = (0.0 / 0.0);
   // reduce
 
-  private static double mxatan(double arg) {
-    double argsq, value;
+    private static double mxatan(double arg) 
+    {
+        double argsq, value;
 
-    argsq = arg * arg;
-    value = ((((p4 * argsq + p3) * argsq + p2) * argsq + p1) * argsq + p0);
-    value = value / (((((argsq + q4) * argsq + q3) * argsq + q2) * argsq + q1) * argsq + q0);
-    return value * arg;
-  }
+        argsq = arg * arg;
+        value = ((((p4 * argsq + p3) * argsq + p2) * argsq + p1) * argsq + p0);
+        value = value / (((((argsq + q4) * argsq + q3) * argsq + q2) * argsq + q1) * argsq + q0);
+
+        return value * arg;
+    }
 
     // reduce
-    private static double msatan(double arg) {
-        if (arg < sq2m1) {
-        return mxatan(arg);
+    private static double msatan(double arg) 
+    {
+        if (arg < sq2m1) 
+        {
+            return mxatan(arg);
         }
-        if (arg > sq2p1) {
-        return PIO2 - mxatan(1 / arg);
+
+        if (arg > sq2p1) 
+        {
+            return PIO2 - mxatan(1 / arg);
         }
+
         return PIO2 / 2 + mxatan((arg - 1) / (arg + 1));
     }
 
     // implementation of atan
-    public static double atan(double arg) {
-        if (arg > 0) {
+    public static double atan(double arg) 
+    {
+        if (arg > 0) 
+        {
             return msatan(arg);
         }
         return -msatan(-arg);
     }
 
     // implementation of atan2
-    public static double atan2(double arg1, double arg2) {
-        if (arg1 + arg2 == arg1) {
-            if (arg1 >= 0) {
+    public static double atan2(double arg1, double arg2) 
+    {
+        if (arg1 + arg2 == arg1) 
+        {
+            if (arg1 >= 0) 
+            {
                 return PIO2;
             }
             return -PIO2;
         }
 
         arg1 = atan(arg1 / arg2);
-        if (arg2 < 0) {
-            if (arg1 <= 0) {
+        if (arg2 < 0)
+        {
+            if (arg1 <= 0) 
+            {
                 return arg1 + Math.PI;
             }
                 return arg1 - Math.PI;
-            }
+        }
+
         return arg1;
     }
 
     // implementation of asin
-    public static double asin(double arg) {
+    public static double asin(double arg) 
+    {
         double temp;
         int sign;
 
         sign = 0;
-        if (arg < 0) {
+        if (arg < 0) 
+        {
             arg = -arg;
             sign++;
         }
 
-        if (arg > 1) {
+        if (arg > 1) 
+        {
             return nan;
         }
 
@@ -180,13 +198,16 @@ public class ChezyMath {
         return angle;
     }
 
-    public static double boundAngleNegPiToPiRadians(double angle) {
+    public static double boundAngleNegPiToPiRadians(double angle) 
+    {
         // Naive algorithm
-        while (angle >= Math.PI) {
+        while (angle >= Math.PI) 
+        {
             angle -= 2.0 * Math.PI;
         }
 
-        while (angle < -Math.PI) {
+        while (angle < -Math.PI) 
+        {
             angle += 2.0 * Math.PI;
         }
 
