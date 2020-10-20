@@ -87,6 +87,12 @@ public class WaypointSequence
      */
     public Waypoint removeWaypoint(int waypointID)
     {
+        // Is the data structure empty?
+        if (_waypoints.size() == 0)
+        {
+            return null;
+        }
+
         if (waypointID > _waypoints.size())
         {
            return _waypoints.removeLast();
@@ -94,10 +100,6 @@ public class WaypointSequence
         else if (waypointID <= 0)
         {
             return _waypoints.removeFirst();
-        }
-        else if (_waypoints.size() == 0)
-        {
-            return null;
         }
         else
         {
