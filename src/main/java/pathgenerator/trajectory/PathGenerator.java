@@ -6,6 +6,7 @@ package pathgenerator.trajectory;
  * @author Art Kalb
  * @author Stephen Pinkerton
  * @author Jared341
+ *
  */
 public class PathGenerator {
   /**
@@ -53,7 +54,7 @@ public class PathGenerator {
     }
 
     // Generate a smooth trajectory over the total distance.
-    Trajectory traj = TrajectoryGenerator.generate(config,
+   Trajectory traj = TrajectoryGenerator.generate(config,
             TrajectoryGenerator.SCurvesStrategy, 0.0, path.getWaypoint(0).theta,
             total_distance, 0.0, path.getWaypoint(0).theta);
 
@@ -65,6 +66,7 @@ public class PathGenerator {
       double cur_pos = traj.getSegment(i).pos;
 
       boolean found_spline = false;
+
       while (!found_spline) {
         double cur_pos_relative = cur_pos - cur_spline_start_pos;
         if (cur_pos_relative <= spline_lengths[cur_spline]) {

@@ -14,7 +14,6 @@ import pathgenerator.util.ChezyMath;
  */
 public class WaypointSequence {
 
-  public int num_waypoints_;
   private  static ArrayList<Waypoint> waypoints_ = new ArrayList<Waypoint>();
   
   public static class Waypoint {
@@ -47,8 +46,6 @@ public class WaypointSequence {
   public void addWaypoint(Waypoint w, int WaypointID) {
     waypoints_.add(WaypointID, w);
     Main.logger.warning("Waypoints In list" + waypoints_.size());
-    num_waypoints_ = WaypointID;
-
   }
 
   public int getNumWaypoints() {

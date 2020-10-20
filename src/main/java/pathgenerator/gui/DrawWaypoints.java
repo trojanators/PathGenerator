@@ -38,8 +38,8 @@ public class DrawWaypoints {
     public void drawWaypoints(int i){
         waypointPointArray.add(i, new Circle(5,Color.WHITE));
      
-        double pathX =100;
-        double pathY = 100;
+        double pathX =data.getX();
+        double pathY = data.getY();
 
         if(checkBounds(pathX, pathY)){
             this.waypointPointArray.get(i).relocate(pathX,-pathY);

@@ -15,13 +15,13 @@ import org.junit.jupiter.api.Test;
 
 import pathgenerator.util.ChezyMath;
 
-
 /**
- *
  * @author Art Kalb
  * @author Stephen Pinkerton
  * @author Jared341
  */
+
+
 public class PathGeneratorTest {
 
   static double distanceToClosest(Trajectory traj, WaypointSequence.Waypoint waypoint,

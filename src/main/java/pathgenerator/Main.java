@@ -13,6 +13,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import pathgenerator.springboot.StartWebApp;
+import sun.tools.tree.VarDeclarationStatement;
 
 public class Main extends Application {
     
@@ -61,6 +62,7 @@ public class Main extends Application {
         logger.info("=======================================================================\n");
         logger.info("\n");
         logger.warning("Date today is"+ day +"\n");
+       
 
     }
 
