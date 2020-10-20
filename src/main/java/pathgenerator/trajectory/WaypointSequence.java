@@ -1,21 +1,22 @@
 package pathgenerator.trajectory;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.LinkedList;
 
 import pathgenerator.Main;
 import pathgenerator.util.ChezyMath;
 
+/* Initial authors: Art Kalb, Stephen Pinkerton, Jared341 */
+
+
 /**
- * A WaypointSequence is a sequence of Waypoints. #whatdidyouexpect
- *
- * @author Art Kalb
- * @author Stephen Pinkerton
- * @author Jared341 Modified by @author Nicholas Blackburn
+ * The WaypointSequence contains a sequence of Waypoints. A waypoint is an x, y, and angle (theta) value.
+ * The class also offers methods to access the waypoints sequence, add, and delete waypoints.
+ * 
  */
-public class WaypointSequence {
-
-    // private int _num_waypoints;
-
+public class WaypointSequence 
+{
     public static class Waypoint 
     {
         public Waypoint(double x, double y, double theta) 
@@ -41,26 +42,75 @@ public class WaypointSequence {
         public double theta;
     }
 
-    static ArrayList<Waypoint> _waypoints = new ArrayList<Waypoint>();
+    // this List holds the series of waypoints
+    private static LinkedList<Waypoint> _waypoints = new LinkedList<Waypoint>();
 
-    /***
-     * Created an new Way of Incrementing and waypoint Storage
-     * 
-     * @param w
-     * @param WaypointID
-     */
+
+    /**
+     * Enter a Waypoint to the list of waypoints. If the waypoint index value is greater than the current count 
+        of Waypoints, the new element is added at the end, regardless of the index value.
+    * @param wypt An X, Y, and angle (theta) value
+    * @param WaypointID The desired position in the list to add the new waypoint.
+    */
     public void addWaypoint(Waypoint wypt, int WaypointID) 
     {
-        _waypoints.add(WaypointID, wypt);
-        Main.logger.warning("Waypoints In list: " + _waypoints.size());
-        // _num_waypoints = WaypointID;
+        if (WaypointID > _waypoints.size())
+        {
+            _waypoints.add(wypt);
+        }
+        else
+        {
+            _waypoints.add(WaypointID, wypt);
+        }
     }
 
+    /**
+     * Remove the waypoint element at the specified ID
+     * @param waypointID Index of the element to remove from the list of waypoints
+     * @return the waypoint value that was removed 
+     */
+    public Waypoint removeWaypoint(int waypointID)
+    {
+        if (waypointID > _waypoints.size())
+        {
+           return _waypoints.removeLast();
+        }
+        else if (waypointID <= 0)
+        {
+            return _waypoints.removeFirst();
+        }
+        else if (_waypoints.size() == 0)
+        {
+            return null;
+        }
+        else
+        {
+            return _waypoints.remove(waypointID);
+        }
+    }
+
+    /**
+     * Getter for waypoints list size.
+     * @return Waypoints list size (int)
+     */
     public int getNumWaypoints() 
     {
         return _waypoints.size();
     }
 
+    /**
+     * Clears the waypoints sequence of all values
+     */
+    public void clearWaypointsSequence()
+    {
+        _waypoints.clear();
+    }
+
+    /**
+     * Access the waypoint value at the specified index
+     * @param index Waypoint index in the list to obtain
+     * @return the Waypoint at the specified index.
+     */
     public Waypoint getWaypoint(int index) 
     {
         if (index >= 0 && index < getNumWaypoints()) 
