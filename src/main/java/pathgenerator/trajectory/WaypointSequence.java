@@ -19,6 +19,10 @@ public class WaypointSequence
 {
     public static class Waypoint 
     {
+        private double x;
+        private double y;
+        private double theta;
+
         public Waypoint(double x, double y, double theta) 
         {
             this.x = x;
@@ -37,9 +41,21 @@ public class WaypointSequence
             this.theta = tocopy.theta;
         }
 
-        public double x;
-        public double y;
-        public double theta;
+        public double getX()
+        {
+            return x;
+        }
+        
+        public double getY()
+        {
+            return y;
+        }
+
+        public double getTheta()
+        {
+            return theta;
+        }
+
     }
 
     // this List holds the series of waypoints
