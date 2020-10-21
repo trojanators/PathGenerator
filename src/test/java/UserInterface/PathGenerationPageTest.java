@@ -17,6 +17,10 @@ import javafx.scene.Scene;
 import javafx.scene.input.KeyCode;
 import javafx.stage.Stage;
 
+/**
+ * This class is for testing the PathDataPage
+ * @author Nicholas Blackburn
+ */
 public class PathGenerationPageTest extends ApplicationTest {
 
     private FXMLLoader loader = new FXMLLoader();
