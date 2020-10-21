@@ -70,7 +70,18 @@ public class WaypointSequence
     */
     public void addWaypoint(Waypoint wypt, int WaypointID) 
     {
-        if (WaypointID > _waypoints.size())
+        // Is the data structure empty?
+        if (_waypoints.size() == 0)
+        {
+            _waypoints.add(wypt);
+            return; // This is probably redundant, but I want to make sure it exits here.
+        }
+
+        if (WaypointID <= 0)
+        {
+            _waypoints.addFirst(wypt);
+        }
+        else if (WaypointID > _waypoints.size())
         {
             _waypoints.add(wypt);
         }
@@ -93,13 +104,13 @@ public class WaypointSequence
             return null;
         }
 
-        if (waypointID > _waypoints.size())
-        {
-           return _waypoints.removeLast();
-        }
-        else if (waypointID <= 0)
+        if (waypointID <= 0)
         {
             return _waypoints.removeFirst();
+        }
+        else if (waypointID > _waypoints.size())
+        {
+           return _waypoints.removeLast();
         }
         else
         {
