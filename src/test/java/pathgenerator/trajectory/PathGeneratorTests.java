@@ -26,7 +26,7 @@ public class PathGeneratorTests
                                     Trajectory.Segment closest_segment) 
     {
         double closest = Double.MAX_VALUE;
-        int closest_id = -1;
+        //int closest_id = -1;
         for (int i = 0; i < traj.getNumSegments(); ++i) 
         {
             Segment segment = traj.getSegment(i);
@@ -38,7 +38,7 @@ public class PathGeneratorTests
                 closest_segment.x = waypoint.getX();
                 closest_segment.y = waypoint.getY();
                 closest_segment.heading = segment.heading;
-                closest_id = i;
+                //closest_id = i;
             }
         }
 
