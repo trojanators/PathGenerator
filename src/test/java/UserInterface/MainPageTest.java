@@ -41,10 +41,7 @@ public class MainPageTest extends ApplicationTest {
     }
  // Checks to see if the Window contains the button and clicks it 
     @Test public void should_click_on_button() {
-        // when:
-        clickOn("#exit");
-
-        // then:
+       // then:
         verifyThat("#exit",  LabeledMatchers.hasText("Exit Path Generator"));
     }
 }
