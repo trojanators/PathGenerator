@@ -37,10 +37,10 @@ import pathgenerator.trajectory.io.TextFileSerializer;
 
 import pathgenerator.Main;
 
+/* Initial author: Nicholas Blackburn */
+
 /**
- * this class is to Generate java and txt file for paths that are Generated
- * 
- * @author nicholas blackburn
+ * This class is to Generate java and txt file for paths that are Generated
  * @param pathName location of file path
  * @param path     path for path generation
  */
