@@ -153,7 +153,6 @@ public class WaypointSequence
     }
 
     // TODO: fix Invert Y
-
     public WaypointSequence invertY() 
     { 
         WaypointSequence inverted = new WaypointSequence();

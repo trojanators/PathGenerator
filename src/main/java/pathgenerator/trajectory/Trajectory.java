@@ -1,5 +1,6 @@
 package pathgenerator.trajectory;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 import pathgenerator.Main;
@@ -122,6 +123,22 @@ public class Trajectory {
             return new Segment();
         }
     }
+    
+
+    public Segment getSegmentId(int id){
+      
+      return (Segment) Array.get(segments_,id);
+    }
+
+    public int getSegmentId(){
+        int id = 0;
+        for (int i = 0; i < getNumSegments(); ++i) {
+            Trajectory.Segment segment = getSegment(i);
+            id += i;
+        }
+        return id;
+    }
+
 
     public void setSegment(int index, Segment segment) 
     {
