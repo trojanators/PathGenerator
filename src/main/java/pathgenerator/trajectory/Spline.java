@@ -69,7 +69,7 @@ public class Spline {
                                             double x1, double y1, double theta1, 
                                             Spline result, Type type) 
     {
-        System.out.println("Reticulating splines...");
+        //System.out.println("Reticulating splines...");
         result.type_ = type;
 
         // Transform x to the origin
@@ -123,7 +123,7 @@ public class Spline {
             result.d_ = 0;
             result.e_ = yp0_hat;
         }
-        Main.logger.warning("Here in splines data");
+        //Main.logger.warning("Here in splines data");
         return true;
     }
 
