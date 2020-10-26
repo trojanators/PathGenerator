@@ -2,6 +2,7 @@ package UserInterface;
 
 import org.junit.Test;
 import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Order;
 
 import static org.junit.Assert.assertEquals;
@@ -41,6 +42,29 @@ public class PathGenerationPageTest extends ApplicationTest {
         stage.setScene(scene);
         stage.show();
     }
+
+
+    /**
+     * tests the new waypoint creation 
+     * only test
+     */
+    @BeforeAll
+    public void should_populate_path_for_build_path_Click(){
+        clickOn("#waypoint_y_input").type(KeyCode.DIGIT7);
+        clickOn("#waypoint_x_input").type(KeyCode.DIGIT6);
+        clickOn("#waypoint_theta_input").type(KeyCode.DIGIT5);
+        clickOn("#waypoint_acc_input").type(KeyCode.DIGIT4);
+        clickOn("#waypoint_jerk_input").type(KeyCode.DIGIT3);
+        clickOn("#waypoint_velocity_input").type(KeyCode.DIGIT2);
+        clickOn("#waypoint_dt_input").type(KeyCode.DIGIT1);
+        clickOn("#path_name").type(KeyCode.E);
+        
+        WaitForAsyncUtils.waitForFxEvents();
+
+        clickOn("#new_waypoint");
+        verifyThat("#new_waypoint", LabeledMatchers.hasText("add Waypoint"));
+    }
+   
     /**
      * This is the Text Box Test Section 
      * This only Test's Text Box Inputs 
@@ -49,245 +73,83 @@ public class PathGenerationPageTest extends ApplicationTest {
      */
 
     @Test
-    @Order(30)
-    public void should_enter_text_waypoint_y_max(){
-        TextField waypoint_y_input = new TextField("#waypoint_y_input");
-
-        clickOn("#waypoint_y_input").type(KeyCode.DIGIT9,KeyCode.DIGIT9,KeyCode.DIGIT9,KeyCode.DIGIT9,KeyCode.DIGIT9,KeyCode.DIGIT9,KeyCode.DIGIT9,KeyCode.DIGIT9,KeyCode.DIGIT9,KeyCode.DIGIT9,KeyCode.DIGIT9,KeyCode.DIGIT9);
-        WaitForAsyncUtils.waitForFxEvents();
-
-        assertEquals("999999999999",
-        waypoint_y_input.getText(), "#waypoint_y_input");
-     
-    }
-
-    @Test
-    @Order(29)
-    public void should_enter_text_waypoint_x_max(){
-        TextField waypoint_x_input = new TextField("#waypoint_x_input");
-
-        clickOn("#waypoint_x_input").type(KeyCode.DIGIT9,KeyCode.DIGIT9,KeyCode.DIGIT9,KeyCode.DIGIT9,KeyCode.DIGIT9,KeyCode.DIGIT9,KeyCode.DIGIT9,KeyCode.DIGIT9,KeyCode.DIGIT9,KeyCode.DIGIT9,KeyCode.DIGIT9,KeyCode.DIGIT9);;
-        WaitForAsyncUtils.waitForFxEvents();
-
-        assertEquals("999999999999",
-        waypoint_x_input.getText(), "#waypoint_x_input");
-    }
-
-    @Test
-    @Order(28)
-    public void should_enter_text_waypoint_theta_max(){
-        TextField waypoint_theta_input = new TextField("#waypoint_theta_input");
-        clickOn("#waypoint_theta_input").type(KeyCode.DIGIT9,KeyCode.DIGIT9,KeyCode.DIGIT9,KeyCode.DIGIT9,KeyCode.DIGIT9,KeyCode.DIGIT9,KeyCode.DIGIT9,KeyCode.DIGIT9,KeyCode.DIGIT9,KeyCode.DIGIT9,KeyCode.DIGIT9,KeyCode.DIGIT9);;
-        WaitForAsyncUtils.waitForFxEvents();
-
-        assertEquals("999999999999",
-        waypoint_theta_input.getText(), "#waypoint_theta_input");
-    }
-
-    @Test
-    @Order(27)
-    public void should_enter_text_waypoint_acc_max(){
-        TextField waypoint_acc_input = new TextField("#waypoint_acc_input");
-        clickOn("#waypoint_acc_input").type(KeyCode.DIGIT9,KeyCode.DIGIT9,KeyCode.DIGIT9,KeyCode.DIGIT9,KeyCode.DIGIT9,KeyCode.DIGIT9,KeyCode.DIGIT9,KeyCode.DIGIT9,KeyCode.DIGIT9,KeyCode.DIGIT9,KeyCode.DIGIT9,KeyCode.DIGIT9);;
-        WaitForAsyncUtils.waitForFxEvents();
-
-        assertEquals("999999999999",
-        waypoint_acc_input.getText(), "#waypoint_acc_input");
-     
-    }
-
-    @Test
-    @Order(26)
-    public void should_enter_text_waypoint_jerk_max(){
-        TextField waypoint_jerk_input = new TextField("#waypoint_jerk_input");
-        clickOn("#waypoint_jerk_input").type(KeyCode.DIGIT9,KeyCode.DIGIT9,KeyCode.DIGIT9,KeyCode.DIGIT9,KeyCode.DIGIT9,KeyCode.DIGIT9,KeyCode.DIGIT9,KeyCode.DIGIT9,KeyCode.DIGIT9,KeyCode.DIGIT9,KeyCode.DIGIT9,KeyCode.DIGIT9);;
-        WaitForAsyncUtils.waitForFxEvents();
-
-        assertEquals("999999999999",
-        waypoint_jerk_input.getText(), "#waypoint_jerk_input");
-    }
-
-    @Test
-    @Order(25)
-    public void should_enter_text_waypoint_velocity_max(){
-        TextField waypoint_jerk_input = new TextField("#waypoint_jerk_input");
-        clickOn("#waypoint_jerk_input").type(KeyCode.DIGIT9,KeyCode.DIGIT9,KeyCode.DIGIT9,KeyCode.DIGIT9,KeyCode.DIGIT9,KeyCode.DIGIT9,KeyCode.DIGIT9,KeyCode.DIGIT9,KeyCode.DIGIT9,KeyCode.DIGIT9,KeyCode.DIGIT9,KeyCode.DIGIT9);;
-        WaitForAsyncUtils.waitForFxEvents();
-
-        assertEquals("999999999999",
-        waypoint_jerk_input.getText(), "#waypoint_jerk_input");
-    }
-
-    @Test
-    @Order(24)
-    public void should_enter_text_waypoint_dt_max(){
-        TextField waypoint_dt_input = new TextField("#waypoint_dt_input");
-        clickOn("#waypoint_dt_input").type(KeyCode.DIGIT9,KeyCode.DIGIT9,KeyCode.DIGIT9,KeyCode.DIGIT9,KeyCode.DIGIT9,KeyCode.DIGIT9,KeyCode.DIGIT9,KeyCode.DIGIT9,KeyCode.DIGIT9,KeyCode.DIGIT9,KeyCode.DIGIT9,KeyCode.DIGIT9);;
-        WaitForAsyncUtils.waitForFxEvents();
-
-        assertEquals("999999999999",
-        waypoint_dt_input.getText(), "#waypoint_dt_input");
-    }
-
-
-    @Test
-    @Order(23)
-    public void should_enter_text_waypoint_y_normal(){
-        TextField waypoint_y_input = new TextField("#waypoint_y_input");
-
-        clickOn("#waypoint_y_input").type(KeyCode.DIGIT5,KeyCode.DIGIT5,KeyCode.PERIOD,KeyCode.DIGIT9,KeyCode.DIGIT9,KeyCode.DIGIT9);
-        WaitForAsyncUtils.waitForFxEvents();
-
-        assertEquals("55.999",
-        waypoint_y_input.getText(), "#waypoint_y_input");
-     
-    }
-
-    @Test
-    @Order(22)
-    public void should_enter_text_waypoint_x_normal(){
-        TextField waypoint_x_input = new TextField("#waypoint_x_input");
-
-        clickOn("#waypoint_x_input").type(KeyCode.DIGIT5,KeyCode.DIGIT5,KeyCode.PERIOD,KeyCode.DIGIT9,KeyCode.DIGIT9,KeyCode.DIGIT9);
-        WaitForAsyncUtils.waitForFxEvents();
-
-        assertEquals("55.999",
-        waypoint_x_input.getText(), "#waypoint_x_input");
-    }
-
-    @Test
-    @Order(21)
-    public void should_enter_text_waypoint_theta_normal(){
-        TextField waypoint_theta_input = new TextField("#waypoint_theta_input");
-        clickOn("#waypoint_theta_input").type(KeyCode.DIGIT5,KeyCode.DIGIT5,KeyCode.PERIOD,KeyCode.DIGIT9,KeyCode.DIGIT9,KeyCode.DIGIT9);
-        WaitForAsyncUtils.waitForFxEvents();
-
-        assertEquals("55.999",
-        waypoint_theta_input.getText(), "#waypoint_theta_input");
-    }
-
-    @Test
-    @Order(20)
-    public void should_enter_text_waypoint_acc_normal(){
-        TextField waypoint_acc_input = new TextField("#waypoint_acc_input");
-        clickOn("#waypoint_acc_input").type(KeyCode.DIGIT5,KeyCode.DIGIT5,KeyCode.PERIOD,KeyCode.DIGIT9,KeyCode.DIGIT9,KeyCode.DIGIT9);
-        WaitForAsyncUtils.waitForFxEvents();
-
-        assertEquals("55.999",
-        waypoint_acc_input.getText(), "#waypoint_acc_input");
-     
-    }
-
-    @Test
-    @Order(19)
-    public void should_enter_text_waypoint_jerk_normal(){
-        TextField waypoint_jerk_input = new TextField("#waypoint_jerk_input");
-        clickOn("#waypoint_jerk_input").type(KeyCode.DIGIT5,KeyCode.DIGIT5,KeyCode.PERIOD,KeyCode.DIGIT9,KeyCode.DIGIT9,KeyCode.DIGIT9);
-        WaitForAsyncUtils.waitForFxEvents();
-
-        assertEquals("55.999",
-        waypoint_jerk_input.getText(), "#waypoint_jerk_input");
-    }
-
-    @Test
-    @Order(18)
-    public void should_enter_text_waypoint_velocity_normal(){
-        TextField waypoint_jerk_input = new TextField("#waypoint_jerk_input");
-        clickOn("#waypoint_jerk_input").type(KeyCode.DIGIT5,KeyCode.DIGIT5,KeyCode.PERIOD,KeyCode.DIGIT9,KeyCode.DIGIT9,KeyCode.DIGIT9);
-        WaitForAsyncUtils.waitForFxEvents();
-
-        assertEquals("55.999",
-        waypoint_jerk_input.getText(), "#waypoint_jerk_input");
-    }
-
-    @Test
-    @Order(17)
-    public void should_enter_text_waypoint_dt_normal(){
-        TextField waypoint_dt_input = new TextField("#waypoint_dt_input");
-        clickOn("#waypoint_dt_input").type(KeyCode.DIGIT5,KeyCode.DIGIT5,KeyCode.PERIOD,KeyCode.DIGIT9,KeyCode.DIGIT9,KeyCode.DIGIT9);
-        WaitForAsyncUtils.waitForFxEvents();
-
-        assertEquals("55.999",
-        waypoint_dt_input.getText(), "#waypoint_dt_input");
-    }
-    @Test
     @Order(16)
-    public void should_enter_text_waypoint_y_min(){
+    public void should_enter_text_waypoint_y(){
         TextField waypoint_y_input = new TextField("#waypoint_y_input");
 
-        clickOn("#waypoint_y_input").type(KeyCode.DIGIT5,KeyCode.DIGIT5,KeyCode.PERIOD,KeyCode.DIGIT9,KeyCode.DIGIT9,KeyCode.DIGIT9);
+        clickOn("#waypoint_y_input").type(KeyCode.DIGIT7);
         WaitForAsyncUtils.waitForFxEvents();
 
-        assertEquals("0",
+        assertEquals("7",
         waypoint_y_input.getText(), "#waypoint_y_input");
      
     }
 
     @Test
     @Order(15)
-    public void should_enter_text_waypoint_x_min(){
+    public void should_enter_text_waypoint_x(){
         TextField waypoint_x_input = new TextField("#waypoint_x_input");
 
-        clickOn("#waypoint_x_input").type(KeyCode.DIGIT0);
+        clickOn("#waypoint_x_input").type(KeyCode.DIGIT6);
         WaitForAsyncUtils.waitForFxEvents();
 
-        assertEquals("0",
+        assertEquals("6",
         waypoint_x_input.getText(), "#waypoint_x_input");
     }
 
     @Test
     @Order(14)
-    public void should_enter_text_waypoint_theta_min(){
+    public void should_enter_text_waypoint_theta(){
         TextField waypoint_theta_input = new TextField("#waypoint_theta_input");
-        clickOn("#waypoint_theta_input").type(KeyCode.DIGIT0);;
+        clickOn("#waypoint_theta_input").type(KeyCode.DIGIT5);;
         WaitForAsyncUtils.waitForFxEvents();
 
-        assertEquals("0",
+        assertEquals("5",
         waypoint_theta_input.getText(), "#waypoint_theta_input");
     }
 
     @Test
     @Order(13)
-    public void should_enter_text_waypoint_acc_min(){
+    public void should_enter_text_waypoint_acc(){
         TextField waypoint_acc_input = new TextField("#waypoint_acc_input");
-        clickOn("#waypoint_acc_input").type(KeyCode.DIGIT0);;
+        clickOn("#waypoint_acc_input").type(KeyCode.DIGIT4);;
         WaitForAsyncUtils.waitForFxEvents();
 
-        assertEquals("0",
+        assertEquals("4",
         waypoint_acc_input.getText(), "#waypoint_acc_input");
      
     }
 
     @Test
     @Order(12)
-    public void should_enter_text_waypoint_jerk_min(){
+    public void should_enter_text_waypoint_jerk(){
         TextField waypoint_jerk_input = new TextField("#waypoint_jerk_input");
-        clickOn("#waypoint_jerk_input").type(KeyCode.DIGIT0);;
+        clickOn("#waypoint_jerk_input").type(KeyCode.DIGIT3);;
         WaitForAsyncUtils.waitForFxEvents();
 
-        assertEquals("0",
+        assertEquals("3",
         waypoint_jerk_input.getText(), "#waypoint_jerk_input");
     }
 
     @Test
     @Order(11)
-    public void should_enter_text_waypoint_velocity_min(){
-        TextField waypoint_jerk_input = new TextField("#waypoint_jerk_input");
-        clickOn("#waypoint_jerk_input").type(KeyCode.DIGIT0);
+    public void should_enter_text_waypoint_velocity(){
+        TextField waypoint_velocity_input = new TextField("#waypoint_velocity_input");
+        clickOn("#waypoint_velocity_input").type(KeyCode.DIGIT2);
         WaitForAsyncUtils.waitForFxEvents();
 
-        assertEquals("0",
-        waypoint_jerk_input.getText(), "#waypoint_jerk_input");
+        assertEquals("2",
+        waypoint_velocity_input.getText(), "#waypoint_velocity_input");
     }
 
     @Test
     @Order(10)
-    public void should_enter_text_waypoint_dt_min(){
+    public void should_enter_text_waypoint_dt(){
         TextField waypoint_dt_input = new TextField("#waypoint_dt_input");
-        clickOn("#waypoint_dt_input").type(KeyCode.DIGIT0);
+        clickOn("#waypoint_dt_input").type(KeyCode.DIGIT1);
         WaitForAsyncUtils.waitForFxEvents();
 
-        assertEquals("0",
+        assertEquals("1",
         waypoint_dt_input.getText(), "#waypoint_dt_input");
     }
 
@@ -296,13 +158,6 @@ public class PathGenerationPageTest extends ApplicationTest {
      * This section is for testing the Buttons / Check Boxes 
      * this only Tests the clicking of the buttons and checks if the names are the same
      */
-   
-    @Test
-    @Order(9)
-    public void should_click_on_new_waypoint() {
-        clickOn("#new_waypoint");
-        verifyThat("#new_waypoint", LabeledMatchers.hasText("add Waypoint"));
-    }
 
     @Test
     @Order(8)
@@ -341,10 +196,8 @@ public class PathGenerationPageTest extends ApplicationTest {
         verifyThat("#neg_pi", LabeledMatchers.hasText("enable neg pi theta"));
     }
     
-    @Test
-    @Order(3)
+   @AfterAll
     public void should_click_on_exit(){
-        clickOn("#exit");
         verifyThat("#exit", LabeledMatchers.hasText("exit"));
     }
 }
