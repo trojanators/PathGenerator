@@ -68,9 +68,49 @@ public class PathGenerationPageTest extends ApplicationTest {
     /**
      * This is the Text Box Test Section 
      * This only Test's Text Box Inputs 
-     * Minimum and normal and maximum number use 
-     * @param Order 30 - 12 is textbox test
      */
+
+    @Test
+    @Order (19)
+    public void should_enter_test_Path_File_name(){
+        TextField path_name_input = new TextField("#pathfile_path");
+
+        clickOn("#pathfile_path").type(KeyCode.DIGIT6, 2);
+        WaitForAsyncUtils.waitForFxEvents();
+
+        assertEquals("66",
+        path_name_input.getText(), "#pathfile_path");
+     
+    }
+    
+
+    @Test
+    @Order (18)
+    public void should_enter_test_Robot_width_name(){
+        TextField path_name_input = new TextField("#robot_wheelbase");
+
+        clickOn("#robot_wheelbase").type(KeyCode.DIGIT5, 2);
+        WaitForAsyncUtils.waitForFxEvents();
+
+        assertEquals("55",
+        path_name_input.getText(), "#robot_wheelbase");
+     
+    }
+    
+
+    @Test
+    @Order (17)
+    public void should_enter_test_path_name(){
+        TextField path_name_input = new TextField("#path_name");
+
+        clickOn("#path_name").type(KeyCode.DIGIT1, 2);
+        WaitForAsyncUtils.waitForFxEvents();
+
+        assertEquals("11",
+        path_name_input.getText(), "#path_name");
+     
+    }
+    
 
     @Test
     @Order(16)
