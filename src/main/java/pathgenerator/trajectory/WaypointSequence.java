@@ -152,6 +152,11 @@ public class WaypointSequence
         }
     }
 
+    public LinkedList<Waypoint> getSequence()
+    {
+        return _waypoints;
+    }
+
     // TODO: fix Invert Y
     public WaypointSequence invertY() 
     { 
