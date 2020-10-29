@@ -48,7 +48,7 @@ public class WaypointManagement {
      * @param Boolean
      * @param Boolean
      */
-    //TODO: FIX LOOPING ISSUE AND FIX OVERWRITE file issue
+   
     public void createWaypoint(final WaypointTableData data, Boolean enableRando, Boolean enablePiCalc, Boolean enableNegPi, final double wheebase, String pathName, String Location, Boolean genpath, int Seqnum) {
         int waypointId = data.getId();
 

@@ -456,3 +456,7 @@ MigrationBackup/
 
 # Added on 2020.10.01
 .log
+
+*.lck
+
+.settings/org.eclipse.buildship.core.prefs

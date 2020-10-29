@@ -83,7 +83,7 @@ public class PathDataPaneController {
     private TextField waypoint_jerk_input;
 
     @FXML
-    private TextField waypoint_velocity_imput;
+    private TextField waypoint_velocity_input;
 
     @FXML
     private TextField waypoint_dt_input;
@@ -183,7 +183,7 @@ public class PathDataPaneController {
                     theta = Double.parseDouble(waypoint_theta_input.getText()); // Additonal math for
                     acc = Double.parseDouble(waypoint_acc_input.getText());
                     jerk = Double.parseDouble(waypoint_jerk_input.getText());
-                    velocity = Double.parseDouble(waypoint_velocity_imput.getText());
+                    velocity = Double.parseDouble(waypoint_velocity_input.getText());
                     dt = Double.parseDouble(waypoint_dt_input.getText());
                 
                     data = new WaypointTableData(i - countor, x, y, theta, acc, jerk, velocity, dt);
@@ -357,7 +357,7 @@ public class PathDataPaneController {
         waypoint_jerk_input.setTextFormatter(new TextFormatter((UnaryOperator<TextFormatter.Change>) change -> {
             return pattern.matcher(change.getControlNewText()).matches() ? change : null;
         }));
-        waypoint_velocity_imput.setTextFormatter(new TextFormatter((UnaryOperator<TextFormatter.Change>) change -> {
+        waypoint_velocity_input.setTextFormatter(new TextFormatter((UnaryOperator<TextFormatter.Change>) change -> {
             return pattern.matcher(change.getControlNewText()).matches() ? change : null;
         }));
         waypoint_dt_input.setTextFormatter(new TextFormatter((UnaryOperator<TextFormatter.Change>) change -> {

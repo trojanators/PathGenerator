@@ -39,7 +39,7 @@
             <TextField fx:id="waypoint_theta_input" layoutX="513.0" layoutY="769.0" prefHeight="26.0" prefWidth="179.0" promptText="enter waypoint Theta" />
             <TextField fx:id="waypoint_acc_input" layoutX="940.0" layoutY="743.0" prefHeight="26.0" prefWidth="179.0" promptText="enter max acceleration" />
             <TextField fx:id="waypoint_jerk_input" layoutX="720.0" layoutY="730.0" prefHeight="26.0" prefWidth="179.0" promptText="enter max Jerk" />
-            <TextField fx:id="waypoint_velocity_imput" layoutX="720.0" layoutY="769.0" prefHeight="26.0" prefWidth="179.0" promptText="enter Velocity" />
+            <TextField fx:id="waypoint_velocity_input" layoutX="720.0" layoutY="769.0" prefHeight="26.0" prefWidth="179.0" promptText="enter Velocity" />
             <TextField fx:id="waypoint_dt_input" layoutX="513.0" layoutY="730.0" prefHeight="26.0" prefWidth="179.0" promptText="            enter dt" />
             <CheckBox fx:id="generate_path" layoutX="770.0" layoutY="75.0" mnemonicParsing="false" text="Test (Fill random)" textFill="WHITE" />
             <TextField fx:id="path_name" layoutX="196.0" layoutY="71.0" prefHeight="26.0" prefWidth="171.0" promptText="enter Path name" />
