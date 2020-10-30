@@ -115,4 +115,39 @@ public class WaypointManagementTests
 
     }
 
+
+    @Test
+    public void Create_Empty_Waypoint_Sequence()
+    {
+        //Arrange, Act, Assert
+
+        // Arrange's all the data that is needed 
+        var tableData = new WaypointTableData(0, 0, 0, 0, 0, 0, 0, 0.0);
+        
+        Boolean rando = true;
+        Boolean piCalc = false;
+        Boolean negPi = false;
+        
+        double whelbs = 120.0;
+        String pathName = "./here";
+        String loc = "./there";
+        Boolean genPath = false;
+        int sqnm = 1;
+
+        // Act's up on the Data 
+        WaypointManagement wypMgt = new WaypointManagement();
+        var sequence = wypMgt.getWaypointSequence(); 
+        sequence.clearWaypointsSequence();
+        wypMgt.createWaypoint(tableData, rando, piCalc, negPi, whelbs, pathName, loc, genPath, sqnm);
+
+        // Assert checks the data 
+        //assert(expected, actual)
+        var somePt = sequence.getWaypoint(0);
+        assertEquals(0/12, somePt.getX());
+        assertEquals(0/12, somePt.getY());
+        assertEquals(0.0, somePt.getTheta());
+        assertEquals(1, sequence.getNumWaypoints());
+
+    }
+
 }
