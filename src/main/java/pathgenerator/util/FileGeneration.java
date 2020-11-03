@@ -92,7 +92,7 @@ public class FileGeneration {
     //         Double.toString(path.getLeftWheelTrajectory().getSegment(id).x) + ','
     //         + Double.toString(path.getRightWheelTrajectory().getSegment(id).x))
     //         .add("y", Double.toString(path.getLeftWheelTrajectory().getSegment(id).y) + ','
-    //         + Double.toString(path.getRightWheelTrajectory().getSegment(id).y))
+    //         + Double.toString(path.getRightWheelTrajecYamlMappingtory().getSegment(id).y))
     //         .build(comments);
 
     //         map.add(id, layoutMap);
