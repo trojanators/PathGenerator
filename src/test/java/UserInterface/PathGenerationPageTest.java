@@ -29,7 +29,7 @@ import javafx.stage.Stage;
  * @author Nicholas Blackburn
  */
 public class PathGenerationPageTest extends ApplicationTest {
-
+/*
     private FXMLLoader loader = new FXMLLoader();
 
     // Starts JavaFX Gui
@@ -47,7 +47,7 @@ public class PathGenerationPageTest extends ApplicationTest {
     /**
      * tests the new waypoint creation 
      * only test
-     */
+     
     @BeforeAll
     public void should_populate_path_for_build_path_Click(){
         clickOn("#waypoint_y_input").type(KeyCode.DIGIT7);
@@ -68,7 +68,7 @@ public class PathGenerationPageTest extends ApplicationTest {
     /**
      * This is the Text Box Test Section 
      * This only Test's Text Box Inputs 
-     */
+     
 
     @Test
     @Order (19)
@@ -193,11 +193,10 @@ public class PathGenerationPageTest extends ApplicationTest {
         waypoint_dt_input.getText(), "#waypoint_dt_input");
     }
 
-
     /**
      * This section is for testing the Buttons / Check Boxes 
      * this only Tests the clicking of the buttons and checks if the names are the same
-     */
+     
 
     @Test
     @Order(8)
@@ -240,4 +239,5 @@ public class PathGenerationPageTest extends ApplicationTest {
     public void should_click_on_exit(){
         verifyThat("#exit", LabeledMatchers.hasText("exit"));
     }
+    */
 }

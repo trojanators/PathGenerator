@@ -13,6 +13,7 @@ import pathgenerator.trajectory.TrajectoryGenerator;
 import pathgenerator.trajectory.WaypointSequence;
 import pathgenerator.trajectory.TrajectoryGenerator.Config;
 import pathgenerator.trajectory.WaypointSequence.Waypoint;
+import java.util.LinkedList;
 
 import pathgenerator.Main;
 
@@ -63,9 +64,8 @@ public class WaypointManagement {
             sequence.addWaypoint(new WaypointSequence.Waypoint(data.getX()/ 12, data.getY() / 12, data.getTheta()), waypointId);
             Main.logger.info("WayPoints in Created Waypoint Sequ is" + sequence.getNumWaypoints());
             Main.logger.warning("waypoint sequ list" + sequence.getWaypoint(waypointId));
-            
-            
         }
+        
         if (enableRando && enablePiCalc) {
             sequence.addWaypoint(new WaypointSequence.Waypoint(data.getX() / 12.0, data.getY() / 12.0, Math.PI / data.getTheta()), waypointId);
             Main.logger.warning("Waypoint" + data.getX() / 12.0 + "" + data.getY() / 12.0 + " data.getTheta()" + Math.PI / data.getTheta());
@@ -108,7 +108,10 @@ public class WaypointManagement {
         return this.path;
     }
 
-    public int getWaypointSequence(){
-        return sequence.getNumWaypoints();
+    public WaypointSequence getWaypointSequence(){
+        //return sequence.getNumWaypoints();
+        return sequence;
     }
+
+    
 }
