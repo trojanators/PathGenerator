@@ -1,5 +1,8 @@
 # PathGenerator an Frc 5740 Tool
  ## A Custom PathGenerator For Frc 5740 
+ 
+ 
+ ## Requesting open source communitys help with this project!
 
 ### *This program is a amazing  for Generator using Team254 TrajectoryLib,Modified by FRC-Team-291-CIA & Modified By Nicholas Blackburn*
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://GitHub.com/Naereen/StrapDown.js/graphs/commit-activity) [![Ask Me Anything !](https://img.shields.io/badge/Ask%20me-anything-1abc9c.svg)](https://GitHub.com/Naereen/ama) [![HitCount](http://hits.dwyl.com/NicholasBlackburn1/trojanators/PathGenerator.svg)](http://hits.dwyl.com/NicholasBlackburn1/trojanators/PathGenerator) [![CircleCI](https://circleci.com/gh/circleci/circleci-docs.svg?style=svg)](https://circleci.com/gh/trojanators/PathGenerator/)
